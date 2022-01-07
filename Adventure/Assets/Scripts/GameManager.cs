@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private bool playerTurn = true;
-    [SerializeField] private bool enemyTurn = false;
+    public bool playerTurn = true;
+    public bool enemyTurn = false;
 
 
     //Text Displayed if it's the Players turn.
@@ -32,11 +32,13 @@ public class GameManager : MonoBehaviour
         if (playerTurn && !enemyTurn)
         {
             p_turnText.enabled = true;
+            e_turnText.enabled = false;
             playerChoiceUI.SetActive(true);
         }
         else if (enemyTurn && !playerTurn)
         {
             e_turnText.enabled = true;
+            p_turnText.enabled = false;
             playerChoiceUI.SetActive(false);
         }
         else
