@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    //MaxHealth of the Player. Default starting number is 20
+    public int MaxHealth = 20;
+    public int CurrentHealth;
+
+    //Reference to the players healthbar
+    public Healtbar Healthbar;
 
     //Reference to GameManagerScript
     public GameManager gameManagerScript;
@@ -20,13 +26,18 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        CurrentHealth = MaxHealth;
+        Healthbar.setmaxhealth(MaxHealth);
+        Healthbar.UpdateText(CurrentHealth);
     }
 
     // Update is called once per frame
     void Update()
     {
-       
+        // Used for testing remove later so it will cause less lag :) xx
+        //It should only be called when we are hit to update it
+        Healthbar.sethealth(CurrentHealth);
+        Healthbar.UpdateText(CurrentHealth);
     }
 
     public void Attack()
