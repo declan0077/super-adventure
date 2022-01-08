@@ -7,14 +7,22 @@ public class Player : MonoBehaviour
     //MaxHealth of the Player. Default starting number is 20
     public int MaxHealth = 20;
     public int CurrentHealth;
+    public int JumpPower;
+    public int Movementspeed;
+    //Max damage the player can deal
+    public int MaxDamage;
+    //Min damage the palyer can deal
+    public int MinimumDamage;
 
     //Reference to the players healthbar
     public Healtbar Healthbar;
 
+    //Gets Reference to the animator
+    public Animator Animator;
     //Reference to GameManagerScript
     public GameManager gameManagerScript;
 
-
+    public Transform look;
     //Reference to EnemyScript
     public Enemy enemyScript;
 
@@ -38,6 +46,10 @@ public class Player : MonoBehaviour
         //It should only be called when we are hit to update it
         Healthbar.sethealth(CurrentHealth);
         Healthbar.UpdateText(CurrentHealth);
+        MaxDamage = 4;
+        MinimumDamage = 1;
+        JumpPower = 5;
+        Movementspeed = 3;
     }
 
     public void Attack()
@@ -56,6 +68,13 @@ public class Player : MonoBehaviour
 
             //Starts the Coroutine that allows the Attack Animation to play out
             StartCoroutine(AttackAction());
+            RaycastHit2D Hit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 10);
+            if (Hit)
+            {
+                enemyScript.CurrentHealth -= Random.Range(MinimumDamage, MaxDamage);
+                Debug.Log("HitYaFucker");
+            }
+         
         }
         
         
@@ -88,24 +107,42 @@ public class Player : MonoBehaviour
         
     }
 
-    void Move()
+    public void Move()
     {
         //Move Code Goes Here
+        if (!playerChosenMove)
+        {
+            //Stops the player from being able to spam moves in a single turn
+            playerChosenMove = true;
 
-        Debug.Log("Player Chooses Move");
+            Debug.Log("Player Chooses Move");
+            GetComponent<Rigidbody2D>().velocity = Vector2.right * Movementspeed;
+            //Starts the Coroutine that allows the Attack Animation to play out
+            StartCoroutine(AttackAction());
+        }
     }
 
-    void Jump()
+    public void Jump()
     {
-        //Jump Code Goes Here
-        Debug.Log("Player Chooses Jump");
+        if (!playerChosenMove)
+        {
+            //Stops the player from being able to spam moves in a single turn
+
+            playerChosenMove = true;
+            //Jump Code Goes Here
+            Debug.Log("Player Chooses Jump");
+
+            GetComponent<Rigidbody2D>().velocity = Vector2.up * JumpPower + Vector2.right;
+            //Starts the Coroutine that allows the Attack Animation to play out
+            StartCoroutine(AttackAction());
+        }
     }
 
 
     IEnumerator AttackAction()
     {
-        //yield on a new YieldInstruction that waits for 5 seconds.
-        yield return new WaitForSeconds(5);
+        //yield on a new YieldInstruction that waits for 2 seconds.
+        yield return new WaitForSeconds(2);
         Debug.Log("Finished Attacking!");
 
         //Swaps turns after the Attack is done by the player
