@@ -50,6 +50,8 @@ public class Player : MonoBehaviour
         MinimumDamage = 1;
         JumpPower = 5;
         Movementspeed = 3;
+        RaycastHit2D Hit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 10);
+        Debug.DrawLine(transform.position, Hit.point, Color.blue);
     }
 
     public void Attack()
@@ -73,11 +75,12 @@ public class Player : MonoBehaviour
             {
                 enemyScript.CurrentHealth -= Random.Range(MinimumDamage, MaxDamage);
                 Debug.Log("HitYaFucker");
+                enemyScript.Hurt();
             }
-         
+            Debug.DrawLine(transform.position, Hit.point, Color.blue);
         }
-        
-        
+        Animator.Play("Attack");
+
     }
 
     public void Block()
@@ -92,7 +95,7 @@ public class Player : MonoBehaviour
             //Block Code Goes Here
 
             Debug.Log("Player Chooses Block");
-
+            Animator.Play("Block");
 
             //Swaps turns after the Block is done by the player
             gameManagerScript.playerTurn = false;
@@ -119,6 +122,7 @@ public class Player : MonoBehaviour
             GetComponent<Rigidbody2D>().velocity = Vector2.right * Movementspeed;
             //Starts the Coroutine that allows the Attack Animation to play out
             StartCoroutine(AttackAction());
+            Animator.Play("Walk");
         }
     }
 
@@ -135,21 +139,31 @@ public class Player : MonoBehaviour
             GetComponent<Rigidbody2D>().velocity = Vector2.up * JumpPower + Vector2.right;
             //Starts the Coroutine that allows the Attack Animation to play out
             StartCoroutine(AttackAction());
+            Animator.Play("Jump");
         }
     }
 
 
     IEnumerator AttackAction()
     {
+        Animation();
         //yield on a new YieldInstruction that waits for 2 seconds.
         yield return new WaitForSeconds(2);
         Debug.Log("Finished Attacking!");
-
+        
         //Swaps turns after the Attack is done by the player
         gameManagerScript.playerTurn = false;
         gameManagerScript.enemyTurn = true;
 
         //Changes bool so that the Enemy is able to choose a move for their turn
         enemyScript.enemyChosenMove = false;
+     
     }
+
+    public void Animation()
+    {
+        Animator.Play("Idle");
+    }
+
+
 }

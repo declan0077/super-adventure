@@ -17,7 +17,8 @@ public class Enemy : MonoBehaviour
 
     public Player playerScript;
 
-
+    //Gets Reference to the animator
+    public Animator Animator;
     //Bool to see if the enemy has yet chosen their move (Used for move validation)
     public bool enemyChosenMove = false;
 
@@ -152,5 +153,10 @@ public class Enemy : MonoBehaviour
         //Changes bool to allow Player to choose a move on their turn
         playerScript.playerChosenMove = false;
 
+    }
+
+    public void Hurt()
+    {
+        Animator.Play("Hurt");
     }
 }
