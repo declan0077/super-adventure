@@ -158,5 +158,6 @@ public class Enemy : MonoBehaviour
     public void Hurt()
     {
         Animator.Play("Hurt");
+        Animator.Play("Idle");
     }
 }
