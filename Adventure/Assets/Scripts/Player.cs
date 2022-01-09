@@ -80,7 +80,7 @@ public class Player : MonoBehaviour
             Debug.DrawLine(transform.position, Hit.point, Color.blue);
         }
         Animator.Play("Attack");
-
+        StartCoroutine(AnimtionRestart());
     }
 
     public void Block()
@@ -96,7 +96,7 @@ public class Player : MonoBehaviour
 
             Debug.Log("Player Chooses Block");
             Animator.Play("Block");
-
+            StartCoroutine(AnimtionRestart());
             //Swaps turns after the Block is done by the player
             gameManagerScript.playerTurn = false;
             gameManagerScript.enemyTurn = true;
@@ -122,7 +122,9 @@ public class Player : MonoBehaviour
             GetComponent<Rigidbody2D>().velocity = Vector2.right * Movementspeed;
             //Starts the Coroutine that allows the Attack Animation to play out
             StartCoroutine(AttackAction());
+        
             Animator.Play("Walk");
+            StartCoroutine(AnimtionRestart());
         }
     }
 
@@ -140,13 +142,16 @@ public class Player : MonoBehaviour
             //Starts the Coroutine that allows the Attack Animation to play out
             StartCoroutine(AttackAction());
             Animator.Play("Jump");
+            StartCoroutine(AnimtionRestart());
+
+
         }
     }
 
 
     IEnumerator AttackAction()
     {
-        Animation();
+  
         //yield on a new YieldInstruction that waits for 2 seconds.
         yield return new WaitForSeconds(2);
         Debug.Log("Finished Attacking!");
@@ -159,10 +164,15 @@ public class Player : MonoBehaviour
         enemyScript.enemyChosenMove = false;
      
     }
-
-    public void Animation()
+    IEnumerator AnimtionRestart()
     {
-        Animator.Play("Idle");
+
+        //yield on a new YieldInstruction that waits for 1 seconds.
+        yield return new WaitForSeconds(1);
+        new WaitForSeconds(1);
+
+        Animator.Play("PlayerCharacter");
+
     }
 
 

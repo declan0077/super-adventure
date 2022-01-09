@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour
         Healthbar.UpdateText(CurrentHealth);
         JumpPower = 5;
         MovementSpeed = 3;
-}
+    }
 
     // Update is called once per frame
     void Update()
@@ -77,7 +77,7 @@ public class Enemy : MonoBehaviour
 
         enemyChosenMove = true;
         // Attack Code Goes Here
-       
+
 
         Debug.Log("Enemy Threatens you with the wrath of doom!...");
         Debug.Log("Enemy Chooses Attack");
@@ -90,7 +90,7 @@ public class Enemy : MonoBehaviour
             playerScript.CurrentHealth -= Random.Range(1, 1);
             Debug.Log("Hitplayer");
         }
-       
+
         else
         {
             Debug.Log("Miss");
@@ -158,6 +158,17 @@ public class Enemy : MonoBehaviour
     public void Hurt()
     {
         Animator.Play("Hurt");
+        StartCoroutine(AnimtionRestart());
+
+    }
+    IEnumerator AnimtionRestart()
+    {
+
+        //yield on a new YieldInstruction that waits for 1 seconds.
+        yield return new WaitForSeconds(1);
+        new WaitForSeconds(1);
+
         Animator.Play("Idle");
+
     }
 }
