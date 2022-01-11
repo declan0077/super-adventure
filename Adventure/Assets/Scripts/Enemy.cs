@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
     public Animator Animator;
     //Bool to see if the enemy has yet chosen their move (Used for move validation)
     public bool enemyChosenMove = false;
-
+    public ParticleSystem Blood;
 
     //Random int variable
     public int enemyChoice;
@@ -36,6 +36,7 @@ public class Enemy : MonoBehaviour
         Healthbar.UpdateText(CurrentHealth);
         JumpPower = 5;
         MovementSpeed = 3;
+        Blood.Stop();
     }
 
     // Update is called once per frame
@@ -78,7 +79,7 @@ public class Enemy : MonoBehaviour
         enemyChosenMove = true;
         // Attack Code Goes Here
 
-
+        Animator.Play("AttackingGoblins");
         Debug.Log("Enemy Threatens you with the wrath of doom!...");
         Debug.Log("Enemy Chooses Attack");
         //Starts the Coroutine that allows the Enemies Melee Attack Animation to play out
@@ -89,6 +90,7 @@ public class Enemy : MonoBehaviour
         {
             playerScript.CurrentHealth -= Random.Range(1, 1);
             Debug.Log("Hitplayer");
+            playerScript.Hurt();
         }
 
         else
@@ -159,7 +161,7 @@ public class Enemy : MonoBehaviour
     {
         Animator.Play("Hurt");
         StartCoroutine(AnimtionRestart());
-
+        Blood.Play();
     }
     IEnumerator AnimtionRestart()
     {
@@ -169,6 +171,6 @@ public class Enemy : MonoBehaviour
         new WaitForSeconds(1);
 
         Animator.Play("Idle");
-
+        Blood.Stop();
     }
 }

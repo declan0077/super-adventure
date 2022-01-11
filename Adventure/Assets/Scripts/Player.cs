@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
     public Transform look;
     //Reference to EnemyScript
     public Enemy enemyScript;
-
+    public ParticleSystem Blood;
 
     //Checks whether the player has selected their move yet or not
     public bool playerChosenMove = false;
@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
         CurrentHealth = MaxHealth;
         Healthbar.setmaxhealth(MaxHealth);
         Healthbar.UpdateText(CurrentHealth);
+        Blood.Stop();
     }
 
     // Update is called once per frame
@@ -78,8 +79,9 @@ public class Player : MonoBehaviour
                 enemyScript.Hurt();
             }
             Debug.DrawLine(transform.position, Hit.point, Color.blue);
+            Animator.Play("Attack");
         }
-        Animator.Play("Attack");
+     
         StartCoroutine(AnimtionRestart());
     }
 
@@ -148,6 +150,14 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void Hurt()
+    {
+        
+        Animator.Play("PlayerHurt");
+        Blood.Play();
+        StartCoroutine(AnimtionRestart());
+       
+    }
 
     IEnumerator AttackAction()
     {
@@ -172,7 +182,7 @@ public class Player : MonoBehaviour
         new WaitForSeconds(1);
 
         Animator.Play("PlayerCharacter");
-
+        Blood.Stop();
     }
 
 
