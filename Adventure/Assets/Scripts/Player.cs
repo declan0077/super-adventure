@@ -51,8 +51,8 @@ public class Player : MonoBehaviour
         MinimumDamage = 1;
         JumpPower = 5;
         Movementspeed = 3;
-        RaycastHit2D Hit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 10);
-        Debug.DrawLine(transform.position, Hit.point, Color.blue);
+        RaycastHit2D location =  Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 10);
+        Debug.DrawLine(transform.position, transform.TransformDirection(Vector2.right) * 0.001f, Color.blue);
     }
 
     public void Attack()
@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
             if (Hit)
             {
                 enemyScript.CurrentHealth -= Random.Range(MinimumDamage, MaxDamage);
-                Debug.Log("HitYaFucker");
+                Debug.Log("HitYa");
                 enemyScript.Hurt();
             }
             Debug.DrawLine(transform.position, Hit.point, Color.blue);
