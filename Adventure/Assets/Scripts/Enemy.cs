@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Enemy : MonoBehaviour
 {
@@ -37,6 +38,11 @@ public class Enemy : MonoBehaviour
     public int enemyChoice;
 
     bool Alive = true;
+
+    //Reference to text fade script
+    public textFade damagePopupTextScript;
+    //Player damage UI that appears on Enemy
+    public TMP_Text playerDamageUI;
 
     // Start is called before the first frame update
     void Start()
@@ -93,15 +99,18 @@ public class Enemy : MonoBehaviour
         // Attack Code Goes Here
 
         Animator.Play("AttackingGoblins");
-        Debug.Log("Enemy Threatens you with the wrath of doom!...");
-        Debug.Log("Enemy Chooses Attack");
+        //Debug.Log("Enemy Threatens you with the wrath of doom!...");
+       // Debug.Log("Enemy Chooses Attack");
         //Starts the Coroutine that allows the Enemies Melee Attack Animation to play out
         StartCoroutine(EnemyMeleeAttackAction());
         RaycastHit2D Hit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.left), 1);
         Debug.DrawRay(transform.position, Vector3.left, Color.green);
-        if (Hit)
+        int enemyDamageDone = Random.Range(4, 6);
+        if (Hit && playerScript.blockActive == false)
         {
-            playerScript.CurrentHealth -= Random.Range(4, 6);
+            playerScript.CurrentHealth -= enemyDamageDone;
+            damagePopupTextScript.fadingIn = true;
+            damagePopupTextScript.damageDone.text = enemyDamageDone.ToString();
             Debug.Log("Hitplayer");
             playerScript.Hurt();
             StartCoroutine(AnimtionRestart());
@@ -109,8 +118,9 @@ public class Enemy : MonoBehaviour
 
         else
         {
-            Debug.Log("Miss");
+            Debug.Log("Blocked");
             StartCoroutine(AnimtionRestart());
+            playerScript.blockActive = false;
         }
     }
 
@@ -132,7 +142,7 @@ public class Enemy : MonoBehaviour
         {
             //Stops the player from being able to spam moves in a single turn
             enemyChosenMove = true;
-
+            playerScript.blockActive = false;
             Debug.Log("Player Chooses Move");
             GetComponent<Rigidbody2D>().velocity = Vector2.left * MovementSpeed;
             //Starts the Coroutine that allows the Attack Animation to play out
@@ -147,6 +157,7 @@ public class Enemy : MonoBehaviour
             //Stops the player from being able to spam moves in a single turn
 
             enemyChosenMove = true;
+            playerScript.blockActive = false;
             //Jump Code Goes Here
             Debug.Log("Player Chooses Jump");
 

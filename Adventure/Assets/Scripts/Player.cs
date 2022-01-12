@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -29,6 +30,19 @@ public class Player : MonoBehaviour
 
     //Checks whether the player has selected their move yet or not
     public bool playerChosenMove = false;
+
+
+    //Block Checker
+    public bool blockActive = false;
+
+
+
+
+    //Reference to text fade script
+    public textFade damagePopupTextScript;
+    //Player damage UI that appears on Enemy
+    public TMP_Text playerDamageUI;
+
 
 
     // Start is called before the first frame update
@@ -71,10 +85,15 @@ public class Player : MonoBehaviour
 
             //Starts the Coroutine that allows the Attack Animation to play out
             StartCoroutine(AttackAction());
+
+            int playerDamageDone = Random.Range(MinimumDamage, MaxDamage);
+
             RaycastHit2D Hit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 10);
             if (Hit)
             {
-                enemyScript.CurrentHealth -= Random.Range(MinimumDamage, MaxDamage);
+                enemyScript.CurrentHealth -= playerDamageDone;
+                damagePopupTextScript.fadingIn = true;
+                damagePopupTextScript.damageDone.text = playerDamageDone.ToString();
                 Debug.Log("HitYa");
                 enemyScript.Hurt();
             }
@@ -90,7 +109,7 @@ public class Player : MonoBehaviour
 
         if (!playerChosenMove)
         {
-
+            blockActive = true;
             //Stops the player from being able to spam moves in a single turn
             playerChosenMove = true;
 
