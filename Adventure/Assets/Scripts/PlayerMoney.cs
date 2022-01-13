@@ -14,11 +14,11 @@ public class PlayerMoney : MonoBehaviour
 
     //Player Stats
 
-    static public float Strength = 1;
-    static public float Agility = 1;
-    static public float Constitution = 1;
-    static public float Intelligence = 1;
-    static public float Charisma = 1;
+    static public float Strength = 0;
+    static public float Agility = 0;
+    static public float Constitution = 0;
+    static public float Intelligence = 0;
+    static public float Charisma = 0;
 
 
 
