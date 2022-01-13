@@ -10,6 +10,18 @@ public class PlayerMoney : MonoBehaviour
     static public int LevelupCost = 50;
     static public int statupgrade = 0;
     static public bool Levelup = false;
+
+
+    //Player Stats
+
+    static public float Strength = 1;
+    static public float Agility = 1;
+    static public float Constitution = 1;
+    static public float Intelligence = 1;
+    static public float Charisma = 1;
+
+
+
     public void Start()
     {
         

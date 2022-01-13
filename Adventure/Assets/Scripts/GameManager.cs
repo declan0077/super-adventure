@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 public class GameManager : MonoBehaviour
 {
     public bool playerTurn = true;
@@ -10,10 +10,10 @@ public class GameManager : MonoBehaviour
 
 
     //Text Displayed if it's the Players turn.
-    [SerializeField] private Text p_turnText;
+    [SerializeField] private TMP_Text p_turnText;
 
     //Text Displayed if it's the Enemys turn.
-    [SerializeField] private Text e_turnText;
+    [SerializeField] private TMP_Text e_turnText;
 
 
     [SerializeField] private GameObject playerChoiceUI;
