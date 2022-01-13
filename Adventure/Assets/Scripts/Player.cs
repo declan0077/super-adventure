@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
     public bool blockActive = false;
 
 
-
+    
 
     //Reference to text fade script
     public textFade damagePopupTextScript;

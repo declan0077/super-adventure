@@ -61,6 +61,8 @@
     <Compile Include="Assets\Scripts\Healtbar.cs" />
     <Compile Include="Assets\UI\Main Menu Scripts\PlayButton.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
+    <Compile Include="Assets\Scripts\PlayerMoney.cs" />
+    <Compile Include="Assets\Scripts\LevelUp.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

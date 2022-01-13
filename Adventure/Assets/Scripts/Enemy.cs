@@ -212,6 +212,9 @@ public class Enemy : MonoBehaviour
             RewardText.SetActive(true);
             Rewardgold.text = (Gold.ToString());
             RewardXp.text = (Xp.ToString());
+            PlayerMoney.XP += Xp;
+            PlayerMoney.Gold += Gold;
+          
         }
         else
         {
