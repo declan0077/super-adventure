@@ -55,6 +55,7 @@
      <Compile Include="Assets\UI\Main Menu Scripts\QuitButton.cs" />
      <Compile Include="Assets\Scripts\Healtbar.cs" />
      <Compile Include="Assets\UI\Main Menu Scripts\PlayButton.cs" />
+     <Compile Include="Assets\Scripts\UpdateStats.cs" />
      <Compile Include="Assets\Scripts\LevelUp.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
