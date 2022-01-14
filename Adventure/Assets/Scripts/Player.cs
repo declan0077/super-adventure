@@ -48,6 +48,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        MaxHealth = MaxHealth + PlayerStats.Constitution;
         CurrentHealth = MaxHealth;
         Healthbar.setmaxhealth(MaxHealth);
         Healthbar.UpdateText(CurrentHealth);
@@ -91,9 +92,10 @@ public class Player : MonoBehaviour
             RaycastHit2D Hit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 10);
             if (Hit)
             {
-                enemyScript.CurrentHealth -= playerDamageDone;
+                enemyScript.CurrentHealth -= playerDamageDone + PlayerStats.Strength;
                 damagePopupTextScript.fadingIn = true;
-                damagePopupTextScript.damageDone.text = playerDamageDone.ToString();
+                int OverallDamage = PlayerStats.Strength + playerDamageDone;
+                damagePopupTextScript.damageDone.text = OverallDamage.ToString();
                 Debug.Log("HitYa");
                 enemyScript.Hurt();
             }
@@ -140,7 +142,8 @@ public class Player : MonoBehaviour
             playerChosenMove = true;
 
             Debug.Log("Player Chooses Move");
-            GetComponent<Rigidbody2D>().velocity = Vector2.right * Movementspeed;
+            int OverallSpeed = Movementspeed + PlayerStats.Agility;
+            GetComponent<Rigidbody2D>().velocity = Vector2.right * OverallSpeed;
             //Starts the Coroutine that allows the Attack Animation to play out
             StartCoroutine(AttackAction());
         
@@ -158,8 +161,8 @@ public class Player : MonoBehaviour
             playerChosenMove = true;
             //Jump Code Goes Here
             Debug.Log("Player Chooses Jump");
-
-            GetComponent<Rigidbody2D>().velocity = Vector2.up * JumpPower + Vector2.right;
+            int OverallJumpPower = JumpPower + PlayerStats.Agility;
+            GetComponent<Rigidbody2D>().velocity = Vector2.up * OverallJumpPower + Vector2.right;
             //Starts the Coroutine that allows the Attack Animation to play out
             StartCoroutine(AttackAction());
             Animator.Play("Jump");

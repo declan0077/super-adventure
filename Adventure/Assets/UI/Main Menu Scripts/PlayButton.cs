@@ -16,7 +16,8 @@ public class PlayButton : MonoBehaviour
     // Update is called once per frame
     void TaskOnClick()
     {
-        if(PlayerMoney.Levelup == true)
+        PlayerStats.Check();
+        if (PlayerStats.Levelup == true)
         {
           
                     SceneManager.LoadScene("LevelUpScene");

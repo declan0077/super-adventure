@@ -9,74 +9,76 @@ public class UpdateStats : MonoBehaviour
     public void LevelUpStrength()
     {
         //Maths or Amount to increase this stat by when player levels it up
-        if(PlayerMoney.statupgrade >= 1)
+        if(PlayerStats.statupgrade >= 0)
         {
-            PlayerMoney.Strength += 1;
-            PlayerMoney.statupgrade -= 1;
+            PlayerStats.Strength += 1;
+            PlayerStats.statupgrade -= 1;
             SkillPointCheck();
+            Debug.Log("strengthup");
+            Debug.Log(PlayerStats.statupgrade);
         }
         else
         {
-            PlayerMoney.Levelup = false;
+            PlayerStats.Levelup = false;
         }
     }
     public void LevelUpAgility()
     {
-        if (PlayerMoney.statupgrade >= 1)
+        if (PlayerStats.statupgrade >= 0)
         {
-            PlayerMoney.Agility += 1;
-            PlayerMoney.statupgrade -= 1;
+            PlayerStats.Agility += 1;
+            PlayerStats.statupgrade -= 1;
             SkillPointCheck();
         }
         else
         {
-            PlayerMoney.Levelup = false;
+            PlayerStats.Levelup = false;
         }
     }
     public void LevelUpConstitution()
     {
-        if (PlayerMoney.statupgrade >= 1)
+        if (PlayerStats.statupgrade >= 0)
         {
-            PlayerMoney.Constitution += 1;
-            PlayerMoney.statupgrade -= 1;
+            PlayerStats.Constitution += 5;
+            PlayerStats.statupgrade -= 1;
             SkillPointCheck();
         }
         else
         {
-            PlayerMoney.Levelup = false;
+            PlayerStats.Levelup = false;
         }
     }
     public void LevelUpIntelligence()
     {
-        if (PlayerMoney.statupgrade >= 1)
+        if (PlayerStats.statupgrade >= 0)
         {
-            PlayerMoney.Intelligence += 1;
-            PlayerMoney.statupgrade -= 1;
+            PlayerStats.Intelligence += 1;
+            PlayerStats.statupgrade -= 1;
             SkillPointCheck();
         }
         else
         {
-            PlayerMoney.Levelup = false;
+            PlayerStats.Levelup = false;
         }
     }
     public void LevelUpCharisma()
     {
-        if (PlayerMoney.statupgrade >= 1)
+        if (PlayerStats.statupgrade >= 0)
         {
-            PlayerMoney.Charisma += 1;
-            PlayerMoney.statupgrade -= 1;
+            PlayerStats.Charisma += 1;
+            PlayerStats.statupgrade -= 1;
             SkillPointCheck();
         }
         else
         {
-            PlayerMoney.Levelup = false;
+            PlayerStats.Levelup = false;
         }
     }
     static void  SkillPointCheck()
     {
-       if (PlayerMoney.statupgrade >= 1)
+       if (PlayerStats.statupgrade >= 0)
        {
-            PlayerMoney.Levelup = false;
+            PlayerStats.Levelup = false;
        }
         
     }

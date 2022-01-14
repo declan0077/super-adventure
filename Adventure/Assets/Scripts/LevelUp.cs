@@ -8,7 +8,7 @@ public class LevelUp : MonoBehaviour
 
    static public void ChangeLevel()
     {
-        if(PlayerMoney.Levelup == true)
+        if(PlayerStats.Levelup == true)
         {
             SceneManager.LoadScene("Town");
         }
