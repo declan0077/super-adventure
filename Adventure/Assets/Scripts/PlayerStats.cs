@@ -35,7 +35,7 @@ public class PlayerStats : MonoBehaviour
 
     public void ShieldChange()
     {
-        Shieldlist.value = Shield;
+       Shield = Shieldlist.value;
         ShieldCheck();
     }
 
@@ -62,17 +62,49 @@ public class PlayerStats : MonoBehaviour
     {
         switch(Shield)
         {
+            case 0:
+                Debug.Log("Empty");
+                break;
+
             case 1:
+                if (Gold >= 10)
+                {
+                    Gold -= 10;
+                    Debug.Log("You bought a Round Shield");
+                    break;
+                }
+                else
+                {
+                    Debug.Log("Not enough money");
+                    break;
+                }
+            case 2:
+                if (Gold >= 100)
+                {
+                    Gold -= 100;
+                    Debug.Log("You bought a Kite Shield");
+                    break;
+                }
+                else
+                {
+                    Debug.Log("Not enough money");
+                    break;
+                }
+            case 3:
+                if (Gold >= 1000)
+                {
+                    Gold -= 1000;
+                    Debug.Log("You bought a Tower Shield");
+                    break;
+                }
+                else
+                {
+                    Debug.Log("Not enough money");
+                    break;
+                }
+            default:
                 Debug.Log("Round Shield");
                 break;
-            case 2:
-                Debug.Log("Kite Shield");
-                break;
-            case 3:
-                Debug.Log("Tower Shield");
-               break;
-            default:
-            break;
         }
     }
 }

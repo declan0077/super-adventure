@@ -35,6 +35,8 @@ public class Player : MonoBehaviour
     //Block Checker
     public bool blockActive = false;
 
+    //AttackChecker
+    public bool attacking = true;
 
     
 
@@ -66,8 +68,9 @@ public class Player : MonoBehaviour
         MinimumDamage = 1;
         JumpPower = 5;
         Movementspeed = 3;
-        RaycastHit2D location =  Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 10);
-        Debug.DrawLine(transform.position, transform.TransformDirection(Vector2.right) * 0.001f, Color.blue);
+     
+      
+
     }
 
     public void Attack()
@@ -88,8 +91,9 @@ public class Player : MonoBehaviour
             StartCoroutine(AttackAction());
 
             int playerDamageDone = Random.Range(MinimumDamage, MaxDamage);
+            attacking = true;
 
-            RaycastHit2D Hit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 10);
+            RaycastHit2D Hit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 100);
             if (Hit)
             {
                 enemyScript.CurrentHealth -= playerDamageDone + PlayerStats.Strength;
@@ -99,7 +103,7 @@ public class Player : MonoBehaviour
                 Debug.Log("HitYa");
                 enemyScript.Hurt();
             }
-            Debug.DrawLine(transform.position, Hit.point, Color.blue);
+    
             Animator.Play("Attack");
         }
      

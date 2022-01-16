@@ -2605,7 +2605,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Round Shield
+  m_Text: Empty
 --- !u!222 &1491830581
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3133,7 +3133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8ab36a4f71c337418ddc2b9c1afb24e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Shieldlist: {fileID: 0}
+  Shieldlist: {fileID: 1718461785}
 --- !u!1 &1653133572
 GameObject:
   m_ObjectHideFlags: 0
@@ -3382,6 +3382,8 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
+    - m_Text: Empty
+      m_Image: {fileID: 0}
     - m_Text: Round Shield
       m_Image: {fileID: 0}
     - m_Text: Kite Shield
@@ -3393,7 +3395,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1618529133}
         m_TargetAssemblyTypeName: PlayerStats, Assembly-CSharp
-        m_MethodName: ShieldCheck
+        m_MethodName: ShieldChange
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4024,7 +4026,6 @@ GameObject:
   - component: {fileID: 1874926022}
   - component: {fileID: 1874926021}
   - component: {fileID: 1874926020}
-  - component: {fileID: 1874926024}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -4117,19 +4118,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1874926024
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1874926019}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8ab36a4f71c337418ddc2b9c1afb24e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Shieldlist: {fileID: 0}
 --- !u!1 &1917208341
 GameObject:
   m_ObjectHideFlags: 0
