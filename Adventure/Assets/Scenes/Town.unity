@@ -2246,7 +2246,19 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &1127655233
 MonoBehaviour:
@@ -2593,7 +2605,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Simple Shield
+  m_Text: Round Shield
 --- !u!222 &1491830581
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2995,6 +3007,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1618529129}
+  - component: {fileID: 1618529133}
   - component: {fileID: 1618529132}
   - component: {fileID: 1618529131}
   - component: {fileID: 1618529130}
@@ -3108,6 +3121,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1618529128}
   m_CullTransparentMesh: 1
+--- !u!114 &1618529133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618529128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8ab36a4f71c337418ddc2b9c1afb24e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Shieldlist: {fileID: 0}
 --- !u!1 &1653133572
 GameObject:
   m_ObjectHideFlags: 0
@@ -3356,7 +3382,7 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: Simple Shield
+    - m_Text: Round Shield
       m_Image: {fileID: 0}
     - m_Text: Kite Shield
       m_Image: {fileID: 0}
@@ -3365,13 +3391,13 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1618529133}
+        m_TargetAssemblyTypeName: PlayerStats, Assembly-CSharp
+        m_MethodName: ShieldCheck
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3998,6 +4024,7 @@ GameObject:
   - component: {fileID: 1874926022}
   - component: {fileID: 1874926021}
   - component: {fileID: 1874926020}
+  - component: {fileID: 1874926024}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -4090,6 +4117,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1874926024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1874926019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8ab36a4f71c337418ddc2b9c1afb24e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Shieldlist: {fileID: 0}
 --- !u!1 &1917208341
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,7 +24,7 @@ public class UpdateStats : MonoBehaviour
     }
     public void LevelUpAgility()
     {
-        if (PlayerStats.statupgrade >= 0)
+        if (PlayerStats.statupgrade >= 1)
         {
             PlayerStats.Agility += 1;
             PlayerStats.statupgrade -= 1;
@@ -37,11 +37,12 @@ public class UpdateStats : MonoBehaviour
     }
     public void LevelUpConstitution()
     {
-        if (PlayerStats.statupgrade >= 0)
+        if (PlayerStats.statupgrade >= 1)
         {
             PlayerStats.Constitution += 5;
             PlayerStats.statupgrade -= 1;
             SkillPointCheck();
+            Debug.Log("Buff!");
         }
         else
         {
@@ -50,7 +51,7 @@ public class UpdateStats : MonoBehaviour
     }
     public void LevelUpIntelligence()
     {
-        if (PlayerStats.statupgrade >= 0)
+        if (PlayerStats.statupgrade >= 1)
         {
             PlayerStats.Intelligence += 1;
             PlayerStats.statupgrade -= 1;
@@ -63,7 +64,7 @@ public class UpdateStats : MonoBehaviour
     }
     public void LevelUpCharisma()
     {
-        if (PlayerStats.statupgrade >= 0)
+        if (PlayerStats.statupgrade >= 1)
         {
             PlayerStats.Charisma += 1;
             PlayerStats.statupgrade -= 1;
@@ -76,7 +77,7 @@ public class UpdateStats : MonoBehaviour
     }
     static void  SkillPointCheck()
     {
-       if (PlayerStats.statupgrade >= 0)
+       if (PlayerStats.statupgrade >= 1)
        {
             PlayerStats.Levelup = false;
        }

@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,7 +21,23 @@ public class PlayerStats : MonoBehaviour
     static public int Intelligence = 0;
     static public int Charisma = 0;
 
+    //Shield
 
+    static public int Shield = 0;
+
+    //Sword
+
+    static public int Sword = 0;
+
+    //Dropdown
+
+    public Dropdown Shieldlist;
+
+    public void ShieldChange()
+    {
+        Shieldlist.value = Shield;
+        ShieldCheck();
+    }
 
     public void Start()
     {
@@ -39,5 +56,23 @@ public class PlayerStats : MonoBehaviour
         }
 
 
+    }
+
+    public static void ShieldCheck()
+    {
+        switch(Shield)
+        {
+            case 1:
+                Debug.Log("Round Shield");
+                break;
+            case 2:
+                Debug.Log("Kite Shield");
+                break;
+            case 3:
+                Debug.Log("Tower Shield");
+               break;
+            default:
+            break;
+        }
     }
 }
