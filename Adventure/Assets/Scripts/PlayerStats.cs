@@ -11,6 +11,7 @@ public class PlayerStats : MonoBehaviour
     static public int LevelupCost = 50;
     static public int statupgrade = 0;
     static public bool Levelup = false;
+    static public int ShieldLevel;
 
 
     //Player Stats
@@ -67,39 +68,42 @@ public class PlayerStats : MonoBehaviour
                 break;
 
             case 1:
-                if (Gold >= 10)
+                if (Gold >= 10 && ShieldLevel < 1)
                 {
                     Gold -= 10;
                     Debug.Log("You bought a Round Shield");
+                    ShieldLevel = 1;
                     break;
                 }
                 else
                 {
-                    Debug.Log("Not enough money");
+                    Debug.Log("Not enough money or you have better");
                     break;
                 }
             case 2:
-                if (Gold >= 100)
+                if (Gold >= 100 && ShieldLevel < 2)
                 {
                     Gold -= 100;
                     Debug.Log("You bought a Kite Shield");
+                    ShieldLevel = 2;
                     break;
                 }
                 else
                 {
-                    Debug.Log("Not enough money");
+                    Debug.Log("Not enough money or you have better");
                     break;
                 }
             case 3:
-                if (Gold >= 1000)
+                if (Gold >= 1000 && ShieldLevel < 3)
                 {
                     Gold -= 1000;
                     Debug.Log("You bought a Tower Shield");
+                    ShieldLevel = 3;
                     break;
                 }
                 else
                 {
-                    Debug.Log("Not enough money");
+                    Debug.Log("Not enough money or you have better");
                     break;
                 }
             default:

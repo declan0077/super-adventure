@@ -22,8 +22,13 @@ public class Player : MonoBehaviour
     public Animator Animator;
     //Reference to GameManagerScript
     public GameManager gameManagerScript;
+    //Reference to The Players Body 
+    public GameObject Body;
+    //Reference to The Players Shield 
+    public GameObject Shield;
 
-    public Transform look;
+
+
     //Reference to EnemyScript
     public Enemy enemyScript;
     public ParticleSystem Blood;
@@ -38,7 +43,7 @@ public class Player : MonoBehaviour
     //AttackChecker
     public bool attacking = true;
 
-    
+
 
     //Reference to text fade script
     public textFade damagePopupTextScript;
@@ -55,6 +60,11 @@ public class Player : MonoBehaviour
         Healthbar.setmaxhealth(MaxHealth);
         Healthbar.UpdateText(CurrentHealth);
         Blood.Stop();
+        if(PlayerStats.ShieldLevel >= 1)
+        {
+            Shield.gameObject.SetActive(true);
+        }
+
     }
 
     // Update is called once per frame
@@ -68,8 +78,8 @@ public class Player : MonoBehaviour
         MinimumDamage = 1;
         JumpPower = 5;
         Movementspeed = 3;
-     
-      
+
+        Debug.DrawLine(Body.transform.position, Body.transform.position + Body.transform.right, Color.blue);
 
     }
 
@@ -92,10 +102,12 @@ public class Player : MonoBehaviour
 
             int playerDamageDone = Random.Range(MinimumDamage, MaxDamage);
             attacking = true;
-
-            RaycastHit2D Hit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 100);
+            RaycastHit2D Hit = Physics2D.Raycast(Body.transform.position, Body.transform.position + Body.transform.right, 10000);
+            Debug.Log(Hit.collider.name);
+            //Hit.collider.gameObject.CompareTag("Enemy"))
             if (Hit)
             {
+                Debug.Log(Hit.collider.name);
                 enemyScript.CurrentHealth -= playerDamageDone + PlayerStats.Strength;
                 damagePopupTextScript.fadingIn = true;
                 int OverallDamage = PlayerStats.Strength + playerDamageDone;
@@ -103,10 +115,10 @@ public class Player : MonoBehaviour
                 Debug.Log("HitYa");
                 enemyScript.Hurt();
             }
-    
+
             Animator.Play("Attack");
         }
-     
+
         StartCoroutine(AnimtionRestart());
     }
 
@@ -134,7 +146,7 @@ public class Player : MonoBehaviour
 
 
 
-        
+
     }
 
     public void Move()
@@ -150,7 +162,7 @@ public class Player : MonoBehaviour
             GetComponent<Rigidbody2D>().velocity = Vector2.right * OverallSpeed;
             //Starts the Coroutine that allows the Attack Animation to play out
             StartCoroutine(AttackAction());
-        
+
             Animator.Play("Walk");
             StartCoroutine(AnimtionRestart());
         }
@@ -178,27 +190,27 @@ public class Player : MonoBehaviour
 
     public void Hurt()
     {
-        
+
         Animator.Play("PlayerHurt");
         Blood.Play();
         StartCoroutine(AnimtionRestart());
-       
+
     }
 
     IEnumerator AttackAction()
     {
-  
+
         //yield on a new YieldInstruction that waits for 2 seconds.
         yield return new WaitForSeconds(2);
         Debug.Log("Finished Attacking!");
-        
+
         //Swaps turns after the Attack is done by the player
         gameManagerScript.playerTurn = false;
         gameManagerScript.enemyTurn = true;
 
         //Changes bool so that the Enemy is able to choose a move for their turn
         enemyScript.enemyChosenMove = false;
-     
+
     }
     IEnumerator AnimtionRestart()
     {
