@@ -468,7 +468,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onSuccessArea: 0
   flipflop: 0
-  speed: 20
+  speed: 50.2
 --- !u!114 &1215455552
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -26,6 +26,8 @@ public class Player : MonoBehaviour
     public GameObject Body;
     //Reference to The Players Shield 
     public GameObject Shield;
+    //Reference to The skill check system Used for attacking
+    public GameObject SkillCheck;
 
 
 
@@ -98,30 +100,56 @@ public class Player : MonoBehaviour
             Debug.Log("Attacking...");
 
             //Starts the Coroutine that allows the Attack Animation to play out
-            StartCoroutine(AttackAction());
 
-            int playerDamageDone = Random.Range(MinimumDamage, MaxDamage);
+
+            Animator.Play("ReadyPlayer");
             attacking = true;
-            RaycastHit2D Hit = Physics2D.Raycast(Body.transform.position, Body.transform.position + Body.transform.right, 10000);
-            Debug.Log(Hit.collider.name);
-            //Hit.collider.gameObject.CompareTag("Enemy"))
-            if (Hit)
+            RaycastHit2D Hit = Physics2D.Raycast(Body.transform.position, Body.transform.right, 1.5f);
+            Debug.DrawLine(Hit.transform.position, Hit.transform.position + Hit.transform.right, Color.blue, 5);
+            if (Hit.collider.gameObject.CompareTag("Enemy"))
             {
-                Debug.Log(Hit.collider.name);
-                enemyScript.CurrentHealth -= playerDamageDone + PlayerStats.Strength;
-                damagePopupTextScript.fadingIn = true;
-                int OverallDamage = PlayerStats.Strength + playerDamageDone;
-                damagePopupTextScript.damageDone.text = OverallDamage.ToString();
-                Debug.Log("HitYa");
-                enemyScript.Hurt();
+                
+                SkillCheck.SetActive(true);
             }
-
-            Animator.Play("Attack");
+            else
+            {
+                Animator.Play("Attack");
+                StartCoroutine(AttackAction());
+            }
+            
         }
 
         StartCoroutine(AnimtionRestart());
     }
-
+    public void MissAttack()
+    {
+        Animator.Play("Attack");
+        StartCoroutine(AttackAction());
+    }
+    public void normalattack()
+    {
+        int playerDamageDone = Random.Range(MinimumDamage, MaxDamage);
+        int OverallDamage = PlayerStats.Strength + playerDamageDone;
+        enemyScript.CurrentHealth -= OverallDamage;
+        damagePopupTextScript.fadingIn = true;
+        damagePopupTextScript.damageDone.text = OverallDamage.ToString();
+        Debug.Log("HitYa");
+        enemyScript.Hurt();
+        Animator.Play("Attack");
+        StartCoroutine(AttackAction());
+    }
+    public void CritAttack()
+    {
+        int playerDamageDone = Random.Range(MinimumDamage, MaxDamage);
+        int OverallDamage = PlayerStats.Strength + playerDamageDone * 2;
+        enemyScript.CurrentHealth -= OverallDamage;
+        damagePopupTextScript.fadingIn = true;
+        damagePopupTextScript.damageDone.text = OverallDamage.ToString();
+        Debug.Log("HitYa");
+        enemyScript.Hurt();
+        Animator.Play("Attack");
+        StartCoroutine(AttackAction());
+    }
     public void Block()
     {
 

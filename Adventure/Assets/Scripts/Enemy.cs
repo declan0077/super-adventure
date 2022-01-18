@@ -33,7 +33,8 @@ public class Enemy : MonoBehaviour
     //Bool to see if the enemy has yet chosen their move (Used for move validation)
     public bool enemyChosenMove = false;
     public ParticleSystem Blood;
-
+    //Gets the center of the players body used for raycasting
+    public GameObject Body;
     //Random int variable
     public int enemyChoice;
 
@@ -103,10 +104,10 @@ public class Enemy : MonoBehaviour
        // Debug.Log("Enemy Chooses Attack");
         //Starts the Coroutine that allows the Enemies Melee Attack Animation to play out
         StartCoroutine(EnemyMeleeAttackAction());
-        RaycastHit2D Hit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.left), 1);
-        Debug.DrawRay(transform.position, Vector3.left, Color.green);
+        RaycastHit2D Hit = Physics2D.Raycast(Body.transform.position, -Body.transform.right, 1.5f);
+        Debug.DrawLine(Hit.transform.position, Hit.transform.position + Hit.transform.right, Color.blue, 5);
         int enemyDamageDone = Random.Range(4, 6);
-        if (Hit && playerScript.blockActive == false)
+        if (Hit && playerScript.blockActive == false && playerScript.CompareTag("Player"))
         {
             playerScript.CurrentHealth -= enemyDamageDone;
             damagePopupTextScript.fadingIn = true;
@@ -119,7 +120,7 @@ public class Enemy : MonoBehaviour
         else
         {
             Debug.Log("Blocked");
-            StartCoroutine(AnimtionRestart());
+            Getcloser();
             playerScript.blockActive = false;
         }
     }
@@ -147,6 +148,18 @@ public class Enemy : MonoBehaviour
             GetComponent<Rigidbody2D>().velocity = Vector2.left * MovementSpeed;
             //Starts the Coroutine that allows the Attack Animation to play out
             StartCoroutine(EnemyMeleeAttackAction());
+        }
+    }
+    //Same as move just used in the attack command
+    public void Getcloser()
+    {
+        //Move Code Goes Here
+        if (!enemyChosenMove)
+        {
+            //Stops the player from being able to spam moves in a single turn
+            playerScript.blockActive = false;
+            GetComponent<Rigidbody2D>().velocity = Vector2.left * MovementSpeed;
+            //Starts the Coroutine that allows the Attack Animation to play out
         }
     }
 
