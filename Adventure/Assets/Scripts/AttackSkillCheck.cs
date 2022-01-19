@@ -15,6 +15,10 @@ public class AttackSkillCheck : MonoBehaviour
     public Player Player;
     //SkillCheck reference
     public GameObject SkillCheck;
+
+
+    //Skillcheck Hit Checks
+
     public bool NormalHit = false;
     public bool CritHit = false;
 
@@ -49,12 +53,7 @@ public class AttackSkillCheck : MonoBehaviour
 
     public void Strike()
     {
-        if(NormalHit == false && CritHit == false)
-        {
-            Player.MissAttack();
-            SkillCheck.SetActive(false);
-            Debug.Log("Missed");
-        }
+        
         if (NormalHit == true && CritHit == false)
         {
             Player.normalattack();
@@ -66,6 +65,12 @@ public class AttackSkillCheck : MonoBehaviour
             Player.CritAttack();
             SkillCheck.SetActive(false);
             Debug.Log("Crit");
+        }
+        if (NormalHit == false && CritHit == false)
+        {
+            Player.MissAttack();
+            SkillCheck.SetActive(false);
+            Debug.Log("Missed");
         }
 
     }
