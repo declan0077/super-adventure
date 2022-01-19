@@ -33,6 +33,7 @@ public class Player : MonoBehaviour
 
     //Reference to EnemyScript
     public Enemy enemyScript;
+    public GameObject enemyPlayer;
     public ParticleSystem Blood;
 
     //Checks whether the player has selected their move yet or not
@@ -105,18 +106,20 @@ public class Player : MonoBehaviour
             Animator.Play("ReadyPlayer");
             attacking = true;
             RaycastHit2D Hit = Physics2D.Raycast(Body.transform.position, Body.transform.right, 1.5f);
-            Debug.DrawLine(Hit.transform.position, Hit.transform.position + Hit.transform.right, Color.blue, 5);
-            if (Hit.collider.gameObject.CompareTag("Enemy"))
+            if (Hit.collider != null && Hit.collider.tag == "Enemy")
             {
-                
+
                 SkillCheck.SetActive(true);
+
             }
-            else
+            else if (Hit.collider == null)
+
             {
                 Animator.Play("Attack");
-                StartCoroutine(AttackAction());
+                MissAttack();
+               
             }
-            
+
         }
 
         StartCoroutine(AnimtionRestart());

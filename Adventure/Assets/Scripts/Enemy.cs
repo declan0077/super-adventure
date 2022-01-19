@@ -105,9 +105,9 @@ public class Enemy : MonoBehaviour
         //Starts the Coroutine that allows the Enemies Melee Attack Animation to play out
         StartCoroutine(EnemyMeleeAttackAction());
         RaycastHit2D Hit = Physics2D.Raycast(Body.transform.position, -Body.transform.right, 1.5f);
-        Debug.DrawLine(Hit.transform.position, Hit.transform.position + Hit.transform.right, Color.blue, 5);
+        
         int enemyDamageDone = Random.Range(4, 6);
-        if (Hit && playerScript.blockActive == false && playerScript.CompareTag("Player"))
+        if (Hit && playerScript.blockActive == false && Hit.collider != null && Hit.collider.tag == "Player")
         {
             playerScript.CurrentHealth -= enemyDamageDone;
             damagePopupTextScript.fadingIn = true;
@@ -117,7 +117,7 @@ public class Enemy : MonoBehaviour
             StartCoroutine(AnimtionRestart());
         }
 
-        else
+        else if(Hit.collider == null)
         {
             Debug.Log("Blocked");
             Getcloser();

@@ -279,8 +279,9 @@ GameObject:
   m_Component:
   - component: {fileID: 85711884}
   - component: {fileID: 85711886}
+  - component: {fileID: 85711885}
   m_Layer: 5
-  m_Name: Hit (1)
+  m_Name: Hitright
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -305,6 +306,19 @@ RectTransform:
   m_AnchoredPosition: {x: 14.7, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &85711885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85711883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8391a196d24d48a449f1975afc66a484, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Check: {fileID: 1494910464}
 --- !u!61 &85711886
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2140,7 +2154,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &843480447
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2274,7 +2288,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8077134667549930607, guid: 7b67b89d26ec1e24ca63093583fd6106, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.81
+      value: -4.43
       objectReference: {fileID: 0}
     - target: {fileID: -8077134667549930607, guid: 7b67b89d26ec1e24ca63093583fd6106, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2640,6 +2654,7 @@ MonoBehaviour:
   Shield: {fileID: 495919351}
   SkillCheck: {fileID: 843480446}
   enemyScript: {fileID: 3076012659349151252}
+  enemyPlayer: {fileID: 3076012659349151250}
   Blood: {fileID: 1000266918}
   playerChosenMove: 0
   blockActive: 0
@@ -9893,6 +9908,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1819796854}
   - component: {fileID: 1819796856}
+  - component: {fileID: 1819796855}
   m_Layer: 5
   m_Name: Hit
   m_TagString: Untagged
@@ -9919,6 +9935,19 @@ RectTransform:
   m_AnchoredPosition: {x: -25.9, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1819796855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819796853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8391a196d24d48a449f1975afc66a484, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Check: {fileID: 1494910464}
 --- !u!61 &1819796856
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10425,14 +10454,14 @@ RectTransform:
   m_GameObject: {fileID: 2050499251}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1872908, y: 1, z: 1}
+  m_LocalScale: {x: 0.16622059, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 581837421}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.09, y: 0}
+  m_AnchoredPosition: {x: -1.03, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2050499253
@@ -10444,7 +10473,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2050499251}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 329ba87911409734084c49210ae21b16, type: 3}
+  m_Script: {fileID: 11500000, guid: 04dab2d1877dcc6468ed96c1043bed92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Check: {fileID: 1494910464}
@@ -10461,7 +10490,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 5.4693623, y: 0.25200462}
+  m_Offset: {x: 6.2197986, y: 0.25200653}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -10472,7 +10501,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 36.171093, y: 100.889984}
+  m_Size: {x: 37.671967, y: 100.889984}
   m_EdgeRadius: 0
 --- !u!1 &2060635415
 GameObject:
@@ -16012,7 +16041,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8498013965000605745, guid: df3eadf39e7d37d4e9811457ff344714, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.2199998
+      value: 2.59
       objectReference: {fileID: 0}
     - target: {fileID: 8498013965000605745, guid: df3eadf39e7d37d4e9811457ff344714, type: 3}
       propertyPath: m_LocalPosition.y
