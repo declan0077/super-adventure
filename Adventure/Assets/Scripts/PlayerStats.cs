@@ -25,6 +25,8 @@ public class PlayerStats : MonoBehaviour
     //Shield
 
     static public int Shield = 0;
+    //Shield Armour gets applied to the player
+    static public int ArmourAmount;
 
     //Sword
 
@@ -73,6 +75,7 @@ public class PlayerStats : MonoBehaviour
                     Gold -= 10;
                     Debug.Log("You bought a Round Shield");
                     ShieldLevel = 1;
+                    ArmourAmount = 5;
                     break;
                 }
                 else
@@ -86,6 +89,7 @@ public class PlayerStats : MonoBehaviour
                     Gold -= 100;
                     Debug.Log("You bought a Kite Shield");
                     ShieldLevel = 2;
+                    ArmourAmount = 15;
                     break;
                 }
                 else
@@ -99,6 +103,7 @@ public class PlayerStats : MonoBehaviour
                     Gold -= 1000;
                     Debug.Log("You bought a Tower Shield");
                     ShieldLevel = 3;
+                    ArmourAmount = 30;
                     break;
                 }
                 else

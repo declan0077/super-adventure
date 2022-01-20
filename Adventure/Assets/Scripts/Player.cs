@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 {
     //MaxHealth of the Player. Default starting number is 20
     public int MaxHealth = 20;
+    //The current Health of the player
     public int CurrentHealth;
     public int JumpPower;
     public int Movementspeed;
@@ -14,10 +15,14 @@ public class Player : MonoBehaviour
     public int MaxDamage;
     //Min damage the palyer can deal
     public int MinimumDamage;
+    //Armour ammount
+    public int MaxArmour;
+    public int CurrentArmour;
 
     //Reference to the players healthbar
     public Healtbar Healthbar;
-
+    //Reference to the players Armourbar
+    public ArmourBar ArmourBar;
     //Gets Reference to the animator
     public Animator Animator;
     //Reference to GameManagerScript
@@ -58,10 +63,14 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PlayerStats.ArmourAmount = MaxArmour;
         MaxHealth = MaxHealth + PlayerStats.Constitution;
         CurrentHealth = MaxHealth;
-        Healthbar.setmaxhealth(MaxHealth);
+        CurrentArmour = MaxArmour;
+        Healthbar.Setmaxhealth(MaxHealth);
         Healthbar.UpdateText(CurrentHealth);
+        ArmourBar.SetmaxArmour(MaxHealth);
+        ArmourBar.UpdateText(CurrentArmour);
         Blood.Stop();
         if(PlayerStats.ShieldLevel >= 1)
         {
@@ -75,8 +84,10 @@ public class Player : MonoBehaviour
     {
         // Used for testing remove later so it will cause less lag :) xx
         //It should only be called when we are hit to update it
-        Healthbar.sethealth(CurrentHealth);
+        Healthbar.Sethealth(CurrentHealth);
         Healthbar.UpdateText(CurrentHealth);
+        ArmourBar.SetmaxArmour(MaxHealth);
+        ArmourBar.UpdateText(CurrentArmour);
         MaxDamage = 4;
         MinimumDamage = 1;
         JumpPower = 5;
@@ -232,7 +243,7 @@ public class Player : MonoBehaviour
     {
 
         //yield on a new YieldInstruction that waits for 2 seconds.
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         Debug.Log("Finished Attacking!");
 
         //Swaps turns after the Attack is done by the player

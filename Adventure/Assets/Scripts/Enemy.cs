@@ -44,13 +44,14 @@ public class Enemy : MonoBehaviour
     public textFade damagePopupTextScript;
     //Player damage UI that appears on Enemy
     public TMP_Text playerDamageUI;
+    private bool PlayerInrange;
 
     // Start is called before the first frame update
     void Start()
     {
         MaxHealth = Random.Range(6, 12);
         CurrentHealth = MaxHealth;
-        Healthbar.setmaxhealth(MaxHealth);
+        Healthbar.Setmaxhealth(MaxHealth);
         Healthbar.UpdateText(CurrentHealth);
         JumpPower = 5;
         MovementSpeed = 3;
@@ -89,8 +90,17 @@ public class Enemy : MonoBehaviour
         }
         // Used for testing remove later so it will cause less lag :) xx
         //It should only be called when we are hit to update it
-        Healthbar.sethealth(CurrentHealth);
+        Healthbar.Sethealth(CurrentHealth);
         Healthbar.UpdateText(CurrentHealth);
+        RaycastHit2D Inrange = Physics2D.Raycast(Body.transform.position, -Body.transform.right, 1.5f);
+        if(Inrange.collider != null && Inrange.collider.tag == "Player")
+        {
+            PlayerInrange = true;
+        }
+        else if (Inrange.collider == null)
+        {
+            PlayerInrange = false;
+        }
     }
 
     public void Attack()
@@ -99,7 +109,7 @@ public class Enemy : MonoBehaviour
         enemyChosenMove = true;
         // Attack Code Goes Here
 
-        Animator.Play("AttackingGoblins");
+       
         //Debug.Log("Enemy Threatens you with the wrath of doom!...");
        // Debug.Log("Enemy Chooses Attack");
         //Starts the Coroutine that allows the Enemies Melee Attack Animation to play out
@@ -115,52 +125,65 @@ public class Enemy : MonoBehaviour
             Debug.Log("Hitplayer");
             playerScript.Hurt();
             StartCoroutine(AnimtionRestart());
+            Animator.Play("AttackingGoblins");
         }
 
         else if(Hit.collider == null)
         {
-            Debug.Log("Blocked");
+            
             Getcloser();
             playerScript.blockActive = false;
+            StartCoroutine(AnimtionRestart());
         }
     }
 
     public void Block()
     {
+        if (PlayerInrange == true)
+        {
+            enemyChosenMove = true;
+            Animator.Play("Block");
+            //Block Code Goes Here
 
-        enemyChosenMove = true;
+            Debug.Log("Enemy Chooses Block");
 
-        //Block Code Goes Here
-
-        Debug.Log("Enemy Chooses Block");
-
-        StartCoroutine(EnemyMeleeAttackAction());
+            StartCoroutine(EnemyMeleeAttackAction());
+            StartCoroutine(AnimtionRestart());
+        }
+        else
+        {
+            Getcloser();
+        }
     }
     public void Move()
     {
         //Move Code Goes Here
         if (!enemyChosenMove)
         {
-            //Stops the player from being able to spam moves in a single turn
-            enemyChosenMove = true;
-            playerScript.blockActive = false;
-            Debug.Log("Player Chooses Move");
-            GetComponent<Rigidbody2D>().velocity = Vector2.left * MovementSpeed;
-            //Starts the Coroutine that allows the Attack Animation to play out
-            StartCoroutine(EnemyMeleeAttackAction());
+            if (PlayerInrange == true)
+            {
+                Attack();
+            }
+            else
+            {
+                //Stops the player from being able to spam moves in a single turn
+                enemyChosenMove = true;
+                playerScript.blockActive = false;
+                Debug.Log("Enemy Chooses Move");
+                Animator.Play("GoblinWalk");
+                GetComponent<Rigidbody2D>().velocity = Vector2.left * MovementSpeed;
+                //Starts the Coroutine that allows the Attack Animation to play out
+                StartCoroutine(EnemyMeleeAttackAction());
+                StartCoroutine(AnimtionRestart());
+            }
+                
         }
     }
     //Same as move just used in the attack command
     public void Getcloser()
     {
-        //Move Code Goes Here
-        if (!enemyChosenMove)
-        {
-            //Stops the player from being able to spam moves in a single turn
-            playerScript.blockActive = false;
             GetComponent<Rigidbody2D>().velocity = Vector2.left * MovementSpeed;
-            //Starts the Coroutine that allows the Attack Animation to play out
-        }
+            Animator.Play("GoblinWalk");
     }
 
     public void Jump()
@@ -172,7 +195,7 @@ public class Enemy : MonoBehaviour
             enemyChosenMove = true;
             playerScript.blockActive = false;
             //Jump Code Goes Here
-            Debug.Log("Player Chooses Jump");
+            Debug.Log("Enemy Chooses Jump");
 
             GetComponent<Rigidbody2D>().velocity = Vector2.up * JumpPower + Vector2.left;
             //Starts the Coroutine that allows the Attack Animation to play out
@@ -252,7 +275,7 @@ public class Enemy : MonoBehaviour
     {
         if (Alive == false)
         {
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(1);
             new WaitForSeconds(2);
             // not used although I want to use it for the reward screen :( Too buggy dane/josh have a crack on this :eyes:
         }

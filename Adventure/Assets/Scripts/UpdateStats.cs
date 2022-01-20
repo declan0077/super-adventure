@@ -9,13 +9,12 @@ public class UpdateStats : MonoBehaviour
     public void LevelUpStrength()
     {
         //Maths or Amount to increase this stat by when player levels it up
-        if(PlayerStats.statupgrade >= 0)
+        if(PlayerStats.statupgrade >= 1)
         {
             PlayerStats.Strength += 1;
             PlayerStats.statupgrade -= 1;
             SkillPointCheck();
-            Debug.Log("strengthup");
-            Debug.Log(PlayerStats.statupgrade);
+
         }
         else
         {
@@ -42,7 +41,7 @@ public class UpdateStats : MonoBehaviour
             PlayerStats.Constitution += 5;
             PlayerStats.statupgrade -= 1;
             SkillPointCheck();
-            Debug.Log("Buff!");
+
         }
         else
         {
@@ -83,8 +82,5 @@ public class UpdateStats : MonoBehaviour
        }
         
     }
-   public void Baby()
-    {
-        Debug.Log("waaaaaaaaa");
-    }
+ 
 }

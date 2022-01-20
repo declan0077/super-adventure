@@ -12,12 +12,12 @@ public class Healtbar : MonoBehaviour
     //Reference to the Text
     public Text text;
 
-    public void setmaxhealth(int health)
+    public void Setmaxhealth(int health)
     {
         Slider.maxValue = health;
         Slider.value = health;
     }
-    public void sethealth(int health)
+    public void Sethealth(int health)
     {
         Slider.value = health;
     }
