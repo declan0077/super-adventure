@@ -125,7 +125,7 @@ public class Enemy : MonoBehaviour
             Debug.Log("Hitplayer");
             playerScript.Hurt();
             StartCoroutine(AnimtionRestart());
-            Animator.Play("AttackingGoblins");
+            Animator.Play("GoblinAttack");
         }
 
         else if(Hit.collider == null)
@@ -142,7 +142,7 @@ public class Enemy : MonoBehaviour
         if (PlayerInrange == true)
         {
             enemyChosenMove = true;
-            Animator.Play("Block");
+            Animator.Play("GoblinBlock");
             //Block Code Goes Here
 
             Debug.Log("Enemy Chooses Block");
@@ -184,6 +184,7 @@ public class Enemy : MonoBehaviour
     {
             GetComponent<Rigidbody2D>().velocity = Vector2.left * MovementSpeed;
             Animator.Play("GoblinWalk");
+        StartCoroutine(AnimtionRestart());
     }
 
     public void Jump()
@@ -208,8 +209,8 @@ public class Enemy : MonoBehaviour
         //If the enemy is alive
         if (Alive == true)
         {
-            //yield on a new YieldInstruction that waits for 2 seconds.
-            yield return new WaitForSeconds(2);
+            //yield on a new YieldInstruction that waits for 1 seconds.
+            yield return new WaitForSeconds(1);
             Debug.Log("Enemy Finished Attacking");
 
             //Swaps turns after the Attack is done by the player
@@ -222,21 +223,21 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            death();
+            Death();
         }
 
     }
 
     public void Hurt()
     {
-        death();
-        Animator.Play("Hurt");
+        Death();
+        Animator.Play("GoblinHurt");
        
         Blood.Play();
 
     }
     //Check if the health is lower then 0 If true the enemy is dead
-    private void death()
+    private void Death()
     {
         if (CurrentHealth <= 0)
         {
@@ -266,7 +267,7 @@ public class Enemy : MonoBehaviour
             yield return new WaitForSeconds(1);
             new WaitForSeconds(1);
 
-            Animator.Play("Idle");
+            Animator.Play("GoblinIdle");
             Blood.Stop();
         }
 
