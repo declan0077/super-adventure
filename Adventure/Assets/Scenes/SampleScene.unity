@@ -2804,35 +2804,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &791439799
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 791439797}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b87c6994000495449b4379eb92b0093, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxHealth: 0
-  CurrentHealth: 0
-  JumpPower: 0
-  MovementSpeed: 0
-  Healthbar: {fileID: 0}
-  gameManagerScript: {fileID: 0}
-  RewardText: {fileID: 0}
-  Rewardgold: {fileID: 0}
-  RewardXp: {fileID: 0}
-  playerScript: {fileID: 0}
-  Animator: {fileID: 0}
-  enemyChosenMove: 0
-  Blood: {fileID: 0}
-  Body: {fileID: 0}
-  enemyChoice: 0
-  damagePopupTextScript: {fileID: 0}
-  playerDamageUI: {fileID: 0}
 --- !u!50 &791439800
 Rigidbody2D:
   serializedVersion: 4
@@ -10182,7 +10153,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3556277800234510652, guid: d8e7999ba6f9e2d40b1b3b377e84cc48, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -3556277800234510652, guid: d8e7999ba6f9e2d40b1b3b377e84cc48, type: 3}
       propertyPath: m_LocalScale.x
@@ -12164,7 +12135,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04dab2d1877dcc6468ed96c1043bed92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Check: {fileID: 1494910464}
 --- !u!61 &2050499254
 BoxCollider2D:
   m_ObjectHideFlags: 0
