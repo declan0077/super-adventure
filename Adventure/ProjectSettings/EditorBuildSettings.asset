@@ -12,9 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Town.unity
     guid: bf61d39fa3a6c234a9fc44ba105fee59
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/Forest.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/LevelUpScene.unity
     guid: a33fece59826e7448a2cad65f9c3a2c3
+  - enabled: 1
+    path: Assets/Scenes/ForestDarkerForest.unity
+    guid: 5caa4dc9c9642fe469eef1a4c180105e
   m_configObjects: {}

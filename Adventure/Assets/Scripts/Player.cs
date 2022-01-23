@@ -198,7 +198,6 @@ public class Player : MonoBehaviour
         {
             //Stops the player from being able to spam moves in a single turn
             playerChosenMove = true;
-
             Debug.Log("Player Chooses Move");
             int OverallSpeed = Movementspeed + PlayerStats.Agility;
             GetComponent<Rigidbody2D>().velocity = Vector2.right * OverallSpeed;

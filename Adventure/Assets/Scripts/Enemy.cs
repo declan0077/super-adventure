@@ -27,6 +27,8 @@ public class Enemy : MonoBehaviour
 
     //Refernce to the Player
     public Player playerScript;
+    //Refernce to the type of Enemy
+    public int MonsterType;
 
     //Gets Reference to the animator
     public Animator Animator;
@@ -49,15 +51,45 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        MaxHealth = Random.Range(6, 12);
-        CurrentHealth = MaxHealth;
-        Healthbar.Setmaxhealth(MaxHealth);
-        Healthbar.UpdateText(CurrentHealth);
-        JumpPower = 5;
-        MovementSpeed = 3;
-        Blood.Stop();
-        Gold = Random.Range(20, 40);
-        Xp = Random.Range(50, 100);
+        switch (MonsterType)
+        {
+            case 1:
+                MaxHealth = Random.Range(6, 12);
+                CurrentHealth = MaxHealth;
+                Healthbar.Setmaxhealth(MaxHealth);
+                Healthbar.UpdateText(CurrentHealth);
+                JumpPower = 5;
+                MovementSpeed = 3;
+                Blood.Stop();
+                Gold = Random.Range(20, 40);
+                Xp = Random.Range(50, 100);
+                break;
+            case 2:
+                MaxHealth = Random.Range(12, 24);
+                CurrentHealth = MaxHealth;
+                Healthbar.Setmaxhealth(MaxHealth);
+                Healthbar.UpdateText(CurrentHealth);
+                JumpPower = 5;
+                MovementSpeed = 3;
+                Blood.Stop();
+                Gold = Random.Range(20, 40);
+                Xp = Random.Range(50, 100);
+                break;
+            case 3:
+                MaxHealth = Random.Range(24, 48);
+                CurrentHealth = MaxHealth;
+                Healthbar.Setmaxhealth(MaxHealth);
+                Healthbar.UpdateText(CurrentHealth);
+                JumpPower = 5;
+                MovementSpeed = 3;
+                Blood.Stop();
+                Gold = Random.Range(20, 40);
+                Xp = Random.Range(50, 100);
+                break;
+
+        }
+            
+
     }
 
     // Update is called once per frame
@@ -105,86 +137,244 @@ public class Enemy : MonoBehaviour
 
     public void Attack()
     {
-
         enemyChosenMove = true;
         // Attack Code Goes Here
 
-       
+
         //Debug.Log("Enemy Threatens you with the wrath of doom!...");
-       // Debug.Log("Enemy Chooses Attack");
+        // Debug.Log("Enemy Chooses Attack");
         //Starts the Coroutine that allows the Enemies Melee Attack Animation to play out
         StartCoroutine(EnemyMeleeAttackAction());
         RaycastHit2D Hit = Physics2D.Raycast(Body.transform.position, -Body.transform.right, 1.5f);
-        
-        int enemyDamageDone = Random.Range(4, 6);
-        if (Hit && playerScript.blockActive == false && Hit.collider != null && Hit.collider.tag == "Player")
-        {
-            playerScript.CurrentHealth -= enemyDamageDone;
-            damagePopupTextScript.fadingIn = true;
-            damagePopupTextScript.damageDone.text = enemyDamageDone.ToString();
-            Debug.Log("Hitplayer");
-            playerScript.Hurt();
-            StartCoroutine(AnimtionRestart());
-            Animator.Play("GoblinAttack");
-        }
 
-        else if(Hit.collider == null)
+        switch (MonsterType)
         {
-            
-            Getcloser();
-            playerScript.blockActive = false;
-            StartCoroutine(AnimtionRestart());
+            case 1:
+               
+                if (Hit && playerScript.blockActive == false && Hit.collider != null && Hit.collider.tag == "Player")
+                {
+                    int enemyDamageDone = Random.Range(4, 6);
+                    playerScript.CurrentHealth -= enemyDamageDone;
+                    damagePopupTextScript.fadingIn = true;
+                    damagePopupTextScript.damageDone.text = enemyDamageDone.ToString();
+                    Debug.Log("Hitplayer");
+                    playerScript.Hurt();
+                    StartCoroutine(AnimtionRestart());
+                    Animator.Play("GoblinAttack");
+                }
+
+                else if (Hit.collider == null)
+                {
+
+                    Getcloser();
+                    playerScript.blockActive = false;
+                    StartCoroutine(AnimtionRestart());
+                }
+                break;
+            case 2:
+                
+                if (Hit && playerScript.blockActive == false && Hit.collider != null && Hit.collider.tag == "Player")
+                {
+                    int enemyDamageDone = Random.Range(4, 12);
+                    playerScript.CurrentHealth -= enemyDamageDone;
+                    damagePopupTextScript.fadingIn = true;
+                    damagePopupTextScript.damageDone.text = enemyDamageDone.ToString();
+                    Debug.Log("Hitplayer");
+                    playerScript.Hurt();
+                    StartCoroutine(AnimtionRestart());
+                    Animator.Play("SkeletonAttack");
+                }
+
+                else if (Hit.collider == null)
+                {
+
+                    Getcloser();
+                    playerScript.blockActive = false;
+                    StartCoroutine(AnimtionRestart());
+                }
+                break;
+            case 3:
+                
+                if (Hit && playerScript.blockActive == false && Hit.collider != null && Hit.collider.tag == "Player")
+                {
+                    int enemyDamageDone = Random.Range(4, 24);
+                    playerScript.CurrentHealth -= enemyDamageDone;
+                    damagePopupTextScript.fadingIn = true;
+                    damagePopupTextScript.damageDone.text = enemyDamageDone.ToString();
+                    Debug.Log("Hitplayer");
+                    playerScript.Hurt();
+                    StartCoroutine(AnimtionRestart());
+                    Animator.Play("OrcAttack");
+                }
+
+                else if (Hit.collider == null)
+                {
+
+                    Getcloser();
+                    playerScript.blockActive = false;
+                    StartCoroutine(AnimtionRestart());
+                }
+                break;
         }
+       
     }
 
     public void Block()
     {
-        if (PlayerInrange == true)
+        switch (MonsterType)
         {
-            enemyChosenMove = true;
-            Animator.Play("GoblinBlock");
-            //Block Code Goes Here
+            case 1:
+                if (PlayerInrange == true)
+                {
+                    enemyChosenMove = true;
+                    Animator.Play("GoblinBlock");
+                    //Block Code Goes Here
 
-            Debug.Log("Enemy Chooses Block");
+                    Debug.Log("Enemy Chooses Block");
 
-            StartCoroutine(EnemyMeleeAttackAction());
-            StartCoroutine(AnimtionRestart());
+                    StartCoroutine(EnemyMeleeAttackAction());
+                    StartCoroutine(AnimtionRestart());
+                }
+                else
+                {
+                    Getcloser();
+                }
+                break;
+            case 2:
+                if (PlayerInrange == true)
+                {
+                    enemyChosenMove = true;
+                    Animator.Play("SkeletonBlock");
+                    //Block Code Goes Here
+
+                    Debug.Log("Enemy Chooses Block");
+
+                    StartCoroutine(EnemyMeleeAttackAction());
+                    StartCoroutine(AnimtionRestart());
+                }
+                else
+                {
+                    Getcloser();
+                }
+                break;
+            case 3:
+                if (PlayerInrange == true)
+                {
+                    enemyChosenMove = true;
+                    Animator.Play("OrcBlock");
+                    //Block Code Goes Here
+
+                    Debug.Log("Enemy Chooses Block");
+
+                    StartCoroutine(EnemyMeleeAttackAction());
+                    StartCoroutine(AnimtionRestart());
+                }
+                else
+                {
+                    Getcloser();
+                }
+                break;
         }
-        else
-        {
-            Getcloser();
-        }
+       
     }
     public void Move()
     {
-        //Move Code Goes Here
-        if (!enemyChosenMove)
+        switch (MonsterType)
         {
-            if (PlayerInrange == true)
-            {
-                Attack();
-            }
-            else
-            {
-                //Stops the player from being able to spam moves in a single turn
-                enemyChosenMove = true;
-                playerScript.blockActive = false;
-                Debug.Log("Enemy Chooses Move");
-                Animator.Play("GoblinWalk");
-                GetComponent<Rigidbody2D>().velocity = Vector2.left * MovementSpeed;
-                //Starts the Coroutine that allows the Attack Animation to play out
-                StartCoroutine(EnemyMeleeAttackAction());
-                StartCoroutine(AnimtionRestart());
-            }
-                
+            case 1:
+                //Move Code Goes Here
+                if (!enemyChosenMove)
+                {
+                    if (PlayerInrange == true)
+                    {
+                        Attack();
+                    }
+                    else
+                    {
+                        //Stops the player from being able to spam moves in a single turn
+                        enemyChosenMove = true;
+                        playerScript.blockActive = false;
+                        Debug.Log("Enemy Chooses Move");
+                        Animator.Play("GoblinWalk");
+                        GetComponent<Rigidbody2D>().velocity = Vector2.left * MovementSpeed;
+                        //Starts the Coroutine that allows the Attack Animation to play out
+                        StartCoroutine(EnemyMeleeAttackAction());
+                        StartCoroutine(AnimtionRestart());
+                    }
+
+                }
+                break;
+            case 2:
+                //Move Code Goes Here
+                if (!enemyChosenMove)
+                {
+                    if (PlayerInrange == true)
+                    {
+                        Attack();
+                    }
+                    else
+                    {
+                        //Stops the player from being able to spam moves in a single turn
+                        enemyChosenMove = true;
+                        playerScript.blockActive = false;
+                        Debug.Log("Enemy Chooses Move");
+                        Animator.Play("SkeletonWalk");
+                        GetComponent<Rigidbody2D>().velocity = Vector2.left * MovementSpeed;
+                        //Starts the Coroutine that allows the Attack Animation to play out
+                        StartCoroutine(EnemyMeleeAttackAction());
+                        StartCoroutine(AnimtionRestart());
+                    }
+
+                }
+                break;
+            case 3:
+                //Move Code Goes Here
+                if (!enemyChosenMove)
+                {
+                    if (PlayerInrange == true)
+                    {
+                        Attack();
+                    }
+                    else
+                    {
+                        //Stops the player from being able to spam moves in a single turn
+                        enemyChosenMove = true;
+                        playerScript.blockActive = false;
+                        Debug.Log("Enemy Chooses Move");
+                        Animator.Play("OrcWalk");
+                        GetComponent<Rigidbody2D>().velocity = Vector2.left * MovementSpeed;
+                        //Starts the Coroutine that allows the Attack Animation to play out
+                        StartCoroutine(EnemyMeleeAttackAction());
+                        StartCoroutine(AnimtionRestart());
+                    }
+
+                }
+                break;
         }
+        
     }
     //Same as move just used in the attack command
     public void Getcloser()
     {
-            GetComponent<Rigidbody2D>().velocity = Vector2.left * MovementSpeed;
-            Animator.Play("GoblinWalk");
-        StartCoroutine(AnimtionRestart());
+        switch (MonsterType)
+        {
+            case 1:
+                GetComponent<Rigidbody2D>().velocity = Vector2.left * MovementSpeed;
+                Animator.Play("GoblinWalk");
+                StartCoroutine(AnimtionRestart());
+                break;
+            case 2:
+                GetComponent<Rigidbody2D>().velocity = Vector2.left * MovementSpeed;
+                Animator.Play("SkeletonWalk");
+                StartCoroutine(AnimtionRestart());
+                break;
+            case 3:
+                GetComponent<Rigidbody2D>().velocity = Vector2.left * MovementSpeed;
+                Animator.Play("OrcWalk");
+                StartCoroutine(AnimtionRestart());
+                break;
+        }
+        
     }
 
     public void Jump()
@@ -230,45 +420,133 @@ public class Enemy : MonoBehaviour
 
     public void Hurt()
     {
-        Death();
-        Animator.Play("GoblinHurt");
-       
-        Blood.Play();
+        switch (MonsterType)
+        {
+            case 1:
+                Death();
+                Animator.Play("GoblinHurt");
+                Blood.Play();
+                break;
+            case 2:
+                Death();
+                Animator.Play("SkeletonHurt");
+                Blood.Play();
+                break;
+            case 3:
+                Death();
+                Animator.Play("OrcHurt");
+                Blood.Play();
+                break;
+        }
+      
 
     }
     //Check if the health is lower then 0 If true the enemy is dead
     private void Death()
     {
-        if (CurrentHealth <= 0)
+        switch (MonsterType)
         {
-            Alive = false;
-            Blood.Play();
-            Animator.Play("GoblinDead");
-            Delay();
-            Debug.Log("Dead");
-            RewardText.SetActive(true);
-            Rewardgold.text = (Gold.ToString());
-            RewardXp.text = (Xp.ToString());
-            PlayerStats.XP += Xp;
-            PlayerStats.Gold += Gold;
-          
+            case 1:
+                if (CurrentHealth <= 0)
+                {
+                    Alive = false;
+                    Blood.Play();
+                    Animator.Play("GoblinDead");
+                    Delay();
+                    Debug.Log("Dead");
+                    RewardText.SetActive(true);
+                    Rewardgold.text = (Gold.ToString());
+                    RewardXp.text = (Xp.ToString());
+                    PlayerStats.XP += Xp;
+                    PlayerStats.Gold += Gold;
+
+                }
+                else
+                {
+                    StartCoroutine(AnimtionRestart());
+                }
+                break;
+            case 2:
+                if (CurrentHealth <= 0)
+                {
+                    Alive = false;
+                    Blood.Play();
+                    Animator.Play("Skeletondead");
+                    Delay();
+                    Debug.Log("Dead");
+                    RewardText.SetActive(true);
+                    Rewardgold.text = (Gold.ToString());
+                    RewardXp.text = (Xp.ToString());
+                    PlayerStats.XP += Xp;
+                    PlayerStats.Gold += Gold;
+
+                }
+                else
+                {
+                    StartCoroutine(AnimtionRestart());
+                }
+                break;
+            case 3:
+                if (CurrentHealth <= 0)
+                {
+                    Alive = false;
+                    Blood.Play();
+                    Animator.Play("OrcDead");
+                    Delay();
+                    Debug.Log("Dead");
+                    RewardText.SetActive(true);
+                    Rewardgold.text = (Gold.ToString());
+                    RewardXp.text = (Xp.ToString());
+                    PlayerStats.XP += Xp;
+                    PlayerStats.Gold += Gold;
+
+                }
+                else
+                {
+                    StartCoroutine(AnimtionRestart());
+                }
+                break;
         }
-        else
-        {
-            StartCoroutine(AnimtionRestart());
-        }
+
     }
     //Restart the animation
     IEnumerator AnimtionRestart()
     {
-        if (Alive == true)
+        switch (MonsterType)
         {
-            //yield on a new YieldInstruction that waits for 1 seconds.
-            yield return new WaitForSeconds(1);
-            new WaitForSeconds(1);
+            case 1:
+                if (Alive == true)
+                {
+                    //yield on a new YieldInstruction that waits for 1 seconds.
+                    yield return new WaitForSeconds(1);
+                    new WaitForSeconds(1);
 
-            Animator.Play("GoblinIdle");
-            Blood.Stop();
+                    Animator.Play("GoblinIdle");
+                    Blood.Stop();
+                }
+                break;
+            case 2:
+                if (Alive == true)
+                {
+                    //yield on a new YieldInstruction that waits for 1 seconds.
+                    yield return new WaitForSeconds(1);
+                    new WaitForSeconds(1);
+
+                    Animator.Play("SkeletonIdle");
+                    Blood.Stop();
+                }
+                break;
+            case 3:
+                if (Alive == true)
+                {
+                    //yield on a new YieldInstruction that waits for 1 seconds.
+                    yield return new WaitForSeconds(1);
+                    new WaitForSeconds(1);
+
+                    Animator.Play("OrcIdle");
+                    Blood.Stop();
+                }
+                break;
         }
 
     }
