@@ -50,7 +50,7 @@ public class Enemy : MonoBehaviour
 
     //Reference to block skillcheck
     public GameObject blockSkillCheck;
-
+    public SkillcheckSpin blockSkillScript;
 
     // Start is called before the first frame update
     void Start()
@@ -143,12 +143,12 @@ public class Enemy : MonoBehaviour
     {
         enemyChosenMove = true;
         // Attack Code Goes Here
-
+        StartCoroutine(EnemyMeleeAttackAction());
 
         //Debug.Log("Enemy Threatens you with the wrath of doom!...");
         // Debug.Log("Enemy Chooses Attack");
         //Starts the Coroutine that allows the Enemies Melee Attack Animation to play out
-        StartCoroutine(EnemyMeleeAttackAction());
+
         RaycastHit2D Hit = Physics2D.Raycast(Body.transform.position, -Body.transform.right, 1.5f);
 
         switch (MonsterType)
@@ -165,11 +165,15 @@ public class Enemy : MonoBehaviour
                     playerScript.Hurt();
                     StartCoroutine(AnimtionRestart());
                     Animator.Play("GoblinAttack");
+                    StartCoroutine(EnemyMeleeAttackAction());
                 }
 
                 else if(Hit && playerScript.blockActive == true && Hit.collider != null && Hit.collider.tag == "Player")
                 {
                     blockSkillCheck.SetActive(true);
+                    blockSkillScript.stop();
+
+
                 }
 
                 else if (Hit.collider == null)
@@ -192,6 +196,7 @@ public class Enemy : MonoBehaviour
                     playerScript.Hurt();
                     StartCoroutine(AnimtionRestart());
                     Animator.Play("SkeletonAttack");
+                    StartCoroutine(EnemyMeleeAttackAction());
                 }
 
                 else if (Hit.collider == null)
@@ -214,6 +219,7 @@ public class Enemy : MonoBehaviour
                     playerScript.Hurt();
                     StartCoroutine(AnimtionRestart());
                     Animator.Play("OrcAttack");
+                    StartCoroutine(EnemyMeleeAttackAction());
                 }
 
                 else if (Hit.collider == null)
@@ -296,6 +302,7 @@ public class Enemy : MonoBehaviour
                 {
                     if (PlayerInrange == true)
                     {
+
                         Attack();
                     }
                     else
@@ -410,7 +417,7 @@ public class Enemy : MonoBehaviour
         {
             //yield on a new YieldInstruction that waits for 1 seconds.
             yield return new WaitForSeconds(1);
-            Debug.Log("Enemy Finished Attacking");
+            Debug.Log("EnemyTurnOver");
 
             //Swaps turns after the Attack is done by the player
             gameManagerScript.playerTurn = true;
@@ -567,5 +574,52 @@ public class Enemy : MonoBehaviour
             new WaitForSeconds(2);
             // not used although I want to use it for the reward screen :( Too buggy dane/josh have a crack on this :eyes:
         }
+    }
+    public void Blockdamage()
+    {
+ 
+        switch (MonsterType)
+        {
+            case 1:
+                    int GoblinDamage = Random.Range(4, 6);
+                    playerScript.CurrentHealth -= GoblinDamage;
+                    damagePopupTextScript.fadingIn = true;
+                    damagePopupTextScript.damageDone.text = GoblinDamage.ToString();
+                    Debug.Log("Hitplayer");
+                    playerScript.Hurt();
+                    StartCoroutine(AnimtionRestart());
+                    Animator.Play("GoblinAttack");
+                    StartCoroutine(EnemyMeleeAttackAction());
+
+                break;
+            case 2:
+
+                    int SkeletonDamage = Random.Range(4, 12);
+                    playerScript.CurrentHealth -= SkeletonDamage;
+                    damagePopupTextScript.fadingIn = true;
+                    damagePopupTextScript.damageDone.text = SkeletonDamage.ToString();
+                    Debug.Log("Hitplayer");
+                    playerScript.Hurt();
+                    StartCoroutine(AnimtionRestart());
+                    Animator.Play("SkeletonAttack");
+                    StartCoroutine(EnemyMeleeAttackAction());
+      
+                break;
+            case 3:
+
+            
+                    int OrcDamage = Random.Range(4, 24);
+                    playerScript.CurrentHealth -= OrcDamage;
+                    damagePopupTextScript.fadingIn = true;
+                    damagePopupTextScript.damageDone.text = OrcDamage.ToString();
+                    Debug.Log("Hitplayer");
+                    playerScript.Hurt();
+                    StartCoroutine(AnimtionRestart());
+                    Animator.Play("OrcAttack");
+                    StartCoroutine(EnemyMeleeAttackAction());
+           
+                break;
+        }
+
     }
 }

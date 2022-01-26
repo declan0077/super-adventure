@@ -1294,6 +1294,7 @@ MonoBehaviour:
   flipflop: 0
   speed: 370
   playerScript: {fileID: 1000266912}
+  enemyScript: {fileID: 3076012659349151252}
   blockSkillcheck: {fileID: 260830862}
 --- !u!1 &364069578
 GameObject:
@@ -3159,7 +3160,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8077134667549930607, guid: 7b67b89d26ec1e24ca63093583fd6106, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.43
+      value: 7.63
       objectReference: {fileID: 0}
     - target: {fileID: -8077134667549930607, guid: 7b67b89d26ec1e24ca63093583fd6106, type: 3}
       propertyPath: m_LocalPosition.y
@@ -11712,6 +11713,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04dab2d1877dcc6468ed96c1043bed92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Check: {fileID: 1494910464}
 --- !u!61 &2050499254
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12016,6 +12018,7 @@ MonoBehaviour:
   damagePopupTextScript: {fileID: 1514604981}
   playerDamageUI: {fileID: 1276922785}
   blockSkillCheck: {fileID: 260830862}
+  blockSkillScript: {fileID: 342649175}
 --- !u!61 &3076012659349151253
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17195,7 +17198,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8498013965000605745, guid: df3eadf39e7d37d4e9811457ff344714, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.59
+      value: 9.32
       objectReference: {fileID: 0}
     - target: {fileID: 8498013965000605745, guid: df3eadf39e7d37d4e9811457ff344714, type: 3}
       propertyPath: m_LocalPosition.y

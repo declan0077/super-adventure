@@ -33,8 +33,8 @@ public class Player : MonoBehaviour
     public GameObject Shield;
     //Reference to The skill check system Used for attacking
     public GameObject SkillCheck;
+     int randomchance;
 
-    
 
 
 
@@ -111,7 +111,7 @@ public class Player : MonoBehaviour
 
             Debug.Log("Player Chooses Attack");
 
-            Debug.Log("Attacking...");
+
 
             //Starts the Coroutine that allows the Attack Animation to play out
 
@@ -135,12 +135,22 @@ public class Player : MonoBehaviour
 
         }
 
-        StartCoroutine(AnimtionRestart());
+       
     }
     public void MissAttack()
     {
-        Animator.Play("Attack");
-        StartCoroutine(AttackAction());
+        randomchance = Random.Range(1, 2);
+        if (randomchance == 1)
+        {
+            Animator.Play("Jumpattack");
+            StartCoroutine(AttackAction());
+        }
+        if (randomchance == 2)
+        {
+            Animator.Play("Jumpattack");
+            StartCoroutine(AttackAction());
+
+        }
     }
     public void normalattack()
     {
@@ -151,8 +161,24 @@ public class Player : MonoBehaviour
         damagePopupTextScript.damageDone.text = OverallDamage.ToString();
         Debug.Log("HitYa");
         enemyScript.Hurt();
-        Animator.Play("Attack");
-        StartCoroutine(AttackAction());
+        randomchance = Random.Range(1, 2);
+        if(randomchance == 1)
+        {
+            Animator.Play("Attack");
+            StartCoroutine(AttackAction());
+        }
+        if (randomchance == 2)
+        {
+            Animator.Play("Jumpattack");
+            StartCoroutine(AttackAction());
+            
+        }
+        else
+        {
+            Animator.Play("Attack");
+            StartCoroutine(AttackAction());
+        }
+      
     }
     public void CritAttack()
     {
@@ -163,8 +189,23 @@ public class Player : MonoBehaviour
         damagePopupTextScript.damageDone.text = OverallDamage.ToString();
         Debug.Log("HitYa");
         enemyScript.Hurt();
-        Animator.Play("Attack");
-        StartCoroutine(AttackAction());
+        randomchance = Random.Range(1, 2);
+        if (randomchance == 1)
+        {
+            Animator.Play("Attack");
+            StartCoroutine(AttackAction());
+        }
+        if (randomchance == 2)
+        {
+            Animator.Play("Jumpattack");
+            StartCoroutine(AttackAction());
+
+        }
+        else
+        {
+            Animator.Play("Attack");
+            StartCoroutine(AttackAction());
+        }
     }
     public void Block()
     {
@@ -245,7 +286,7 @@ public class Player : MonoBehaviour
 
         //yield on a new YieldInstruction that waits for 2 seconds.
         yield return new WaitForSeconds(1);
-        Debug.Log("Finished Attacking!");
+        Debug.Log("PlayersTurnOver");
 
         //Swaps turns after the Attack is done by the player
         gameManagerScript.playerTurn = false;

@@ -8,9 +8,12 @@ public class SkillcheckSpin : MonoBehaviour
     public bool flipflop;
     public float speed = 10f;
     public Player playerScript;
-
+    public Enemy enemyScript;
     public GameObject blockSkillcheck;
-
+     void Start()
+    {
+     
+    }
     // Update is called once per frame
     void Update()
     {
@@ -28,7 +31,7 @@ public class SkillcheckSpin : MonoBehaviour
             else
             {
                 playerScript.blockActive = false;
-                playerScript.CurrentHealth -= 3;
+                enemyScript.Blockdamage();
                 StopCoroutine(FalseYap());
                 StartCoroutine(FalseYap());
 
@@ -37,12 +40,28 @@ public class SkillcheckSpin : MonoBehaviour
         }
 
        
+  
+    }
+    public void stop()
+    {
+        StartCoroutine(Stop());
+    }
+   public IEnumerator Stop()
+    {
+        //yield on a new YieldInstruction that waits for 1 seconds.
+        yield return new WaitForSeconds(1);
+        new WaitForSeconds(1);
+        blockSkillcheck.SetActive(false);
+        enemyScript.enemyChosenMove = true;
+        playerScript.playerChosenMove = false;
+        enemyScript.Blockdamage();
 
     }
-
     private IEnumerator FalseYap()
     {
         yield return new WaitForSeconds(0.1f);
         blockSkillcheck.SetActive(false);
+        enemyScript.enemyChosenMove = true;
+        playerScript.playerChosenMove = false;
     }
 }
