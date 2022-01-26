@@ -6,6 +6,13 @@ using UnityEngine.UI;
 public class UpdateStats : MonoBehaviour
 {
     public Canvas Level;
+    public void Update()
+    {
+        if(PlayerStats.statupgrade == 1)
+        {
+            PlayerStats.Levelup = false;
+        }
+    }
     public void LevelUpStrength()
     {
         //Maths or Amount to increase this stat by when player levels it up

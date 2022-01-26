@@ -39,7 +39,10 @@ public class Enemy : MonoBehaviour
     public GameObject Body;
     //Random int variable
     public int enemyChoice;
-
+    public ArmourBar ArmourBar;
+    //Armour ammount
+    public int MaxArmour;
+    public int CurrentArmour;
     bool Alive = true;
 
     //Reference to text fade script
@@ -63,10 +66,14 @@ public class Enemy : MonoBehaviour
                 Healthbar.Setmaxhealth(MaxHealth);
                 Healthbar.UpdateText(CurrentHealth);
                 JumpPower = 5;
-                MovementSpeed = 3;
+                MovementSpeed = 4;
                 Blood.Stop();
                 Gold = Random.Range(20, 40);
                 Xp = Random.Range(50, 100);
+                CurrentArmour = MaxArmour;
+                ArmourBar.SetmaxArmour(MaxArmour);
+                ArmourBar.UpdateText(CurrentArmour);
+
                 break;
             case 2:
                 MaxHealth = Random.Range(12, 24);
@@ -78,6 +85,10 @@ public class Enemy : MonoBehaviour
                 Blood.Stop();
                 Gold = Random.Range(20, 40);
                 Xp = Random.Range(50, 100);
+                MaxArmour = 5;
+                CurrentArmour = MaxArmour;
+                ArmourBar.SetmaxArmour(MaxArmour);
+                ArmourBar.UpdateText(CurrentArmour);
                 break;
             case 3:
                 MaxHealth = Random.Range(24, 48);
@@ -89,6 +100,10 @@ public class Enemy : MonoBehaviour
                 Blood.Stop();
                 Gold = Random.Range(20, 40);
                 Xp = Random.Range(50, 100);
+                MaxArmour = 10;
+                CurrentArmour = MaxArmour;
+                ArmourBar.SetmaxArmour(MaxArmour);
+                ArmourBar.UpdateText(CurrentArmour);
                 break;
 
         }

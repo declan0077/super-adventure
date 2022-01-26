@@ -68,10 +68,11 @@ public class Player : MonoBehaviour
         PlayerStats.ArmourAmount = MaxArmour;
         MaxHealth = MaxHealth + PlayerStats.Constitution;
         CurrentHealth = MaxHealth;
-        CurrentArmour = MaxArmour;
+      
         Healthbar.Setmaxhealth(MaxHealth);
         Healthbar.UpdateText(CurrentHealth);
-        ArmourBar.SetmaxArmour(MaxHealth);
+        CurrentArmour = MaxArmour;
+        ArmourBar.SetmaxArmour(MaxArmour);
         ArmourBar.UpdateText(CurrentArmour);
         Blood.Stop();
         if(PlayerStats.ShieldLevel >= 1)

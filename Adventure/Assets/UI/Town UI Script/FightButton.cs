@@ -17,6 +17,6 @@ public class FightButton : MonoBehaviour
     void TaskOnClick()
     {
         Debug.Log("You have clicked the button!");
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Forest");
     }
 }
