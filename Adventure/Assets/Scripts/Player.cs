@@ -34,6 +34,8 @@ public class Player : MonoBehaviour
     //Reference to The skill check system Used for attacking
     public GameObject SkillCheck;
 
+    
+
 
 
     //Reference to EnemyScript
