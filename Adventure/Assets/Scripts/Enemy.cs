@@ -185,8 +185,9 @@ public class Enemy : MonoBehaviour
 
                 else if(Hit && playerScript.blockActive == true && Hit.collider != null && Hit.collider.tag == "Player")
                 {
+                    Debug.Log("Enemy Chooses Attack on Player");
                     blockSkillCheck.SetActive(true);
-                    blockSkillScript.stop();
+                    //blockSkillScript.stop();
 
 
                 }

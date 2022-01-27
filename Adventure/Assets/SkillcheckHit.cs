@@ -11,7 +11,7 @@ public class SkillcheckHit : MonoBehaviour
         {
 
             collision.gameObject.GetComponentInParent<SkillcheckSpin>().onSuccessArea = true;
-            //Debug.Log("Hit!");
+           
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -19,7 +19,7 @@ public class SkillcheckHit : MonoBehaviour
         if (collision.gameObject.CompareTag("Arrow"))
         {
             collision.gameObject.GetComponentInParent<SkillcheckSpin>().onSuccessArea = false;
-            //Debug.Log("Miss!");
+        
         }
     }
 }

@@ -24,7 +24,7 @@ public class SkillcheckSpin : MonoBehaviour
         {
             if (onSuccessArea)
             {
-                playerScript.blockActive = false;
+                playerScript.blockActive = true;
                 StopCoroutine(FalseYap());
                 StartCoroutine(FalseYap());
             }
@@ -51,17 +51,18 @@ public class SkillcheckSpin : MonoBehaviour
         //yield on a new YieldInstruction that waits for 1 seconds.
         yield return new WaitForSeconds(1);
         new WaitForSeconds(1);
-        blockSkillcheck.SetActive(false);
         enemyScript.enemyChosenMove = true;
         playerScript.playerChosenMove = false;
         enemyScript.Blockdamage();
+        blockSkillcheck.SetActive(false);
 
     }
     private IEnumerator FalseYap()
     {
         yield return new WaitForSeconds(0.1f);
-        blockSkillcheck.SetActive(false);
         enemyScript.enemyChosenMove = true;
         playerScript.playerChosenMove = false;
+        blockSkillcheck.SetActive(false);
+        playerScript.blockActive = false;
     }
 }
