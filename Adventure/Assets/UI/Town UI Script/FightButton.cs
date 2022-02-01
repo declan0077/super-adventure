@@ -16,7 +16,26 @@ public class FightButton : MonoBehaviour
     // Update is called once per frame
     void TaskOnClick()
     {
-        Debug.Log("You have clicked the button!");
-        SceneManager.LoadScene("Forest");
+        switch (PlayerStats.Level)
+        {
+                case 1:
+                SceneManager.LoadScene("Forest");
+                break;
+
+                case 2:
+                SceneManager.LoadScene("Forest");
+                break;
+
+                case 3:
+                SceneManager.LoadScene("Forest 1");
+                break;
+            case 4:
+                SceneManager.LoadScene("Forest 1");
+                break;
+            case 5:
+                SceneManager.LoadScene("Forest 2");
+                break;
+        }
+       
     }
 }

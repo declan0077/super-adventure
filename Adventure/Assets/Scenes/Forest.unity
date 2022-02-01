@@ -3997,7 +3997,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &1000266914
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10971,12 +10971,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -4
-  m_Sprite: {fileID: 21300000, guid: f00f13dfcb99dc645a06af93e3bab810, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f0bcd85df7d816d458435bedd677570d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 19.18, y: 9.66}
+  m_Size: {x: 19.2, y: 14.11}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -10990,8 +10990,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1650037946}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.72, y: 1.0549998, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalPosition: {x: 0.02, y: 1.0549998, z: 0}
+  m_LocalScale: {x: 1.4631, y: 1.4631, z: 1.4631}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -12368,6 +12368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04dab2d1877dcc6468ed96c1043bed92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Check: {fileID: 1494910464}
 --- !u!61 &2050499254
 BoxCollider2D:
   m_ObjectHideFlags: 0

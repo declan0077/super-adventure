@@ -36,16 +36,7 @@ public class PlayerStats : MonoBehaviour
 
     public Dropdown Shieldlist;
 
-    public void ShieldChange()
-    {
-       Shield = Shieldlist.value;
-        ShieldCheck();
-    }
-
-    public void Start()
-    {
-        
-    }
+  
     public static void Check()
     {
         if(XP >= LevelupCost)
