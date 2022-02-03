@@ -34,4 +34,11 @@ public class ShopUI : MonoBehaviour
         SpellShop.SetActive(true);
         ShopBody.SetActive(true);
     }
+    public void Close()
+    {
+        ShieldShop.SetActive(false);
+        SwordShop.SetActive(false);
+        SpellShop.SetActive(false);
+        ShopBody.SetActive(false);
+    }
 }
