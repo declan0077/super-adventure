@@ -8,7 +8,7 @@ public class ShopBuyingScript : MonoBehaviour
     {
         if (PlayerStats.Gold >= 100)
         {
-            PlayerStats.Gold -= 20;
+            PlayerStats.Gold -= 100;
             PlayerStats.SwordLevel = 1;
         }
     }
@@ -32,7 +32,7 @@ public class ShopBuyingScript : MonoBehaviour
     {
         if (PlayerStats.Gold >= 100)
         {
-            PlayerStats.Gold -= 20;
+            PlayerStats.Gold -= 100;
             PlayerStats.ShieldLevel = 1;
         }
     }

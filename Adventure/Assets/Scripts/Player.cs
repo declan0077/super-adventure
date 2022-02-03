@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
     public Sprite Shield3;
     //Reference to The Players Sword 
     public GameObject Sword;
+    public int ExtraDamage;
     public Sprite Sword1;
     public Sprite Sword2;
     public Sprite Sword3;
@@ -84,35 +85,39 @@ public class Player : MonoBehaviour
       
         Healthbar.Setmaxhealth(MaxHealth);
         Healthbar.UpdateText(CurrentHealth);
-        CurrentArmour = MaxArmour;
-        ArmourBar.SetmaxArmour(MaxArmour);
-        ArmourBar.UpdateText(CurrentArmour);
+        
         Blood.Stop();
         //Sword sprite change
         if (PlayerStats.SwordLevel == 1)
         {
             Sword.GetComponent<SpriteRenderer>().sprite = Sword1;
+           
         }
         if (PlayerStats.SwordLevel == 2)
         {
             Sword.GetComponent<SpriteRenderer>().sprite = Sword2;
+            ExtraDamage = 5;
         }
         if (PlayerStats.SwordLevel == 3)
         {
             Sword.GetComponent<SpriteRenderer>().sprite = Sword3;
+            ExtraDamage = 10;
         }
         //Shield sprite change
         if (PlayerStats.ShieldLevel == 1)
         {
             Shield.GetComponent<SpriteRenderer>().sprite = Shield1;
+            CurrentArmour = 5;
         }
         if (PlayerStats.ShieldLevel == 2)
         {
             Shield.GetComponent<SpriteRenderer>().sprite = Shield2;
+            CurrentArmour = 10;
         }
         if (PlayerStats.ShieldLevel == 3)
         {
             Shield.GetComponent<SpriteRenderer>().sprite = Shield3;
+            CurrentArmour = 25;
         }
         //Spells sprite change
         if (PlayerStats.SpellLevel == 1)
@@ -127,7 +132,8 @@ public class Player : MonoBehaviour
         {
             Spell.GetComponent<SpriteRenderer>().sprite = spell3;
         }
-
+        ArmourBar.SetmaxArmour(MaxArmour);
+        ArmourBar.UpdateText(CurrentArmour);
     }
 
     // Update is called once per frame
@@ -204,7 +210,7 @@ public class Player : MonoBehaviour
     public void normalattack()
     {
         int playerDamageDone = Random.Range(MinimumDamage, MaxDamage);
-        int OverallDamage = PlayerStats.Strength + playerDamageDone;
+        int OverallDamage = PlayerStats.Strength + playerDamageDone + ExtraDamage;
         enemyScript.CurrentHealth -= OverallDamage;
         damagePopupTextScript.fadingIn = true;
         damagePopupTextScript.damageDone.text = OverallDamage.ToString();
@@ -232,7 +238,7 @@ public class Player : MonoBehaviour
     public void CritAttack()
     {
         int playerDamageDone = Random.Range(MinimumDamage, MaxDamage);
-        int OverallDamage = PlayerStats.Strength + playerDamageDone * 2;
+        int OverallDamage = PlayerStats.Strength + ExtraDamage + playerDamageDone * 2;
         enemyScript.CurrentHealth -= OverallDamage;
         damagePopupTextScript.fadingIn = true;
         damagePopupTextScript.damageDone.text = OverallDamage.ToString();
