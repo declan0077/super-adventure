@@ -282,7 +282,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 34397592}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1867309826}
+        m_TargetAssemblyTypeName: ShopBuyingScript, Assembly-CSharp
+        m_MethodName: Spell1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &34397592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -615,6 +627,7 @@ GameObject:
   m_Component:
   - component: {fileID: 111118737}
   - component: {fileID: 111118738}
+  - component: {fileID: 111118739}
   m_Layer: 5
   m_Name: Container
   m_TagString: Untagged
@@ -659,6 +672,18 @@ MonoBehaviour:
   ShieldShop: {fileID: 818714476}
   SpellShop: {fileID: 1867954998}
   ShopBody: {fileID: 1573171096}
+--- !u!114 &111118739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111118736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e5bd26e4f7e88e48867f606883967c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &122541934
 GameObject:
   m_ObjectHideFlags: 0
@@ -1386,7 +1411,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 255169655}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 111118739}
+        m_TargetAssemblyTypeName: ShopBuyingScript, Assembly-CSharp
+        m_MethodName: Sword2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &255169655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1645,7 +1682,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 424153509}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 111118739}
+        m_TargetAssemblyTypeName: ShopBuyingScript, Assembly-CSharp
+        m_MethodName: Shield1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &424153509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2897,7 +2946,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 823691997}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 111118739}
+        m_TargetAssemblyTypeName: ShopBuyingScript, Assembly-CSharp
+        m_MethodName: Sword3
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &823691997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3439,7 +3500,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 998189141}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 111118739}
+        m_TargetAssemblyTypeName: ShopBuyingScript, Assembly-CSharp
+        m_MethodName: Spell2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &998189141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4103,7 +4176,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1150709560}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 111118739}
+        m_TargetAssemblyTypeName: ShopBuyingScript, Assembly-CSharp
+        m_MethodName: Spell3
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1150709560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4226,7 +4311,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1174433879}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 111118739}
+        m_TargetAssemblyTypeName: ShopBuyingScript, Assembly-CSharp
+        m_MethodName: Shield3
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1174433879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5185,7 +5282,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1571861095}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 111118739}
+        m_TargetAssemblyTypeName: ShopBuyingScript, Assembly-CSharp
+        m_MethodName: Sword1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1571861095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5558,16 +5667,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1685183539}
-  m_LocalRotation: {x: -0, y: -0, z: -0.4514253, w: 0.8923089}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.37216464, y: 0.39797807, z: 0}
+  m_LocalScale: {x: 0.1785886, y: 0.29109403, z: 0}
   m_Children: []
   m_Father: {fileID: 255169653}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -53.67}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 106.2, y: -7.4}
+  m_AnchoredPosition: {x: 112.5, y: -2.5}
   m_SizeDelta: {x: 481, y: 263}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1685183541
@@ -5590,7 +5699,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: af6881daa4e20714b8d0bd75e937dc13, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8b99079ecf9cc2c48992bd3e959d6b2c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5665,7 +5774,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3c09d8c96b12f7c4ea125b8844d16ef8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 20ab8c48b3d5e6b4d988bb1279eccb48, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5826,6 +5935,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1867309825}
+  - component: {fileID: 1867309826}
   m_Layer: 5
   m_Name: ShopScale
   m_TagString: Untagged
@@ -5855,6 +5965,18 @@ RectTransform:
   m_AnchoredPosition: {x: -10.2, y: 40.5}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1867309826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1867309824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e5bd26e4f7e88e48867f606883967c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1867954998
 GameObject:
   m_ObjectHideFlags: 0
@@ -6292,7 +6414,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1936503147}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 111118739}
+        m_TargetAssemblyTypeName: ShopBuyingScript, Assembly-CSharp
+        m_MethodName: Shield2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1936503147
 MonoBehaviour:
   m_ObjectHideFlags: 0

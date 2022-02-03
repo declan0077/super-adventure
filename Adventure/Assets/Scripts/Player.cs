@@ -31,6 +31,19 @@ public class Player : MonoBehaviour
     public GameObject Body;
     //Reference to The Players Shield 
     public GameObject Shield;
+    public Sprite Shield1;
+    public Sprite Shield2;
+    public Sprite Shield3;
+    //Reference to The Players Sword 
+    public GameObject Sword;
+    public Sprite Sword1;
+    public Sprite Sword2;
+    public Sprite Sword3;
+    //Reference to The Players Spell 
+    public GameObject Spell;
+    public Sprite spell1;
+    public Sprite spell2;
+    public Sprite spell3;
     //Reference to The skill check system Used for attacking
     public GameObject SkillCheck;
      int randomchance;
@@ -75,9 +88,44 @@ public class Player : MonoBehaviour
         ArmourBar.SetmaxArmour(MaxArmour);
         ArmourBar.UpdateText(CurrentArmour);
         Blood.Stop();
-        if(PlayerStats.ShieldLevel >= 1)
+        //Sword sprite change
+        if (PlayerStats.SwordLevel == 1)
         {
-            Shield.gameObject.SetActive(true);
+            Sword.GetComponent<SpriteRenderer>().sprite = Sword1;
+        }
+        if (PlayerStats.SwordLevel == 2)
+        {
+            Sword.GetComponent<SpriteRenderer>().sprite = Sword2;
+        }
+        if (PlayerStats.SwordLevel == 3)
+        {
+            Sword.GetComponent<SpriteRenderer>().sprite = Sword3;
+        }
+        //Shield sprite change
+        if (PlayerStats.ShieldLevel == 1)
+        {
+            Shield.GetComponent<SpriteRenderer>().sprite = Shield1;
+        }
+        if (PlayerStats.ShieldLevel == 2)
+        {
+            Shield.GetComponent<SpriteRenderer>().sprite = Shield2;
+        }
+        if (PlayerStats.ShieldLevel == 3)
+        {
+            Shield.GetComponent<SpriteRenderer>().sprite = Shield3;
+        }
+        //Spells sprite change
+        if (PlayerStats.SpellLevel == 1)
+        {
+            Spell.GetComponent<SpriteRenderer>().sprite = spell1;
+        }
+        if (PlayerStats.SpellLevel == 2)
+        {
+            Spell.GetComponent<SpriteRenderer>().sprite = spell2;
+        }
+        if (PlayerStats.SpellLevel == 3)
+        {
+            Spell.GetComponent<SpriteRenderer>().sprite = spell3;
         }
 
     }

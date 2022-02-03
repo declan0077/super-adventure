@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    static public int Gold = 20;
+    static public int Gold = 20000;
     static public int XP = 0;
     static public int Level = 1;
     static public int LevelupCost = 50;
     static public int statupgrade = 0;
     static public bool Levelup = false;
     static public int ShieldLevel;
-
-
+    static public int SwordLevel;
+    static public int SpellLevel;
     //Player Stats
 
     static public int Strength = 0;
