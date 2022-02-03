@@ -21,7 +21,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: Console
   m_RootView: {fileID: 6}
-  m_MinSize: {x: 875, y: 300}
+  m_MinSize: {x: 875, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
 --- !u!114 &2
@@ -128,7 +128,7 @@ MonoBehaviour:
   - {fileID: 19}
   - {fileID: 13}
   m_Selected: 1
-  m_LastSelected: 2
+  m_LastSelected: 0
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -151,7 +151,7 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 997
-  m_MinSize: {x: 875, y: 300}
+  m_MinSize: {x: 875, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
   m_UseTopView: 1
   m_TopViewHeight: 30
@@ -363,7 +363,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 744
-    width: 1617
+    width: 1616
     height: 255
   m_ViewDataDictionary: {fileID: 0}
   m_SearchFilter:
@@ -377,24 +377,24 @@ MonoBehaviour:
     m_SceneHandles: 
     m_ShowAllHits: 0
     m_SkipHidden: 0
-    m_SearchArea: 0
+    m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Art
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
-  m_StartGridSize: 64
+  m_StartGridSize: 67
   m_LastFolders:
-  - Assets
-  m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\iceth\OneDrive\Documents\GitHub\super-adventure\Adventure
+  - Assets/Art
+  m_LastFoldersGridSize: 67
+  m_LastProjectPath: D:\Uni\Year 3\Group Project\Super Adventure\super-adventure\Adventure
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 8c450000
-    m_LastClickedID: 17804
-    m_ExpandedIDs: 000000008c45000000ca9a3b
+    scrollPos: {x: 0, y: 73}
+    m_SelectedIDs: 78480000
+    m_LastClickedID: 18552
+    m_ExpandedIDs: 000000006848000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -422,7 +422,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000008c450000
+    m_ExpandedIDs: 0000000068480000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -447,8 +447,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: ec7d0000
-    m_LastClickedInstanceID: 32236
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000e4570000b6440000684e000074450000a24700009e47000054460000
     m_RenameOverlay:
@@ -475,7 +475,7 @@ MonoBehaviour:
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
     m_ScrollPosition: {x: 0, y: 0}
-    m_GridSize: 64
+    m_GridSize: 67
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 207
 --- !u!114 &15
@@ -543,20 +543,20 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 7a7d0000
-      m_LastClickedID: 32122
-      m_ExpandedIDs: 56ccffffe8d8ffff00d9ffff2cd9ffff52d9ffffaedaffffcedaffffd4eeffff72f0ffff2af2ffffdcf4ffffe0f6ffff06faffffa26000004a61000080610000ea63000098640000d6640000926900002a6a0000706a0000b86c0000c06c0000ca6c0000d46c0000f66c0000fe6c00001c6d0000266d0000406d00006e7c00002e7d0000587d0000ec7d0000247e0000347e0000507e0000
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: 84daffffe4dbffff60e3ffffd0e4ffffd4e4ffffd6e4ffffd8e4ffffdce4ffffdee4ffff28e6ffff72e7ffffc8e8ffff22eaffffd4f8ffff28fbffff3286000048860000f08600005e870000de870000da880000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: Button (1)
-        m_OriginalName: Button (1)
+        m_Name: PlayerCharacter
+        m_OriginalName: PlayerCharacter
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: -13226
+        m_UserData: 34654
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
         m_OriginalEventType: 0
@@ -605,9 +605,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 422.77786, y: 321.63513, z: -427.909}
+    m_Target: {x: 528.42474, y: 442.39883, z: -4.683114}
     speed: 2
-    m_Value: {x: 420.0721, y: 315.20224, z: -426.7855}
+    m_Value: {x: 528.42474, y: 442.39883, z: -4.683114}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -658,9 +658,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 260.90594
+    m_Target: 762.80884
     speed: 2
-    m_Value: 249.67076
+    m_Value: 762.80884
   m_Ortho:
     m_Target: 1
     speed: 2
