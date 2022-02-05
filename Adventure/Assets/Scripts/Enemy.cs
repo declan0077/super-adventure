@@ -458,19 +458,46 @@ public class Enemy : MonoBehaviour
                 Death();
                 Animator.Play("GoblinHurt");
                 Blood.Play();
+                foreach (SpriteRenderer sr in GetComponentsInChildren<SpriteRenderer>())
+                {
+                    sr.material.color = Color.red;
+                }
+                StartCoroutine(HurtFlash());
                 break;
             case 2:
                 Death();
                 Animator.Play("SkeletonHurt");
                 Blood.Play();
+                foreach (SpriteRenderer sr in GetComponentsInChildren<SpriteRenderer>())
+                {
+                    sr.material.color = Color.red;
+                }
+                StartCoroutine(HurtFlash());
                 break;
             case 3:
                 Death();
                 Animator.Play("OrcHurt");
                 Blood.Play();
+                foreach (SpriteRenderer sr in GetComponentsInChildren<SpriteRenderer>())
+                {
+                    sr.material.color = Color.red;
+                }
+                StartCoroutine(HurtFlash());
                 break;
         }
       
+
+    }
+    IEnumerator HurtFlash()
+    {
+
+        //yield on a new YieldInstruction that waits for 1 seconds.
+        yield return new WaitForSeconds(0.5f);
+        new WaitForSeconds(0.5f);
+        foreach (SpriteRenderer sr in GetComponentsInChildren<SpriteRenderer>())
+        {
+            sr.material.color = Color.white;
+        }
 
     }
     //Check if the health is lower then 0 If true the enemy is dead
@@ -487,10 +514,12 @@ public class Enemy : MonoBehaviour
                     Delay();
                     Debug.Log("Dead");
                     RewardText.SetActive(true);
+                    RewardText.GetComponent<Animator>().Play("RewardSlideIn");
                     Rewardgold.text = (Gold.ToString());
                     RewardXp.text = (Xp.ToString());
                     PlayerStats.XP += Xp;
                     PlayerStats.Gold += Gold;
+                    Destroy(this);
 
                 }
                 else
@@ -507,10 +536,12 @@ public class Enemy : MonoBehaviour
                     Delay();
                     Debug.Log("Dead");
                     RewardText.SetActive(true);
+                    RewardText.GetComponent<Animator>().Play("RewardSlideIn");
                     Rewardgold.text = (Gold.ToString());
                     RewardXp.text = (Xp.ToString());
                     PlayerStats.XP += Xp;
                     PlayerStats.Gold += Gold;
+                    Destroy(this);
 
                 }
                 else
@@ -527,10 +558,12 @@ public class Enemy : MonoBehaviour
                     Delay();
                     Debug.Log("Dead");
                     RewardText.SetActive(true);
+                    RewardText.GetComponent<Animator>().Play("RewardSlideIn");
                     Rewardgold.text = (Gold.ToString());
                     RewardXp.text = (Xp.ToString());
                     PlayerStats.XP += Xp;
                     PlayerStats.Gold += Gold;
+                    Destroy(this);
 
                 }
                 else
@@ -582,6 +615,7 @@ public class Enemy : MonoBehaviour
         }
 
     }
+
     IEnumerator Delay()
     {
         if (Alive == false)

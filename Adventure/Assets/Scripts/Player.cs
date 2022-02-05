@@ -79,6 +79,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         PlayerStats.ArmourAmount = MaxArmour;
         MaxHealth = MaxHealth + PlayerStats.Constitution;
         CurrentHealth = MaxHealth;
@@ -333,7 +334,11 @@ public class Player : MonoBehaviour
         Animator.Play("PlayerHurt");
         Blood.Play();
         StartCoroutine(AnimtionRestart());
-
+        foreach (SpriteRenderer sr in GetComponentsInChildren<SpriteRenderer>())
+        {
+            sr.material.color = Color.red;
+        }
+        StartCoroutine(HurtFlash());
     }
 
     IEnumerator AttackAction()
@@ -360,6 +365,18 @@ public class Player : MonoBehaviour
 
         Animator.Play("PlayerCharacter");
         Blood.Stop();
+    }
+    IEnumerator HurtFlash()
+    {
+
+        //yield on a new YieldInstruction that waits for 1 seconds.
+        yield return new WaitForSeconds(0.5f);
+        new WaitForSeconds(0.5f);
+        foreach (SpriteRenderer sr in GetComponentsInChildren<SpriteRenderer>())
+        {
+            sr.material.color = Color.white;
+        }
+
     }
 
 
