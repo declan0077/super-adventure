@@ -48,9 +48,11 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Skillcheck.cs" />
+     <Compile Include="Assets\Scripts\HOL_Input.cs" />
      <Compile Include="Assets\Scripts\NormalHit.cs" />
      <Compile Include="Assets\Scripts\CritHit.cs" />
      <Compile Include="Assets\Scripts\PlayerStats.cs" />
+     <Compile Include="Assets\Scripts\Gamba.cs" />
      <Compile Include="Assets\Scripts\SkillpointDisplay.cs" />
      <Compile Include="Assets\Scripts\Parallax.cs" />
      <Compile Include="Assets\Scripts\textFade.cs" />
@@ -58,10 +60,11 @@
      <Compile Include="Assets\Scripts\AttackSkillCheck.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\UI\Town UI Script\FightButton.cs" />
-     <Compile Include="Assets\ShopBuyingScript.cs" />
+     <Compile Include="Assets\Scripts\ShopBuyingScript.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
-     <Compile Include="Assets\ShopUI.cs" />
-     <Compile Include="Assets\ShopDisplayNumbers.cs" />
+     <Compile Include="Assets\Scripts\RPS_Input.cs" />
+     <Compile Include="Assets\Scripts\ShopUI.cs" />
+     <Compile Include="Assets\Scripts\ShopDisplayNumbers.cs" />
      <Compile Include="Assets\Scripts\Skills.cs" />
      <Compile Include="Assets\UI\Main Menu Scripts\QuitButton.cs" />
      <Compile Include="Assets\Scripts\Healtbar.cs" />

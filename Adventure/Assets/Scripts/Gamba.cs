@@ -88,16 +88,19 @@ public class Gamba : MonoBehaviour
         switch (gameChoices)
         {
             case rpsChoices.ROCK:
-                rps_playerChoiceIMG.sprite = rock_Sprite;
                 RPSplayerChoice = rpsChoices.ROCK;
+                rps_playerChoiceIMG.sprite = rock_Sprite;
+               
                 break;
             case rpsChoices.PAPER:
-                rps_playerChoiceIMG.sprite = paper_Sprite;
                 RPSplayerChoice = rpsChoices.PAPER;
+                rps_playerChoiceIMG.sprite = paper_Sprite;
+               
                 break;
             case rpsChoices.SCISSORS:
-                rps_playerChoiceIMG.sprite = scissors_Sprite;
                 RPSplayerChoice = rpsChoices.SCISSORS;
+                rps_playerChoiceIMG.sprite = scissors_Sprite;
+               
                 break;
         }
         SetRPSOpponentChoice();
@@ -176,7 +179,7 @@ public class Gamba : MonoBehaviour
         int random = Random.Range(0, 200);
         holNewNumber = random;
         currentNumberText.text = holNewNumber.ToString();
-
+        
         Debug.Log(holNewNumber);
     }
 
@@ -196,6 +199,8 @@ public class Gamba : MonoBehaviour
         }
         SetHOLOpponentChoice();
         HOLWinner();
+        holCurrentNumber = holNewNumber;
+
     }
 
 

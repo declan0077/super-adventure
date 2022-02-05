@@ -34,7 +34,7 @@ public class RPS_Input : MonoBehaviour
             case "Rock":
                 selectedChoice = rpsChoices.ROCK;
                 break;
-            case "Papers":
+            case "Paper":
                 selectedChoice = rpsChoices.PAPER;
                 break;
             case "Scissors":
