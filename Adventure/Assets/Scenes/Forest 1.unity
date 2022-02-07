@@ -554,6 +554,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2084646680}
     - target: {fileID: 8758134267530458220, guid: e1e40887194e3e34483c8d7d69fd9fca, type: 3}
+      propertyPath: ArmourBar
+      value: 
+      objectReference: {fileID: 873781862}
+    - target: {fileID: 8758134267530458220, guid: e1e40887194e3e34483c8d7d69fd9fca, type: 3}
       propertyPath: Healthbar
       value: 
       objectReference: {fileID: 215988615}

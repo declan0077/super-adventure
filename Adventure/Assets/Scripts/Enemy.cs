@@ -62,48 +62,48 @@ public class Enemy : MonoBehaviour
         {
             case 1:
                 MaxHealth = Random.Range(6, 12);
-                CurrentHealth = MaxHealth;
                 Healthbar.Setmaxhealth(MaxHealth);
                 Healthbar.UpdateText(CurrentHealth);
+                CurrentHealth = MaxHealth;
                 JumpPower = 5;
                 MovementSpeed = 4;
                 Blood.Stop();
                 Gold = Random.Range(20, 40);
                 Xp = Random.Range(50, 100);
-                CurrentArmour = MaxArmour;
                 ArmourBar.SetmaxArmour(MaxArmour);
                 ArmourBar.UpdateText(CurrentArmour);
+                CurrentArmour = MaxArmour;
 
                 break;
             case 2:
                 MaxHealth = Random.Range(12, 24);
-                CurrentHealth = MaxHealth;
                 Healthbar.Setmaxhealth(MaxHealth);
                 Healthbar.UpdateText(CurrentHealth);
+                CurrentHealth = MaxHealth;
                 JumpPower = 5;
                 MovementSpeed = 3;
                 Blood.Stop();
                 Gold = Random.Range(20, 40);
                 Xp = Random.Range(50, 100);
                 MaxArmour = 5;
-                CurrentArmour = MaxArmour;
                 ArmourBar.SetmaxArmour(MaxArmour);
                 ArmourBar.UpdateText(CurrentArmour);
+                CurrentArmour = MaxArmour;
                 break;
             case 3:
                 MaxHealth = Random.Range(24, 48);
-                CurrentHealth = MaxHealth;
                 Healthbar.Setmaxhealth(MaxHealth);
                 Healthbar.UpdateText(CurrentHealth);
+                CurrentHealth = MaxHealth;
                 JumpPower = 5;
                 MovementSpeed = 3;
                 Blood.Stop();
                 Gold = Random.Range(20, 40);
                 Xp = Random.Range(50, 100);
                 MaxArmour = 10;
-                CurrentArmour = MaxArmour;
                 ArmourBar.SetmaxArmour(MaxArmour);
                 ArmourBar.UpdateText(CurrentArmour);
+                CurrentArmour = MaxArmour;
                 break;
 
         }
@@ -114,6 +114,8 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        ArmourBar.SetArmour(CurrentArmour);
+        ArmourBar.UpdateText(CurrentArmour);
         //Makes sure that the Enemy hasn't yet chosen anything, otherwise Functions will run once per frame instead of once per turn
         if (!enemyChosenMove && gameManagerScript.enemyTurn == true)
         {
@@ -143,6 +145,7 @@ public class Enemy : MonoBehaviour
         //It should only be called when we are hit to update it
         Healthbar.Sethealth(CurrentHealth);
         Healthbar.UpdateText(CurrentHealth);
+        ArmourBar.UpdateText(CurrentArmour);
         RaycastHit2D Inrange = Physics2D.Raycast(Body.transform.position, -Body.transform.right, 1.5f);
         if(Inrange.collider != null && Inrange.collider.tag == "Player")
         {
@@ -173,7 +176,14 @@ public class Enemy : MonoBehaviour
                 if (Hit && playerScript.blockActive == false && Hit.collider != null && Hit.collider.tag == "Player")
                 {
                     int enemyDamageDone = Random.Range(4, 6);
-                    playerScript.CurrentHealth -= enemyDamageDone;
+                    if (playerScript.CurrentArmour <= 0)
+                    {
+                        playerScript.CurrentHealth -= enemyDamageDone;
+                    }
+                    else if (playerScript.CurrentArmour >= 0)
+                    {
+                        playerScript.CurrentHealth -= enemyDamageDone;
+                    }
                     damagePopupTextScript.fadingIn = true;
                     damagePopupTextScript.damageDone.text = enemyDamageDone.ToString();
                     Debug.Log("Hitplayer");
@@ -205,7 +215,15 @@ public class Enemy : MonoBehaviour
                 if (Hit && playerScript.blockActive == false && Hit.collider != null && Hit.collider.tag == "Player")
                 {
                     int enemyDamageDone = Random.Range(4, 12);
-                    playerScript.CurrentHealth -= enemyDamageDone;
+                    if (playerScript.CurrentArmour <= 0)
+                    {
+                        playerScript.CurrentHealth -= enemyDamageDone;
+                    }
+                    else if (playerScript.CurrentArmour >= 0)
+                    {
+                        playerScript.CurrentHealth -= enemyDamageDone;
+                    }
+
                     damagePopupTextScript.fadingIn = true;
                     damagePopupTextScript.damageDone.text = enemyDamageDone.ToString();
                     Debug.Log("Hitplayer");
@@ -228,7 +246,15 @@ public class Enemy : MonoBehaviour
                 if (Hit && playerScript.blockActive == false && Hit.collider != null && Hit.collider.tag == "Player")
                 {
                     int enemyDamageDone = Random.Range(4, 24);
-                    playerScript.CurrentHealth -= enemyDamageDone;
+                    if (playerScript.CurrentArmour <= 0)
+                    {
+                        playerScript.CurrentHealth -= enemyDamageDone;
+                    }
+                    else if (playerScript.CurrentArmour >= 0)
+                    {
+                        playerScript.CurrentHealth -= enemyDamageDone;
+                    }
+                    
                     damagePopupTextScript.fadingIn = true;
                     damagePopupTextScript.damageDone.text = enemyDamageDone.ToString();
                     Debug.Log("Hitplayer");

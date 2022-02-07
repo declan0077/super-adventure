@@ -133,6 +133,7 @@ public class Player : MonoBehaviour
         {
             Spell.GetComponent<SpriteRenderer>().sprite = spell3;
         }
+        
         ArmourBar.SetmaxArmour(MaxArmour);
         ArmourBar.UpdateText(CurrentArmour);
     }
@@ -144,7 +145,7 @@ public class Player : MonoBehaviour
         //It should only be called when we are hit to update it
         Healthbar.Sethealth(CurrentHealth);
         Healthbar.UpdateText(CurrentHealth);
-        ArmourBar.SetmaxArmour(MaxHealth);
+        
         ArmourBar.UpdateText(CurrentArmour);
         MaxDamage = 4;
         MinimumDamage = 1;
@@ -212,7 +213,15 @@ public class Player : MonoBehaviour
     {
         int playerDamageDone = Random.Range(MinimumDamage, MaxDamage);
         int OverallDamage = PlayerStats.Strength + playerDamageDone + ExtraDamage;
-        enemyScript.CurrentHealth -= OverallDamage;
+        if(enemyScript.CurrentArmour <= 0)
+        {
+            enemyScript.CurrentHealth -= OverallDamage;
+        }
+        else if(enemyScript.CurrentArmour >= 0)
+        {
+            enemyScript.CurrentArmour -= OverallDamage;
+        }
+       
         damagePopupTextScript.fadingIn = true;
         damagePopupTextScript.damageDone.text = OverallDamage.ToString();
         Debug.Log("HitYa");
@@ -240,7 +249,14 @@ public class Player : MonoBehaviour
     {
         int playerDamageDone = Random.Range(MinimumDamage, MaxDamage);
         int OverallDamage = PlayerStats.Strength + ExtraDamage + playerDamageDone * 2;
-        enemyScript.CurrentHealth -= OverallDamage;
+        if (enemyScript.CurrentArmour <= 0)
+        {
+            enemyScript.CurrentHealth -= OverallDamage;
+        }
+        else if (enemyScript.CurrentArmour >= 0)
+        {
+            enemyScript.CurrentArmour -= OverallDamage;
+        }
         damagePopupTextScript.fadingIn = true;
         damagePopupTextScript.damageDone.text = OverallDamage.ToString();
         Debug.Log("HitYa");
