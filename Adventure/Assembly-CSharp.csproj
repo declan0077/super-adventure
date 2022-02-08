@@ -65,12 +65,13 @@
      <Compile Include="Assets\Scripts\RPS_Input.cs" />
      <Compile Include="Assets\Scripts\ShopUI.cs" />
      <Compile Include="Assets\Scripts\ShopDisplayNumbers.cs" />
+     <Compile Include="Assets\ChangeCursor.cs" />
      <Compile Include="Assets\Scripts\Skills.cs" />
      <Compile Include="Assets\UI\Main Menu Scripts\QuitButton.cs" />
      <Compile Include="Assets\Scripts\Healtbar.cs" />
      <Compile Include="Assets\UI\Main Menu Scripts\PlayButton.cs" />
-     <Compile Include="Assets\TestScript.cs" />
-     <Compile Include="Assets\EncounterBuilder.cs" />
+     <Compile Include="Assets\Scripts\TestScript.cs" />
+     <Compile Include="Assets\Scripts\EncounterBuilder.cs" />
      <Compile Include="Assets\Scripts\SkillcheckSpin.cs" />
      <Compile Include="Assets\Scripts\UpdateStats.cs" />
      <Compile Include="Assets\Scripts\LevelUp.cs" />
@@ -90,6 +91,7 @@
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
+     <None Include="Assets\Dark_Brown_GUI_kit\Dark_Brown_GUI_kit.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
