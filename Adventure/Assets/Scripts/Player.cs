@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class Player : MonoBehaviour
 {
     //MaxHealth of the Player. Default starting number is 20
-    public int MaxHealth = 20;
+    private int MaxHealth = 20;
     //The current Health of the player
     public int CurrentHealth;
-    public int JumpPower;
-    public int Movementspeed;
+    private int JumpPower;
+    private int Movementspeed;
     //Max damage the player can deal
     public int MaxDamage;
     //Min damage the palyer can deal
@@ -49,7 +50,10 @@ public class Player : MonoBehaviour
     public GameObject SkillCheck;
      int randomchance;
 
-
+    //Block Defense Value
+    public int blockDefense = 0;
+    public GameObject blockDefenseIcon;
+    public Text blockDefenseValue;
 
 
     //Reference to EnemyScript
@@ -154,6 +158,22 @@ public class Player : MonoBehaviour
 
         Debug.DrawLine(Body.transform.position, Body.transform.position + Body.transform.right, Color.blue);
 
+        blockDefenseValue.text = blockDefense.ToString();
+
+
+        //Disables the block defense UI if not needed
+        if(blockDefense <= 0)
+        {
+            blockDefenseIcon.SetActive(false);
+            //Setting it back to 0 allows you to reactivate shield without having to work you way up from negative number
+            blockDefense = 0;
+        }
+
+        if(blockDefense >= 1)
+        {
+            blockDefenseIcon.SetActive(true);
+        }
+
     }
 
     public void Attack()
@@ -213,9 +233,18 @@ public class Player : MonoBehaviour
     {
         int playerDamageDone = Random.Range(MinimumDamage, MaxDamage);
         int OverallDamage = PlayerStats.Strength + playerDamageDone + ExtraDamage;
-        if(enemyScript.CurrentArmour <= 0)
+        int overDamage = 0;
+        if (enemyScript.CurrentArmour <= 0 && enemyScript.blockDefense <= 0)
         {
             enemyScript.CurrentHealth -= OverallDamage;
+        }
+
+        else if (enemyScript.blockDefense > 0 && enemyScript.blockDefense < OverallDamage)
+        {
+            enemyScript.blockDefense -= OverallDamage;
+            overDamage = OverallDamage - enemyScript.blockDefense;
+            enemyScript.CurrentHealth -= OverallDamage;
+
         }
         else if(enemyScript.CurrentArmour >= 0)
         {
@@ -247,11 +276,20 @@ public class Player : MonoBehaviour
     }
     public void CritAttack()
     {
+        int overDamage = 0;
         int playerDamageDone = Random.Range(MinimumDamage, MaxDamage);
         int OverallDamage = PlayerStats.Strength + ExtraDamage + playerDamageDone * 2;
-        if (enemyScript.CurrentArmour <= 0)
+        if (enemyScript.CurrentArmour <= 0 && enemyScript.blockDefense == 0)
         {
             enemyScript.CurrentHealth -= OverallDamage;
+        }
+
+        else if (enemyScript.blockDefense > 0 && enemyScript.blockDefense < OverallDamage)
+        {
+            enemyScript.blockDefense -= OverallDamage;
+            overDamage = OverallDamage - enemyScript.blockDefense;
+            enemyScript.CurrentHealth -= OverallDamage;
+
         }
         else if (enemyScript.CurrentArmour >= 0)
         {
@@ -284,7 +322,8 @@ public class Player : MonoBehaviour
 
         if (!playerChosenMove)
         {
-            blockActive = true;
+            //blockActive = true;
+            blockDefense += 1;
             //Stops the player from being able to spam moves in a single turn
             playerChosenMove = true;
 

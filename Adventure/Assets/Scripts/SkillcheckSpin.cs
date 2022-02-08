@@ -24,14 +24,14 @@ public class SkillcheckSpin : MonoBehaviour
         {
             if (onSuccessArea)
             {
-                playerScript.blockActive = true;
+                playerScript.blockDefense += 1;
                 StopCoroutine(FalseYap());
                 StartCoroutine(FalseYap());
             }
             else
             {
-                playerScript.blockActive = false;
-                enemyScript.Blockdamage();
+             
+               
                 StopCoroutine(FalseYap());
                 StartCoroutine(FalseYap());
 

@@ -16,6 +16,9 @@ public class AttackSkillCheck : MonoBehaviour
     //SkillCheck reference
     public GameObject SkillCheck;
 
+    public AudioSource[] swordSwings;
+
+    public int randSoundSelect;
 
     //Skillcheck Hit Checks
 
@@ -25,6 +28,7 @@ public class AttackSkillCheck : MonoBehaviour
     void Start()
     {
         nextPos = startPos.position;
+        randSoundSelect = Random.Range(0, 2);
     }
 
     // Update is called once per frame
@@ -59,12 +63,14 @@ public class AttackSkillCheck : MonoBehaviour
             Player.normalattack();
             SkillCheck.SetActive(false);
             Debug.Log("NormalAttack");
+            swordSwings[randSoundSelect].Play();
         }
         if (NormalHit == false && CritHit == true)
         {
             Player.CritAttack();
             SkillCheck.SetActive(false);
             Debug.Log("Crit");
+            swordSwings[randSoundSelect].Play();
         }
         if (NormalHit == false && CritHit == false)
         {

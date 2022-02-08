@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     public int MovementSpeed;
     //Reference to the players healthbar
     public Healtbar Healthbar;
-
+    public AudioSource[] goblinSounds;
     //Reference to GameManagerScript
     public GameManager gameManagerScript;
     //On Death Show the reward script
@@ -45,6 +45,11 @@ public class Enemy : MonoBehaviour
     public int CurrentArmour;
     bool Alive = true;
 
+    //Block Defense Value
+    public int blockDefense = 0;
+    public GameObject blockDefenseIcon;
+    public Text blockDefenseValue;
+
     //Reference to text fade script
     public textFade damagePopupTextScript;
     //Player damage UI that appears on Enemy
@@ -55,6 +60,10 @@ public class Enemy : MonoBehaviour
     public GameObject blockSkillCheck;
     public SkillcheckSpin blockSkillScript;
 
+    public int randomSound;
+
+
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -114,6 +123,22 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        blockDefenseValue.text = blockDefense.ToString();
+
+
+        //Disables the block defense UI if not needed
+        if (blockDefense <= 0)
+        {
+            blockDefenseIcon.SetActive(false);
+            //Setting it back to 0 allows you to reactivate shield without having to work you way up from negative number
+            blockDefense = 0;
+        }
+
+        if (blockDefense >= 1)
+        {
+            blockDefenseIcon.SetActive(true);
+        }
+
         ArmourBar.SetArmour(CurrentArmour);
         ArmourBar.UpdateText(CurrentArmour);
         //Makes sure that the Enemy hasn't yet chosen anything, otherwise Functions will run once per frame instead of once per turn
@@ -169,16 +194,31 @@ public class Enemy : MonoBehaviour
 
         RaycastHit2D Hit = Physics2D.Raycast(Body.transform.position, -Body.transform.right, 1.5f);
 
+        //Damage conditions for Enemy to damage player
         switch (MonsterType)
         {
             case 1:
                
-                if (Hit && playerScript.blockActive == false && Hit.collider != null && Hit.collider.tag == "Player")
+                if (Hit.collider != null && Hit.collider.tag == "Player")
                 {
                     int enemyDamageDone = Random.Range(4, 6);
-                    if (playerScript.CurrentArmour <= 0)
+                    int overDamage = 0;
+                    if (playerScript.CurrentArmour <= 0 && playerScript.blockDefense == 0)
                     {
                         playerScript.CurrentHealth -= enemyDamageDone;
+                    }
+                    //Checking to see if the Player has any Block Shield value remaining. Prioritizes shield over direct health.
+                    else if (playerScript.blockDefense > 0 && playerScript.blockDefense > enemyDamageDone)
+                    {
+                        playerScript.blockDefense -= enemyDamageDone;
+                    }
+                    //Allows the Enemy to deal damage to the player with the same attack they use to break through the defense shield (In case of over damage)
+                    else if(playerScript.blockDefense > 0 && playerScript.blockDefense < enemyDamageDone)
+                    {
+                        playerScript.blockDefense -= enemyDamageDone;
+                        overDamage = enemyDamageDone - playerScript.blockDefense;
+                        playerScript.CurrentHealth -= overDamage;
+                        
                     }
                     else if (playerScript.CurrentArmour >= 0)
                     {
@@ -193,15 +233,8 @@ public class Enemy : MonoBehaviour
                     StartCoroutine(EnemyMeleeAttackAction());
                 }
 
-                else if(Hit && playerScript.blockActive == true && Hit.collider != null && Hit.collider.tag == "Player")
-                {
-                    Debug.Log("Enemy Chooses Attack on Player");
-                    blockSkillCheck.SetActive(true);
-                    //blockSkillScript.stop();
-
-
-                }
-
+          
+                //Checks if Player is close enough for Enemy to attack
                 else if (Hit.collider == null)
                 {
 
@@ -288,6 +321,7 @@ public class Enemy : MonoBehaviour
                     //Block Code Goes Here
 
                     Debug.Log("Enemy Chooses Block");
+                    blockDefense += 1;
 
                     StartCoroutine(EnemyMeleeAttackAction());
                     StartCoroutine(AnimtionRestart());
@@ -478,17 +512,22 @@ public class Enemy : MonoBehaviour
 
     public void Hurt()
     {
+
+       
         switch (MonsterType)
         {
             case 1:
+                AudioSource GoblinSounds = goblinSounds[Random.Range(0, 2)];
+                GoblinSounds.Play();
                 Death();
-                Animator.Play("GoblinHurt");
+                Animator.Play("GoblinHurt");  
                 Blood.Play();
                 foreach (SpriteRenderer sr in GetComponentsInChildren<SpriteRenderer>())
                 {
                     sr.material.color = Color.red;
                 }
                 StartCoroutine(HurtFlash());
+               
                 break;
             case 2:
                 Death();
@@ -534,6 +573,8 @@ public class Enemy : MonoBehaviour
             case 1:
                 if (CurrentHealth <= 0)
                 {
+                    CurrentHealth = 0;
+                    Healthbar.UpdateText(CurrentHealth);
                     Alive = false;
                     Blood.Play();
                     Animator.Play("GoblinDead");
