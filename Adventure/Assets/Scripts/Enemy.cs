@@ -62,7 +62,7 @@ public class Enemy : MonoBehaviour
 
     public int randomSound;
 
-
+    public AudioSource playerHurt;
    
     // Start is called before the first frame update
     void Start()
@@ -206,6 +206,7 @@ public class Enemy : MonoBehaviour
                     if (playerScript.CurrentArmour <= 0 && playerScript.blockDefense == 0)
                     {
                         playerScript.CurrentHealth -= enemyDamageDone;
+                        playerHurt.Play();
                     }
                     //Checking to see if the Player has any Block Shield value remaining. Prioritizes shield over direct health.
                     else if (playerScript.blockDefense > 0 && playerScript.blockDefense > enemyDamageDone)
@@ -218,7 +219,8 @@ public class Enemy : MonoBehaviour
                         playerScript.blockDefense -= enemyDamageDone;
                         overDamage = enemyDamageDone - playerScript.blockDefense;
                         playerScript.CurrentHealth -= overDamage;
-                        
+                        playerHurt.Play();
+
                     }
                     else if (playerScript.CurrentArmour >= 0)
                     {
