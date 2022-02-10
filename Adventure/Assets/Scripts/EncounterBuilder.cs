@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 public class EncounterBuilder : MonoBehaviour
 {
     private int scenarioNum;
@@ -22,6 +24,7 @@ public class EncounterBuilder : MonoBehaviour
                 Option1.text = ("Repair the bridge");
                 Option2.text = ("Jump across");
                 Scene = Resources.Load<Image>("Assets/Bridge");
+         
                 break;
             case 2:
                 scenario.text = ("A merchants cart wheel has broke and it blocking the path");
@@ -49,13 +52,17 @@ public class EncounterBuilder : MonoBehaviour
         switch (scenarioNum)
         {
             case 1:
-
+                PlayerStats.Constitution += 1;
+                Travel();
              break;
             case 2:
-
+                PlayerStats.Charisma += 1;
+                Travel();
                 break;
             case 3:
-
+                PlayerStats.Charisma += 4;
+                PlayerStats.Intelligence += 4;
+                Travel();
                 break;
             case 4:
 
@@ -67,17 +74,32 @@ public class EncounterBuilder : MonoBehaviour
             switch (scenarioNum)
             {
             case 1:
-
+                PlayerStats.Strength += 1;
+                Travel();
                 break;
             case 2:
-
+                PlayerStats.Charisma -= 1;
+                Travel();
                 break;
             case 3:
-
+                PlayerStats.Gold += 1000;
+                PlayerStats.Intelligence += 1;
+                Travel();
                 break;
             case 4:
 
                 break;
+        }
+    }
+    public void Travel()
+    {
+        if (PlayerStats.Level <= 3)
+        {
+            SceneManager.LoadScene("Forest");
+        }
+        if (PlayerStats.Level > 3 && PlayerStats.Level < 5)
+        {
+            SceneManager.LoadScene("Beach");
         }
     }
 }

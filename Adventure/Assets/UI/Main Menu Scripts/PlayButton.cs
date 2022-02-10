@@ -25,8 +25,22 @@ public class PlayButton : MonoBehaviour
         }
         else
         {
-            Debug.Log("You have clicked the button!");
-            SceneManager.LoadScene("Town");
+            if (Random.value < 0.5f)
+            {
+               SceneManager.LoadScene("Encounter");
+            }
+            else
+            {
+                if (PlayerStats.Level <= 3)
+                {
+                    SceneManager.LoadScene("Forest");
+                }
+                if (PlayerStats.Level > 3 && PlayerStats.Level < 5)
+                {
+                    SceneManager.LoadScene("Beach");
+                }
+            }
+
         }
 
     }
