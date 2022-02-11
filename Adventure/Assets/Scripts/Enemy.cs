@@ -63,10 +63,14 @@ public class Enemy : MonoBehaviour
     public int randomSound;
 
     public AudioSource playerHurt;
-   
+
+    public int enemyDamageDone;
+    public int overDamage = 0;
+
     // Start is called before the first frame update
     void Start()
     {
+        enemyDamageDone = Random.Range(4, 6);
         switch (MonsterType)
         {
             case 1:
@@ -188,9 +192,7 @@ public class Enemy : MonoBehaviour
         // Attack Code Goes Here
         StartCoroutine(EnemyMeleeAttackAction());
 
-        //Debug.Log("Enemy Threatens you with the wrath of doom!...");
-        // Debug.Log("Enemy Chooses Attack");
-        //Starts the Coroutine that allows the Enemies Melee Attack Animation to play out
+
 
         RaycastHit2D Hit = Physics2D.Raycast(Body.transform.position, -Body.transform.right, 1.5f);
 
@@ -198,11 +200,11 @@ public class Enemy : MonoBehaviour
         switch (MonsterType)
         {
             case 1:
-               
+            
+
                 if (Hit.collider != null && Hit.collider.tag == "Player")
                 {
-                    int enemyDamageDone = Random.Range(4, 6);
-                    int overDamage = 0;
+                   
                     if (playerScript.CurrentArmour <= 0 && playerScript.blockDefense == 0)
                     {
                         playerScript.CurrentHealth -= enemyDamageDone;
@@ -246,66 +248,69 @@ public class Enemy : MonoBehaviour
                 }
                 break;
             case 2:
-                
-                if (Hit && playerScript.blockActive == false && Hit.collider != null && Hit.collider.tag == "Player")
+                if (playerScript.CurrentArmour <= 0 && playerScript.blockDefense == 0)
                 {
-                    int enemyDamageDone = Random.Range(4, 12);
-                    if (playerScript.CurrentArmour <= 0)
-                    {
-                        playerScript.CurrentHealth -= enemyDamageDone;
-                    }
-                    else if (playerScript.CurrentArmour >= 0)
-                    {
-                        playerScript.CurrentHealth -= enemyDamageDone;
-                    }
-
-                    damagePopupTextScript.fadingIn = true;
-                    damagePopupTextScript.damageDone.text = enemyDamageDone.ToString();
-                    Debug.Log("Hitplayer");
-                    playerScript.Hurt();
-                    StartCoroutine(AnimtionRestart());
-                    Animator.Play("SkeletonAttack");
-                    StartCoroutine(EnemyMeleeAttackAction());
+                    playerScript.CurrentHealth -= enemyDamageDone;
+                    playerHurt.Play();
                 }
-
-                else if (Hit.collider == null)
+                //Checking to see if the Player has any Block Shield value remaining. Prioritizes shield over direct health.
+                else if (playerScript.blockDefense > 0 && playerScript.blockDefense > enemyDamageDone)
                 {
-
-                    Getcloser();
-                    playerScript.blockActive = false;
-                    StartCoroutine(AnimtionRestart());
+                    playerScript.blockDefense -= enemyDamageDone;
                 }
+                //Allows the Enemy to deal damage to the player with the same attack they use to break through the defense shield (In case of over damage)
+                else if (playerScript.blockDefense > 0 && playerScript.blockDefense < enemyDamageDone)
+                {
+                    playerScript.blockDefense -= enemyDamageDone;
+                    overDamage = enemyDamageDone - playerScript.blockDefense;
+                    playerScript.CurrentHealth -= overDamage;
+                    playerHurt.Play();
+
+                }
+                else if (playerScript.CurrentArmour >= 0)
+                {
+                    playerScript.CurrentArmour -= enemyDamageDone;
+                }
+                damagePopupTextScript.fadingIn = true;
+                damagePopupTextScript.damageDone.text = enemyDamageDone.ToString();
+                Debug.Log("Hitplayer");
+                playerScript.Hurt();
+                StartCoroutine(AnimtionRestart());
+                Animator.Play("SkeletonAttack");
+                StartCoroutine(EnemyMeleeAttackAction());
                 break;
             case 3:
-                
-                if (Hit && playerScript.blockActive == false && Hit.collider != null && Hit.collider.tag == "Player")
-                {
-                    int enemyDamageDone = Random.Range(4, 24);
-                    if (playerScript.CurrentArmour <= 0)
-                    {
-                        playerScript.CurrentHealth -= enemyDamageDone;
-                    }
-                    else if (playerScript.CurrentArmour >= 0)
-                    {
-                        playerScript.CurrentHealth -= enemyDamageDone;
-                    }
-                    
-                    damagePopupTextScript.fadingIn = true;
-                    damagePopupTextScript.damageDone.text = enemyDamageDone.ToString();
-                    Debug.Log("Hitplayer");
-                    playerScript.Hurt();
-                    StartCoroutine(AnimtionRestart());
-                    Animator.Play("OrcAttack");
-                    StartCoroutine(EnemyMeleeAttackAction());
-                }
 
-                else if (Hit.collider == null)
+                if (playerScript.CurrentArmour <= 0 && playerScript.blockDefense == 0)
                 {
-
-                    Getcloser();
-                    playerScript.blockActive = false;
-                    StartCoroutine(AnimtionRestart());
+                    playerScript.CurrentHealth -= enemyDamageDone;
+                    playerHurt.Play();
                 }
+                //Checking to see if the Player has any Block Shield value remaining. Prioritizes shield over direct health.
+                else if (playerScript.blockDefense > 0 && playerScript.blockDefense > enemyDamageDone)
+                {
+                    playerScript.blockDefense -= enemyDamageDone;
+                }
+                //Allows the Enemy to deal damage to the player with the same attack they use to break through the defense shield (In case of over damage)
+                else if (playerScript.blockDefense > 0 && playerScript.blockDefense < enemyDamageDone)
+                {
+                    playerScript.blockDefense -= enemyDamageDone;
+                    overDamage = enemyDamageDone - playerScript.blockDefense;
+                    playerScript.CurrentHealth -= overDamage;
+                    playerHurt.Play();
+
+                }
+                else if (playerScript.CurrentArmour >= 0)
+                {
+                    playerScript.CurrentArmour -= enemyDamageDone;
+                }
+                damagePopupTextScript.fadingIn = true;
+                damagePopupTextScript.damageDone.text = enemyDamageDone.ToString();
+                Debug.Log("Hitplayer");
+                playerScript.Hurt();
+                StartCoroutine(AnimtionRestart());
+                Animator.Play("OrcAttack");
+                StartCoroutine(EnemyMeleeAttackAction());
                 break;
         }
        
@@ -341,6 +346,7 @@ public class Enemy : MonoBehaviour
                     //Block Code Goes Here
 
                     Debug.Log("Enemy Chooses Block");
+                    blockDefense += 1;
 
                     StartCoroutine(EnemyMeleeAttackAction());
                     StartCoroutine(AnimtionRestart());
@@ -358,7 +364,7 @@ public class Enemy : MonoBehaviour
                     //Block Code Goes Here
 
                     Debug.Log("Enemy Chooses Block");
-
+                    blockDefense += 1;
                     StartCoroutine(EnemyMeleeAttackAction());
                     StartCoroutine(AnimtionRestart());
                 }

@@ -5816,6 +5816,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skeleton
       objectReference: {fileID: 0}
+    - target: {fileID: 9183639192672319502, guid: c8080a87b5ec5bb4397451c4ca668748, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: -8111531896199703702, guid: c8080a87b5ec5bb4397451c4ca668748, type: 3}
 --- !u!1 &186452178
@@ -9638,7 +9642,7 @@ MonoBehaviour:
   blockActive: 0
   attacking: 1
   damagePopupTextScript: {fileID: 1514604981}
-  playerDamageUI: {fileID: 597630848}
+  playerDamageUI: {fileID: 1276922785}
 --- !u!50 &1000266913
 Rigidbody2D:
   serializedVersion: 4
@@ -17763,14 +17767,16 @@ MonoBehaviour:
   MaxArmour: 0
   CurrentArmour: 0
   blockDefense: 0
-  blockDefenseIcon: {fileID: 0}
-  blockDefenseValue: {fileID: 0}
-  damagePopupTextScript: {fileID: 0}
+  blockDefenseIcon: {fileID: 537186222}
+  blockDefenseValue: {fileID: 1901889574}
+  damagePopupTextScript: {fileID: 1514604981}
   playerDamageUI: {fileID: 1276922785}
   blockSkillCheck: {fileID: 0}
-  blockSkillScript: {fileID: 0}
+  blockSkillScript: {fileID: 342649175}
   randomSound: 0
-  playerHurt: {fileID: 0}
+  playerHurt: {fileID: 126222680}
+  enemyDamageDone: 0
+  overDamage: 0
 --- !u!95 &1721099249
 Animator:
   serializedVersion: 3
@@ -19197,7 +19203,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1975095178
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19461,7 +19467,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04dab2d1877dcc6468ed96c1043bed92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Check: {fileID: 1494910464}
 --- !u!61 &2050499254
 BoxCollider2D:
   m_ObjectHideFlags: 0

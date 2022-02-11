@@ -65,14 +65,22 @@ public class AttackSkillCheck : MonoBehaviour
             Debug.Log("NormalAttack");
             swordSwings[randSoundSelect].Play();
         }
-        if (NormalHit == false && CritHit == true)
+        else if (NormalHit == false && CritHit == true)
         {
             Player.CritAttack();
             SkillCheck.SetActive(false);
             Debug.Log("Crit");
             swordSwings[randSoundSelect].Play();
         }
-        if (NormalHit == false && CritHit == false)
+        //Sometimes both Normal and Crit are true. Forcing a Normal Attack during this
+        else if (NormalHit == true && CritHit == true)
+        {
+            Player.normalattack();
+            SkillCheck.SetActive(false);
+            Debug.Log("NormalAttack");
+            swordSwings[randSoundSelect].Play();
+        }
+        else
         {
             Player.MissAttack();
             SkillCheck.SetActive(false);
