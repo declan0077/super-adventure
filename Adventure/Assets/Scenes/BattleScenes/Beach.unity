@@ -5774,11 +5774,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6705049182981598884, guid: c8080a87b5ec5bb4397451c4ca668748, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.2024927
+      value: 7.67
       objectReference: {fileID: 0}
     - target: {fileID: -6705049182981598884, guid: c8080a87b5ec5bb4397451c4ca668748, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.74
+      value: -3.84
       objectReference: {fileID: 0}
     - target: {fileID: -6705049182981598884, guid: c8080a87b5ec5bb4397451c4ca668748, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7266,7 +7266,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 116.4, y: -180.2}
+  m_AnchoredPosition: {x: 116.4, y: -157.70001}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &537186224
@@ -9181,7 +9181,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 203.40004, y: -186.29999}
+  m_AnchoredPosition: {x: 203.40004, y: -163.8}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &873781861
@@ -14822,7 +14822,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -110, y: -180.2}
+  m_AnchoredPosition: {x: -110, y: -157.70001}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1121100796
@@ -17760,7 +17760,7 @@ MonoBehaviour:
   MonsterType: 2
   Animator: {fileID: 1721099249}
   enemyChosenMove: 0
-  Blood: {fileID: 5080470567510273019, guid: 356e237a774b96048b41633be1c08f25, type: 3}
+  Blood: {fileID: 19800000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
   Body: {fileID: 953440101}
   enemyChoice: 0
   ArmourBar: {fileID: 873781862}
@@ -18441,7 +18441,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -178.4, y: -186.29999}
+  m_AnchoredPosition: {x: -178.4, y: -163.8}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1795122259
@@ -19465,9 +19465,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2050499251}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04dab2d1877dcc6468ed96c1043bed92, type: 3}
+  m_Script: {fileID: 11500000, guid: 1b1767ff9a4b8404cbdc428adb15e20a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Check: {fileID: 1494910464}
 --- !u!61 &2050499254
 BoxCollider2D:
   m_ObjectHideFlags: 0
