@@ -224,7 +224,7 @@ public class Enemy : MonoBehaviour
                     }
                     else if (playerScript.CurrentArmour >= 0)
                     {
-                        playerScript.CurrentHealth -= enemyDamageDone;
+                        playerScript.CurrentArmour -= enemyDamageDone;
                     }
                     damagePopupTextScript.fadingIn = true;
                     damagePopupTextScript.damageDone.text = enemyDamageDone.ToString();

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
+using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     //MaxHealth of the Player. Default starting number is 20
@@ -173,7 +173,10 @@ public class Player : MonoBehaviour
         {
             blockDefenseIcon.SetActive(true);
         }
-
+        if(CurrentHealth <= 0)
+        {
+            SceneManager.LoadScene("DeathScene");
+        }
     }
 
     public void Attack()
