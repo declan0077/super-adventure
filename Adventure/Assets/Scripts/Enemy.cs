@@ -67,6 +67,10 @@ public class Enemy : MonoBehaviour
     public int enemyDamageDone;
     public int overDamage = 0;
 
+
+    //Turn UI to disable when round ends
+    public GameObject whosTurn;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -590,6 +594,7 @@ public class Enemy : MonoBehaviour
                     Debug.Log("Dead");
                     RewardText.SetActive(true);
                     RewardText.GetComponent<Animator>().Play("RewardSlideIn");
+                    whosTurn.SetActive(false);
                     Rewardgold.text = (Gold.ToString());
                     RewardXp.text = (Xp.ToString());
                     PlayerStats.XP += Xp;
@@ -612,6 +617,7 @@ public class Enemy : MonoBehaviour
                     Debug.Log("Dead");
                     RewardText.SetActive(true);
                     RewardText.GetComponent<Animator>().Play("RewardSlideIn");
+                    whosTurn.SetActive(false);
                     Rewardgold.text = (Gold.ToString());
                     RewardXp.text = (Xp.ToString());
                     PlayerStats.XP += Xp;
@@ -634,6 +640,7 @@ public class Enemy : MonoBehaviour
                     Debug.Log("Dead");
                     RewardText.SetActive(true);
                     RewardText.GetComponent<Animator>().Play("RewardSlideIn");
+                    whosTurn.SetActive(false);
                     Rewardgold.text = (Gold.ToString());
                     RewardXp.text = (Xp.ToString());
                     PlayerStats.XP += Xp;

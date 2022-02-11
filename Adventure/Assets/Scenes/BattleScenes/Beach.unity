@@ -17777,6 +17777,7 @@ MonoBehaviour:
   playerHurt: {fileID: 126222680}
   enemyDamageDone: 0
   overDamage: 0
+  whosTurn: {fileID: 907511930}
 --- !u!95 &1721099249
 Animator:
   serializedVersion: 3

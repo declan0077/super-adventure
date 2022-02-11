@@ -35,22 +35,22 @@ public class TalkingScript : MonoBehaviour
             case 1:
                 uichar.GetComponent<Image>().sprite = King;
                 Name.text = ("King:");
-                Text.text = ("*Walks into the room*");
+                Text.text = ("*Enters Room*");
                 break;
             case 2:
                 uichar.GetComponent<Image>().sprite = King;
                 Name.text = ("King:");
-                Text.text = ("You there Player, you have been a trusty servant for many years. I have a task for you");
+                Text.text = ("You there! Player...  You have been a trusty servant for many years. I have a task for you");
                 break;
             case 3:
                 uichar.GetComponent<Image>().sprite = King;
                 Name.text = ("King:");
-                Text.text = (".... M-My Daughter has been missing for some time");
+                Text.text = (".... M-My Daughter has been missing for quite some time");
                 break;
             case 4:
                 uichar.GetComponent<Image>().sprite = King;
                 Name.text = ("King:");
-                Text.text = ("Last reports said she was in the forest, my knights have been searching but.... no luck");
+                Text.text = ("Last reports say she was in the forest, my Knights have been searching to no avail.");
                 break;
             case 5:
                 uichar.GetComponent<Image>().sprite = King;
@@ -60,7 +60,7 @@ public class TalkingScript : MonoBehaviour
             case 6:
                 uichar.GetComponent<Image>().sprite = King;
                 Name.text = ("King:");
-                Text.text = ("Well Get going this plot will not finish itself");
+                Text.text = ("Well, Get going!!! This plot will not finish itself");
                 break;
             case 7:
                 uichar.GetComponent<Image>().sprite = Player;
