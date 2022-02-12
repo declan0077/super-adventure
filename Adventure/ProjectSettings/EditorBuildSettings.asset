@@ -17,9 +17,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LevelUpScene.unity
     guid: a33fece59826e7448a2cad65f9c3a2c3
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/StoryScenes/Story1.unity
     guid: e5addfc6f6d8cda4c8da908692769c88
@@ -29,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DeathScene.unity
     guid: df6115fb68ae5b847bd7a8060de0415b
+  - enabled: 1
+    path: Assets/Scenes/BattleScenes/Beach.unity
+    guid: 1e552f9ae71475847a9473c5505a338a
   m_configObjects: {}
