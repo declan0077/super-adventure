@@ -29,4 +29,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BattleScenes/Beach.unity
     guid: 1e552f9ae71475847a9473c5505a338a
+  - enabled: 1
+    path: Assets/Scenes/BattleScenes/DarkForest.unity
+    guid: b2db4ede30a3cb74690b35066a757fc7
+  - enabled: 1
+    path: Assets/Scenes/BattleScenes/Castle.unity
+    guid: 80c6b7d8ab31b454384fbe4b99737d44
   m_configObjects: {}

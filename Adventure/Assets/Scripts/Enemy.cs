@@ -85,7 +85,7 @@ public class Enemy : MonoBehaviour
                 JumpPower = 5;
                 MovementSpeed = 4;
                 Blood.Stop();
-                Gold = Random.Range(20, 40);
+                Gold = Random.Range(40, 80);
                 Xp = Random.Range(50, 100);
                 ArmourBar.SetmaxArmour(MaxArmour);
                 ArmourBar.UpdateText(CurrentArmour);
@@ -100,8 +100,8 @@ public class Enemy : MonoBehaviour
                 JumpPower = 5;
                 MovementSpeed = 3;
                 Blood.Stop();
-                Gold = Random.Range(20, 40);
-                Xp = Random.Range(50, 100);
+                Gold = Random.Range(100, 200);
+                Xp = Random.Range(200, 300);
                 MaxArmour = 5;
                 ArmourBar.SetmaxArmour(MaxArmour);
                 ArmourBar.UpdateText(CurrentArmour);
@@ -115,8 +115,23 @@ public class Enemy : MonoBehaviour
                 JumpPower = 5;
                 MovementSpeed = 3;
                 Blood.Stop();
-                Gold = Random.Range(20, 40);
-                Xp = Random.Range(50, 100);
+                Gold = Random.Range(400, 600);
+                Xp = Random.Range(500, 700);
+                MaxArmour = 10;
+                ArmourBar.SetmaxArmour(MaxArmour);
+                ArmourBar.UpdateText(CurrentArmour);
+                CurrentArmour = MaxArmour;
+                break;
+            case 4:
+                MaxHealth = Random.Range(100, 100);
+                Healthbar.Setmaxhealth(MaxHealth);
+                Healthbar.UpdateText(CurrentHealth);
+                CurrentHealth = MaxHealth;
+                JumpPower = 5;
+                MovementSpeed = 4;
+                Blood.Stop();
+                Gold = Random.Range(1000, 6000);
+                Xp = Random.Range(6000, 6000);
                 MaxArmour = 10;
                 ArmourBar.SetmaxArmour(MaxArmour);
                 ArmourBar.UpdateText(CurrentArmour);
@@ -347,6 +362,54 @@ public class Enemy : MonoBehaviour
                     StartCoroutine(AnimtionRestart());
                 }
                 break;
+            case 4:
+
+
+                if (Hit.collider != null && Hit.collider.tag == "Player")
+                {
+
+                    if (playerScript.CurrentArmour <= 0 && playerScript.blockDefense == 0)
+                    {
+                        playerScript.CurrentHealth -= enemyDamageDone;
+                        playerHurt.Play();
+                    }
+                    //Checking to see if the Player has any Block Shield value remaining. Prioritizes shield over direct health.
+                    else if (playerScript.blockDefense > 0 && playerScript.blockDefense > enemyDamageDone)
+                    {
+                        playerScript.blockDefense -= enemyDamageDone;
+                    }
+                    //Allows the Enemy to deal damage to the player with the same attack they use to break through the defense shield (In case of over damage)
+                    else if (playerScript.blockDefense > 0 && playerScript.blockDefense < enemyDamageDone)
+                    {
+                        playerScript.blockDefense -= enemyDamageDone;
+                        overDamage = enemyDamageDone - playerScript.blockDefense;
+                        playerScript.CurrentHealth -= overDamage;
+                        playerHurt.Play();
+
+                    }
+                    else if (playerScript.CurrentArmour >= 0)
+                    {
+                        playerScript.CurrentArmour -= enemyDamageDone;
+                    }
+                    damagePopupTextScript.fadingIn = true;
+                    damagePopupTextScript.damageDone.text = enemyDamageDone.ToString();
+                    Debug.Log("Hitplayer");
+                    playerScript.Hurt();
+                    StartCoroutine(AnimtionRestart());
+                    Animator.Play("BigEdAttack");
+                    StartCoroutine(EnemyMeleeAttackAction());
+                }
+
+
+                //Checks if Player is close enough for Enemy to attack
+                else if (Hit.collider == null)
+                {
+
+                    Getcloser();
+                    playerScript.blockActive = false;
+                    StartCoroutine(AnimtionRestart());
+                }
+                break;
         }
        
     }
@@ -400,6 +463,23 @@ public class Enemy : MonoBehaviour
 
                     Debug.Log("Enemy Chooses Block");
                     blockDefense += 1;
+                    StartCoroutine(EnemyMeleeAttackAction());
+                    StartCoroutine(AnimtionRestart());
+                }
+                else
+                {
+                    Getcloser();
+                }
+                break;
+            case 4:
+                if (PlayerInrange == true)
+                {
+                    enemyChosenMove = true;
+                    Animator.Play("OrcBlock");
+                    //Block Code Goes Here
+
+                    Debug.Log("Enemy Chooses Block");
+                    blockDefense += 2;
                     StartCoroutine(EnemyMeleeAttackAction());
                     StartCoroutine(AnimtionRestart());
                 }
@@ -485,6 +565,30 @@ public class Enemy : MonoBehaviour
 
                 }
                 break;
+            case 4:
+                //Move Code Goes Here
+                if (!enemyChosenMove)
+                {
+                    if (PlayerInrange == true)
+                    {
+
+                        Attack();
+                    }
+                    else
+                    {
+                        //Stops the player from being able to spam moves in a single turn
+                        enemyChosenMove = true;
+                        playerScript.blockActive = false;
+                        Debug.Log("Enemy Chooses Move");
+                        Animator.Play("BigEdMove");
+                        GetComponent<Rigidbody2D>().velocity = Vector2.left * MovementSpeed;
+                        //Starts the Coroutine that allows the Attack Animation to play out
+                        StartCoroutine(EnemyMeleeAttackAction());
+                        StartCoroutine(AnimtionRestart());
+                    }
+
+                }
+                break;
         }
         
     }
@@ -506,6 +610,11 @@ public class Enemy : MonoBehaviour
             case 3:
                 GetComponent<Rigidbody2D>().velocity = Vector2.left * MovementSpeed;
                 Animator.Play("OrcWalk");
+                StartCoroutine(AnimtionRestart());
+                break;
+            case 4:
+                GetComponent<Rigidbody2D>().velocity = Vector2.left * MovementSpeed;
+                Animator.Play("BigEdMove");
                 StartCoroutine(AnimtionRestart());
                 break;
         }
@@ -592,6 +701,16 @@ public class Enemy : MonoBehaviour
                 }
                 StartCoroutine(HurtFlash());
                 break;
+            case 4:
+                Death();
+                Animator.Play("BigEdHurt");
+                Blood.Play();
+                foreach (SpriteRenderer sr in GetComponentsInChildren<SpriteRenderer>())
+                {
+                    sr.material.color = Color.red;
+                }
+                StartCoroutine(HurtFlash());
+                break;
         }
       
 
@@ -630,7 +749,7 @@ public class Enemy : MonoBehaviour
                     RewardXp.text = (Xp.ToString());
                     PlayerStats.XP += Xp;
                     PlayerStats.Gold += Gold;
-                    Destroy(this);
+                    Destroy(this, 1);
 
                 }
                 else
@@ -653,7 +772,7 @@ public class Enemy : MonoBehaviour
                     RewardXp.text = (Xp.ToString());
                     PlayerStats.XP += Xp;
                     PlayerStats.Gold += Gold;
-                    Destroy(this);
+                    Destroy(this, 1);
 
                 }
                 else
@@ -676,7 +795,30 @@ public class Enemy : MonoBehaviour
                     RewardXp.text = (Xp.ToString());
                     PlayerStats.XP += Xp;
                     PlayerStats.Gold += Gold;
-                    Destroy(this);
+                    Destroy(this, 1);
+
+                }
+                else
+                {
+                    StartCoroutine(AnimtionRestart());
+                }
+                break;
+            case 4:
+                if (CurrentHealth <= 0)
+                {
+                    Alive = false;
+                    Blood.Play();
+                    Animator.Play("BigEdDeath");
+                    Delay();
+                    Debug.Log("Dead");
+                    RewardText.SetActive(true);
+                    RewardText.GetComponent<Animator>().Play("RewardSlideIn");
+                    whosTurn.SetActive(false);
+                    Rewardgold.text = (Gold.ToString());
+                    RewardXp.text = (Xp.ToString());
+                    PlayerStats.XP += Xp;
+                    PlayerStats.Gold += Gold;
+                    Destroy(this, 1);
 
                 }
                 else
@@ -722,6 +864,17 @@ public class Enemy : MonoBehaviour
                     new WaitForSeconds(1);
 
                     Animator.Play("OrcIdle");
+                    Blood.Stop();
+                }
+                break;
+            case 4:
+                if (Alive == true)
+                {
+                    //yield on a new YieldInstruction that waits for 1 seconds.
+                    yield return new WaitForSeconds(1);
+                    new WaitForSeconds(1);
+
+                    Animator.Play("BigEdIdle");
                     Blood.Stop();
                 }
                 break;
@@ -781,6 +934,20 @@ public class Enemy : MonoBehaviour
                     Animator.Play("OrcAttack");
                     StartCoroutine(EnemyMeleeAttackAction());
            
+                break;
+            case 4:
+
+
+                int BigEdDamage = Random.Range(4, 24);
+                playerScript.CurrentHealth -= BigEdDamage;
+                damagePopupTextScript.fadingIn = true;
+                damagePopupTextScript.damageDone.text = BigEdDamage.ToString();
+                Debug.Log("Hitplayer");
+                playerScript.Hurt();
+                StartCoroutine(AnimtionRestart());
+                Animator.Play("BigEdAttack");
+                StartCoroutine(EnemyMeleeAttackAction());
+
                 break;
         }
 

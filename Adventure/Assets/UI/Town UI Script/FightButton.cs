@@ -16,26 +16,25 @@ public class FightButton : MonoBehaviour
     // Update is called once per frame
     void TaskOnClick()
     {
-        switch (PlayerStats.Level)
+
+
+        if (PlayerStats.Level <= 3)
         {
-                case 1:
-                SceneManager.LoadScene("Forest");
-                break;
-
-                case 2:
-                SceneManager.LoadScene("Forest");
-                break;
-
-                case 3:
-                SceneManager.LoadScene("Forest 1");
-                break;
-            case 4:
-                SceneManager.LoadScene("Forest 1");
-                break;
-            case 5:
-                SceneManager.LoadScene("Forest 2");
-                break;
+            SceneManager.LoadScene("Forest");
         }
+        if (PlayerStats.Level >= 3 && PlayerStats.Level < 5)
+        {
+            SceneManager.LoadScene("Beach");
+        }
+        if (PlayerStats.Level >= 5 && PlayerStats.Level < 7)
+        {
+            SceneManager.LoadScene("DarkForest");
+        }
+        if (PlayerStats.Level >= 7 && PlayerStats.Level < 10)
+        {
+            SceneManager.LoadScene("Castle");
+        }
+    }
        
     }
-}
+

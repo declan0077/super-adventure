@@ -97,9 +97,17 @@ public class EncounterBuilder : MonoBehaviour
         {
             SceneManager.LoadScene("Forest");
         }
-        if (PlayerStats.Level > 3 && PlayerStats.Level < 5)
+        if (PlayerStats.Level >= 3 && PlayerStats.Level < 5)
         {
             SceneManager.LoadScene("Beach");
+        }
+        if (PlayerStats.Level >= 5 && PlayerStats.Level < 7)
+        {
+            SceneManager.LoadScene("DarkForest");
+        }
+        if (PlayerStats.Level >= 7 && PlayerStats.Level < 10)
+        {
+            SceneManager.LoadScene("Castle");
         }
     }
 }
