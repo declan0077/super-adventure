@@ -14,6 +14,10 @@ public class PlayerStats : MonoBehaviour
     static public int ShieldLevel;
     static public int SwordLevel;
     static public int SpellLevel;
+    static public bool GoblinScene = false;
+    static public int GoblinsKilled;
+    static public bool SkeletonScene = false;
+    static public int SkeletonKilled;
     //Player Stats
 
     static public int Strength = 0;

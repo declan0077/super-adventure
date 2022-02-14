@@ -242,6 +242,7 @@ GameObject:
   m_Component:
   - component: {fileID: 32967279}
   - component: {fileID: 32967280}
+  - component: {fileID: 32967281}
   m_Layer: 0
   m_Name: Dagger
   m_TagString: Untagged
@@ -314,6 +315,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &32967281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32967278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bd4ef4befb1f7441b01ee78b43f7db0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  part: {fileID: 21300000, guid: f877b2140bf2de74bbb65e4355d8057a, type: 3}
+  part2: {fileID: 21300000, guid: 5707e2daed4fbcf499d0763aa38b6e41, type: 3}
+  part3: {fileID: 21300000, guid: ab3d61017060e8e47aed64d1da734b9b, type: 3}
 --- !u!1 &37143532
 GameObject:
   m_ObjectHideFlags: 0
@@ -9778,10 +9794,10 @@ MonoBehaviour:
   Sword1: {fileID: 21300000, guid: 20ab8c48b3d5e6b4d988bb1279eccb48, type: 3}
   Sword2: {fileID: 21300000, guid: 8b99079ecf9cc2c48992bd3e959d6b2c, type: 3}
   Sword3: {fileID: 21300000, guid: 3c09d8c96b12f7c4ea125b8844d16ef8, type: 3}
-  Spell: {fileID: 0}
-  spell1: {fileID: 0}
-  spell2: {fileID: 0}
-  spell3: {fileID: 0}
+  Spell: {fileID: 1629263778}
+  spell1: {fileID: 21300000, guid: 0d58d9a31d8dbb9409c7865b5812fcbb, type: 3}
+  spell2: {fileID: 21300000, guid: 4084b20e0771c2244bb1103e1cd891cf, type: 3}
+  spell3: {fileID: 21300000, guid: d7c25440d9da4ba42beb0abb71165f3c, type: 3}
   SkillCheck: {fileID: 843480446}
   blockDefense: 0
   blockDefenseIcon: {fileID: 1121100794}
@@ -17533,12 +17549,12 @@ GameObject:
   - component: {fileID: 1629263779}
   - component: {fileID: 1629263780}
   m_Layer: 0
-  m_Name: BODYARMOUR
+  m_Name: Necklace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1629263779
 Transform:
   m_ObjectHideFlags: 0
@@ -17547,8 +17563,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1629263778}
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.7555316, y: -0.00482131, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 1.151, y: -0.005, z: 0}
+  m_LocalScale: {x: 1.322504, y: 1.322504, z: 1.322504}
   m_Children: []
   m_Father: {fileID: 8801243337227254220}
   m_RootOrder: 1
@@ -17593,15 +17609,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: e8a13287ae4f9c74bb21e022acb26b4f, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.72, y: 1.91}
+  m_Size: {x: 0.73, y: 0.74}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1635639144
@@ -19336,7 +19352,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1975095178
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19404,6 +19420,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1997191477}
   - component: {fileID: 1997191478}
+  - component: {fileID: 1997191479}
   m_Layer: 0
   m_Name: GoblinBody
   m_TagString: Untagged
@@ -19476,6 +19493,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1997191479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997191476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bd4ef4befb1f7441b01ee78b43f7db0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  part: {fileID: 21300000, guid: 0eecb9dd923e7bb43980486fb699676a, type: 3}
+  part2: {fileID: 21300000, guid: 0eecb9dd923e7bb43980486fb699676a, type: 3}
+  part3: {fileID: 21300000, guid: 2a3be11c806079f4197d3f082ad46860, type: 3}
 --- !u!1 &2019611486
 GameObject:
   m_ObjectHideFlags: 0
@@ -19643,6 +19675,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2039795140}
   - component: {fileID: 2039795141}
+  - component: {fileID: 2039795142}
   m_Layer: 0
   m_Name: Goblinhead
   m_TagString: Untagged
@@ -19715,6 +19748,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2039795142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2039795139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bd4ef4befb1f7441b01ee78b43f7db0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  part: {fileID: 21300000, guid: 89be9e239198a874ea3ada010f64c78c, type: 3}
+  part2: {fileID: 21300000, guid: f678d6bd4bc6efa4da477817dd3ba998, type: 3}
+  part3: {fileID: 21300000, guid: 0fc982d024cdefe4abac4fd4852c9dd1, type: 3}
 --- !u!1 &2050499251
 GameObject:
   m_ObjectHideFlags: 0
@@ -20878,7 +20926,7 @@ MonoBehaviour:
   playerHurt: {fileID: 126222680}
   enemyDamageDone: 0
   overDamage: 0
-  whosTurn: {fileID: 1283417200}
+  whosTurn: {fileID: 907511930}
 --- !u!61 &3076012659349151253
 BoxCollider2D:
   m_ObjectHideFlags: 0

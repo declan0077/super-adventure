@@ -20119,7 +20119,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2054983704}
   m_LocalRotation: {x: -0, y: -0, z: 0.9984387, w: -0.055858918}
-  m_LocalPosition: {x: 1.5305982, y: -2.8926487, z: 0}
+  m_LocalPosition: {x: 1.8, y: -2.86, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3264648063782168742}
@@ -20509,7 +20509,7 @@ MonoBehaviour:
   playerHurt: {fileID: 126222680}
   enemyDamageDone: 0
   overDamage: 0
-  whosTurn: {fileID: 1283417200}
+  whosTurn: {fileID: 37143532}
 --- !u!61 &2119342743
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -21497,7 +21497,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 15
+  m_SortingOrder: 112
   m_Sprite: {fileID: 4815793257613459684, guid: 7b67b89d26ec1e24ca63093583fd6106, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -22802,7 +22802,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 12
+  m_SortingOrder: 145
   m_Sprite: {fileID: -3577503196908930248, guid: b4abe44dd518e23418008a5afac9a6d2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -78,6 +78,7 @@ public class Enemy : MonoBehaviour
         switch (MonsterType)
         {
             case 1:
+
                 MaxHealth = Random.Range(6, 12);
                 Healthbar.Setmaxhealth(MaxHealth);
                 Healthbar.UpdateText(CurrentHealth);
@@ -749,6 +750,7 @@ public class Enemy : MonoBehaviour
                     RewardXp.text = (Xp.ToString());
                     PlayerStats.XP += Xp;
                     PlayerStats.Gold += Gold;
+                    PlayerStats.GoblinsKilled += 1;
                     Destroy(this, 1);
 
                 }
