@@ -60,7 +60,7 @@ public class TalkingScript : MonoBehaviour
             case 6:
                 uichar.GetComponent<Image>().sprite = King;
                 Name.text = ("King:");
-                Text.text = ("Well, Get going!!! This plot will not finish itself");
+                Text.text = ("Do you know how to fight?");
                 break;
             case 7:
                 uichar.GetComponent<Image>().sprite = Player;
@@ -69,9 +69,9 @@ public class TalkingScript : MonoBehaviour
            
                 break;
             case 8:
-                uichar.GetComponent<Image>().sprite = Player;
-                Name.text = ("Player:");
-                Text.text = ("Yes M'lord");
+                uichar.GetComponent<Image>().sprite = King;
+                Name.text = ("King:");
+                Text.text = ("Well to test your mettle and to knight you, go into the Western forest and fight the legendary Ricky");
                 SceneManager.LoadScene("Town");
                 break;
         }

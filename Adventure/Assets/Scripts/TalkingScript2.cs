@@ -55,8 +55,9 @@ public class TalkingScript2 : MonoBehaviour
             case 5:
                 uichar.GetComponent<Image>().sprite = Goblin;
                 Name.text = ("Goblin:");
-                SceneManager.LoadScene("Town");
                 PlayerStats.GoblinScene = true;
+                SceneManager.LoadScene("Town");
+             
                 break;
 
         }

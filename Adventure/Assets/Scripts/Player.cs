@@ -145,6 +145,15 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(PlayerStats.GoblinsKilled == 3)
+        {
+            SceneManager.LoadScene("Story2");
+        }
+        if (PlayerStats.SkeletonKilled == 3)
+        {
+            SceneManager.LoadScene("Story3");
+        }
+
         // Used for testing remove later so it will cause less lag :) xx
         //It should only be called when we are hit to update it
         Healthbar.Sethealth(CurrentHealth);
