@@ -6,36 +6,32 @@ using UnityEngine.EventSystems;
 
 public class ButtonHoverImage : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+
+    //UI
     private Button myButton;
 
+    //Sprites
     public Sprite oldSprite;
     public Sprite newSprite;
 
+    //Audio
     public AudioSource hoverSound;
 
-    // Start is called before the first frame update
     void Start()
     {
-       
         myButton = GetComponent<Button>();
     }
-        
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+       
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         myButton.image.sprite = newSprite; 
-        Debug.Log("Mouse Enter");
         hoverSound.Play();
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        Debug.Log("Mouse Exit");
+       
         myButton.image.sprite = oldSprite; 
     }
 }

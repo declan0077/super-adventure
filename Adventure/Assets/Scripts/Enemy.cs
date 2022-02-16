@@ -233,19 +233,48 @@ public class Enemy : MonoBehaviour
 
                 if (Hit.collider != null && Hit.collider.tag == "Player")
                 {
+                    //Checks if Player has purchased the ThornsDamage (Red Amulet). Apply damage to enemy if true
 
-                    if (playerScript.CurrentArmour <= 0 && playerScript.blockDefense == 0)
+                    //If player has red amulet...
+                    if (playerScript.CurrentArmour <= 0 && playerScript.blockDefense == 0 && playerScript.redSpellPurchased == true)
+                    {
+                        playerScript.CurrentHealth -= enemyDamageDone;
+                        CurrentHealth -= 1;
+                        playerHurt.Play();
+                    }
+                    //If player does not have red amulet...
+                    else if (playerScript.CurrentArmour <= 0 && playerScript.blockDefense == 0 && playerScript.redSpellPurchased == false)
                     {
                         playerScript.CurrentHealth -= enemyDamageDone;
                         playerHurt.Play();
                     }
                     //Checking to see if the Player has any Block Shield value remaining. Prioritizes shield over direct health.
-                    else if (playerScript.blockDefense > 0 && playerScript.blockDefense > enemyDamageDone)
+
+                    //If player has red amulet...
+                    else if (playerScript.blockDefense > 0 && playerScript.blockDefense > enemyDamageDone && playerScript.redSpellPurchased == true)
+                    {
+                        playerScript.blockDefense -= enemyDamageDone;
+                        CurrentHealth -= 1;
+                    }
+                    //If player does not have amulet...
+                    else if (playerScript.blockDefense > 0 && playerScript.blockDefense > enemyDamageDone && playerScript.redSpellPurchased == false)
                     {
                         playerScript.blockDefense -= enemyDamageDone;
                     }
                     //Allows the Enemy to deal damage to the player with the same attack they use to break through the defense shield (In case of over damage)
-                    else if (playerScript.blockDefense > 0 && playerScript.blockDefense < enemyDamageDone)
+
+                    //If player has red amulet...
+                    else if (playerScript.blockDefense > 0 && playerScript.blockDefense < enemyDamageDone && playerScript.redSpellPurchased == true)
+                    {
+                        playerScript.blockDefense -= enemyDamageDone;
+                        overDamage = enemyDamageDone - playerScript.blockDefense;
+                        playerScript.CurrentHealth -= overDamage;
+                        CurrentHealth -= 1;
+                        playerHurt.Play();
+
+                    }
+                    //If player does not have amulet...
+                    else if (playerScript.blockDefense > 0 && playerScript.blockDefense < enemyDamageDone && playerScript.redSpellPurchased == false)
                     {
                         playerScript.blockDefense -= enemyDamageDone;
                         overDamage = enemyDamageDone - playerScript.blockDefense;
@@ -253,9 +282,17 @@ public class Enemy : MonoBehaviour
                         playerHurt.Play();
 
                     }
-                    else if (playerScript.CurrentArmour >= 0)
+                    //If player has red amulet...
+                    else if (playerScript.CurrentArmour >= 0 && playerScript.redSpellPurchased == true)
                     {
                         playerScript.CurrentArmour -= enemyDamageDone;
+                        CurrentHealth -= 1;
+                    }
+                    //If player does not have amulet...
+                    else if (playerScript.CurrentArmour >= 0 && playerScript.redSpellPurchased == false)
+                    {
+                        playerScript.CurrentArmour -= enemyDamageDone;
+                     
                     }
                     damagePopupTextScript.fadingIn = true;
                     damagePopupTextScript.damageDone.text = enemyDamageDone.ToString();

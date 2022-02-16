@@ -78,7 +78,18 @@ public class Player : MonoBehaviour
     //Player damage UI that appears on Enemy
     public TMP_Text playerDamageUI;
 
+    //Spell checker
+    public bool blueSpellPurchased = false;
 
+    //Thorns Upgrade
+    public bool redSpellPurchased = false;
+
+    //Leech Upgrade
+    public bool greenSpellPurchased = false;
+
+
+    public int leech = 1;
+    public float thornsDamage = 1.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -100,6 +111,7 @@ public class Player : MonoBehaviour
         if (PlayerStats.SwordLevel == 1)
         {
             Sword.GetComponent<SpriteRenderer>().sprite = Sword1;
+          
            
         }
         if (PlayerStats.SwordLevel == 2)
@@ -110,6 +122,7 @@ public class Player : MonoBehaviour
         if (PlayerStats.SwordLevel == 3)
         {
             Sword.GetComponent<SpriteRenderer>().sprite = Sword3;
+         
             ExtraDamage = 10;
         }
         //Shield sprite change
@@ -132,14 +145,17 @@ public class Player : MonoBehaviour
         if (PlayerStats.SpellLevel == 1)
         {
             Spell.GetComponent<SpriteRenderer>().sprite = spell1;
+            blueSpellPurchased = true;
         }
         if (PlayerStats.SpellLevel == 2)
         {
             Spell.GetComponent<SpriteRenderer>().sprite = spell2;
+            redSpellPurchased = true;
         }
         if (PlayerStats.SpellLevel == 3)
         {
             Spell.GetComponent<SpriteRenderer>().sprite = spell3;
+            greenSpellPurchased = true;
         }
         
         
@@ -251,26 +267,53 @@ public class Player : MonoBehaviour
     }
     public void normalattack()
     {
+        
         int playerDamageDone = Random.Range(MinimumDamage, MaxDamage);
         int OverallDamage = PlayerStats.Strength + playerDamageDone + ExtraDamage;
         int overDamage = 0;
-        if (enemyScript.CurrentArmour <= 0 && enemyScript.blockDefense <= 0)
+
+        //First Check that checks whether the leech green Amulet has been purchased
+
+        //If player has green amulet...
+        if (enemyScript.CurrentArmour <= 0 && enemyScript.blockDefense <= 0 && greenSpellPurchased)
+        {
+            enemyScript.CurrentHealth -= OverallDamage;
+            CurrentHealth += leech;
+        }
+        //If player dose not have green amulet
+        else if (enemyScript.CurrentArmour <= 0 && enemyScript.blockDefense <= 0 && !greenSpellPurchased)
         {
             enemyScript.CurrentHealth -= OverallDamage;
         }
+        //If player has green amulet...
+        else if (enemyScript.blockDefense > 0 && enemyScript.blockDefense < OverallDamage && greenSpellPurchased)
+        {
+            enemyScript.blockDefense -= OverallDamage;
+            overDamage = OverallDamage - enemyScript.blockDefense;
+            enemyScript.CurrentHealth -= OverallDamage;
+            CurrentHealth += leech;
 
-        else if (enemyScript.blockDefense > 0 && enemyScript.blockDefense < OverallDamage)
+        }
+        //If player dose not have green amulet
+        else if (enemyScript.blockDefense > 0 && enemyScript.blockDefense < OverallDamage && !greenSpellPurchased)
         {
             enemyScript.blockDefense -= OverallDamage;
             overDamage = OverallDamage - enemyScript.blockDefense;
             enemyScript.CurrentHealth -= OverallDamage;
 
         }
-        else if(enemyScript.CurrentArmour >= 0)
+        //If player has green amulet...
+        else if (enemyScript.CurrentArmour >= 0 && greenSpellPurchased)
+        {
+            enemyScript.CurrentArmour -= OverallDamage;
+            CurrentHealth += leech;
+        }
+        //If player dose not have green amulet
+        else if (enemyScript.CurrentArmour >= 0 && !greenSpellPurchased)
         {
             enemyScript.CurrentArmour -= OverallDamage;
         }
-       
+
         damagePopupTextScript.fadingIn = true;
         damagePopupTextScript.damageDone.text = OverallDamage.ToString();
         Debug.Log("HitYa");
@@ -299,9 +342,14 @@ public class Player : MonoBehaviour
         int overDamage = 0;
         int playerDamageDone = Random.Range(MinimumDamage, MaxDamage);
         int OverallDamage = PlayerStats.Strength + ExtraDamage + playerDamageDone * 2;
-        if (enemyScript.CurrentArmour <= 0 && enemyScript.blockDefense == 0)
+        if (enemyScript.CurrentArmour <= 0 && enemyScript.blockDefense == 0 && greenSpellPurchased)
         {
             enemyScript.CurrentHealth -= OverallDamage;
+        }
+        else if (enemyScript.CurrentArmour <= 0 && enemyScript.blockDefense == 0 && !greenSpellPurchased)
+        {
+            enemyScript.CurrentHealth -= OverallDamage;
+            CurrentHealth += leech + 1;
         }
 
         else if (enemyScript.blockDefense > 0 && enemyScript.blockDefense < OverallDamage)

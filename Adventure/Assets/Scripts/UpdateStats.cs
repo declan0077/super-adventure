@@ -15,7 +15,7 @@ public class UpdateStats : MonoBehaviour
     }
     public void LevelUpStrength()
     {
-        //Maths or Amount to increase this stat by when player levels it up
+       //Amount to increase this stat by when player levels it up
         if(PlayerStats.statupgrade >= 1)
         {
             PlayerStats.Strength += 1;

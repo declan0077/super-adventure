@@ -52,6 +52,7 @@ public class ShopBuyingScript : MonoBehaviour
             PlayerStats.ShieldLevel = 3;
         }
     }
+    //Blue Spell
     public void Spell1()
     {
         if (PlayerStats.Gold >= 100)
@@ -60,14 +61,16 @@ public class ShopBuyingScript : MonoBehaviour
             PlayerStats.SpellLevel = 1;
         }
     }
+    //Red Spell
     public void Spell2()
     {
         if (PlayerStats.Gold >= 300)
         {
             PlayerStats.Gold -= 300;
-            PlayerStats.SpellLevel = 3;
+            PlayerStats.SpellLevel = 2;
         }
     }
+    //Green Spell
     public void Spell3()
     {
         if (PlayerStats.Gold >= 1000)
