@@ -60,9 +60,9 @@ public class TalkingScript3 : MonoBehaviour
             case 6:
                 uichar.GetComponent<Image>().sprite = scroll;
                 Name.text = ("scroll:");
-                Text.text = ("By order of Ed the overlord , Take her to the castle");
+                Text.text = ("By order of Ed the overlord, Take her to the castle");
                 Text.color = Color.red;
-
+                PlayerStats.SkeletonScene = true;
                 SceneManager.LoadScene("Town");
                 break;
 

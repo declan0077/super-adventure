@@ -18,6 +18,8 @@ public class PlayerStats : MonoBehaviour
     static public int GoblinsKilled;
     static public bool SkeletonScene = false;
     static public int SkeletonKilled;
+    static public bool BigEdScene = false;
+    static public int OrcKilled;
     //Player Stats
 
     static public int Strength = 0;

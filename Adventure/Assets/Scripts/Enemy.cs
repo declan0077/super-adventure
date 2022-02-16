@@ -74,11 +74,11 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        enemyDamageDone = Random.Range(4, 6);
+
         switch (MonsterType)
         {
             case 1:
-
+                enemyDamageDone = Random.Range(1, 6);
                 MaxHealth = Random.Range(6, 12);
                 Healthbar.Setmaxhealth(MaxHealth);
                 Healthbar.UpdateText(CurrentHealth);
@@ -94,6 +94,7 @@ public class Enemy : MonoBehaviour
 
                 break;
             case 2:
+                enemyDamageDone = Random.Range(2, 10);
                 MaxHealth = Random.Range(12, 24);
                 Healthbar.Setmaxhealth(MaxHealth);
                 Healthbar.UpdateText(CurrentHealth);
@@ -109,6 +110,7 @@ public class Enemy : MonoBehaviour
                 CurrentArmour = MaxArmour;
                 break;
             case 3:
+                enemyDamageDone = Random.Range(6, 14);
                 MaxHealth = Random.Range(24, 48);
                 Healthbar.Setmaxhealth(MaxHealth);
                 Healthbar.UpdateText(CurrentHealth);
@@ -124,6 +126,7 @@ public class Enemy : MonoBehaviour
                 CurrentArmour = MaxArmour;
                 break;
             case 4:
+                enemyDamageDone = Random.Range(10, 16);
                 MaxHealth = Random.Range(100, 100);
                 Healthbar.Setmaxhealth(MaxHealth);
                 Healthbar.UpdateText(CurrentHealth);
@@ -140,7 +143,7 @@ public class Enemy : MonoBehaviour
                 break;
 
         }
-            
+
 
     }
 
@@ -171,21 +174,24 @@ public class Enemy : MonoBehaviour
             //Variable used to randomly select whether the Enemy Attacks, Blocks etc....
             enemyChoice = Random.Range(0, 3);
 
-            if (enemyChoice == 0)
+            if (enemyChoice == 0 && Alive == true)
             {
                 Attack();
-
             }
             else if (enemyChoice == 1)
             {
                 Block();
             }
-            if (enemyChoice == 2)
+            else
+            {
+
+            }
+            if (enemyChoice == 2 && Alive == true)
             {
                 Move();
 
             }
-            else if (enemyChoice == 3)
+            if (enemyChoice == 3 && Alive == true)
             {
                 Jump();
             }
@@ -196,7 +202,7 @@ public class Enemy : MonoBehaviour
         Healthbar.UpdateText(CurrentHealth);
         ArmourBar.UpdateText(CurrentArmour);
         RaycastHit2D Inrange = Physics2D.Raycast(Body.transform.position, -Body.transform.right, 1.5f);
-        if(Inrange.collider != null && Inrange.collider.tag == "Player")
+        if (Inrange.collider != null && Inrange.collider.tag == "Player")
         {
             PlayerInrange = true;
         }
@@ -205,7 +211,10 @@ public class Enemy : MonoBehaviour
             PlayerInrange = false;
         }
     }
-
+    public void Deathaction()
+    {
+        enemyChosenMove = true;
+    }
     public void Attack()
     {
         enemyChosenMove = true;
@@ -220,11 +229,11 @@ public class Enemy : MonoBehaviour
         switch (MonsterType)
         {
             case 1:
-            
+
 
                 if (Hit.collider != null && Hit.collider.tag == "Player")
                 {
-                   
+
                     if (playerScript.CurrentArmour <= 0 && playerScript.blockDefense == 0)
                     {
                         playerScript.CurrentHealth -= enemyDamageDone;
@@ -236,7 +245,7 @@ public class Enemy : MonoBehaviour
                         playerScript.blockDefense -= enemyDamageDone;
                     }
                     //Allows the Enemy to deal damage to the player with the same attack they use to break through the defense shield (In case of over damage)
-                    else if(playerScript.blockDefense > 0 && playerScript.blockDefense < enemyDamageDone)
+                    else if (playerScript.blockDefense > 0 && playerScript.blockDefense < enemyDamageDone)
                     {
                         playerScript.blockDefense -= enemyDamageDone;
                         overDamage = enemyDamageDone - playerScript.blockDefense;
@@ -257,7 +266,7 @@ public class Enemy : MonoBehaviour
                     StartCoroutine(EnemyMeleeAttackAction());
                 }
 
-          
+
                 //Checks if Player is close enough for Enemy to attack
                 else if (Hit.collider == null)
                 {
@@ -412,7 +421,7 @@ public class Enemy : MonoBehaviour
                 }
                 break;
         }
-       
+
     }
 
     public void Block()
@@ -490,7 +499,7 @@ public class Enemy : MonoBehaviour
                 }
                 break;
         }
-       
+
     }
     public void Move()
     {
@@ -591,7 +600,7 @@ public class Enemy : MonoBehaviour
                 }
                 break;
         }
-        
+
     }
     //Same as move just used in the attack command
     public void Getcloser()
@@ -619,7 +628,7 @@ public class Enemy : MonoBehaviour
                 StartCoroutine(AnimtionRestart());
                 break;
         }
-        
+
     }
 
     public void Jump()
@@ -666,21 +675,21 @@ public class Enemy : MonoBehaviour
     public void Hurt()
     {
 
-       
+
         switch (MonsterType)
         {
             case 1:
                 AudioSource GoblinSounds = goblinSounds[Random.Range(0, 2)];
                 GoblinSounds.Play();
                 Death();
-                Animator.Play("GoblinHurt");  
+                Animator.Play("GoblinHurt");
                 Blood.Play();
                 foreach (SpriteRenderer sr in GetComponentsInChildren<SpriteRenderer>())
                 {
                     sr.material.color = Color.red;
                 }
                 StartCoroutine(HurtFlash());
-               
+
                 break;
             case 2:
                 Death();
@@ -713,15 +722,15 @@ public class Enemy : MonoBehaviour
                 StartCoroutine(HurtFlash());
                 break;
         }
-      
+
 
     }
     IEnumerator HurtFlash()
     {
 
         //yield on a new YieldInstruction that waits for 1 seconds.
-        yield return new WaitForSeconds(0.5f);
-        new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
+        new WaitForSeconds(1f);
         foreach (SpriteRenderer sr in GetComponentsInChildren<SpriteRenderer>())
         {
             sr.material.color = Color.white;
@@ -737,6 +746,7 @@ public class Enemy : MonoBehaviour
                 if (CurrentHealth <= 0)
                 {
                     CurrentHealth = 0;
+                    enemyDamageDone = 0;
                     Healthbar.UpdateText(CurrentHealth);
                     Alive = false;
                     Blood.Play();
@@ -750,8 +760,8 @@ public class Enemy : MonoBehaviour
                     RewardXp.text = (Xp.ToString());
                     PlayerStats.XP += Xp;
                     PlayerStats.Gold += Gold;
-                    PlayerStats.GoblinsKilled += 1;
-                    Destroy(this, 1);
+                
+                    StartCoroutine(DeathDestory());
 
                 }
                 else
@@ -762,7 +772,11 @@ public class Enemy : MonoBehaviour
             case 2:
                 if (CurrentHealth <= 0)
                 {
+                    CurrentHealth = 0;
+                    enemyDamageDone = 0;
+                    Healthbar.UpdateText(CurrentHealth);
                     Alive = false;
+          
                     Blood.Play();
                     Animator.Play("Skeletondead");
                     Delay();
@@ -774,7 +788,7 @@ public class Enemy : MonoBehaviour
                     RewardXp.text = (Xp.ToString());
                     PlayerStats.XP += Xp;
                     PlayerStats.Gold += Gold;
-                    Destroy(this, 1);
+                    StartCoroutine(DeathDestory());
 
                 }
                 else
@@ -785,7 +799,11 @@ public class Enemy : MonoBehaviour
             case 3:
                 if (CurrentHealth <= 0)
                 {
+                    CurrentHealth = 0;
+                    enemyDamageDone = 0;
+                    Healthbar.UpdateText(CurrentHealth);
                     Alive = false;
+
                     Blood.Play();
                     Animator.Play("OrcDead");
                     Delay();
@@ -797,7 +815,7 @@ public class Enemy : MonoBehaviour
                     RewardXp.text = (Xp.ToString());
                     PlayerStats.XP += Xp;
                     PlayerStats.Gold += Gold;
-                    Destroy(this, 1);
+                    StartCoroutine(DeathDestory());
 
                 }
                 else
@@ -808,6 +826,9 @@ public class Enemy : MonoBehaviour
             case 4:
                 if (CurrentHealth <= 0)
                 {
+                    CurrentHealth = 0;
+                    enemyDamageDone = 0;
+                    Healthbar.UpdateText(CurrentHealth);
                     Alive = false;
                     Blood.Play();
                     Animator.Play("BigEdDeath");
@@ -820,7 +841,7 @@ public class Enemy : MonoBehaviour
                     RewardXp.text = (Xp.ToString());
                     PlayerStats.XP += Xp;
                     PlayerStats.Gold += Gold;
-                    Destroy(this, 1);
+                    StartCoroutine(DeathDestory());
 
                 }
                 else
@@ -895,47 +916,47 @@ public class Enemy : MonoBehaviour
     }
     public void Blockdamage()
     {
- 
+
         switch (MonsterType)
         {
             case 1:
-                    int GoblinDamage = Random.Range(4, 6);
-                    playerScript.CurrentHealth -= GoblinDamage;
-                    damagePopupTextScript.fadingIn = true;
-                    damagePopupTextScript.damageDone.text = GoblinDamage.ToString();
-                    Debug.Log("Hitplayer");
-                    playerScript.Hurt();
-                    StartCoroutine(AnimtionRestart());
-                    Animator.Play("GoblinAttack");
-                    StartCoroutine(EnemyMeleeAttackAction());
+                int GoblinDamage = Random.Range(4, 6);
+                playerScript.CurrentHealth -= GoblinDamage;
+                damagePopupTextScript.fadingIn = true;
+                damagePopupTextScript.damageDone.text = GoblinDamage.ToString();
+                Debug.Log("Hitplayer");
+                playerScript.Hurt();
+                StartCoroutine(AnimtionRestart());
+                Animator.Play("GoblinAttack");
+                StartCoroutine(EnemyMeleeAttackAction());
 
                 break;
             case 2:
 
-                    int SkeletonDamage = Random.Range(4, 12);
-                    playerScript.CurrentHealth -= SkeletonDamage;
-                    damagePopupTextScript.fadingIn = true;
-                    damagePopupTextScript.damageDone.text = SkeletonDamage.ToString();
-                    Debug.Log("Hitplayer");
-                    playerScript.Hurt();
-                    StartCoroutine(AnimtionRestart());
-                    Animator.Play("SkeletonAttack");
-                    StartCoroutine(EnemyMeleeAttackAction());
-      
+                int SkeletonDamage = Random.Range(4, 12);
+                playerScript.CurrentHealth -= SkeletonDamage;
+                damagePopupTextScript.fadingIn = true;
+                damagePopupTextScript.damageDone.text = SkeletonDamage.ToString();
+                Debug.Log("Hitplayer");
+                playerScript.Hurt();
+                StartCoroutine(AnimtionRestart());
+                Animator.Play("SkeletonAttack");
+                StartCoroutine(EnemyMeleeAttackAction());
+
                 break;
             case 3:
 
-            
-                    int OrcDamage = Random.Range(4, 24);
-                    playerScript.CurrentHealth -= OrcDamage;
-                    damagePopupTextScript.fadingIn = true;
-                    damagePopupTextScript.damageDone.text = OrcDamage.ToString();
-                    Debug.Log("Hitplayer");
-                    playerScript.Hurt();
-                    StartCoroutine(AnimtionRestart());
-                    Animator.Play("OrcAttack");
-                    StartCoroutine(EnemyMeleeAttackAction());
-           
+
+                int OrcDamage = Random.Range(4, 24);
+                playerScript.CurrentHealth -= OrcDamage;
+                damagePopupTextScript.fadingIn = true;
+                damagePopupTextScript.damageDone.text = OrcDamage.ToString();
+                Debug.Log("Hitplayer");
+                playerScript.Hurt();
+                StartCoroutine(AnimtionRestart());
+                Animator.Play("OrcAttack");
+                StartCoroutine(EnemyMeleeAttackAction());
+
                 break;
             case 4:
 
@@ -953,5 +974,28 @@ public class Enemy : MonoBehaviour
                 break;
         }
 
+    }
+    IEnumerator DeathDestory()
+    {
+
+        //yield on a new YieldInstruction that waits for 1 seconds.
+        yield return new WaitForSeconds(2f);
+        new WaitForSeconds(2f);
+ 
+        switch (MonsterType)
+        {
+            case 1:
+                PlayerStats.GoblinsKilled += 1;
+                break;
+            case 2:
+                PlayerStats.SkeletonKilled += 1;
+                break;
+            case 3:
+                PlayerStats.OrcKilled += 1;
+                break;
+            case 4:
+                PlayerStats.GoblinsKilled += 1;
+                break;
+        }
     }
 }

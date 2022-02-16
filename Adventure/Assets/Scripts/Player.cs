@@ -83,14 +83,18 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-        PlayerStats.ArmourAmount = MaxArmour;
+
+        PlayerStats.ArmourAmount = CurrentArmour;
+        CurrentArmour = MaxArmour;
         MaxHealth = MaxHealth + PlayerStats.Constitution;
         CurrentHealth = MaxHealth;
+        
       
         Healthbar.Setmaxhealth(MaxHealth);
         Healthbar.UpdateText(CurrentHealth);
-        
+        ArmourBar.UpdateText(CurrentArmour);
+        ArmourBar.SetmaxArmour(MaxArmour);
+   
         Blood.Stop();
         //Sword sprite change
         if (PlayerStats.SwordLevel == 1)
@@ -138,27 +142,30 @@ public class Player : MonoBehaviour
             Spell.GetComponent<SpriteRenderer>().sprite = spell3;
         }
         
-        ArmourBar.SetmaxArmour(MaxArmour);
-        ArmourBar.UpdateText(CurrentArmour);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(PlayerStats.GoblinsKilled == 3)
+        if(PlayerStats.GoblinsKilled == 3 && PlayerStats.GoblinScene == false)
         {
             SceneManager.LoadScene("Story2");
         }
-        if (PlayerStats.SkeletonKilled == 3)
+        if (PlayerStats.SkeletonKilled == 3 &&  PlayerStats.SkeletonScene == false)
         {
             SceneManager.LoadScene("Story3");
+        }
+        if (PlayerStats.OrcKilled == 3 && PlayerStats.BigEdScene == false)
+        {
+            SceneManager.LoadScene("Story4");
         }
 
         // Used for testing remove later so it will cause less lag :) xx
         //It should only be called when we are hit to update it
         Healthbar.Sethealth(CurrentHealth);
         Healthbar.UpdateText(CurrentHealth);
-        
+        ArmourBar.SetArmour(CurrentArmour);
         ArmourBar.UpdateText(CurrentArmour);
         MaxDamage = 4;
         MinimumDamage = 1;
