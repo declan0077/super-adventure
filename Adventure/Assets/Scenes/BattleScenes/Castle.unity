@@ -5036,10 +5036,10 @@ MonoBehaviour:
   Sword1: {fileID: 21300000, guid: 20ab8c48b3d5e6b4d988bb1279eccb48, type: 3}
   Sword2: {fileID: 21300000, guid: 8b99079ecf9cc2c48992bd3e959d6b2c, type: 3}
   Sword3: {fileID: 21300000, guid: 3c09d8c96b12f7c4ea125b8844d16ef8, type: 3}
-  Spell: {fileID: 0}
-  spell1: {fileID: 0}
-  spell2: {fileID: 0}
-  spell3: {fileID: 0}
+  Spell: {fileID: 1629263778}
+  spell1: {fileID: 21300000, guid: 0d58d9a31d8dbb9409c7865b5812fcbb, type: 3}
+  spell2: {fileID: 21300000, guid: 4084b20e0771c2244bb1103e1cd891cf, type: 3}
+  spell3: {fileID: 21300000, guid: d7c25440d9da4ba42beb0abb71165f3c, type: 3}
   SkillCheck: {fileID: 843480446}
   blockDefense: 0
   blockDefenseIcon: {fileID: 1121100794}
@@ -5052,6 +5052,11 @@ MonoBehaviour:
   attacking: 1
   damagePopupTextScript: {fileID: 77314904}
   playerDamageUI: {fileID: 1878349568}
+  blueSpellPurchased: 0
+  redSpellPurchased: 0
+  greenSpellPurchased: 0
+  leech: 1
+  thornsDamage: 1
 --- !u!50 &1000266913
 Rigidbody2D:
   serializedVersion: 4
@@ -12876,12 +12881,12 @@ GameObject:
   - component: {fileID: 1629263779}
   - component: {fileID: 1629263780}
   m_Layer: 0
-  m_Name: BODYARMOUR
+  m_Name: Necklace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1629263779
 Transform:
   m_ObjectHideFlags: 0
@@ -12890,8 +12895,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1629263778}
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.7555316, y: -0.00482131, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 1.079, y: -0.005, z: 0}
+  m_LocalScale: {x: 1.5054, y: 1.5054, z: 1.5054}
   m_Children: []
   m_Father: {fileID: 8801243337227254220}
   m_RootOrder: 1
@@ -12936,7 +12941,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: e8a13287ae4f9c74bb21e022acb26b4f, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -12944,7 +12949,7 @@ SpriteRenderer:
   m_Size: {x: 1.72, y: 1.91}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1635639144
