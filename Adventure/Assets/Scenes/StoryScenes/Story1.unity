@@ -1096,6 +1096,7 @@ MonoBehaviour:
   Text: {fileID: 397804352}
   Name: {fileID: 2016946317}
   uichar: {fileID: 1245950818}
+  playerName: 
 --- !u!224 &1338409534
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1639,15 +1640,15 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c497ff4a8f1471e4caa1b414889019f8, type: 2}
-  m_sharedMaterial: {fileID: 7178440954757343311, guid: c497ff4a8f1471e4caa1b414889019f8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 22cad82041428654cae6a6bfc25e2bb4, type: 2}
+  m_sharedMaterial: {fileID: -7121058353781130176, guid: 22cad82041428654cae6a6bfc25e2bb4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278206207
-  m_fontColor: {r: 1, g: 0.24449503, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

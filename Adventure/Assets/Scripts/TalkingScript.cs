@@ -32,7 +32,7 @@ public class TalkingScript : MonoBehaviour
             case 0:
                 uichar.GetComponent<Image>().sprite = Player;
                 Name.text = (playerName + ": ");
-                Text.text = ("Damm, Spell caster making me lose my hair");
+                Text.text = ("Spellcasters only use Magic because they can't use a sword...");
                 break;
             case 1:
                 uichar.GetComponent<Image>().sprite = King;
