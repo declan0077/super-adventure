@@ -13,6 +13,7 @@ public class TalkingScript3 : MonoBehaviour
     public TMP_Text Text;
     public TMP_Text Name;
     public Image uichar;
+    public string playerName;
     // Start is called before the first frame update
     public void Textupdate()
     {
@@ -22,7 +23,8 @@ public class TalkingScript3 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch(TextNumber)
+        playerName = MainMenu.playerName;
+        switch (TextNumber)
         {
             case 0:
                 uichar.GetComponent<Image>().sprite = Skeleton;
@@ -31,7 +33,7 @@ public class TalkingScript3 : MonoBehaviour
                 break;
             case 1:
                 uichar.GetComponent<Image>().sprite = Player;
-                Name.text = ("Player:");
+                Name.text = (playerName + ": ");
                 Text.text = ("*Bonk!* Hits skeleton!");
                 break;
             case 2:
@@ -41,17 +43,17 @@ public class TalkingScript3 : MonoBehaviour
                 break;
             case 3:
                 uichar.GetComponent<Image>().sprite = Player;
-                Name.text = ("Player:");
+                Name.text = (playerName + ": ");
                 Text.text = ("There is no sign of the princess here, where could she of gone");
                 break;
             case 4:
                 uichar.GetComponent<Image>().sprite = Player;
-                Name.text = ("Player:");
+                Name.text = (playerName + ": ");
                 Text.text = ("Whats that over there?! Is that a scroll");
                 break;
             case 5:
                 uichar.GetComponent<Image>().sprite = scroll;
-                Name.text = ("scroll:");
+                Name.text = ("Scroll:");
                 Text.text = ("By order of Ed the overlord, Take her to the castle");
                 Text.color = Color.red;
                 
@@ -59,7 +61,7 @@ public class TalkingScript3 : MonoBehaviour
                 break;
             case 6:
                 uichar.GetComponent<Image>().sprite = scroll;
-                Name.text = ("scroll:");
+                Name.text = ("Scroll:");
                 Text.text = ("By order of Ed the overlord, Take her to the castle");
                 Text.color = Color.red;
                 PlayerStats.SkeletonScene = true;

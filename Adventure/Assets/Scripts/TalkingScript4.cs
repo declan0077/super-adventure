@@ -13,6 +13,7 @@ public class TalkingScript4 : MonoBehaviour
     public TMP_Text Text;
     public TMP_Text Name;
     public Image uichar;
+    public string playerName;
     // Start is called before the first frame update
     public void Textupdate()
     {
@@ -22,7 +23,8 @@ public class TalkingScript4 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch(TextNumber)
+        playerName = MainMenu.playerName;
+        switch (TextNumber)
         {
             case 0:
                 uichar.GetComponent<Image>().sprite = Princess;
@@ -32,11 +34,11 @@ public class TalkingScript4 : MonoBehaviour
             case 1:
                 uichar.GetComponent<Image>().sprite = Boss;
                 Name.text = ("Boss:");
-                Text.text = ("Hahahaha Silly player you cant beat me");
+                Text.text = ("Hahahaha Silly human you cant beat me");
                 break;
             case 2:
                 uichar.GetComponent<Image>().sprite = Player;
-                Name.text = ("Player:");
+                Name.text = (playerName + ": ");
                 Text.text = ("Fear not for I AM HERE ");
                 Text.fontSize = 50;
                 break;
