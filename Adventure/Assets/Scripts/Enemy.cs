@@ -67,6 +67,8 @@ public class Enemy : MonoBehaviour
     public int enemyDamageDone;
     public int overDamage = 0;
 
+    public bool isPushed = false;
+
 
     //Turn UI to disable when round ends
     public GameObject whosTurn;

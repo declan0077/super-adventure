@@ -1833,7 +1833,7 @@ RectTransform:
   m_GameObject: {fileID: 258354949}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.08094081, y: 0.3534699, z: 0.8439501}
+  m_LocalScale: {x: 0.08101659, y: 0.1862676, z: 0.8439501}
   m_Children: []
   m_Father: {fileID: 555245852}
   m_RootOrder: 0
@@ -1864,7 +1864,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 59024d88e2df74b4bb7762390d7d9312, type: 3}
+    m_Font: {fileID: 12800000, guid: f4ce065df03ec1149905504f15da0e78, type: 3}
     m_FontSize: 100
     m_FontStyle: 0
     m_BestFit: 0
@@ -1875,8 +1875,13 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
-    m_LineSpacing: 1
-  m_Text: "Forged by Josh in \nthe Blacksmith of Simpville\n"
+    m_LineSpacing: 0.91
+  m_Text: 'Leech amulet  :
+
+    Player has a chance of healing for a
+
+    percentage
+    of damage dealt to an enemy'
 --- !u!222 &258354952
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3073,7 +3078,7 @@ RectTransform:
   m_GameObject: {fileID: 555245851}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2125, y: 1, z: 1}
+  m_LocalScale: {x: 1.2125, y: 1.275, z: 1}
   m_Children:
   - {fileID: 258354950}
   m_Father: {fileID: 2079212976}
@@ -3104,7 +3109,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 555d66a17f5987e4da5e695f2acc22e0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 10986b788c6a7cd4b880e14bfa893e89, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10066,14 +10071,14 @@ RectTransform:
   m_GameObject: {fileID: 1836563598}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.08094081, y: 0.3534699, z: 0.8439501}
+  m_LocalScale: {x: 0.08101659, y: 0.1862676, z: 0.8439501}
   m_Children: []
   m_Father: {fileID: 2067051780}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -37.7, y: 37.200005}
+  m_AnchoredPosition: {x: -35.2, y: 40.4}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1836563600
@@ -10097,7 +10102,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 59024d88e2df74b4bb7762390d7d9312, type: 3}
+    m_Font: {fileID: 12800000, guid: f4ce065df03ec1149905504f15da0e78, type: 3}
     m_FontSize: 100
     m_FontStyle: 0
     m_BestFit: 0
@@ -10108,8 +10113,9 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
-    m_LineSpacing: 1
-  m_Text: "Forged by Josh in \nthe Blacksmith of Simpville\n"
+    m_LineSpacing: 0.91
+  m_Text: "Thorns amulet  :\nEnemy has a chance of inflicting \ndamage upoon themselves
+    when \nstriking the player"
 --- !u!222 &1836563601
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12386,7 +12392,7 @@ RectTransform:
   m_GameObject: {fileID: 2067051779}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2125, y: 1, z: 1}
+  m_LocalScale: {x: 1.2125, y: 1.275, z: 1}
   m_Children:
   - {fileID: 1836563599}
   m_Father: {fileID: 1465638837}
@@ -12417,7 +12423,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 555d66a17f5987e4da5e695f2acc22e0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 10986b788c6a7cd4b880e14bfa893e89, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
