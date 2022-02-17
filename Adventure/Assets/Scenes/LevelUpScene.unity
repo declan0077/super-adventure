@@ -180,9 +180,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'You feel your spirit  within yourself growing
+  m_text: 'You feel the spirit  within yourself growing
 
-    How will this develop?'
+    What will be your outlet?'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 22cad82041428654cae6a6bfc25e2bb4, type: 2}
   m_sharedMaterial: {fileID: -7121058353781130176, guid: 22cad82041428654cae6a6bfc25e2bb4, type: 2}
