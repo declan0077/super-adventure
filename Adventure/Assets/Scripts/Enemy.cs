@@ -62,7 +62,7 @@ public class Enemy : MonoBehaviour
 
     public int randomSound;
 
-    public AudioSource playerHurt;
+    public AudioSource[] playerHurt;
 
     public int enemyDamageDone;
     public int overDamage = 0;
@@ -154,6 +154,11 @@ public class Enemy : MonoBehaviour
     {
         blockDefenseValue.text = blockDefense.ToString();
 
+        //PUSHED BOOL
+        if (isPushed)
+        {
+            Pushed();
+        }
 
         //Disables the block defense UI if not needed
         if (blockDefense <= 0)
@@ -242,13 +247,13 @@ public class Enemy : MonoBehaviour
                     {
                         playerScript.CurrentHealth -= enemyDamageDone;
                         CurrentHealth -= 1;
-                        playerHurt.Play();
+                        playerHurt[Random.Range(1,9)].Play();
                     }
                     //If player does not have red amulet...
                     else if (playerScript.CurrentArmour <= 0 && playerScript.blockDefense == 0 && playerScript.redSpellPurchased == false)
                     {
                         playerScript.CurrentHealth -= enemyDamageDone;
-                        playerHurt.Play();
+                        playerHurt[Random.Range(1, 9)].Play();
                     }
                     //Checking to see if the Player has any Block Shield value remaining. Prioritizes shield over direct health.
 
@@ -272,7 +277,7 @@ public class Enemy : MonoBehaviour
                         overDamage = enemyDamageDone - playerScript.blockDefense;
                         playerScript.CurrentHealth -= overDamage;
                         CurrentHealth -= 1;
-                        playerHurt.Play();
+                        playerHurt[Random.Range(1, 9)].Play();
 
                     }
                     //If player does not have amulet...
@@ -281,7 +286,7 @@ public class Enemy : MonoBehaviour
                         playerScript.blockDefense -= enemyDamageDone;
                         overDamage = enemyDamageDone - playerScript.blockDefense;
                         playerScript.CurrentHealth -= overDamage;
-                        playerHurt.Play();
+                        playerHurt[Random.Range(1, 9)].Play();
 
                     }
                     //If player has red amulet...
@@ -324,7 +329,7 @@ public class Enemy : MonoBehaviour
                     if (playerScript.CurrentArmour <= 0 && playerScript.blockDefense == 0)
                     {
                         playerScript.CurrentHealth -= enemyDamageDone;
-                        playerHurt.Play();
+                        playerHurt[Random.Range(1, 9)].Play();
                     }
                     //Checking to see if the Player has any Block Shield value remaining. Prioritizes shield over direct health.
                     else if (playerScript.blockDefense > 0 && playerScript.blockDefense > enemyDamageDone)
@@ -337,7 +342,7 @@ public class Enemy : MonoBehaviour
                         playerScript.blockDefense -= enemyDamageDone;
                         overDamage = enemyDamageDone - playerScript.blockDefense;
                         playerScript.CurrentHealth -= overDamage;
-                        playerHurt.Play();
+                        playerHurt[Random.Range(1, 9)].Play();
 
                     }
                     else if (playerScript.CurrentArmour >= 0)
@@ -372,7 +377,7 @@ public class Enemy : MonoBehaviour
                     if (playerScript.CurrentArmour <= 0 && playerScript.blockDefense == 0)
                     {
                         playerScript.CurrentHealth -= enemyDamageDone;
-                        playerHurt.Play();
+                        playerHurt[Random.Range(1, 9)].Play();
                     }
                     //Checking to see if the Player has any Block Shield value remaining. Prioritizes shield over direct health.
                     else if (playerScript.blockDefense > 0 && playerScript.blockDefense > enemyDamageDone)
@@ -385,7 +390,7 @@ public class Enemy : MonoBehaviour
                         playerScript.blockDefense -= enemyDamageDone;
                         overDamage = enemyDamageDone - playerScript.blockDefense;
                         playerScript.CurrentHealth -= overDamage;
-                        playerHurt.Play();
+                        playerHurt[Random.Range(1, 9)].Play();
 
                     }
                     else if (playerScript.CurrentArmour >= 0)
@@ -420,7 +425,7 @@ public class Enemy : MonoBehaviour
                     if (playerScript.CurrentArmour <= 0 && playerScript.blockDefense == 0)
                     {
                         playerScript.CurrentHealth -= enemyDamageDone;
-                        playerHurt.Play();
+                        playerHurt[Random.Range(1, 9)].Play();
                     }
                     //Checking to see if the Player has any Block Shield value remaining. Prioritizes shield over direct health.
                     else if (playerScript.blockDefense > 0 && playerScript.blockDefense > enemyDamageDone)
@@ -433,7 +438,7 @@ public class Enemy : MonoBehaviour
                         playerScript.blockDefense -= enemyDamageDone;
                         overDamage = enemyDamageDone - playerScript.blockDefense;
                         playerScript.CurrentHealth -= overDamage;
-                        playerHurt.Play();
+                        playerHurt[Random.Range(1, 9)].Play();
 
                     }
                     else if (playerScript.CurrentArmour >= 0)
@@ -641,7 +646,63 @@ public class Enemy : MonoBehaviour
         }
 
     }
-    //Same as move just used in the attack command
+    
+    public void Pushed() {
+        switch (MonsterType)
+        {
+            case 1:
+                //Move Code Goes Here
+                if (isPushed)
+                {
+                    { 
+                        Debug.Log("Enemy Pushed");
+                        Animator.Play("GoblinWalk");
+                        //Forces the Enemy back 2 spaces
+                        GetComponent<Rigidbody2D>().velocity = (Vector2.right * 2) * MovementSpeed;
+                        isPushed = false;
+                    }
+                }
+                break;
+            case 2:
+                
+                if (isPushed)
+                {
+                    { 
+                    Debug.Log("Enemy Pushede");
+                    Animator.Play("SkeletonWalk");
+                        GetComponent<Rigidbody2D>().velocity = (Vector2.right * 2) * MovementSpeed;
+                        isPushed = false;
+                }
+
+                }
+                break;
+            case 3:
+                if (isPushed)
+                {
+                    {
+                        Debug.Log("Enemy Pushede");
+                        Animator.Play("OrcWalk");
+                        GetComponent<Rigidbody2D>().velocity = (Vector2.right * 2) * MovementSpeed;
+                        isPushed = false;
+                    }
+
+                }
+                break;
+            case 4:
+                if (isPushed)
+                {
+                    {
+                        Debug.Log("Enemy Pushede");
+                        Animator.Play("BigEdWalk");
+                   
+                        GetComponent<Rigidbody2D>().velocity = (Vector2.right * 2) * MovementSpeed;
+                        isPushed = false;
+                    }
+
+                }
+                break;
+        }
+    }
     public void Getcloser()
     {
         switch (MonsterType)

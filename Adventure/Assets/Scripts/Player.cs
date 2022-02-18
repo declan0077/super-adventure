@@ -435,18 +435,26 @@ public class Player : MonoBehaviour
     {
         if (!playerChosenMove)
         {
-            //Stops the player from being able to spam moves in a single turn
 
-            playerChosenMove = true;
-            //Jump Code Goes Here
-            Debug.Log("Player Chooses Jump");
-            int OverallJumpPower = JumpPower + PlayerStats.Agility;
-            GetComponent<Rigidbody2D>().velocity = Vector2.up * OverallJumpPower + Vector2.right;
-            //Starts the Coroutine that allows the Attack Animation to play out
-            StartCoroutine(AttackAction());
-            Animator.Play("Jump");
-            StartCoroutine(AnimtionRestart());
+            RaycastHit2D Hit = Physics2D.Raycast(Body.transform.position, Body.transform.right, 1.5f);
+            //Ray Check to make sure you're in Melee range to push the Enemy.
+            if (Hit.collider != null && Hit.collider.tag == "Enemy")
+            {
+                //Stops the player from being able to spam moves in a single turn
+                playerChosenMove = true;
+                Debug.Log("Player Chooses Push");
+                //Checks whether the Enemy has been pushed. Bool activates Pushed function in Player Script.
+                enemyScript.isPushed = true;
+                Animator.Play("Attack");
+                StartCoroutine(AttackAction());
 
+            }
+            else if (Hit.collider == null)
+
+            {
+                Animator.Play("Attack");
+                MissAttack();
+            }
 
         }
     }
