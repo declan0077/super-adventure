@@ -445,15 +445,16 @@ public class Player : MonoBehaviour
                 Debug.Log("Player Chooses Push");
                 //Checks whether the Enemy has been pushed. Bool activates Pushed function in Player Script.
                 enemyScript.isPushed = true;
-                Animator.Play("Attack");
+                Animator.Play("Push");
                 StartCoroutine(AttackAction());
 
             }
             else if (Hit.collider == null)
 
             {
-                Animator.Play("Attack");
-                MissAttack();
+                Animator.Play("Push");
+                StartCoroutine(AttackAction());
+
             }
 
         }
