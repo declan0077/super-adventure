@@ -14,22 +14,34 @@ public class PlayerStats : MonoBehaviour
     static public int ShieldLevel;
     static public int SwordLevel;
     static public int SpellLevel;
+    //Checks if the player has seen the goblin storyline
     static public bool GoblinScene = false;
+    //Numbers of enemy killed
     static public int GoblinsKilled;
+    //Checks if the player has seen the skeleton storyline
     static public bool SkeletonScene = false;
+    //Numbers of enemy killed
     static public int SkeletonKilled;
+    //Checks if the player has seen the bigedstart storyline
     static public bool BigEdScene = false;
+    //Numbers of enemy killed
     static public int OrcKilled;
     //Player Stats
-
     static public int Strength = 0;
     static public int Agility = 0;
     static public int Constitution = 0;
     static public int Intelligence = 0;
     static public int Charisma = 0;
 
-    //Shield
+    //Player Appearance
+    static public bool Male;
+    static public int Race;
+    static public Color Skincolour;
+    //Human = 1 Elf = 2 Orc = 3 catperson = 4
 
+
+
+    //Shield
     static public int Shield = 0;
     //Shield Armour gets applied to the player
     static public int ArmourAmount;
@@ -38,9 +50,6 @@ public class PlayerStats : MonoBehaviour
 
     static public int Sword = 0;
 
-    //Dropdown
-
-    public Dropdown Shieldlist;
 
   
     public static void Check()
