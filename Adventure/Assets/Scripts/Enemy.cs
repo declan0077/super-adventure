@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
+using UnityEngine.SceneManagement;
 public class Enemy : MonoBehaviour
 {
     //MaxHealth of the Player. Default starting number is 20
@@ -942,6 +942,7 @@ public class Enemy : MonoBehaviour
                     PlayerStats.XP += Xp;
                     PlayerStats.Gold += Gold;
                     StartCoroutine(DeathDestory());
+                    SceneManager.LoadScene("Story5"); 
 
                 }
                 else

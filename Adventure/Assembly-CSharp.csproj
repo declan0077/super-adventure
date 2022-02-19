@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\CriticalHit.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RandomDirectionTranslate.cs" />
+    <Compile Include="Assets\GenderScript.cs" />
     <Compile Include="Assets\Scripts\AttackSkillCheck.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\UI\Town UI Script\FightButton.cs" />
@@ -108,7 +109,9 @@
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\SkillcheckHit.cs" />
     <Compile Include="Assets\CameraFollow.cs" />
-    <Compile Include="Assets\GenderScript.cs" />
+    <Compile Include="Assets\Scripts\TalkingScript5.cs" />
+    <Compile Include="Assets\Wallpaper.cs" />
+    <Compile Include="Assets\FlipFace.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
