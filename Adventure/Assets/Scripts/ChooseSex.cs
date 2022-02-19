@@ -14,6 +14,8 @@ public class ChooseSex : MonoBehaviour, IPointerClickHandler
 
     public AudioSource clickSound;
 
+    public Button confirmButton;
+
 
 
 
@@ -42,12 +44,14 @@ public class ChooseSex : MonoBehaviour, IPointerClickHandler
             isMale = true;
             maleFaceBorder.SetActive(true);
             femaleFaceBorder.SetActive(false);
+            confirmButton.enabled = true;
         }
         else
         {
             isMale = false;
             femaleFaceBorder.SetActive(true);
             maleFaceBorder.SetActive(false);
+            confirmButton.enabled = true;
         }
 
         Debug.Log(isMale);

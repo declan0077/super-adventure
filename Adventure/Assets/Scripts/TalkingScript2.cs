@@ -7,11 +7,7 @@ using UnityEngine.SceneManagement;
 public class TalkingScript2 : MonoBehaviour
 {
     public int TextNumber;
-    public Sprite King;
-    public Sprite Princess;
     public Sprite Goblin;
-    public Sprite Skeleton;
-    public Sprite Orge;
     public Sprite Player;
     public TMP_Text Text;
     public TMP_Text Name;
