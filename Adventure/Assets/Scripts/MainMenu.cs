@@ -6,13 +6,23 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    public GameObject playerCreation;
+    //UI GameObjects  (Activate and De-activate based on current UI Screen)
+    public GameObject playerName;
     public GameObject menuButtons;
-
+    public GameObject playerGender;
     public Button confirmPlayerName;
     public InputField userInput;
 
-    public static string playerName;
+    public GameObject gameTitle;
+    public GameObject menuBackground;
+
+    public static string playersName;
+
+    public ChooseSex genderScript;
+
+    public string[] maleNames;
+    public string[] femaleNames;
+ 
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +38,7 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        playerName = userInput.text;
+        playersName = userInput.text;
         SceneManager.LoadScene("Story1");
     }
 
@@ -39,13 +49,40 @@ public class MainMenu : MonoBehaviour
 
     public void GoBack()
     {
-        playerCreation.SetActive(false);
+        playerName.SetActive(false);
+        playerGender.SetActive(false);
         menuButtons.SetActive(true);
+        menuBackground.SetActive(true);
+        gameTitle.SetActive(true);
     }
 
-    public void CreateCharacter()
+    public void ChooseName()
     {
-        playerCreation.SetActive(true);
-        menuButtons.SetActive(false);
+        playerName.SetActive(true);
+        playerGender.SetActive(false);
+      
     }
-}
+    
+    public void CharacterGender()
+    {
+        playerGender.SetActive(true);
+        menuButtons.SetActive(false);
+        menuBackground.SetActive(false);
+        gameTitle.SetActive(false);
+    }
+
+    public void RandomName()
+    {
+        if (genderScript.isMale)
+        {
+            userInput.text = maleNames[Random.Range(0, maleNames.Length)];
+        }
+        else if (genderScript.isMale == false)
+        {
+            userInput.text = femaleNames[Random.Range(0, femaleNames.Length)];
+
+        }
+    }
+
+
+    }

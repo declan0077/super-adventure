@@ -26,7 +26,7 @@ public class TalkingScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerName = MainMenu.playerName;
+        playerName = MainMenu.playersName;
         switch(TextNumber)
         {
             case 0:
