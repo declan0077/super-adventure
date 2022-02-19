@@ -9,6 +9,7 @@ public class TalkingScript2 : MonoBehaviour
     public int TextNumber;
     public Sprite Goblin;
     public Sprite Player;
+    public Sprite FemalePlayer;
     public TMP_Text Text;
     public TMP_Text Name;
     public Image uichar;
@@ -31,7 +32,14 @@ public class TalkingScript2 : MonoBehaviour
                 Text.text = ("Ah Dont hurt me.");
                 break;
             case 1:
-                uichar.GetComponent<Image>().sprite = Player;
+                if (PlayerStats.Male == true)
+                {
+                    uichar.GetComponent<Image>().sprite = Player;
+                }
+                else
+                {
+                    uichar.GetComponent<Image>().sprite = FemalePlayer;
+                }
                 Name.text = (playerName + ": ");
                 Text.text = ("What are you doing in these forests?");
                 break;
@@ -41,7 +49,14 @@ public class TalkingScript2 : MonoBehaviour
                 Text.text = ("I was just.... having a morning walk. Yes just a walk.");
                 break;
             case 3:
-                uichar.GetComponent<Image>().sprite = Player;
+                if (PlayerStats.Male == true)
+                {
+                    uichar.GetComponent<Image>().sprite = Player;
+                }
+                else
+                {
+                    uichar.GetComponent<Image>().sprite = FemalePlayer;
+                }
                 Name.text = (playerName + ": ");
                 Text.text = ("That's not going to fly, where is the princess!");
                 break;

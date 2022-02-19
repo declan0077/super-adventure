@@ -9,6 +9,7 @@ public class TalkingScript3 : MonoBehaviour
     public int TextNumber;
     public Sprite Skeleton;
     public Sprite Player;
+    public Sprite FemalePlayer;
     public Sprite scroll;
     public TMP_Text Text;
     public TMP_Text Name;
@@ -32,7 +33,14 @@ public class TalkingScript3 : MonoBehaviour
                 Text.text = ("kha kha kha");
                 break;
             case 1:
-                uichar.GetComponent<Image>().sprite = Player;
+                if (PlayerStats.Male == true)
+                {
+                    uichar.GetComponent<Image>().sprite = Player;
+                }
+                else
+                {
+                    uichar.GetComponent<Image>().sprite = FemalePlayer;
+                }
                 Name.text = (playerName + ": ");
                 Text.text = ("*Bonk!* Hits skeleton!");
                 break;
@@ -42,12 +50,26 @@ public class TalkingScript3 : MonoBehaviour
                 Text.text = ("*Crumbles*");
                 break;
             case 3:
-                uichar.GetComponent<Image>().sprite = Player;
+                if (PlayerStats.Male == true)
+                {
+                    uichar.GetComponent<Image>().sprite = Player;
+                }
+                else
+                {
+                    uichar.GetComponent<Image>().sprite = FemalePlayer;
+                }
                 Name.text = (playerName + ": ");
                 Text.text = ("There is no sign of the princess here, where could she of gone");
                 break;
             case 4:
-                uichar.GetComponent<Image>().sprite = Player;
+                if (PlayerStats.Male == true)
+                {
+                    uichar.GetComponent<Image>().sprite = Player;
+                }
+                else
+                {
+                    uichar.GetComponent<Image>().sprite = FemalePlayer;
+                }
                 Name.text = (playerName + ": ");
                 Text.text = ("Whats that over there?! Is that a scroll");
                 break;

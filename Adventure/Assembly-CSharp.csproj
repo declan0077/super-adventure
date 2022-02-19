@@ -53,6 +53,7 @@
     <UnityVersion>2020.3.22f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\ChooseSex.cs" />
     <Compile Include="Assets\Scripts\Skillcheck.cs" />
     <Compile Include="Assets\Scripts\HOL_Input.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RotateCamera.cs" />
@@ -87,6 +88,7 @@
     <Compile Include="Assets\Scripts\ShopDisplayNumbers.cs" />
     <Compile Include="Assets\Scripts\ChangeCursor.cs" />
     <Compile Include="Assets\Scripts\Skills.cs" />
+    <Compile Include="Assets\NamePlaceholder.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_New.cs" />
     <Compile Include="Assets\UI\Main Menu Scripts\QuitButton.cs" />
     <Compile Include="Assets\Scripts\Healtbar.cs" />
@@ -106,8 +108,7 @@
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\SkillcheckHit.cs" />
     <Compile Include="Assets\CameraFollow.cs" />
-    <Compile Include="Assets\Scripts\ChooseSex.cs" />
-    <Compile Include="Assets\NamePlaceholder.cs" />
+    <Compile Include="Assets\GenderScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

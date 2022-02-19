@@ -880,6 +880,7 @@ MonoBehaviour:
   TextNumber: 0
   Skeleton: {fileID: 6782024733703248656, guid: c8080a87b5ec5bb4397451c4ca668748, type: 3}
   Player: {fileID: 21300000, guid: c47f51751f23bd24887e8d7118057bcd, type: 3}
+  FemalePlayer: {fileID: 21300000, guid: 2cc4f8473346c1e44b58fde3c191dc0f, type: 3}
   scroll: {fileID: 21300000, guid: 9e755dd9bcbfb2b40980b2c89636b1e4, type: 3}
   Text: {fileID: 870848322}
   Name: {fileID: 1618844750}

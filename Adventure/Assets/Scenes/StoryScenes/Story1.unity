@@ -1166,6 +1166,7 @@ MonoBehaviour:
   Skeleton: {fileID: 6782024733703248656, guid: c8080a87b5ec5bb4397451c4ca668748, type: 3}
   Orge: {fileID: -109962619168648975, guid: d8e7999ba6f9e2d40b1b3b377e84cc48, type: 3}
   Player: {fileID: 21300000, guid: c47f51751f23bd24887e8d7118057bcd, type: 3}
+  FemalePlayer: {fileID: 21300000, guid: 2cc4f8473346c1e44b58fde3c191dc0f, type: 3}
   Text: {fileID: 397804352}
   Name: {fileID: 2016946317}
   uichar: {fileID: 1245950818}

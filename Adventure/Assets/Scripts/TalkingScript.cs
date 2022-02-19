@@ -13,6 +13,7 @@ public class TalkingScript : MonoBehaviour
     public Sprite Skeleton;
     public Sprite Orge;
     public Sprite Player;
+    public Sprite FemalePlayer;
     public TMP_Text Text;
     public TMP_Text Name;
     public Image uichar;
@@ -30,7 +31,14 @@ public class TalkingScript : MonoBehaviour
         switch(TextNumber)
         {
             case 0:
-                uichar.GetComponent<Image>().sprite = Player;
+                if(PlayerStats.Male == true)
+                {
+                    uichar.GetComponent<Image>().sprite = Player;
+                }
+                else
+                {
+                    uichar.GetComponent<Image>().sprite = FemalePlayer;
+                }
                 Name.text = (playerName + ": ");
                 Text.text = ("Spellcasters only use Magic because they can't use a sword...");
                 break;
@@ -65,7 +73,14 @@ public class TalkingScript : MonoBehaviour
                 Text.text = ("Do you know how to fight?");
                 break;
             case 7:
-                uichar.GetComponent<Image>().sprite = Player;
+                if (PlayerStats.Male == true)
+                {
+                    uichar.GetComponent<Image>().sprite = Player;
+                }
+                else
+                {
+                    uichar.GetComponent<Image>().sprite = FemalePlayer;
+                }
                 Name.text = (playerName + ": ");
                 Text.text = ("Yes M'lord");
            
@@ -73,7 +88,13 @@ public class TalkingScript : MonoBehaviour
             case 8:
                 uichar.GetComponent<Image>().sprite = King;
                 Name.text = ("King:");
-                Text.text = ("Well to test your mettle and to knight you, go into the Western forest and fight the legendary Ricky");
+                Text.text = ("GoodLuck");
+               
+                break;
+            case 9:
+                uichar.GetComponent<Image>().sprite = King;
+                Name.text = ("King:");
+                Text.text = ("GoodLuck");
                 SceneManager.LoadScene("Town");
                 break;
         }

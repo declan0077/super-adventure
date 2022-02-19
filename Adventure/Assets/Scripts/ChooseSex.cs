@@ -45,6 +45,7 @@ public class ChooseSex : MonoBehaviour, IPointerClickHandler
             maleFaceBorder.SetActive(true);
             femaleFaceBorder.SetActive(false);
             confirmButton.enabled = true;
+            PlayerStats.Male = true;
         }
         else
         {
@@ -52,6 +53,7 @@ public class ChooseSex : MonoBehaviour, IPointerClickHandler
             femaleFaceBorder.SetActive(true);
             maleFaceBorder.SetActive(false);
             confirmButton.enabled = true;
+            PlayerStats.Male = false;
         }
 
         Debug.Log(isMale);

@@ -9,6 +9,7 @@ public class TalkingScript4 : MonoBehaviour
     public int TextNumber;
     public Sprite Princess;
     public Sprite Player;
+    public Sprite FemalePlayer;
     public Sprite Boss;
     public TMP_Text Text;
     public TMP_Text Name;
@@ -37,7 +38,14 @@ public class TalkingScript4 : MonoBehaviour
                 Text.text = ("Hahahaha Silly human you cant beat me");
                 break;
             case 2:
-                uichar.GetComponent<Image>().sprite = Player;
+                 if (PlayerStats.Male == true)
+                {
+                    uichar.GetComponent<Image>().sprite = Player;
+                }
+                else
+                {
+                    uichar.GetComponent<Image>().sprite = FemalePlayer;
+                }
                 Name.text = (playerName + ": ");
                 Text.text = ("Fear not for I AM HERE ");
                 Text.fontSize = 50;
@@ -49,7 +57,14 @@ public class TalkingScript4 : MonoBehaviour
                 Text.fontSize = 36;
                 break;
             case 4:
-                uichar.GetComponent<Image>().sprite = Player;
+                if (PlayerStats.Male == true)
+                {
+                    uichar.GetComponent<Image>().sprite = Player;
+                }
+                else
+                {
+                    uichar.GetComponent<Image>().sprite = FemalePlayer;
+                }
                 Name.text = ("Player:");
                 Text.text = ("Lets go");
 

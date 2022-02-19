@@ -547,14 +547,14 @@ RectTransform:
   m_GameObject: {fileID: 1201449645}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.4528, y: 1.4528, z: 1.4528}
   m_Children: []
   m_Father: {fileID: 98864076}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -198, y: -45}
+  m_AnchoredPosition: {x: -74, y: -45}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1201449647
@@ -579,8 +579,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: You Died
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 22cad82041428654cae6a6bfc25e2bb4, type: 2}
+  m_sharedMaterial: {fileID: -7121058353781130176, guid: 22cad82041428654cae6a6bfc25e2bb4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -844,6 +844,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1393382893}
   - component: {fileID: 1393382895}
+  - component: {fileID: 1393382896}
   - component: {fileID: 1393382894}
   m_Layer: 5
   m_Name: Image (2)
@@ -909,6 +910,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1393382892}
   m_CullTransparentMesh: 1
+--- !u!114 &1393382896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393382892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e9d2c0b582b8f340985beb98fdc584a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DefaultBody: {fileID: 0}
+  Defaulthead: {fileID: 1393382892}
+  DefaultLoin: {fileID: 0}
+  body: {fileID: 0}
+  head: {fileID: 1393382892}
+  Loin: {fileID: 0}
+  Manbody: {fileID: 0}
+  Manhead: {fileID: 21300000, guid: c47f51751f23bd24887e8d7118057bcd, type: 3}
+  ManLoin: {fileID: 0}
+  Femalebody: {fileID: 0}
+  Femalehead: {fileID: 21300000, guid: 2cc4f8473346c1e44b58fde3c191dc0f, type: 3}
+  FemaleLoin: {fileID: 0}
 --- !u!1 &1688683873
 GameObject:
   m_ObjectHideFlags: 0
@@ -968,8 +993,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: You Adventure has ended
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 22cad82041428654cae6a6bfc25e2bb4, type: 2}
+  m_sharedMaterial: {fileID: -7121058353781130176, guid: 22cad82041428654cae6a6bfc25e2bb4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1170,14 +1195,14 @@ RectTransform:
   m_GameObject: {fileID: 2057693766}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.4528, y: 1.4528, z: 1.4528}
   m_Children: []
   m_Father: {fileID: 98864076}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -198, y: -145}
+  m_AnchoredPosition: {x: -74, y: -145}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2057693768
@@ -1202,8 +1227,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: You Died
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 22cad82041428654cae6a6bfc25e2bb4, type: 2}
+  m_sharedMaterial: {fileID: -7121058353781130176, guid: 22cad82041428654cae6a6bfc25e2bb4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

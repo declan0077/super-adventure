@@ -252,7 +252,7 @@ public class Player : MonoBehaviour
     }
     public void MissAttack()
     {
-        randomchance = Random.Range(1, 2);
+        randomchance = Random.Range(1, 3);
         if (randomchance == 1)
         {
             Animator.Play("Jumpattack");
@@ -261,6 +261,12 @@ public class Player : MonoBehaviour
         if (randomchance == 2)
         {
             Animator.Play("Jumpattack");
+            StartCoroutine(AttackAction());
+
+        }
+        if (randomchance == 3)
+        {
+            Animator.Play("AttackStab");
             StartCoroutine(AttackAction());
 
         }
@@ -318,7 +324,7 @@ public class Player : MonoBehaviour
         damagePopupTextScript.damageDone.text = OverallDamage.ToString();
         Debug.Log("HitYa");
         enemyScript.Hurt();
-        randomchance = Random.Range(1, 2);
+        randomchance = Random.Range(1, 3);
         if(randomchance == 1)
         {
             Animator.Play("Attack");
@@ -332,7 +338,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            Animator.Play("Attack");
+            Animator.Play("AttackStab");
             StartCoroutine(AttackAction());
         }
       
