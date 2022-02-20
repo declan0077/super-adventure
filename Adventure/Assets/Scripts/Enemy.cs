@@ -942,7 +942,7 @@ public class Enemy : MonoBehaviour
                     PlayerStats.XP += Xp;
                     PlayerStats.Gold += Gold;
                     StartCoroutine(DeathDestory());
-                    SceneManager.LoadScene("Story5"); 
+                    PlayerStats.BigEdDead = true;
 
                 }
                 else

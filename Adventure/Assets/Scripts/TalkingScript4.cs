@@ -67,7 +67,7 @@ public class TalkingScript4 : MonoBehaviour
                 }
                 Name.text = ("Player:");
                 Text.text = ("Lets go");
-
+                PlayerStats.BigEdScene = true;
                 SceneManager.LoadScene("Castle");
                 break;
           

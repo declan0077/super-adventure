@@ -26,10 +26,12 @@ public class PlayerStats : MonoBehaviour
     static public bool BigEdScene = false;
     //Numbers of enemy killed
     static public int OrcKilled;
+    //Checks if the player has killed biged
+    static public bool BigEdDead = false;
     //Player Stats
-    static public int Strength = 0;
+    static public int Strength = 50;
     static public int Agility = 0;
-    static public int Constitution = 0;
+    static public int Constitution = 50;
     static public int Intelligence = 0;
     static public int Charisma = 0;
 

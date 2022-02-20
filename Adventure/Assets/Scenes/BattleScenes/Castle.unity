@@ -17005,7 +17005,7 @@ MonoBehaviour:
   enemyDamageDone: 0
   overDamage: 0
   isPushed: 0
-  whosTurn: {fileID: 0}
+  whosTurn: {fileID: 907511930}
 --- !u!61 &2119342743
 BoxCollider2D:
   m_ObjectHideFlags: 0

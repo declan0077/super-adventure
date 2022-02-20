@@ -176,6 +176,10 @@ public class Player : MonoBehaviour
         {
             SceneManager.LoadScene("Story4");
         }
+        if(PlayerStats.BigEdDead == true)
+        {
+            SceneManager.LoadScene("Story5");
+        }
 
         // Used for testing remove later so it will cause less lag :) xx
         //It should only be called when we are hit to update it
