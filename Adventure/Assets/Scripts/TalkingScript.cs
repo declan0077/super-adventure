@@ -88,7 +88,7 @@ public class TalkingScript : MonoBehaviour
             case 8:
                 uichar.GetComponent<Image>().sprite = King;
                 Name.text = ("King:");
-                Text.text = ("GoodLuck");
+                Text.text = ("Good, you shall find her! Of you go. The forest is a good place to start.");
                
                 break;
             case 9:

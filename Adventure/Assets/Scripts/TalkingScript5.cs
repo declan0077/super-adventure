@@ -31,7 +31,7 @@ public class TalkingScript5 : MonoBehaviour
             case 0:
                 uichar.GetComponent<Image>().sprite = Princess;
                 Name.text = ("Princess:");
-                Text.text = ("Thank you for saving me <3");
+                Text.text = (playerName + "! Is that really you? I never thought you'd be the one to rescue me.");
                 break;
             case 1:
                 if (PlayerStats.Male == true)
@@ -42,19 +42,26 @@ public class TalkingScript5 : MonoBehaviour
                 {
                     uichar.GetComponent<Image>().sprite = FemalePlayer;
                 }
-                Name.text = ("Player:");
-                Text.text = ("No Problem");
+                Name.text = (playerName +": ");
+                Text.text = ("Your Father sent me, I couldn't refuse when I knew you were taken. I'm glad you're unharmed");
                 break;
 
             case 2:
-                uichar.GetComponent<Image>().sprite = Narrator;
-                Name.text = ("Narrator:");
-                Text.text = ("So the Princess was saved...");
+                uichar.GetComponent<Image>().sprite = Princess;
+                Name.text = ("Princess:");
+                Text.text = ("My Hero! ... But wait, don't we have to travel all the way back, what if the Monsters you slain come back?");
                 break;
             case 3:
-                uichar.GetComponent<Image>().sprite = Narrator;
-                Name.text = ("Narrator:");
-                Text.text = ("For a total of twenty minutes");
+                if (PlayerStats.Male == true)
+                {
+                    uichar.GetComponent<Image>().sprite = Player;
+                }
+                else
+                {
+                    uichar.GetComponent<Image>().sprite = FemalePlayer;
+                }
+                Name.text = (playerName + ": ");
+                Text.text = ("It's a good thing I know how to C Sharp, Princess");
                 break;
             case 4:
                 uichar.GetComponent<Image>().sprite = Narrator;

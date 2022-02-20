@@ -12,6 +12,7 @@ public class MainMenu : MonoBehaviour
     public GameObject playerGender;
     public Button confirmPlayerName;
     public InputField userInput;
+    public GameObject credits;
 
     public GameObject gameTitle;
     public GameObject menuBackground;
@@ -54,6 +55,7 @@ public class MainMenu : MonoBehaviour
         menuButtons.SetActive(true);
         menuBackground.SetActive(true);
         gameTitle.SetActive(true);
+        credits.SetActive(false);
     }
 
     public void ChooseName()
@@ -69,19 +71,25 @@ public class MainMenu : MonoBehaviour
         menuButtons.SetActive(false);
         menuBackground.SetActive(false);
         gameTitle.SetActive(false);
+       
     }
 
     public void RandomName()
     {
         if (genderScript.isMale)
         {
-            userInput.text = maleNames[Random.Range(0, maleNames.Length)];
+            userInput.text = maleNames[Random.Range(0, maleNames.Length - 1)];
         }
         else if (genderScript.isMale == false)
         {
-            userInput.text = femaleNames[Random.Range(0, femaleNames.Length)];
+            userInput.text = femaleNames[Random.Range(0, femaleNames.Length - 1)];
 
         }
+    }
+
+    public void Credits()
+    {
+        credits.SetActive(true);
     }
 
 
