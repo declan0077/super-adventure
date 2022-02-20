@@ -282,47 +282,124 @@ public class Player : MonoBehaviour
         int OverallDamage = PlayerStats.Strength + playerDamageDone + ExtraDamage;
         int overDamage = 0;
 
-        //First Check that checks whether the leech green Amulet has been purchased
-
-        //If player has green amulet...
+        //Current Armor = Shield Defense
+        //Block Defense = Shield gained from Blocking
+        
+        //IF ENEMY HAS NO ARMOR AND NO BLOCK SHIELD + PLAYER HAS GREEN AMULET
         if (enemyScript.CurrentArmour <= 0 && enemyScript.blockDefense <= 0 && greenSpellPurchased)
         {
             enemyScript.CurrentHealth -= OverallDamage;
             CurrentHealth += leech;
         }
-        //If player dose not have green amulet
+       
+        //IF ENEMY HAS NO ARMOR + NO BLOCK SHIELD + PLAYER HAS NO GREEN AMULET
         else if (enemyScript.CurrentArmour <= 0 && enemyScript.blockDefense <= 0 && !greenSpellPurchased)
         {
             enemyScript.CurrentHealth -= OverallDamage;
         }
-        //If player has green amulet...
-        else if (enemyScript.blockDefense > 0 && enemyScript.blockDefense < OverallDamage && greenSpellPurchased)
+        //IF ENEMY HAS ARMOR + NO BLOCK SHIELD + PLAYER HAS GREEN AMULET
+        else if (enemyScript.CurrentArmour > 0 && enemyScript.blockDefense == 0 && greenSpellPurchased)
         {
-            enemyScript.blockDefense -= OverallDamage;
-            overDamage = OverallDamage - enemyScript.blockDefense;
-            enemyScript.CurrentHealth -= OverallDamage;
-            CurrentHealth += leech;
+            if(OverallDamage > enemyScript.blockDefense)
+            {
+                overDamage = OverallDamage - enemyScript.blockDefense;
+                enemyScript.CurrentHealth -= overDamage;
+                enemyScript.CurrentArmour = 0;
+                CurrentHealth += leech;
+            }
+            else if(OverallDamage < enemyScript.blockDefense)
+            {
+                enemyScript.blockDefense -= OverallDamage;
+            }
+        }
+        //IF ENEMY HAS ARMOR + NO BLOCK SHIELD + PLAYER HAS NO GREEN AMULET
+        else if (enemyScript.CurrentArmour > 0 && enemyScript.blockDefense == 0 && !greenSpellPurchased)
+        {
+            if (OverallDamage > enemyScript.CurrentArmour)
+            {
+                overDamage = OverallDamage - enemyScript.CurrentArmour;
+                enemyScript.CurrentArmour = 0;
+                enemyScript.CurrentHealth -= overDamage;
+            }
+            else if (OverallDamage < enemyScript.CurrentArmour)
+            {
+                enemyScript.CurrentArmour -= OverallDamage;
+            }
+        }
+        //IF ENEMY HAS NO ARMOR + BLOCK SHIELD + PLAYER HAS GREEN AMULET
+        else if(enemyScript.CurrentArmour == 0 && enemyScript.blockDefense > 0 && greenSpellPurchased)
+        {
+            if(OverallDamage > enemyScript.blockDefense)
+            {
+                overDamage = OverallDamage - enemyScript.blockDefense;
+                enemyScript.CurrentHealth -= overDamage;
+                enemyScript.blockDefense = 0;
+                CurrentHealth += leech;
+            }
+            else if(OverallDamage < enemyScript.blockDefense)
+            {
+                enemyScript.blockDefense -= OverallDamage;
+            }
+        }
+        //IF ENEMY HAS NO ARMOR + BLOCK SHIELD + PLAYER HAS NO GREEN AMULET
+        else if (enemyScript.CurrentArmour == 0 && enemyScript.blockDefense > 0 && !greenSpellPurchased)
+        {
+            if (OverallDamage > enemyScript.blockDefense)
+            {
+                overDamage = OverallDamage - enemyScript.blockDefense;
+                enemyScript.blockDefense = 0;
+                enemyScript.CurrentHealth -= overDamage;
+            }
+            else if (OverallDamage < enemyScript.blockDefense)
+            {
+                enemyScript.blockDefense -= OverallDamage;
+            }
+        }
+        //IF ENEMY HAS ARMOR AND BLOCK SHIELD + PLAYER HAS GREEN AMULET
+        else if(enemyScript.CurrentArmour > 0 && enemyScript.blockDefense > 0 && greenSpellPurchased)
+        {
+            if(OverallDamage > enemyScript.blockDefense)
+            {
+                overDamage = OverallDamage - enemyScript.blockDefense;
+                enemyScript.blockDefense = 0;
+                
+                if(overDamage > enemyScript.CurrentArmour)
+                {
+                    overDamage  -= enemyScript.CurrentArmour;
+                    enemyScript.CurrentArmour = 0;
+                    enemyScript.CurrentHealth -= overDamage;
+                    enemyScript.CurrentHealth += leech;
+                }
+                else if(overDamage < enemyScript.CurrentArmour)
+                {
+                    enemyScript.CurrentArmour -= overDamage;
+                }
+                        
+            }
+        }
+        //IF ENEMY HAS ARMOR AND BLOCK SHIELD + PLAYER HAS NO GREEN AMULET
+        else if (enemyScript.CurrentArmour > 0 && enemyScript.blockDefense > 0 && !greenSpellPurchased)
+        {
+            if (OverallDamage > enemyScript.blockDefense)
+            {
+                overDamage = OverallDamage - enemyScript.blockDefense;
+                enemyScript.blockDefense = 0;
 
-        }
-        //If player dose not have green amulet
-        else if (enemyScript.blockDefense > 0 && enemyScript.blockDefense < OverallDamage && !greenSpellPurchased)
-        {
-            enemyScript.blockDefense -= OverallDamage;
-            overDamage = OverallDamage - enemyScript.blockDefense;
-            enemyScript.CurrentHealth -= OverallDamage;
+                if (overDamage > enemyScript.CurrentArmour)
+                {
+                    overDamage -= enemyScript.CurrentArmour;
+                    enemyScript.CurrentArmour = 0;
+                    enemyScript.CurrentHealth -= overDamage;
+                 
+                }
+                else if (overDamage < enemyScript.CurrentArmour)
+                {
+                    enemyScript.CurrentArmour -= overDamage;
+                }
 
+            }
         }
-        //If player has green amulet...
-        else if (enemyScript.CurrentArmour >= 0 && greenSpellPurchased)
-        {
-            enemyScript.CurrentArmour -= OverallDamage;
-            CurrentHealth += leech;
-        }
-        //If player dose not have green amulet
-        else if (enemyScript.CurrentArmour >= 0 && !greenSpellPurchased)
-        {
-            enemyScript.CurrentArmour -= OverallDamage;
-        }
+
 
         damagePopupTextScript.fadingIn = true;
         damagePopupTextScript.damageDone.text = OverallDamage.ToString();
@@ -349,35 +426,142 @@ public class Player : MonoBehaviour
     }
     public void CritAttack()
     {
-        int overDamage = 0;
+
         int playerDamageDone = Random.Range(MinimumDamage, MaxDamage);
-        int OverallDamage = PlayerStats.Strength + ExtraDamage + playerDamageDone * 2;
-        if (enemyScript.CurrentArmour <= 0 && enemyScript.blockDefense == 0 && greenSpellPurchased)
+        int OverallDamage = PlayerStats.Strength + playerDamageDone + ExtraDamage * 2;
+        int overDamage = 0;
+
+        //Current Armor = Shield Defense
+        //Block Defense = Shield gained from Blocking
+
+        //IF ENEMY HAS NO ARMOR AND NO BLOCK SHIELD + PLAYER HAS GREEN AMULET
+        if (enemyScript.CurrentArmour <= 0 && enemyScript.blockDefense <= 0 && greenSpellPurchased)
         {
             enemyScript.CurrentHealth -= OverallDamage;
-        }
-        else if (enemyScript.CurrentArmour <= 0 && enemyScript.blockDefense == 0 && !greenSpellPurchased)
-        {
-            enemyScript.CurrentHealth -= OverallDamage;
-            CurrentHealth += leech + 1;
+            CurrentHealth += leech;
         }
 
-        else if (enemyScript.blockDefense > 0 && enemyScript.blockDefense < OverallDamage)
+        //IF ENEMY HAS NO ARMOR + NO BLOCK SHIELD + PLAYER HAS NO GREEN AMULET
+        else if (enemyScript.CurrentArmour <= 0 && enemyScript.blockDefense <= 0 && !greenSpellPurchased)
         {
-            enemyScript.blockDefense -= OverallDamage;
-            overDamage = OverallDamage - enemyScript.blockDefense;
             enemyScript.CurrentHealth -= OverallDamage;
-
         }
-        else if (enemyScript.CurrentArmour >= 0)
+        //IF ENEMY HAS ARMOR + NO BLOCK SHIELD + PLAYER HAS GREEN AMULET
+        else if (enemyScript.CurrentArmour > 0 && enemyScript.blockDefense == 0 && greenSpellPurchased)
         {
-            enemyScript.CurrentArmour -= OverallDamage;
+            if (OverallDamage > enemyScript.blockDefense)
+            {
+                overDamage = OverallDamage - enemyScript.blockDefense;
+                enemyScript.CurrentHealth -= overDamage;
+                enemyScript.CurrentArmour = 0;
+                CurrentHealth += leech;
+            }
+            else if (OverallDamage < enemyScript.blockDefense)
+            {
+                enemyScript.blockDefense -= OverallDamage;
+            }
         }
+        //IF ENEMY HAS ARMOR + NO BLOCK SHIELD + PLAYER HAS NO GREEN AMULET
+        else if (enemyScript.CurrentArmour > 0 && enemyScript.blockDefense == 0 && !greenSpellPurchased)
+        {
+            if (OverallDamage > enemyScript.CurrentArmour)
+            {
+                overDamage = OverallDamage - enemyScript.CurrentArmour;
+                enemyScript.CurrentArmour = 0;
+                enemyScript.CurrentHealth -= overDamage;
+            }
+            else if (OverallDamage < enemyScript.CurrentArmour)
+            {
+                enemyScript.CurrentArmour -= OverallDamage;
+            }
+        }
+        //IF ENEMY HAS NO ARMOR + BLOCK SHIELD + PLAYER HAS GREEN AMULET
+        else if (enemyScript.CurrentArmour == 0 && enemyScript.blockDefense > 0 && greenSpellPurchased)
+        {
+            if (OverallDamage > enemyScript.blockDefense)
+            {
+                overDamage = OverallDamage - enemyScript.blockDefense;
+                enemyScript.CurrentHealth -= overDamage;
+                enemyScript.blockDefense = 0;
+                CurrentHealth += leech;
+            }
+            else if (OverallDamage < enemyScript.blockDefense)
+            {
+                enemyScript.blockDefense -= OverallDamage;
+            }
+        }
+        //IF ENEMY HAS NO ARMOR + BLOCK SHIELD + PLAYER HAS NO GREEN AMULET
+        else if (enemyScript.CurrentArmour == 0 && enemyScript.blockDefense > 0 && !greenSpellPurchased)
+        {
+            if (OverallDamage > enemyScript.blockDefense)
+            {
+                overDamage = OverallDamage - enemyScript.blockDefense;
+                enemyScript.blockDefense = 0;
+                enemyScript.CurrentHealth -= overDamage;
+            }
+            else if (OverallDamage < enemyScript.blockDefense)
+            {
+                enemyScript.blockDefense -= OverallDamage;
+            }
+        }
+        //IF ENEMY HAS ARMOR AND BLOCK SHIELD + PLAYER HAS GREEN AMULET
+        else if (enemyScript.CurrentArmour > 0 && enemyScript.blockDefense > 0 && greenSpellPurchased)
+        {
+            if (OverallDamage > enemyScript.blockDefense)
+            {
+                overDamage = OverallDamage - enemyScript.blockDefense;
+                enemyScript.blockDefense = 0;
+
+                if (overDamage > enemyScript.CurrentArmour)
+                {
+                    overDamage -= enemyScript.CurrentArmour;
+                    enemyScript.CurrentArmour = 0;
+                    enemyScript.CurrentHealth -= overDamage;
+                    CurrentHealth += leech;
+                }
+                else if (overDamage < enemyScript.CurrentArmour)
+                {
+                    enemyScript.CurrentArmour -= overDamage;
+                }
+
+            }
+            else if (OverallDamage < enemyScript.blockDefense)
+            {
+                enemyScript.blockDefense -= OverallDamage;
+            }
+        }
+        //IF ENEMY HAS ARMOR AND BLOCK SHIELD + PLAYER HAS NO GREEN AMULET
+        else if (enemyScript.CurrentArmour > 0 && enemyScript.blockDefense > 0 && !greenSpellPurchased)
+        {
+            if (OverallDamage > enemyScript.blockDefense)
+            {
+                overDamage = OverallDamage - enemyScript.blockDefense;
+                enemyScript.blockDefense = 0;
+
+                if (overDamage > enemyScript.CurrentArmour)
+                {
+                    overDamage -= enemyScript.CurrentArmour;
+                    enemyScript.CurrentArmour = 0;
+                    enemyScript.CurrentHealth -= overDamage;
+
+                }
+                else if (overDamage < enemyScript.CurrentArmour)
+                {
+                    enemyScript.CurrentArmour -= overDamage;
+                }
+
+            }else if(OverallDamage < enemyScript.blockDefense)
+            {
+                enemyScript.blockDefense -= OverallDamage;
+            }
+        }
+
+
         damagePopupTextScript.fadingIn = true;
         damagePopupTextScript.damageDone.text = OverallDamage.ToString();
         Debug.Log("HitYa");
         enemyScript.Hurt();
-        randomchance = Random.Range(1, 2);
+        randomchance = Random.Range(1, 3);
         if (randomchance == 1)
         {
             Animator.Play("Attack");
@@ -391,9 +575,10 @@ public class Player : MonoBehaviour
         }
         else
         {
-            Animator.Play("Attack");
+            Animator.Play("AttackStab");
             StartCoroutine(AttackAction());
         }
+
     }
     public void Block()
     {
@@ -445,19 +630,18 @@ public class Player : MonoBehaviour
     {
         if (!playerChosenMove)
         {
-
+            playerChosenMove = true;
             RaycastHit2D Hit = Physics2D.Raycast(Body.transform.position, Body.transform.right, 1.5f);
             //Ray Check to make sure you're in Melee range to push the Enemy.
             if (Hit.collider != null && Hit.collider.tag == "Enemy")
             {
                 //Stops the player from being able to spam moves in a single turn
-                playerChosenMove = true;
                 Debug.Log("Player Chooses Push");
                 //Checks whether the Enemy has been pushed. Bool activates Pushed function in Player Script.
                 enemyScript.isPushed = true;
+                StartCoroutine(AttackAction());
                 Animator.Play("Push");
                 //Gives the enemy their turn Plus restarts the animations
-                StartCoroutine(AttackAction());
                 StartCoroutine(AnimtionRestart());
             }
             else if (Hit.collider == null)
@@ -513,7 +697,6 @@ public class Player : MonoBehaviour
     }
     IEnumerator HurtFlash()
     {
-
         //yield on a new YieldInstruction that waits for 1 seconds.
         yield return new WaitForSeconds(0.5f);
         new WaitForSeconds(0.5f);

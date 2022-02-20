@@ -37,18 +37,20 @@ public class ChooseSex : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData pointerEventData)
     {
        //Activates the Border around the chosen Sex face, removes border from other if applied.
-        clickSound.Play();
+        
         //Checks which Img the Player Clicks on, and changes isMale bool from results
         if(pointerEventData.pointerCurrentRaycast.gameObject.name == "MaleImg")
         {
+            clickSound.Play();
             isMale = true;
             maleFaceBorder.SetActive(true);
             femaleFaceBorder.SetActive(false);
             confirmButton.enabled = true;
             PlayerStats.Male = true;
         }
-        else
+        else if(pointerEventData.pointerCurrentRaycast.gameObject.name == "FemaleImg")
         {
+            clickSound.Play();
             isMale = false;
             femaleFaceBorder.SetActive(true);
             maleFaceBorder.SetActive(false);
