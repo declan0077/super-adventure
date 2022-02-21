@@ -120,7 +120,7 @@ public class Enemy : MonoBehaviour
                 JumpPower = 5;
                 MovementSpeed = 3;
                 Blood.Stop();
-                Gold = Random.Range(400, 600);
+                Gold = Random.Range(400, 600);  
                 Xp = Random.Range(500, 700);
                 MaxArmour = 10;
                 ArmourBar.SetmaxArmour(MaxArmour);
@@ -259,32 +259,32 @@ public class Enemy : MonoBehaviour
                     //IF PLAYER HAS ARMOR + NO BLOCK DEFENSE + HAS RED AMULET
                     else if (playerScript.CurrentArmour > 0 && playerScript.blockDefense  == 0 && playerScript.redSpellPurchased == true)
                     {
-                        if (OverallDamage > playerScript.blockDefense)
+                        if (OverallDamage > playerScript.CurrentArmour)
                         {
-                            overDamage = OverallDamage - playerScript.blockDefense;
+                            overDamage = OverallDamage - playerScript.CurrentArmour;
                             playerScript.CurrentHealth -= overDamage;
                             playerHurt[Random.Range(1, playerHurt.Length)].Play();
                             CurrentHealth -= 1;
                         }
-                        else if (OverallDamage < playerScript.blockDefense)
+                        else if (OverallDamage <= playerScript.CurrentArmour)
                         {
-                            playerScript.blockDefense -= OverallDamage;
+                            playerScript.CurrentArmour -= OverallDamage;
                         }
                     }
                     //IF PLAYER HAS ARMOR + NO BLOCK DEFENSE + HAS NO RED AMULET
                     else if (playerScript.CurrentArmour > 0 && playerScript.blockDefense == 0 && playerScript.redSpellPurchased == false)
                     {
-                        if (OverallDamage > playerScript.blockDefense)
+                        if (OverallDamage > playerScript.CurrentArmour)
                         {
-                            overDamage = OverallDamage - playerScript.blockDefense;
+                            overDamage = OverallDamage - playerScript.CurrentArmour;
                             playerScript.CurrentHealth -= overDamage;
                             playerHurt[Random.Range(1, playerHurt.Length)].Play();
                             playerScript.CurrentArmour = 0;
                            
                         }
-                        else if (OverallDamage < playerScript.blockDefense)
+                        else if (OverallDamage <= playerScript.CurrentArmour)
                         {
-                            playerScript.blockDefense -= OverallDamage;
+                            playerScript.CurrentArmour -= OverallDamage;
                         }
                     }
                     //IF PLAYER HAS NO ARMOR + HAS BLOCK DEFENSE + RED AMULET
@@ -298,7 +298,7 @@ public class Enemy : MonoBehaviour
                             playerScript.blockDefense = 0;
                             CurrentHealth -= 1;
                         }
-                        else if (OverallDamage < playerScript.blockDefense)
+                        else if (OverallDamage <= playerScript.blockDefense)
                         {
                             playerScript.blockDefense -= OverallDamage;
                         }
@@ -312,7 +312,7 @@ public class Enemy : MonoBehaviour
                             playerHurt[Random.Range(1, playerHurt.Length)].Play();
                             playerScript.blockDefense = 0;
                         }
-                        else if (OverallDamage < playerScript.blockDefense)
+                        else if (OverallDamage <= playerScript.blockDefense)
                         {
                             playerScript.blockDefense -= OverallDamage;
                         }
@@ -333,12 +333,12 @@ public class Enemy : MonoBehaviour
                                 playerHurt[Random.Range(1, playerHurt.Length)].Play();
                                 CurrentHealth -= 1;
                             }
-                            else if (overDamage < playerScript.CurrentArmour)
+                            else if (overDamage <= playerScript.CurrentArmour)
                             {
                                 playerScript.CurrentArmour -= overDamage;
                             }
 
-                        }else if(OverallDamage < playerScript.blockDefense)
+                        }else if(OverallDamage <= playerScript.blockDefense)
                         {
                             playerScript.blockDefense -= OverallDamage;
                         }
@@ -356,13 +356,13 @@ public class Enemy : MonoBehaviour
                                 playerScript.CurrentArmour = 0;
                                 playerHurt[overDamage].Play();
                             }
-                            else if (overDamage < playerScript.CurrentArmour)
+                            else if (overDamage <= playerScript.CurrentArmour)
                             {
                                 playerScript.CurrentArmour -= overDamage;
                             }
 
                         }
-                        else if (OverallDamage < playerScript.blockDefense)
+                        else if (OverallDamage <= playerScript.blockDefense)
                         {
                             playerScript.blockDefense -= OverallDamage;
                         }
@@ -411,32 +411,32 @@ public class Enemy : MonoBehaviour
                     //IF PLAYER HAS ARMOR + NO BLOCK DEFENSE + HAS RED AMULET
                     else if (playerScript.CurrentArmour > 0 && playerScript.blockDefense == 0 && playerScript.redSpellPurchased == true)
                     {
-                        if (OverallDamage > playerScript.blockDefense)
+                        if (OverallDamage > playerScript.CurrentArmour)
                         {
-                            overDamage = OverallDamage - playerScript.blockDefense;
+                            overDamage = OverallDamage - playerScript.CurrentArmour;
                             playerScript.CurrentHealth -= overDamage;
                             playerHurt[Random.Range(1, playerHurt.Length)].Play();
                             CurrentHealth -= 1;
                         }
-                        else if (OverallDamage < playerScript.blockDefense)
+                        else if (OverallDamage <= playerScript.CurrentArmour)
                         {
-                            playerScript.blockDefense -= OverallDamage;
+                            playerScript.CurrentArmour -= OverallDamage;
                         }
                     }
                     //IF PLAYER HAS ARMOR + NO BLOCK DEFENSE + HAS NO RED AMULET
                     else if (playerScript.CurrentArmour > 0 && playerScript.blockDefense == 0 && playerScript.redSpellPurchased == false)
                     {
-                        if (OverallDamage > playerScript.blockDefense)
+                        if (OverallDamage > playerScript.CurrentArmour)
                         {
-                            overDamage = OverallDamage - playerScript.blockDefense;
+                            overDamage = OverallDamage - playerScript.CurrentArmour;
                             playerScript.CurrentHealth -= overDamage;
                             playerHurt[Random.Range(1, playerHurt.Length)].Play();
                             playerScript.CurrentArmour = 0;
 
                         }
-                        else if (OverallDamage < playerScript.blockDefense)
+                        else if (OverallDamage <= playerScript.CurrentArmour)
                         {
-                            playerScript.blockDefense -= OverallDamage;
+                            playerScript.CurrentArmour -= OverallDamage;
                         }
                     }
                     //IF PLAYER HAS NO ARMOR + HAS BLOCK DEFENSE + RED AMULET
@@ -450,7 +450,7 @@ public class Enemy : MonoBehaviour
                             playerScript.blockDefense = 0;
                             CurrentHealth -= 1;
                         }
-                        else if (OverallDamage < playerScript.blockDefense)
+                        else if (OverallDamage <= playerScript.blockDefense)
                         {
                             playerScript.blockDefense -= OverallDamage;
                         }
@@ -464,7 +464,7 @@ public class Enemy : MonoBehaviour
                             playerHurt[Random.Range(1, playerHurt.Length)].Play();
                             playerScript.blockDefense = 0;
                         }
-                        else if (OverallDamage < playerScript.blockDefense)
+                        else if (OverallDamage <= playerScript.blockDefense)
                         {
                             playerScript.blockDefense -= OverallDamage;
                         }
@@ -485,13 +485,13 @@ public class Enemy : MonoBehaviour
                                 playerHurt[Random.Range(1, playerHurt.Length)].Play();
                                 CurrentHealth -= 1;
                             }
-                            else if (overDamage < playerScript.CurrentArmour)
+                            else if (overDamage <= playerScript.CurrentArmour)
                             {
                                 playerScript.CurrentArmour -= overDamage;
                             }
 
                         }
-                        else if (OverallDamage < playerScript.blockDefense)
+                        else if (OverallDamage <= playerScript.blockDefense)
                         {
                             playerScript.blockDefense -= OverallDamage;
                         }
@@ -509,13 +509,13 @@ public class Enemy : MonoBehaviour
                                 playerScript.CurrentArmour = 0;
                                 playerHurt[overDamage].Play();
                             }
-                            else if (overDamage < playerScript.CurrentArmour)
+                            else if (overDamage <= playerScript.CurrentArmour)
                             {
                                 playerScript.CurrentArmour -= overDamage;
                             }
 
                         }
-                        else if (OverallDamage < playerScript.blockDefense)
+                        else if (OverallDamage <= playerScript.blockDefense)
                         {
                             playerScript.blockDefense -= OverallDamage;
                         }
@@ -564,32 +564,32 @@ public class Enemy : MonoBehaviour
                     //IF PLAYER HAS ARMOR + NO BLOCK DEFENSE + HAS RED AMULET
                     else if (playerScript.CurrentArmour > 0 && playerScript.blockDefense == 0 && playerScript.redSpellPurchased == true)
                     {
-                        if (OverallDamage > playerScript.blockDefense)
+                        if (OverallDamage > playerScript.CurrentArmour)
                         {
-                            overDamage = OverallDamage - playerScript.blockDefense;
+                            overDamage = OverallDamage - playerScript.CurrentArmour;
                             playerScript.CurrentHealth -= overDamage;
                             playerHurt[Random.Range(1, playerHurt.Length)].Play();
                             CurrentHealth -= 1;
                         }
-                        else if (OverallDamage < playerScript.blockDefense)
+                        else if (OverallDamage <= playerScript.CurrentArmour)
                         {
-                            playerScript.blockDefense -= OverallDamage;
+                            playerScript.CurrentArmour -= OverallDamage;
                         }
                     }
                     //IF PLAYER HAS ARMOR + NO BLOCK DEFENSE + HAS NO RED AMULET
                     else if (playerScript.CurrentArmour > 0 && playerScript.blockDefense == 0 && playerScript.redSpellPurchased == false)
                     {
-                        if (OverallDamage > playerScript.blockDefense)
+                        if (OverallDamage > playerScript.CurrentArmour)
                         {
-                            overDamage = OverallDamage - playerScript.blockDefense;
+                            overDamage = OverallDamage - playerScript.CurrentArmour;
                             playerScript.CurrentHealth -= overDamage;
                             playerHurt[Random.Range(1, playerHurt.Length)].Play();
                             playerScript.CurrentArmour = 0;
 
                         }
-                        else if (OverallDamage < playerScript.blockDefense)
+                        else if (OverallDamage <= playerScript.blockDefense)
                         {
-                            playerScript.blockDefense -= OverallDamage;
+                            playerScript.CurrentArmour -= OverallDamage;
                         }
                     }
                     //IF PLAYER HAS NO ARMOR + HAS BLOCK DEFENSE + RED AMULET
@@ -603,7 +603,7 @@ public class Enemy : MonoBehaviour
                             playerScript.blockDefense = 0;
                             CurrentHealth -= 1;
                         }
-                        else if (OverallDamage < playerScript.blockDefense)
+                        else if (OverallDamage <= playerScript.blockDefense)
                         {
                             playerScript.blockDefense -= OverallDamage;
                         }
@@ -617,7 +617,7 @@ public class Enemy : MonoBehaviour
                             playerHurt[Random.Range(1, playerHurt.Length)].Play();
                             playerScript.blockDefense = 0;
                         }
-                        else if (OverallDamage < playerScript.blockDefense)
+                        else if (OverallDamage <= playerScript.blockDefense)
                         {
                             playerScript.blockDefense -= OverallDamage;
                         }
@@ -638,13 +638,13 @@ public class Enemy : MonoBehaviour
                                 playerHurt[Random.Range(1, playerHurt.Length)].Play();
                                 CurrentHealth -= 1;
                             }
-                            else if (overDamage < playerScript.CurrentArmour)
+                            else if (overDamage <= playerScript.CurrentArmour)
                             {
                                 playerScript.CurrentArmour -= overDamage;
                             }
 
                         }
-                        else if (OverallDamage < playerScript.blockDefense)
+                        else if (OverallDamage <= playerScript.blockDefense)
                         {
                             playerScript.blockDefense -= OverallDamage;
                         }
@@ -662,13 +662,13 @@ public class Enemy : MonoBehaviour
                                 playerScript.CurrentArmour = 0;
                                 playerHurt[overDamage].Play();
                             }
-                            else if (overDamage < playerScript.CurrentArmour)
+                            else if (overDamage <= playerScript.CurrentArmour)
                             {
                                 playerScript.CurrentArmour -= overDamage;
                             }
 
                         }
-                        else if (OverallDamage < playerScript.blockDefense)
+                        else if (OverallDamage <= playerScript.blockDefense)
                         {
                             playerScript.blockDefense -= OverallDamage;
                         }
@@ -717,32 +717,33 @@ public class Enemy : MonoBehaviour
                     //IF PLAYER HAS ARMOR + NO BLOCK DEFENSE + HAS RED AMULET
                     else if (playerScript.CurrentArmour > 0 && playerScript.blockDefense == 0 && playerScript.redSpellPurchased == true)
                     {
-                        if (OverallDamage > playerScript.blockDefense)
+                        if (OverallDamage > playerScript.CurrentArmour)
                         {
-                            overDamage = OverallDamage - playerScript.blockDefense;
+                            overDamage = OverallDamage - playerScript.CurrentArmour;
                             playerScript.CurrentHealth -= overDamage;
                             playerHurt[Random.Range(1, playerHurt.Length)].Play();
+                            playerScript.CurrentArmour = 0;
                             CurrentHealth -= 1;
                         }
-                        else if (OverallDamage < playerScript.blockDefense)
+                        else if (OverallDamage <= playerScript.CurrentArmour)
                         {
-                            playerScript.blockDefense -= OverallDamage;
+                            playerScript.CurrentArmour -= OverallDamage;
                         }
                     }
                     //IF PLAYER HAS ARMOR + NO BLOCK DEFENSE + HAS NO RED AMULET
                     else if (playerScript.CurrentArmour > 0 && playerScript.blockDefense == 0 && playerScript.redSpellPurchased == false)
                     {
-                        if (OverallDamage > playerScript.blockDefense)
+                        if (OverallDamage > playerScript.CurrentArmour)
                         {
-                            overDamage = OverallDamage - playerScript.blockDefense;
+                            overDamage = OverallDamage - playerScript.CurrentArmour;
                             playerScript.CurrentHealth -= overDamage;
                             playerHurt[Random.Range(1, playerHurt.Length)].Play();
                             playerScript.CurrentArmour = 0;
 
                         }
-                        else if (OverallDamage < playerScript.blockDefense)
+                        else if (OverallDamage <= playerScript.CurrentArmour)
                         {
-                            playerScript.blockDefense -= OverallDamage;
+                            playerScript.CurrentArmour -= OverallDamage;
                         }
                     }
                     //IF PLAYER HAS NO ARMOR + HAS BLOCK DEFENSE + RED AMULET
@@ -756,7 +757,7 @@ public class Enemy : MonoBehaviour
                             playerScript.blockDefense = 0;
                             CurrentHealth -= 1;
                         }
-                        else if (OverallDamage < playerScript.blockDefense)
+                        else if (OverallDamage <= playerScript.blockDefense)
                         {
                             playerScript.blockDefense -= OverallDamage;
                         }
@@ -770,7 +771,7 @@ public class Enemy : MonoBehaviour
                             playerHurt[Random.Range(1, playerHurt.Length)].Play();
                             playerScript.blockDefense = 0;
                         }
-                        else if (OverallDamage < playerScript.blockDefense)
+                        else if (OverallDamage <= playerScript.blockDefense)
                         {
                             playerScript.blockDefense -= OverallDamage;
                         }
@@ -791,13 +792,13 @@ public class Enemy : MonoBehaviour
                                 playerHurt[Random.Range(1, playerHurt.Length)].Play();
                                 CurrentHealth -= 1;
                             }
-                            else if (overDamage < playerScript.CurrentArmour)
+                            else if (overDamage <= playerScript.CurrentArmour)
                             {
                                 playerScript.CurrentArmour -= overDamage;
                             }
 
                         }
-                        else if (OverallDamage < playerScript.blockDefense)
+                        else if (OverallDamage <= playerScript.blockDefense)
                         {
                             playerScript.blockDefense -= OverallDamage;
                         }
@@ -815,13 +816,13 @@ public class Enemy : MonoBehaviour
                                 playerScript.CurrentArmour = 0;
                                 playerHurt[overDamage].Play();
                             }
-                            else if (overDamage < playerScript.CurrentArmour)
+                            else if (overDamage <= playerScript.CurrentArmour)
                             {
                                 playerScript.CurrentArmour -= overDamage;
                             }
 
                         }
-                        else if (OverallDamage < playerScript.blockDefense)
+                        else if (OverallDamage <= playerScript.blockDefense)
                         {
                             playerScript.blockDefense -= OverallDamage;
                         }
@@ -910,7 +911,7 @@ public class Enemy : MonoBehaviour
                 if (PlayerInrange == true)
                 {
                     enemyChosenMove = true;
-                    Animator.Play("OrcBlock");
+                    Animator.Play("BigEdBlock");
                     //Block Code Goes Here
 
                     Debug.Log("Enemy Chooses Block");

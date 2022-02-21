@@ -5437,11 +5437,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 644eac185e2381c4ba8c93d3f865d3d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentHealth: 0
+  CurrentHealth: 500
   MaxDamage: 0
   MinimumDamage: 0
-  MaxArmour: 0
-  CurrentArmour: 0
+  MaxArmour: 300
+  CurrentArmour: 300
   Healthbar: {fileID: 1180979410}
   ArmourBar: {fileID: 1795122260}
   Animator: {fileID: 1000266916}
