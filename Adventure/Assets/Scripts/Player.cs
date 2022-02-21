@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     private int MaxHealth = 20;
     //The current Health of the player
     public int CurrentHealth;
-    private int JumpPower;
+ 
     private int Movementspeed;
     //Max damage the player can deal
     public int MaxDamage;
@@ -189,7 +189,7 @@ public class Player : MonoBehaviour
         ArmourBar.UpdateText(CurrentArmour);
         MaxDamage = 4;
         MinimumDamage = 1;
-        JumpPower = 5;
+       
         Movementspeed = 3;
 
         Debug.DrawLine(Body.transform.position, Body.transform.position + Body.transform.right, Color.blue);
