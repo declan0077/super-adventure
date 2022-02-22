@@ -11123,7 +11123,7 @@ MonoBehaviour:
   Body: {fileID: 2026496258168105588}
   Shield: {fileID: 495919351}
   Shield1: {fileID: 21300000, guid: 0a46521489d1a354e8e98046e1881c99, type: 3}
-  Shield2: {fileID: 21300000, guid: 9d95d75c3089a55479a729d483b06d30, type: 3}
+  Shield2: {fileID: 21300000, guid: 29eb0bb9b3e51f049b6ce65be001b193, type: 3}
   Shield3: {fileID: 21300000, guid: 85262e08f8a8c50438587372862b003b, type: 3}
   Sword: {fileID: 580270714}
   ExtraDamage: 0
