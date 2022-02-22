@@ -71,7 +71,7 @@ public class Player : MonoBehaviour
     //AttackChecker
     public bool attacking = true;
 
-
+    public MeleeWeaponTrail weaponEffectScript;
 
     //Reference to text fade script
     public textFade damagePopupTextScript;
@@ -260,17 +260,20 @@ public class Player : MonoBehaviour
         if (randomchance == 1)
         {
             Animator.Play("Jumpattack");
+            weaponEffectScript.Emit = true;
             StartCoroutine(AttackAction());
         }
         if (randomchance == 2)
         {
             Animator.Play("Jumpattack");
+            weaponEffectScript.Emit = true;
             StartCoroutine(AttackAction());
 
         }
         if (randomchance == 3)
         {
             Animator.Play("AttackStab");
+            weaponEffectScript.Emit = true;
             StartCoroutine(AttackAction());
 
         }
@@ -409,17 +412,20 @@ public class Player : MonoBehaviour
         if(randomchance == 1)
         {
             Animator.Play("Attack");
+            weaponEffectScript.Emit = true;
             StartCoroutine(AttackAction());
         }
         if (randomchance == 2)
         {
             Animator.Play("Jumpattack");
+            weaponEffectScript.Emit = true;
             StartCoroutine(AttackAction());
             
         }
         else
         {
             Animator.Play("AttackStab");
+            weaponEffectScript.Emit = true;
             StartCoroutine(AttackAction());
         }
       
@@ -565,17 +571,20 @@ public class Player : MonoBehaviour
         if (randomchance == 1)
         {
             Animator.Play("Attack");
+            weaponEffectScript.Emit = true;
             StartCoroutine(AttackAction());
         }
         if (randomchance == 2)
         {
             Animator.Play("Jumpattack");
+            weaponEffectScript.Emit = true;
             StartCoroutine(AttackAction());
 
         }
         else
         {
             Animator.Play("AttackStab");
+            weaponEffectScript.Emit = true;
             StartCoroutine(AttackAction());
         }
 
@@ -683,6 +692,8 @@ public class Player : MonoBehaviour
 
         //Changes bool so that the Enemy is able to choose a move for their turn
         enemyScript.enemyChosenMove = false;
+        //Removes the Weapon Slash effect particle system when the Player stops attack animation.
+        weaponEffectScript.Emit = false;
 
     }
     IEnumerator AnimtionRestart()

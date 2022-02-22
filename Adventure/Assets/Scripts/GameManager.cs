@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject playerChoiceUI;
 
+    public GameObject abilityTutorial;
+
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +30,15 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Fire2 = left alt
+        if (Input.GetButton("Fire2"))
+        {
+            abilityTutorial.SetActive(true);
+        }
+        else
+        {
+            abilityTutorial.SetActive(false);
+        }
 
         if (playerTurn && !enemyTurn)
         {

@@ -62,6 +62,8 @@ public class Enemy : MonoBehaviour
 
     public int randomSound;
 
+    public MeleeWeaponTrail weaponEffectScript;
+
     public AudioSource[] playerHurt;
 
     public int enemyDamageDone;
@@ -246,7 +248,7 @@ public class Enemy : MonoBehaviour
                     if (playerScript.CurrentArmour <= 0 && playerScript.blockDefense == 0 && playerScript.redSpellPurchased == true)
                     {
                         playerScript.CurrentHealth -= enemyDamageDone;
-                        playerHurt[Random.Range(1, playerHurt.Length)].Play();
+                        playerHurt[Random.Range(0, playerHurt.Length)].Play();
                         CurrentHealth -= 1;
                     }
 
@@ -254,7 +256,7 @@ public class Enemy : MonoBehaviour
                     else if (playerScript.CurrentArmour <= 0 && playerScript.blockDefense == 0 && playerScript.redSpellPurchased == false)
                     {
                         playerScript.CurrentHealth -= enemyDamageDone;
-                        playerHurt[Random.Range(1, playerHurt.Length)].Play();
+                        playerHurt[Random.Range(0, playerHurt.Length)].Play();
                     }
                     //IF PLAYER HAS ARMOR + NO BLOCK DEFENSE + HAS RED AMULET
                     else if (playerScript.CurrentArmour > 0 && playerScript.blockDefense  == 0 && playerScript.redSpellPurchased == true)
@@ -309,7 +311,7 @@ public class Enemy : MonoBehaviour
                         {
                             overDamage = OverallDamage - playerScript.blockDefense;
                             playerScript.CurrentHealth -= overDamage;
-                            playerHurt[Random.Range(1, playerHurt.Length)].Play();
+                            playerHurt[Random.Range(0, playerHurt.Length)].Play();
                             playerScript.blockDefense = 0;
                         }
                         else if (OverallDamage <= playerScript.blockDefense)
@@ -373,6 +375,7 @@ public class Enemy : MonoBehaviour
                     playerScript.Hurt();
                     StartCoroutine(AnimtionRestart());
                     Animator.Play("GoblinAttack");
+                    weaponEffectScript.Emit = true;
                     StartCoroutine(EnemyMeleeAttackAction());
                 }
 
@@ -526,6 +529,7 @@ public class Enemy : MonoBehaviour
                     playerScript.Hurt();
                     StartCoroutine(AnimtionRestart());
                     Animator.Play("SkeletonAttack");
+                    weaponEffectScript.Emit = true;
                     StartCoroutine(EnemyMeleeAttackAction());
                 }
 
@@ -679,6 +683,7 @@ public class Enemy : MonoBehaviour
                     playerScript.Hurt();
                     StartCoroutine(AnimtionRestart());
                     Animator.Play("OrcAttack");
+                    weaponEffectScript.Emit = true;
                     StartCoroutine(EnemyMeleeAttackAction());
                 }
 
@@ -833,6 +838,7 @@ public class Enemy : MonoBehaviour
                     playerScript.Hurt();
                     StartCoroutine(AnimtionRestart());
                     Animator.Play("BigEdAttack");
+                    weaponEffectScript.Emit = true;
                     StartCoroutine(EnemyMeleeAttackAction());
                 }
 
@@ -1146,6 +1152,7 @@ public class Enemy : MonoBehaviour
 
             //Changes bool to allow Player to choose a move on their turn
             playerScript.playerChosenMove = false;
+            weaponEffectScript.Emit = false;
         }
         else
         {
