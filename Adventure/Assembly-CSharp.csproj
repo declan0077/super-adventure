@@ -53,6 +53,7 @@
     <UnityVersion>2020.3.22f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\MeleeWeaponTrail\Example\Scripts\MouseMove.cs" />
     <Compile Include="Assets\Scripts\ChooseSex.cs" />
     <Compile Include="Assets\Scripts\Skillcheck.cs" />
     <Compile Include="Assets\Scripts\HOL_Input.cs" />
@@ -60,23 +61,27 @@
     <Compile Include="Assets\Scripts\NormalHit.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_LightIntensityFade.cs" />
     <Compile Include="Assets\Scripts\ButtonHoverImage.cs" />
-    <Compile Include="Assets\Wallpaper.cs" />
+    <Compile Include="Assets\Scripts\Wallpaper.cs" />
     <Compile Include="Assets\Scripts\PlayerStats.cs" />
     <Compile Include="Assets\Scripts\TalkingScript5.cs" />
+    <Compile Include="Assets\MeleeWeaponTrail\Scripts\MeleeWeaponTrail.cs" />
     <Compile Include="Assets\Scripts\Gamba.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_AutoRotate.cs" />
     <Compile Include="Assets\Scripts\HomeButton.cs" />
     <Compile Include="Assets\Scripts\SkillpointDisplay.cs" />
     <Compile Include="Assets\Scripts\TalkingScript3.cs" />
-    <Compile Include="Assets\RandomThisPart.cs" />
-    <Compile Include="Assets\FlipFace.cs" />
+    <Compile Include="Assets\Scripts\RandomThisPart.cs" />
+    <Compile Include="Assets\MeleeWeaponTrail\Scripts\Interpolate.cs" />
+    <Compile Include="Assets\Scripts\FlipFace.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_AutoStopLoopedEffect.cs" />
+    <Compile Include="Assets\MeleeWeaponTrail\Example\Scripts\LookAtTarget.cs" />
     <Compile Include="Assets\Scripts\Parallax.cs" />
     <Compile Include="Assets\Scripts\textFade.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
-    <Compile Include="Assets\CriticalHit.cs" />
+    <Compile Include="Assets\Scripts\CriticalHit.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RandomDirectionTranslate.cs" />
-    <Compile Include="Assets\GenderScript.cs" />
+    <Compile Include="Assets\Scripts\GenderScript.cs" />
+    <Compile Include="Assets\MeleeWeaponTrail\Example\Scripts\SwooshTest.cs" />
     <Compile Include="Assets\Scripts\AttackSkillCheck.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\UI\Town UI Script\FightButton.cs" />
@@ -92,7 +97,7 @@
     <Compile Include="Assets\Scripts\ShopDisplayNumbers.cs" />
     <Compile Include="Assets\Scripts\ChangeCursor.cs" />
     <Compile Include="Assets\Scripts\Skills.cs" />
-    <Compile Include="Assets\NamePlaceholder.cs" />
+    <Compile Include="Assets\Scripts\NamePlaceholder.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_New.cs" />
     <Compile Include="Assets\UI\Main Menu Scripts\QuitButton.cs" />
     <Compile Include="Assets\Scripts\Healtbar.cs" />
@@ -111,12 +116,7 @@
     <Compile Include="Assets\Scripts\ArmourBar.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\SkillcheckHit.cs" />
-    <Compile Include="Assets\CameraFollow.cs" />
-    <Compile Include="Assets\MeleeWeaponTrail\Example\Scripts\SwooshTest.cs" />
-    <Compile Include="Assets\MeleeWeaponTrail\Example\Scripts\MouseMove.cs" />
-    <Compile Include="Assets\MeleeWeaponTrail\Scripts\Interpolate.cs" />
-    <Compile Include="Assets\MeleeWeaponTrail\Example\Scripts\LookAtTarget.cs" />
-    <Compile Include="Assets\MeleeWeaponTrail\Scripts\MeleeWeaponTrail.cs" />
+    <Compile Include="Assets\Scripts\CameraFollow.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

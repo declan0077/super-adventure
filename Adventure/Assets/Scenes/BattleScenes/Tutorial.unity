@@ -9405,6 +9405,7 @@ MonoBehaviour:
   p_turnText: {fileID: 2079148576}
   e_turnText: {fileID: 1283417202}
   playerChoiceUI: {fileID: 1673824450}
+  abilityTutorial: {fileID: 1821169387}
 --- !u!4 &644581770
 Transform:
   m_ObjectHideFlags: 0

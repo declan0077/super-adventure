@@ -1004,7 +1004,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 59024d88e2df74b4bb7762390d7d9312, type: 3}
+    m_Font: {fileID: 12800000, guid: f4ce065df03ec1149905504f15da0e78, type: 3}
     m_FontSize: 100
     m_FontStyle: 0
     m_BestFit: 0
@@ -1016,7 +1016,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Forged by Josh in \nthe Blacksmith of Simpville\n"
+  m_Text: An enchanted longsword
 --- !u!222 &185141061
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2398,7 +2398,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 555d66a17f5987e4da5e695f2acc22e0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e466468e92ffc5549bb6f8ee2198183f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3981,7 +3981,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 59024d88e2df74b4bb7762390d7d9312, type: 3}
+    m_Font: {fileID: 12800000, guid: f4ce065df03ec1149905504f15da0e78, type: 3}
     m_FontSize: 100
     m_FontStyle: 0
     m_BestFit: 0
@@ -3993,7 +3993,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Forged by Josh in \nthe Blacksmith of Simpville\n"
+  m_Text: 'A simple round shield
+
+'
 --- !u!222 &648810767
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4647,7 +4649,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 555d66a17f5987e4da5e695f2acc22e0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e466468e92ffc5549bb6f8ee2198183f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4857,7 +4859,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 59024d88e2df74b4bb7762390d7d9312, type: 3}
+    m_Font: {fileID: 12800000, guid: f4ce065df03ec1149905504f15da0e78, type: 3}
     m_FontSize: 100
     m_FontStyle: 0
     m_BestFit: 0
@@ -4869,7 +4871,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Forged by Josh in \nthe Blacksmith of Simpville\n"
+  m_Text: 'A sharp edged falcon '
 --- !u!222 &804067538
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6651,7 +6653,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 59024d88e2df74b4bb7762390d7d9312, type: 3}
+    m_Font: {fileID: 12800000, guid: f4ce065df03ec1149905504f15da0e78, type: 3}
     m_FontSize: 100
     m_FontStyle: 0
     m_BestFit: 0
@@ -6663,7 +6665,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Forged by Josh in \nthe Blacksmith of Simpville\n"
+  m_Text: 'A old tower shield
+
+    Found near Alba
+
+'
 --- !u!222 &1126616289
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6805,7 +6811,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 555d66a17f5987e4da5e695f2acc22e0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e466468e92ffc5549bb6f8ee2198183f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7508,7 +7514,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 555d66a17f5987e4da5e695f2acc22e0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e466468e92ffc5549bb6f8ee2198183f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7584,7 +7590,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 59024d88e2df74b4bb7762390d7d9312, type: 3}
+    m_Font: {fileID: 12800000, guid: f4ce065df03ec1149905504f15da0e78, type: 3}
     m_FontSize: 100
     m_FontStyle: 0
     m_BestFit: 0
@@ -7596,7 +7602,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Forged by Josh in \nthe Blacksmith of Simpville\n"
+  m_Text: 'A simple rapier
+
+'
 --- !u!222 &1310413231
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8586,7 +8594,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 555d66a17f5987e4da5e695f2acc22e0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e466468e92ffc5549bb6f8ee2198183f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8954,7 +8962,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 59024d88e2df74b4bb7762390d7d9312, type: 3}
+    m_Font: {fileID: 12800000, guid: f4ce065df03ec1149905504f15da0e78, type: 3}
     m_FontSize: 100
     m_FontStyle: 0
     m_BestFit: 0
@@ -8966,7 +8974,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Forged by Josh in \nthe Blacksmith of Simpville\n"
+  m_Text: 'Useless amulet
+
+'
 --- !u!222 &1585223412
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9701,7 +9711,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 555d66a17f5987e4da5e695f2acc22e0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e466468e92ffc5549bb6f8ee2198183f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10329,7 +10339,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 555d66a17f5987e4da5e695f2acc22e0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e466468e92ffc5549bb6f8ee2198183f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12937,7 +12947,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 59024d88e2df74b4bb7762390d7d9312, type: 3}
+    m_Font: {fileID: 12800000, guid: f4ce065df03ec1149905504f15da0e78, type: 3}
     m_FontSize: 100
     m_FontStyle: 0
     m_BestFit: 0
@@ -12949,7 +12959,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Forged by Josh in \nthe Blacksmith of Simpville\n"
+  m_Text: 'A tiny Kite shield
+
+'
 --- !u!222 &2129015339
 CanvasRenderer:
   m_ObjectHideFlags: 0
