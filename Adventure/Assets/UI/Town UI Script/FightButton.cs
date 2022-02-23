@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class FightButton : MonoBehaviour
 {
     public Button yourbutton;
+    private bool tutorialComplete = false;
 
     void Start()
     {
@@ -16,9 +17,12 @@ public class FightButton : MonoBehaviour
     // Update is called once per frame
     void TaskOnClick()
     {
-
-
-        if (PlayerStats.Level <= 3)
+        if(!tutorialComplete)
+        {
+            SceneManager.LoadScene("Tutorial");
+            tutorialComplete = true;
+        }
+        else if (PlayerStats.Level <= 3 && tutorialComplete)
         {
             SceneManager.LoadScene("Forest");
         }

@@ -64,7 +64,8 @@ public class Enemy : MonoBehaviour
 
     public MeleeWeaponTrail weaponEffectScript;
 
-    public AudioSource[] playerHurt;
+    public AudioSource[] malePlayerHurt;
+    public AudioSource[] femalePlayerHurt;
 
     public int enemyDamageDone;
     public int overDamage = 0;
@@ -74,6 +75,8 @@ public class Enemy : MonoBehaviour
 
     //Turn UI to disable when round ends
     public GameObject whosTurn;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -248,15 +251,29 @@ public class Enemy : MonoBehaviour
                     if (playerScript.CurrentArmour <= 0 && playerScript.blockDefense == 0 && playerScript.redSpellPurchased == true)
                     {
                         playerScript.CurrentHealth -= enemyDamageDone;
-                        playerHurt[Random.Range(0, playerHurt.Length)].Play();
                         CurrentHealth -= 1;
+                        if (PlayerStats.Male)
+                        {
+                            malePlayerHurt[Random.Range(0,malePlayerHurt.Length)].Play();
+                        }
+                        else
+                        {
+                            femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
+                        }
                     }
 
                     //IF PLAYER HAS NO ARMOR AND NO BLOCK SHIELD + PLAYER HAS RED AMULET
                     else if (playerScript.CurrentArmour <= 0 && playerScript.blockDefense == 0 && playerScript.redSpellPurchased == false)
                     {
                         playerScript.CurrentHealth -= enemyDamageDone;
-                        playerHurt[Random.Range(0, playerHurt.Length)].Play();
+                        if (PlayerStats.Male)
+                        {
+                            malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
+                        }
+                        else
+                        {
+                            femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
+                        }
                     }
                     //IF PLAYER HAS ARMOR + NO BLOCK DEFENSE + HAS RED AMULET
                     else if (playerScript.CurrentArmour > 0 && playerScript.blockDefense  == 0 && playerScript.redSpellPurchased == true)
@@ -265,8 +282,15 @@ public class Enemy : MonoBehaviour
                         {
                             overDamage = OverallDamage - playerScript.CurrentArmour;
                             playerScript.CurrentHealth -= overDamage;
-                            playerHurt[Random.Range(1, playerHurt.Length)].Play();
                             CurrentHealth -= 1;
+                            if (PlayerStats.Male)
+                            {
+                                malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
+                            }
+                            else
+                            {
+                                femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
+                            }
                         }
                         else if (OverallDamage <= playerScript.CurrentArmour)
                         {
@@ -280,9 +304,16 @@ public class Enemy : MonoBehaviour
                         {
                             overDamage = OverallDamage - playerScript.CurrentArmour;
                             playerScript.CurrentHealth -= overDamage;
-                            playerHurt[Random.Range(1, playerHurt.Length)].Play();
                             playerScript.CurrentArmour = 0;
-                           
+                            if (PlayerStats.Male)
+                            {
+                                malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
+                            }
+                            else
+                            {
+                                femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
+                            }
+
                         }
                         else if (OverallDamage <= playerScript.CurrentArmour)
                         {
@@ -296,9 +327,16 @@ public class Enemy : MonoBehaviour
                         {
                             overDamage = OverallDamage - playerScript.blockDefense;
                             playerScript.CurrentHealth -= overDamage;
-                            playerHurt[Random.Range(1, playerHurt.Length)].Play();
                             playerScript.blockDefense = 0;
                             CurrentHealth -= 1;
+                            if (PlayerStats.Male)
+                            {
+                                malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
+                            }
+                            else
+                            {
+                                femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
+                            }
                         }
                         else if (OverallDamage <= playerScript.blockDefense)
                         {
@@ -311,8 +349,15 @@ public class Enemy : MonoBehaviour
                         {
                             overDamage = OverallDamage - playerScript.blockDefense;
                             playerScript.CurrentHealth -= overDamage;
-                            playerHurt[Random.Range(0, playerHurt.Length)].Play();
                             playerScript.blockDefense = 0;
+                            if (PlayerStats.Male)
+                            {
+                                malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
+                            }
+                            else
+                            {
+                                femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
+                            }
                         }
                         else if (OverallDamage <= playerScript.blockDefense)
                         {
@@ -332,8 +377,15 @@ public class Enemy : MonoBehaviour
                                 overDamage -= playerScript.CurrentArmour;
                                 playerScript.CurrentArmour = 0;
                                 playerScript.CurrentHealth -= overDamage;
-                                playerHurt[Random.Range(1, playerHurt.Length)].Play();
                                 CurrentHealth -= 1;
+                                if (PlayerStats.Male)
+                                {
+                                    malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
+                                }
+                                else
+                                {
+                                    femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
+                                }
                             }
                             else if (overDamage <= playerScript.CurrentArmour)
                             {
@@ -356,7 +408,14 @@ public class Enemy : MonoBehaviour
                             {
                                 overDamage -= playerScript.CurrentArmour;
                                 playerScript.CurrentArmour = 0;
-                                playerHurt[overDamage].Play();
+                                if (PlayerStats.Male)
+                                {
+                                    malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
+                                }
+                                else
+                                {
+                                    femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
+                                }
                             }
                             else if (overDamage <= playerScript.CurrentArmour)
                             {
@@ -401,15 +460,29 @@ public class Enemy : MonoBehaviour
                     if (playerScript.CurrentArmour <= 0 && playerScript.blockDefense == 0 && playerScript.redSpellPurchased == true)
                     {
                         playerScript.CurrentHealth -= enemyDamageDone;
-                        playerHurt[Random.Range(1, playerHurt.Length)].Play();
                         CurrentHealth -= 1;
+                        if (PlayerStats.Male)
+                        {
+                            malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
+                        }
+                        else
+                        {
+                            femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
+                        }
                     }
 
                     //IF PLAYER HAS NO ARMOR AND NO BLOCK SHIELD + PLAYER HAS RED AMULET
                     else if (playerScript.CurrentArmour <= 0 && playerScript.blockDefense == 0 && playerScript.redSpellPurchased == false)
                     {
                         playerScript.CurrentHealth -= enemyDamageDone;
-                        playerHurt[Random.Range(1, playerHurt.Length)].Play();
+                        if (PlayerStats.Male)
+                        {
+                            malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
+                        }
+                        else
+                        {
+                            femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
+                        }
                     }
                     //IF PLAYER HAS ARMOR + NO BLOCK DEFENSE + HAS RED AMULET
                     else if (playerScript.CurrentArmour > 0 && playerScript.blockDefense == 0 && playerScript.redSpellPurchased == true)
@@ -418,8 +491,15 @@ public class Enemy : MonoBehaviour
                         {
                             overDamage = OverallDamage - playerScript.CurrentArmour;
                             playerScript.CurrentHealth -= overDamage;
-                            playerHurt[Random.Range(1, playerHurt.Length)].Play();
                             CurrentHealth -= 1;
+                            if (PlayerStats.Male)
+                            {
+                                malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
+                            }
+                            else
+                            {
+                                femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
+                            }
                         }
                         else if (OverallDamage <= playerScript.CurrentArmour)
                         {
@@ -433,8 +513,15 @@ public class Enemy : MonoBehaviour
                         {
                             overDamage = OverallDamage - playerScript.CurrentArmour;
                             playerScript.CurrentHealth -= overDamage;
-                            playerHurt[Random.Range(1, playerHurt.Length)].Play();
                             playerScript.CurrentArmour = 0;
+                            if (PlayerStats.Male)
+                            {
+                                malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
+                            }
+                            else
+                            {
+                                femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
+                            }
 
                         }
                         else if (OverallDamage <= playerScript.CurrentArmour)
@@ -449,9 +536,16 @@ public class Enemy : MonoBehaviour
                         {
                             overDamage = OverallDamage - playerScript.blockDefense;
                             playerScript.CurrentHealth -= overDamage;
-                            playerHurt[Random.Range(1, playerHurt.Length)].Play();
                             playerScript.blockDefense = 0;
                             CurrentHealth -= 1;
+                            if (PlayerStats.Male)
+                            {
+                                malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
+                            }
+                            else
+                            {
+                                femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
+                            }
                         }
                         else if (OverallDamage <= playerScript.blockDefense)
                         {
@@ -464,8 +558,15 @@ public class Enemy : MonoBehaviour
                         {
                             overDamage = OverallDamage - playerScript.blockDefense;
                             playerScript.CurrentHealth -= overDamage;
-                            playerHurt[Random.Range(1, playerHurt.Length)].Play();
                             playerScript.blockDefense = 0;
+                            if (PlayerStats.Male)
+                            {
+                                malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
+                            }
+                            else
+                            {
+                                femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
+                            }
                         }
                         else if (OverallDamage <= playerScript.blockDefense)
                         {
@@ -485,8 +586,15 @@ public class Enemy : MonoBehaviour
                                 overDamage -= playerScript.CurrentArmour;
                                 playerScript.CurrentArmour = 0;
                                 playerScript.CurrentHealth -= overDamage;
-                                playerHurt[Random.Range(1, playerHurt.Length)].Play();
                                 CurrentHealth -= 1;
+                                if (PlayerStats.Male)
+                                {
+                                    malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
+                                }
+                                else
+                                {
+                                    femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
+                                }
                             }
                             else if (overDamage <= playerScript.CurrentArmour)
                             {
@@ -510,7 +618,14 @@ public class Enemy : MonoBehaviour
                             {
                                 overDamage -= playerScript.CurrentArmour;
                                 playerScript.CurrentArmour = 0;
-                                playerHurt[overDamage].Play();
+                                if (PlayerStats.Male)
+                                {
+                                    malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
+                                }
+                                else
+                                {
+                                    femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
+                                }
                             }
                             else if (overDamage <= playerScript.CurrentArmour)
                             {
@@ -555,15 +670,29 @@ public class Enemy : MonoBehaviour
                     if (playerScript.CurrentArmour <= 0 && playerScript.blockDefense == 0 && playerScript.redSpellPurchased == true)
                     {
                         playerScript.CurrentHealth -= enemyDamageDone;
-                        playerHurt[Random.Range(1, playerHurt.Length)].Play();
                         CurrentHealth -= 1;
+                        if (PlayerStats.Male)
+                        {
+                            malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
+                        }
+                        else
+                        {
+                            femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
+                        }
                     }
 
                     //IF PLAYER HAS NO ARMOR AND NO BLOCK SHIELD + PLAYER HAS RED AMULET
                     else if (playerScript.CurrentArmour <= 0 && playerScript.blockDefense == 0 && playerScript.redSpellPurchased == false)
                     {
                         playerScript.CurrentHealth -= enemyDamageDone;
-                        playerHurt[Random.Range(1, playerHurt.Length)].Play();
+                        if (PlayerStats.Male)
+                        {
+                            malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
+                        }
+                        else
+                        {
+                            femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
+                        }
                     }
                     //IF PLAYER HAS ARMOR + NO BLOCK DEFENSE + HAS RED AMULET
                     else if (playerScript.CurrentArmour > 0 && playerScript.blockDefense == 0 && playerScript.redSpellPurchased == true)
@@ -572,8 +701,15 @@ public class Enemy : MonoBehaviour
                         {
                             overDamage = OverallDamage - playerScript.CurrentArmour;
                             playerScript.CurrentHealth -= overDamage;
-                            playerHurt[Random.Range(1, playerHurt.Length)].Play();
                             CurrentHealth -= 1;
+                            if (PlayerStats.Male)
+                            {
+                                malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
+                            }
+                            else
+                            {
+                                femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
+                            }
                         }
                         else if (OverallDamage <= playerScript.CurrentArmour)
                         {
@@ -587,8 +723,15 @@ public class Enemy : MonoBehaviour
                         {
                             overDamage = OverallDamage - playerScript.CurrentArmour;
                             playerScript.CurrentHealth -= overDamage;
-                            playerHurt[Random.Range(1, playerHurt.Length)].Play();
                             playerScript.CurrentArmour = 0;
+                            if (PlayerStats.Male)
+                            {
+                                malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
+                            }
+                            else
+                            {
+                                femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
+                            }
 
                         }
                         else if (OverallDamage <= playerScript.blockDefense)
@@ -603,9 +746,16 @@ public class Enemy : MonoBehaviour
                         {
                             overDamage = OverallDamage - playerScript.blockDefense;
                             playerScript.CurrentHealth -= overDamage;
-                            playerHurt[Random.Range(1, playerHurt.Length)].Play();
                             playerScript.blockDefense = 0;
                             CurrentHealth -= 1;
+                            if (PlayerStats.Male)
+                            {
+                                malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
+                            }
+                            else
+                            {
+                                femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
+                            }
                         }
                         else if (OverallDamage <= playerScript.blockDefense)
                         {
@@ -618,8 +768,15 @@ public class Enemy : MonoBehaviour
                         {
                             overDamage = OverallDamage - playerScript.blockDefense;
                             playerScript.CurrentHealth -= overDamage;
-                            playerHurt[Random.Range(1, playerHurt.Length)].Play();
                             playerScript.blockDefense = 0;
+                            if (PlayerStats.Male)
+                            {
+                                malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
+                            }
+                            else
+                            {
+                                femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
+                            }
                         }
                         else if (OverallDamage <= playerScript.blockDefense)
                         {
@@ -639,8 +796,15 @@ public class Enemy : MonoBehaviour
                                 overDamage -= playerScript.CurrentArmour;
                                 playerScript.CurrentArmour = 0;
                                 playerScript.CurrentHealth -= overDamage;
-                                playerHurt[Random.Range(1, playerHurt.Length)].Play();
                                 CurrentHealth -= 1;
+                                if (PlayerStats.Male)
+                                {
+                                    malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
+                                }
+                                else
+                                {
+                                    femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
+                                }
                             }
                             else if (overDamage <= playerScript.CurrentArmour)
                             {
@@ -664,7 +828,14 @@ public class Enemy : MonoBehaviour
                             {
                                 overDamage -= playerScript.CurrentArmour;
                                 playerScript.CurrentArmour = 0;
-                                playerHurt[overDamage].Play();
+                                if (PlayerStats.Male)
+                                {
+                                    malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
+                                }
+                                else
+                                {
+                                    femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
+                                }
                             }
                             else if (overDamage <= playerScript.CurrentArmour)
                             {
@@ -709,15 +880,29 @@ public class Enemy : MonoBehaviour
                     if (playerScript.CurrentArmour <= 0 && playerScript.blockDefense == 0 && playerScript.redSpellPurchased == true)
                     {
                         playerScript.CurrentHealth -= enemyDamageDone;
-                        playerHurt[Random.Range(1, playerHurt.Length)].Play();
                         CurrentHealth -= 1;
+                        if (PlayerStats.Male)
+                        {
+                            malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
+                        }
+                        else
+                        {
+                            femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
+                        }
                     }
 
                     //IF PLAYER HAS NO ARMOR AND NO BLOCK SHIELD + PLAYER HAS RED AMULET
                     else if (playerScript.CurrentArmour <= 0 && playerScript.blockDefense == 0 && playerScript.redSpellPurchased == false)
                     {
                         playerScript.CurrentHealth -= enemyDamageDone;
-                        playerHurt[Random.Range(1, playerHurt.Length)].Play();
+                        if (PlayerStats.Male)
+                        {
+                            malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
+                        }
+                        else
+                        {
+                            femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
+                        }
                     }
                     //IF PLAYER HAS ARMOR + NO BLOCK DEFENSE + HAS RED AMULET
                     else if (playerScript.CurrentArmour > 0 && playerScript.blockDefense == 0 && playerScript.redSpellPurchased == true)
@@ -726,9 +911,16 @@ public class Enemy : MonoBehaviour
                         {
                             overDamage = OverallDamage - playerScript.CurrentArmour;
                             playerScript.CurrentHealth -= overDamage;
-                            playerHurt[Random.Range(1, playerHurt.Length)].Play();
                             playerScript.CurrentArmour = 0;
                             CurrentHealth -= 1;
+                            if (PlayerStats.Male)
+                            {
+                                malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
+                            }
+                            else
+                            {
+                                femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
+                            }
                         }
                         else if (OverallDamage <= playerScript.CurrentArmour)
                         {
@@ -742,8 +934,15 @@ public class Enemy : MonoBehaviour
                         {
                             overDamage = OverallDamage - playerScript.CurrentArmour;
                             playerScript.CurrentHealth -= overDamage;
-                            playerHurt[Random.Range(1, playerHurt.Length)].Play();
                             playerScript.CurrentArmour = 0;
+                            if (PlayerStats.Male)
+                            {
+                                malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
+                            }
+                            else
+                            {
+                                femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
+                            }
 
                         }
                         else if (OverallDamage <= playerScript.CurrentArmour)
@@ -758,9 +957,16 @@ public class Enemy : MonoBehaviour
                         {
                             overDamage = OverallDamage - playerScript.blockDefense;
                             playerScript.CurrentHealth -= overDamage;
-                            playerHurt[Random.Range(1, playerHurt.Length)].Play();
                             playerScript.blockDefense = 0;
                             CurrentHealth -= 1;
+                            if (PlayerStats.Male)
+                            {
+                                malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
+                            }
+                            else
+                            {
+                                femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
+                            }
                         }
                         else if (OverallDamage <= playerScript.blockDefense)
                         {
@@ -773,8 +979,15 @@ public class Enemy : MonoBehaviour
                         {
                             overDamage = OverallDamage - playerScript.blockDefense;
                             playerScript.CurrentHealth -= overDamage;
-                            playerHurt[Random.Range(1, playerHurt.Length)].Play();
                             playerScript.blockDefense = 0;
+                            if (PlayerStats.Male)
+                            {
+                                malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
+                            }
+                            else
+                            {
+                                femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
+                            }
                         }
                         else if (OverallDamage <= playerScript.blockDefense)
                         {
@@ -794,8 +1007,15 @@ public class Enemy : MonoBehaviour
                                 overDamage -= playerScript.CurrentArmour;
                                 playerScript.CurrentArmour = 0;
                                 playerScript.CurrentHealth -= overDamage;
-                                playerHurt[Random.Range(1, playerHurt.Length)].Play();
                                 CurrentHealth -= 1;
+                                if (PlayerStats.Male)
+                                {
+                                    malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
+                                }
+                                else
+                                {
+                                    femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
+                                }
                             }
                             else if (overDamage <= playerScript.CurrentArmour)
                             {
@@ -819,7 +1039,15 @@ public class Enemy : MonoBehaviour
                             {
                                 overDamage -= playerScript.CurrentArmour;
                                 playerScript.CurrentArmour = 0;
-                                playerHurt[overDamage].Play();
+                                if (PlayerStats.Male)
+                                if (PlayerStats.Male)
+                                {
+                                    malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
+                                }
+                                else
+                                {
+                                    femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
+                                }
                             }
                             else if (overDamage <= playerScript.CurrentArmour)
                             {
