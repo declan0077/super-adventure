@@ -157,8 +157,23 @@ public class Player : MonoBehaviour
             Spell.GetComponent<SpriteRenderer>().sprite = spell3;
             greenSpellPurchased = true;
         }
-        
-        
+    /*    if (PlayerStats.ArmourLevel == 1)
+        {
+            Spell.GetComponent<SpriteRenderer>().sprite = spell1;
+         
+        }
+        if (PlayerStats.ArmourLevel == 2)
+        {
+            Spell.GetComponent<SpriteRenderer>().sprite = spell2;
+
+        }
+        if (PlayerStats.ArmourLevel == 3)
+        {
+            Spell.GetComponent<SpriteRenderer>().sprite = spell3;
+
+        }
+    */
+
     }
 
     // Update is called once per frame

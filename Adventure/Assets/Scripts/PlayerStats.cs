@@ -12,6 +12,7 @@ public class PlayerStats : MonoBehaviour
     static public int statupgrade = 0;
     static public bool Levelup = false;
     static public int ShieldLevel;
+    static public int ArmourLevel;
     static public int SwordLevel;
     static public int SpellLevel;
     //Checks if the player has seen the goblin storyline
