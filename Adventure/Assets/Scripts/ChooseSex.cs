@@ -1,3 +1,5 @@
+//Script Created and Owned by Dane Donaldson
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,34 +7,24 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 public class ChooseSex : MonoBehaviour, IPointerClickHandler
 {
+
+
+    //Bools
     public bool isMale = false;
 
   
-
+    //GameObjects
     public GameObject maleFaceBorder;
     public GameObject femaleFaceBorder;
 
+    //Audio
     public AudioSource clickSound;
 
+
+    //UI
     public Button confirmButton;
 
 
-
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-      
-    }
-
-
-    void Update()
-    {
-       
-    }
-
-    // Update is called once per frame
 
     public void OnPointerClick(PointerEventData pointerEventData)
     {

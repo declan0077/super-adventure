@@ -1,3 +1,5 @@
+//Script Created and Owned by Dane Donaldson
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,31 +12,24 @@ public class MainMenu : MonoBehaviour
     public GameObject playerName;
     public GameObject menuButtons;
     public GameObject playerGender;
-    public Button confirmPlayerName;
-    public InputField userInput;
     public GameObject credits;
 
-    public GameObject gameTitle;
-    public GameObject menuBackground;
+    //UI Buttons + Input Fields
+    public Button confirmPlayerName;
+    public InputField userInput;
 
+    //Strings
     public static string playersName;
-
-    public ChooseSex genderScript;
-
     public string[] maleNames;
     public string[] femaleNames;
- 
+    
+    //Other Scripts
+    public ChooseSex genderScript;
 
-    // Start is called before the first frame update
+
     void Start()
     {
         confirmPlayerName.onClick.AddListener(PlayGame);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void PlayGame()
@@ -53,8 +48,6 @@ public class MainMenu : MonoBehaviour
         playerName.SetActive(false);
         playerGender.SetActive(false);
         menuButtons.SetActive(true);
-        menuBackground.SetActive(true);
-        gameTitle.SetActive(true);
         credits.SetActive(false);
     }
 
@@ -62,18 +55,15 @@ public class MainMenu : MonoBehaviour
     {
         playerName.SetActive(true);
         playerGender.SetActive(false);
-      
     }
     
     public void CharacterGender()
     {
         playerGender.SetActive(true);
         menuButtons.SetActive(false);
-        menuBackground.SetActive(false);
-        gameTitle.SetActive(false);
-       
     }
 
+    //Randomize Name Function
     public void RandomName()
     {
         if (genderScript.isMale)
@@ -91,6 +81,5 @@ public class MainMenu : MonoBehaviour
     {
         credits.SetActive(true);
     }
-
 
     }

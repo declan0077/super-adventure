@@ -1,3 +1,5 @@
+//Script Created and Owned by Declan Cullen
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

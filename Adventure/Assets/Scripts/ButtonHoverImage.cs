@@ -1,3 +1,5 @@
+//Script Created and Owned by Dane Donaldson
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
