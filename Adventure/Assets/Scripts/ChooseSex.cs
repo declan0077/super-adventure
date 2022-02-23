@@ -16,6 +16,8 @@ public class ChooseSex : MonoBehaviour, IPointerClickHandler
     //GameObjects
     public GameObject maleFaceBorder;
     public GameObject femaleFaceBorder;
+    public GameObject maleExampleSprite;
+    public GameObject femaleExampleSprite;
 
     //Audio
     public AudioSource clickSound;
@@ -42,6 +44,8 @@ public class ChooseSex : MonoBehaviour, IPointerClickHandler
             PlayerStats.Male = true;
             maleGreeting.Play();
             femaleGreeting.Stop();
+            maleExampleSprite.SetActive(true);
+            femaleExampleSprite.SetActive(false);
         }
         else if(pointerEventData.pointerCurrentRaycast.gameObject.name == "FemaleImg")
         {
@@ -53,6 +57,8 @@ public class ChooseSex : MonoBehaviour, IPointerClickHandler
             PlayerStats.Male = false;
             femaleGreeting.Play();
             maleGreeting.Stop();
+            femaleExampleSprite.SetActive(true);
+            maleExampleSprite.SetActive(false);
 
         }
 

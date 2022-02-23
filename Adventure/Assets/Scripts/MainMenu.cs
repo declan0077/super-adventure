@@ -13,6 +13,7 @@ public class MainMenu : MonoBehaviour
     public GameObject menuButtons;
     public GameObject playerGender;
     public GameObject credits;
+    public GameObject playerPreview;
 
     //UI Buttons + Input Fields
     public Button confirmPlayerName;
@@ -49,6 +50,7 @@ public class MainMenu : MonoBehaviour
         playerGender.SetActive(false);
         menuButtons.SetActive(true);
         credits.SetActive(false);
+        playerPreview.SetActive(false);
     }
 
     public void ChooseName()
@@ -61,6 +63,8 @@ public class MainMenu : MonoBehaviour
     {
         playerGender.SetActive(true);
         menuButtons.SetActive(false);
+        credits.SetActive(false);
+        playerPreview.SetActive(true);
     }
 
     //Randomize Name Function
