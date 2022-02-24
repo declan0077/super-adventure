@@ -19,21 +19,18 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject playerChoiceUI;
 
     public GameObject abilityTutorial;
-
+    public bool tutorialActive = false;
 
     // Update is called once per frame
     void Update()
     {
         //Fire2 = left alt
-        if (Input.GetButton("Fire2"))
+        if (Input.GetKeyDown(KeyCode.T))
         {
-            abilityTutorial.SetActive(true);
-        }
-        else
-        {
-            abilityTutorial.SetActive(false);
+            ShowTutorial();
         }
 
+     
         if (playerTurn && !enemyTurn)
         {
             p_turnText.enabled = true;
@@ -50,6 +47,20 @@ public class GameManager : MonoBehaviour
         {
             p_turnText.enabled = false;
             e_turnText.enabled = false;
+        }
+    }
+
+    public void ShowTutorial()
+    {
+        if (!tutorialActive)
+        {
+            abilityTutorial.SetActive(true);
+            tutorialActive = true;
+        }
+        else if (tutorialActive)
+        {
+            abilityTutorial.SetActive(false);
+            tutorialActive = false;
         }
     }
 }

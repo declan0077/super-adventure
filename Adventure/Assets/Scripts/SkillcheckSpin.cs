@@ -10,10 +10,7 @@ public class SkillcheckSpin : MonoBehaviour
     public Player playerScript;
     public Enemy enemyScript;
     public GameObject blockSkillcheck;
-     void Start()
-    {
-     
-    }
+ 
     // Update is called once per frame
     void Update()
     {
@@ -24,16 +21,13 @@ public class SkillcheckSpin : MonoBehaviour
         {
             if (onSuccessArea)
             {
-                playerScript.blockDefense += 1;
-                StopCoroutine(FalseYap());
-                StartCoroutine(FalseYap());
+                playerScript.HitRangedAttack();
+                Debug.Log("Success!");
             }
             else
             {
-             
-               
-                StopCoroutine(FalseYap());
-                StartCoroutine(FalseYap());
+                playerScript.MissRangedAttack();
+                Debug.Log("Missed!");
 
             }
             flipflop = !flipflop;
@@ -42,27 +36,5 @@ public class SkillcheckSpin : MonoBehaviour
        
   
     }
-    public void stop()
-    {
-        StartCoroutine(Stop());
-    }
-   public IEnumerator Stop()
-    {
-        //yield on a new YieldInstruction that waits for 1 seconds.
-        yield return new WaitForSeconds(1);
-        new WaitForSeconds(1);
-        enemyScript.enemyChosenMove = true;
-        playerScript.playerChosenMove = false;
-        enemyScript.Blockdamage();
-        blockSkillcheck.SetActive(false);
-
-    }
-    private IEnumerator FalseYap()
-    {
-        yield return new WaitForSeconds(0.1f);
-        enemyScript.enemyChosenMove = true;
-        playerScript.playerChosenMove = false;
-        blockSkillcheck.SetActive(false);
-        playerScript.blockActive = false;
-    }
+   
 }

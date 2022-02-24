@@ -1156,8 +1156,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1975230847}
-        m_TargetAssemblyTypeName: PlayerStats, Assembly-CSharp
+      - m_Target: {fileID: 1975230848}
+        m_TargetAssemblyTypeName: PlayerTraits, Assembly-CSharp
         m_MethodName: CarefulTraitSelected
         m_Mode: 1
         m_Arguments:
@@ -1688,8 +1688,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1975230847}
-        m_TargetAssemblyTypeName: PlayerStats, Assembly-CSharp
+      - m_Target: {fileID: 1975230848}
+        m_TargetAssemblyTypeName: PlayerTraits, Assembly-CSharp
         m_MethodName: LazyTraitSelected
         m_Mode: 1
         m_Arguments:
@@ -4222,8 +4222,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1975230847}
-        m_TargetAssemblyTypeName: PlayerStats, Assembly-CSharp
+      - m_Target: {fileID: 1975230848}
+        m_TargetAssemblyTypeName: PlayerTraits, Assembly-CSharp
         m_MethodName: CarelessTraitSelected
         m_Mode: 1
         m_Arguments:
@@ -4355,8 +4355,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1975230847}
-        m_TargetAssemblyTypeName: PlayerStats, Assembly-CSharp
+      - m_Target: {fileID: 1975230848}
+        m_TargetAssemblyTypeName: PlayerTraits, Assembly-CSharp
         m_MethodName: ClumsyTraitSelected
         m_Mode: 1
         m_Arguments:
@@ -6164,8 +6164,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1975230847}
-        m_TargetAssemblyTypeName: PlayerStats, Assembly-CSharp
+      - m_Target: {fileID: 1975230848}
+        m_TargetAssemblyTypeName: PlayerTraits, Assembly-CSharp
         m_MethodName: CharmingTraitSelected
         m_Mode: 1
         m_Arguments:
@@ -6397,7 +6397,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1003258963
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7703,8 +7703,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1975230847}
-        m_TargetAssemblyTypeName: PlayerStats, Assembly-CSharp
+      - m_Target: {fileID: 1975230848}
+        m_TargetAssemblyTypeName: PlayerTraits, Assembly-CSharp
         m_MethodName: AfraidTraitSelected
         m_Mode: 1
         m_Arguments:
@@ -9819,8 +9819,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1975230847}
-        m_TargetAssemblyTypeName: PlayerStats, Assembly-CSharp
+      - m_Target: {fileID: 1975230848}
+        m_TargetAssemblyTypeName: PlayerTraits, Assembly-CSharp
         m_MethodName: AdaptiveTraitSelected
         m_Mode: 1
         m_Arguments:
@@ -9952,8 +9952,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1975230847}
-        m_TargetAssemblyTypeName: PlayerStats, Assembly-CSharp
+      - m_Target: {fileID: 1975230848}
+        m_TargetAssemblyTypeName: PlayerTraits, Assembly-CSharp
         m_MethodName: IntelligentTraitSelected
         m_Mode: 1
         m_Arguments:
@@ -10264,8 +10264,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1975230847}
-        m_TargetAssemblyTypeName: PlayerStats, Assembly-CSharp
+      - m_Target: {fileID: 1975230848}
+        m_TargetAssemblyTypeName: PlayerTraits, Assembly-CSharp
         m_MethodName: ToughTraitSelected
         m_Mode: 1
         m_Arguments:
@@ -11015,7 +11015,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1725773935
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11763,8 +11763,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1975230847}
-        m_TargetAssemblyTypeName: PlayerStats, Assembly-CSharp
+      - m_Target: {fileID: 1975230848}
+        m_TargetAssemblyTypeName: PlayerTraits, Assembly-CSharp
         m_MethodName: ArrogantTraitSelected
         m_Mode: 1
         m_Arguments:
@@ -12134,8 +12134,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1975230847}
-        m_TargetAssemblyTypeName: PlayerStats, Assembly-CSharp
+      - m_Target: {fileID: 1975230848}
+        m_TargetAssemblyTypeName: PlayerTraits, Assembly-CSharp
         m_MethodName: SelfishTraitSelected
         m_Mode: 1
         m_Arguments:
@@ -12505,6 +12505,7 @@ GameObject:
   - component: {fileID: 1975230841}
   - component: {fileID: 1975230840}
   - component: {fileID: 1975230844}
+  - component: {fileID: 1975230848}
   - component: {fileID: 1975230845}
   - component: {fileID: 1975230847}
   m_Layer: 5
@@ -12691,6 +12692,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8ab36a4f71c337418ddc2b9c1afb24e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1975230848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1975230839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb4e2184dd27edb4090c12e3626e1395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   goodTraitsChosen: 0
@@ -13242,8 +13255,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1975230847}
-        m_TargetAssemblyTypeName: PlayerStats, Assembly-CSharp
+      - m_Target: {fileID: 1975230848}
+        m_TargetAssemblyTypeName: PlayerTraits, Assembly-CSharp
         m_MethodName: FearlessTraitSelected
         m_Mode: 1
         m_Arguments:

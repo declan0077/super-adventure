@@ -61,6 +61,7 @@
     <Compile Include="Assets\Scripts\ButtonHoverImage.cs" />
     <Compile Include="Assets\Scripts\Wallpaper.cs" />
     <Compile Include="Assets\Scripts\PlayerStats.cs" />
+    <Compile Include="Assets\SkillCheckLuck.cs" />
     <Compile Include="Assets\Scripts\TalkingScript5.cs" />
     <Compile Include="Assets\Public Assets\MeleeWeaponTrail\Scripts\MeleeWeaponTrail.cs" />
     <Compile Include="Assets\Scripts\Gamba.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Assets\Scripts\RPS_Input.cs" />
     <Compile Include="Assets\Scripts\ItemAboutDialogue.cs" />
     <Compile Include="Assets\Scripts\ShopUI.cs" />
+    <Compile Include="Assets\Bullet.cs" />
     <Compile Include="Assets\Scripts\TalkingScript.cs" />
     <Compile Include="Assets\Scripts\ShopDisplayNumbers.cs" />
     <Compile Include="Assets\Scripts\ChangeCursor.cs" />
@@ -107,8 +109,8 @@
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\SkillcheckHit.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
-    <Compile Include="Assets\Bullet.cs" />
-    <Compile Include="Assets\SkillCheckLuck.cs" />
+    <Compile Include="Assets\PlayerTraits.cs" />
+    <Compile Include="Assets\Previews.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

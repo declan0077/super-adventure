@@ -6,6 +6,9 @@ using TMPro;
 using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
+    public GameObject meleeAttack;
+    public GameObject rangedAttack;
+
     public GameObject Bullet;
     public GameObject FirePoint;
     //MaxHealth of the Player. Default starting number is 20
@@ -49,7 +52,8 @@ public class Player : MonoBehaviour
     public Sprite spell2;
     public Sprite spell3;
     //Reference to The skill check system Used for attacking
-    public GameObject SkillCheck;
+    public GameObject AttackingSkillCheck;
+    public GameObject rangedAttackSkillcheck;
      int randomchance;
 
     //Block Defense Value
@@ -181,7 +185,24 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(PlayerStats.GoblinsKilled == 3 && PlayerStats.GoblinScene == false)
+        //Checks to make sure if Ranged Attack needs to switch to Melee Attack
+        RaycastHit2D Hit = Physics2D.Raycast(Body.transform.position, Body.transform.right, 1.5f);
+        if (Hit.collider != null && Hit.collider.tag == "Enemy")
+        {
+            meleeAttack.SetActive(true);
+            rangedAttack.SetActive(false);
+        }
+        else
+        {
+            meleeAttack.SetActive(false);
+            rangedAttack.SetActive(true);
+        }
+
+        
+
+
+        //Checks player progress, loads story if player is ready for next level
+        if (PlayerStats.GoblinsKilled == 3 && PlayerStats.GoblinScene == false)
         {
             SceneManager.LoadScene("Story2");
         }
@@ -236,14 +257,33 @@ public class Player : MonoBehaviour
     {
         if (!playerChosenMove)
         {
-            //Stops the player from being able to spam moves in a single turn
-            Animator.Play("Throw");
             playerChosenMove = true;
-            Instantiate(Bullet, FirePoint.transform.position, FirePoint.transform.rotation);
-            StartCoroutine(AttackAction());
-            StartCoroutine(AnimtionRestart());
+            Debug.Log("Player Chooses RangedAttack");
+            Animator.Play("ReadyPlayer");
+            attacking = true;
+            rangedAttackSkillcheck.SetActive(true);
         }
     }
+    //Function called when Ranged skillcheck is succesfully hit.
+    public void HitRangedAttack()
+    {
+        Instantiate(Bullet, FirePoint.transform.position, FirePoint.transform.rotation);
+        rangedAttackSkillcheck.SetActive(false);
+        StartCoroutine(AttackAction());
+        StartCoroutine(AnimtionRestart());
+    }
+    //Function called when Ranged skillcheck is missed.
+    public void MissRangedAttack()
+    {
+        rangedAttackSkillcheck.SetActive(false);
+        StartCoroutine(AttackAction());
+        StartCoroutine(AnimtionRestart());
+
+    }
+
+
+
+
     public void Attack()
     {
         if (!playerChosenMove)
@@ -267,7 +307,7 @@ public class Player : MonoBehaviour
             if (Hit.collider != null && Hit.collider.tag == "Enemy")
             {
 
-                SkillCheck.SetActive(true);
+                AttackingSkillCheck.SetActive(true);
 
             }
             else if (Hit.collider == null)
@@ -707,11 +747,10 @@ public class Player : MonoBehaviour
         StartCoroutine(HurtFlash());
     }
 
-    IEnumerator AttackAction()
+   public IEnumerator AttackAction()
     {
-
         //yield on a new YieldInstruction that waits for 2 seconds.
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
         Debug.Log("PlayersTurnOver");
 
         //Swaps turns after the Attack is done by the player
@@ -724,13 +763,12 @@ public class Player : MonoBehaviour
         weaponEffectScript.Emit = false;
 
     }
-    IEnumerator AnimtionRestart()
+    public IEnumerator AnimtionRestart()
     {
 
         //yield on a new YieldInstruction that waits for 1 seconds.
         yield return new WaitForSeconds(1);
         new WaitForSeconds(1);
-
         Animator.Play("PlayerCharacter");
         Blood.Stop();
     }
