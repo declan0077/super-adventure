@@ -168,11 +168,11 @@ public class EncounterBuilder : MonoBehaviour
 
         Riddles[] riddleList = new Riddles[5];
 
-        riddleList[0] = new Riddles("Question", "Right Answer", "Wrong Answer");
-        riddleList[1] = new Riddles("Question", "Right Answer", "Wrong Answer");
-        riddleList[2] = new Riddles("Question", "Right Answer", "Wrong Answer");
-        riddleList[3] = new Riddles("Question", "Right Answer", "Wrong Answer");
-        riddleList[4] = new Riddles("Question", "Right Answer", "Wrong Answer");
+        riddleList[0] = new Riddles("What's the name of a knight's body armor that covers the foot", "Sabaton ", "Chausses");
+        riddleList[1] = new Riddles("What was king arthur's sword called", "Excalibur", "Galatine");
+        riddleList[2] = new Riddles("What was Fergus mac Róich sword called", "Caladbolg", "Gáe Bulg");
+        riddleList[3] = new Riddles("What was king Charlemagne sword called", "Joyeuse", "Curtana");
+        riddleList[4] = new Riddles("Where did Oisín go", "Tir na nÓg", "Dubnos");
 
          randomRiddleNumber = Random.Range(1, 5);
 
