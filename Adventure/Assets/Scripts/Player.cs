@@ -6,6 +6,8 @@ using TMPro;
 using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
+    public GameObject Bullet;
+    public GameObject FirePoint;
     //MaxHealth of the Player. Default starting number is 20
     private int MaxHealth = 20;
     //The current Health of the player
@@ -230,7 +232,18 @@ public class Player : MonoBehaviour
         }
       
     }
-
+    public void Fire()
+    {
+        if (!playerChosenMove)
+        {
+            //Stops the player from being able to spam moves in a single turn
+            Animator.Play("Throw");
+            playerChosenMove = true;
+            Instantiate(Bullet, FirePoint.transform.position, FirePoint.transform.rotation);
+            StartCoroutine(AttackAction());
+            StartCoroutine(AnimtionRestart());
+        }
+    }
     public void Attack()
     {
         if (!playerChosenMove)

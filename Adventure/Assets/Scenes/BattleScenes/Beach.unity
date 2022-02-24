@@ -16399,18 +16399,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!114 &1000266919
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4309069086749794363}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8ab36a4f71c337418ddc2b9c1afb24e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1009643826
 GameObject:
   m_ObjectHideFlags: 0
@@ -27167,7 +27155,6 @@ GameObject:
   - component: {fileID: 1000266917}
   - component: {fileID: 1000266916}
   - component: {fileID: 1000266912}
-  - component: {fileID: 1000266919}
   m_Layer: 0
   m_Name: PlayerCharacter
   m_TagString: Player
