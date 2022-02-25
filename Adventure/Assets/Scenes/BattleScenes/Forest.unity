@@ -13352,7 +13352,7 @@ MonoBehaviour:
   ExtraDamage: 0
   Sword1: {fileID: 21300000, guid: 27b9bdcdc46628540a72f85a786417e8, type: 3}
   Sword2: {fileID: 21300000, guid: 8b99079ecf9cc2c48992bd3e959d6b2c, type: 3}
-  Sword3: {fileID: 21300000, guid: 3c09d8c96b12f7c4ea125b8844d16ef8, type: 3}
+  Sword3: {fileID: 21300000, guid: 69b87d9ec6e317f48a43e1d7326478ef, type: 3}
   Spell: {fileID: 1629263778}
   spell1: {fileID: 21300000, guid: 0d58d9a31d8dbb9409c7865b5812fcbb, type: 3}
   spell2: {fileID: 21300000, guid: 4084b20e0771c2244bb1103e1cd891cf, type: 3}
