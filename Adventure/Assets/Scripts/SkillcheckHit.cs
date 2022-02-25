@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class SkillcheckHit : MonoBehaviour
 {
+
+    SkillcheckSpin based;
     // Start is called before the first frame update
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Arrow"))
         {
 
+            SkillcheckSpin based = collision.GetComponent<SkillcheckSpin>();
             collision.gameObject.GetComponentInParent<SkillcheckSpin>().onSuccessArea = true;
 
         }
@@ -18,8 +21,10 @@ public class SkillcheckHit : MonoBehaviour
 
         }
     }
+
     public void OnTriggerExit2D(Collider2D collision)
-    {  
-            collision.gameObject.GetComponentInParent<SkillcheckSpin>().onSuccessArea = false;
+    {
+
+        based.gameObject.GetComponentInParent<SkillcheckSpin>().onSuccessArea = false;
     }
 }

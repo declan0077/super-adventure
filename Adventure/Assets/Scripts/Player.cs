@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     private int MaxHealth = 20;
     //The current Health of the player
     public int CurrentHealth;
- 
+
     private int Movementspeed;
     //Max damage the player can deal
     public int MaxDamage;
@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
     //Reference to The skill check system Used for attacking
     public GameObject AttackingSkillCheck;
     public GameObject rangedAttackSkillcheck;
-     int randomchance;
+    int randomchance;
 
     //Block Defense Value
     public int blockDefense = 0;
@@ -100,25 +100,25 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      
+
         PlayerStats.ArmourAmount = CurrentArmour;
         CurrentArmour = MaxArmour;
         MaxHealth = MaxHealth + PlayerStats.Constitution;
         CurrentHealth = MaxHealth;
-        
-      
+
+
         Healthbar.Setmaxhealth(MaxHealth);
         Healthbar.UpdateText(CurrentHealth);
         ArmourBar.UpdateText(CurrentArmour);
         ArmourBar.SetmaxArmour(MaxArmour);
-   
+
         Blood.Stop();
         //Sword sprite change
         if (PlayerStats.SwordLevel == 1)
         {
             Sword.GetComponent<SpriteRenderer>().sprite = Sword1;
-          
-           
+
+
         }
         if (PlayerStats.SwordLevel == 2)
         {
@@ -128,7 +128,7 @@ public class Player : MonoBehaviour
         if (PlayerStats.SwordLevel == 3)
         {
             Sword.GetComponent<SpriteRenderer>().sprite = Sword3;
-         
+
             ExtraDamage = 10;
         }
         //Shield sprite change
@@ -163,22 +163,22 @@ public class Player : MonoBehaviour
             Spell.GetComponent<SpriteRenderer>().sprite = spell3;
             greenSpellPurchased = true;
         }
-    /*    if (PlayerStats.ArmourLevel == 1)
-        {
-            Spell.GetComponent<SpriteRenderer>().sprite = spell1;
-         
-        }
-        if (PlayerStats.ArmourLevel == 2)
-        {
-            Spell.GetComponent<SpriteRenderer>().sprite = spell2;
+        /*    if (PlayerStats.ArmourLevel == 1)
+            {
+                Spell.GetComponent<SpriteRenderer>().sprite = spell1;
 
-        }
-        if (PlayerStats.ArmourLevel == 3)
-        {
-            Spell.GetComponent<SpriteRenderer>().sprite = spell3;
+            }
+            if (PlayerStats.ArmourLevel == 2)
+            {
+                Spell.GetComponent<SpriteRenderer>().sprite = spell2;
 
-        }
-    */
+            }
+            if (PlayerStats.ArmourLevel == 3)
+            {
+                Spell.GetComponent<SpriteRenderer>().sprite = spell3;
+
+            }
+        */
 
     }
 
@@ -198,7 +198,7 @@ public class Player : MonoBehaviour
             rangedAttack.SetActive(true);
         }
 
-        
+
 
 
         //Checks player progress, loads story if player is ready for next level
@@ -206,7 +206,7 @@ public class Player : MonoBehaviour
         {
             SceneManager.LoadScene("Story2");
         }
-        if (PlayerStats.SkeletonKilled == 3 &&  PlayerStats.SkeletonScene == false)
+        if (PlayerStats.SkeletonKilled == 3 && PlayerStats.SkeletonScene == false)
         {
             SceneManager.LoadScene("Story3");
         }
@@ -214,7 +214,7 @@ public class Player : MonoBehaviour
         {
             SceneManager.LoadScene("Story4");
         }
-        if(PlayerStats.BigEdDead == true)
+        if (PlayerStats.BigEdDead == true)
         {
             SceneManager.LoadScene("Story5");
         }
@@ -227,7 +227,7 @@ public class Player : MonoBehaviour
         ArmourBar.UpdateText(CurrentArmour);
         MaxDamage = 4;
         MinimumDamage = 1;
-       
+
         Movementspeed = 3;
 
         Debug.DrawLine(Body.transform.position, Body.transform.position + Body.transform.right, Color.blue);
@@ -236,22 +236,22 @@ public class Player : MonoBehaviour
 
 
         //Disables the block defense UI if not needed
-        if(blockDefense <= 0)
+        if (blockDefense <= 0)
         {
             blockDefenseIcon.SetActive(false);
             //Setting it back to 0 allows you to reactivate shield without having to work you way up from negative number
             blockDefense = 0;
         }
 
-        if(blockDefense >= 1)
+        if (blockDefense >= 1)
         {
             blockDefenseIcon.SetActive(true);
         }
-        if(CurrentHealth <= 0)
+        if (CurrentHealth <= 0)
         {
             SceneManager.LoadScene("DeathScene");
         }
-      
+
     }
     public void Fire()
     {
@@ -259,7 +259,8 @@ public class Player : MonoBehaviour
         {
             playerChosenMove = true;
             Debug.Log("Player Chooses RangedAttack");
-            Animator.Play("ReadyPlayer");
+            Animator.Play("ThrowHold");
+
             attacking = true;
             rangedAttackSkillcheck.SetActive(true);
         }
@@ -268,17 +269,18 @@ public class Player : MonoBehaviour
     public void HitRangedAttack()
     {
         Instantiate(Bullet, FirePoint.transform.position, FirePoint.transform.rotation);
-        rangedAttackSkillcheck.SetActive(false);
         StartCoroutine(AttackAction());
         StartCoroutine(AnimtionRestart());
+        StartCoroutine(RangeDelay());
+       
     }
     //Function called when Ranged skillcheck is missed.
     public void MissRangedAttack()
     {
-        rangedAttackSkillcheck.SetActive(false);
+
         StartCoroutine(AttackAction());
         StartCoroutine(AnimtionRestart());
-
+        StartCoroutine(RangeDelay());
     }
 
 
@@ -315,12 +317,12 @@ public class Player : MonoBehaviour
             {
                 Animator.Play("Attack");
                 MissAttack();
-               
+
             }
 
         }
 
-       
+
     }
     public void MissAttack()
     {
@@ -348,21 +350,21 @@ public class Player : MonoBehaviour
     }
     public void normalattack()
     {
-        
+
         int playerDamageDone = Random.Range(MinimumDamage, MaxDamage);
         int OverallDamage = PlayerStats.Strength + playerDamageDone + ExtraDamage;
         int overDamage = 0;
 
         //Current Armor = Shield Defense
         //Block Defense = Shield gained from Blocking
-        
+
         //IF ENEMY HAS NO ARMOR AND NO BLOCK SHIELD + PLAYER HAS GREEN AMULET
         if (enemyScript.CurrentArmour <= 0 && enemyScript.blockDefense <= 0 && greenSpellPurchased)
         {
             enemyScript.CurrentHealth -= OverallDamage;
             CurrentHealth += leech;
         }
-       
+
         //IF ENEMY HAS NO ARMOR + NO BLOCK SHIELD + PLAYER HAS NO GREEN AMULET
         else if (enemyScript.CurrentArmour <= 0 && enemyScript.blockDefense <= 0 && !greenSpellPurchased)
         {
@@ -371,14 +373,14 @@ public class Player : MonoBehaviour
         //IF ENEMY HAS ARMOR + NO BLOCK SHIELD + PLAYER HAS GREEN AMULET
         else if (enemyScript.CurrentArmour > 0 && enemyScript.blockDefense == 0 && greenSpellPurchased)
         {
-            if(OverallDamage > enemyScript.blockDefense)
+            if (OverallDamage > enemyScript.blockDefense)
             {
                 overDamage = OverallDamage - enemyScript.blockDefense;
                 enemyScript.CurrentHealth -= overDamage;
                 enemyScript.CurrentArmour = 0;
                 CurrentHealth += leech;
             }
-            else if(OverallDamage < enemyScript.blockDefense)
+            else if (OverallDamage < enemyScript.blockDefense)
             {
                 enemyScript.blockDefense -= OverallDamage;
             }
@@ -398,16 +400,16 @@ public class Player : MonoBehaviour
             }
         }
         //IF ENEMY HAS NO ARMOR + BLOCK SHIELD + PLAYER HAS GREEN AMULET
-        else if(enemyScript.CurrentArmour == 0 && enemyScript.blockDefense > 0 && greenSpellPurchased)
+        else if (enemyScript.CurrentArmour == 0 && enemyScript.blockDefense > 0 && greenSpellPurchased)
         {
-            if(OverallDamage > enemyScript.blockDefense)
+            if (OverallDamage > enemyScript.blockDefense)
             {
                 overDamage = OverallDamage - enemyScript.blockDefense;
                 enemyScript.CurrentHealth -= overDamage;
                 enemyScript.blockDefense = 0;
                 CurrentHealth += leech;
             }
-            else if(OverallDamage < enemyScript.blockDefense)
+            else if (OverallDamage < enemyScript.blockDefense)
             {
                 enemyScript.blockDefense -= OverallDamage;
             }
@@ -427,25 +429,25 @@ public class Player : MonoBehaviour
             }
         }
         //IF ENEMY HAS ARMOR AND BLOCK SHIELD + PLAYER HAS GREEN AMULET
-        else if(enemyScript.CurrentArmour > 0 && enemyScript.blockDefense > 0 && greenSpellPurchased)
+        else if (enemyScript.CurrentArmour > 0 && enemyScript.blockDefense > 0 && greenSpellPurchased)
         {
-            if(OverallDamage > enemyScript.blockDefense)
+            if (OverallDamage > enemyScript.blockDefense)
             {
                 overDamage = OverallDamage - enemyScript.blockDefense;
                 enemyScript.blockDefense = 0;
-                
-                if(overDamage > enemyScript.CurrentArmour)
+
+                if (overDamage > enemyScript.CurrentArmour)
                 {
-                    overDamage  -= enemyScript.CurrentArmour;
+                    overDamage -= enemyScript.CurrentArmour;
                     enemyScript.CurrentArmour = 0;
                     enemyScript.CurrentHealth -= overDamage;
                     enemyScript.CurrentHealth += leech;
                 }
-                else if(overDamage < enemyScript.CurrentArmour)
+                else if (overDamage < enemyScript.CurrentArmour)
                 {
                     enemyScript.CurrentArmour -= overDamage;
                 }
-                        
+
             }
         }
         //IF ENEMY HAS ARMOR AND BLOCK SHIELD + PLAYER HAS NO GREEN AMULET
@@ -461,7 +463,7 @@ public class Player : MonoBehaviour
                     overDamage -= enemyScript.CurrentArmour;
                     enemyScript.CurrentArmour = 0;
                     enemyScript.CurrentHealth -= overDamage;
-                 
+
                 }
                 else if (overDamage < enemyScript.CurrentArmour)
                 {
@@ -477,7 +479,7 @@ public class Player : MonoBehaviour
         Debug.Log("HitYa");
         enemyScript.Hurt();
         randomchance = Random.Range(1, 3);
-        if(randomchance == 1)
+        if (randomchance == 1)
         {
             Animator.Play("Attack");
             weaponEffectScript.Emit = true;
@@ -488,7 +490,7 @@ public class Player : MonoBehaviour
             Animator.Play("Jumpattack");
             weaponEffectScript.Emit = true;
             StartCoroutine(AttackAction());
-            
+
         }
         else
         {
@@ -496,7 +498,7 @@ public class Player : MonoBehaviour
             weaponEffectScript.Emit = true;
             StartCoroutine(AttackAction());
         }
-      
+
     }
     public void CritAttack()
     {
@@ -624,7 +626,8 @@ public class Player : MonoBehaviour
                     enemyScript.CurrentArmour -= overDamage;
                 }
 
-            }else if(OverallDamage < enemyScript.blockDefense)
+            }
+            else if (OverallDamage < enemyScript.blockDefense)
             {
                 enemyScript.blockDefense -= OverallDamage;
             }
@@ -747,7 +750,7 @@ public class Player : MonoBehaviour
         StartCoroutine(HurtFlash());
     }
 
-   public IEnumerator AttackAction()
+    public IEnumerator AttackAction()
     {
         //yield on a new YieldInstruction that waits for 2 seconds.
         yield return new WaitForSeconds(2);
@@ -782,7 +785,15 @@ public class Player : MonoBehaviour
             sr.material.color = Color.white;
         }
 
+
     }
+    IEnumerator RangeDelay()
+    {
+        //yield on a new YieldInstruction that waits for 0.1 seconds.
+        yield return new WaitForSeconds(0.1f);
+        new WaitForSeconds(0.1f);
+        rangedAttackSkillcheck.SetActive(false);
 
-
+    }
 }
+

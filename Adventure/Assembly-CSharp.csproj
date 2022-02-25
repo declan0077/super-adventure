@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\FlipFace.cs" />
     <Compile Include="Assets\Public Assets\MeleeWeaponTrail\Example\Scripts\LookAtTarget.cs" />
     <Compile Include="Assets\Scripts\Parallax.cs" />
+    <Compile Include="Assets\Previews.cs" />
     <Compile Include="Assets\Scripts\textFade.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\CriticalHit.cs" />
@@ -103,14 +104,13 @@
     <Compile Include="Assets\Scripts\TalkingScript2.cs" />
     <Compile Include="Assets\Scripts\TalkingScript4.cs" />
     <Compile Include="Assets\Scripts\UpdateStats.cs" />
+    <Compile Include="Assets\PlayerTraits.cs" />
     <Compile Include="Assets\Scripts\LevelUp.cs" />
     <Compile Include="Assets\Scripts\GotoTown.cs" />
     <Compile Include="Assets\Scripts\ArmourBar.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\SkillcheckHit.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
-    <Compile Include="Assets\PlayerTraits.cs" />
-    <Compile Include="Assets\Previews.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
