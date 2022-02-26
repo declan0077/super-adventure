@@ -14,6 +14,7 @@ public class MainMenu : MonoBehaviour
     public GameObject playerGender;
     public GameObject credits;
     public GameObject playerPreview;
+    public GameObject traits;
 
     //UI Buttons + Input Fields
     public Button confirmPlayerName;
@@ -28,10 +29,6 @@ public class MainMenu : MonoBehaviour
     public ChooseSex genderScript;
 
 
-    void Start()
-    {
-        confirmPlayerName.onClick.AddListener(PlayGame);
-    }
 
     public void PlayGame()
     {
@@ -51,6 +48,7 @@ public class MainMenu : MonoBehaviour
         menuButtons.SetActive(true);
         credits.SetActive(false);
         playerPreview.SetActive(false);
+        traits.SetActive(false);
     }
 
     public void ChooseName()
@@ -86,4 +84,9 @@ public class MainMenu : MonoBehaviour
         credits.SetActive(true);
     }
 
+    public void ChooseTraits()
+    {
+        traits.SetActive(true);
+       
+    }
     }

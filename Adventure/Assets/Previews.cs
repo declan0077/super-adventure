@@ -39,9 +39,10 @@ public class Previews : MonoBehaviour
     }
     public void MeleePreview()
     {
+        //Melee only works when it's set to false, before being set to true again. Not sure why
         previewBorder.SetActive(true);
+        meleePreview.SetActive(false);
         pushPreview.SetActive(false);
-        meleePreview.SetActive(true);
         rangedPreview.SetActive(false);
         blockPreview.SetActive(false);
         movePreview.SetActive(false);
@@ -50,6 +51,7 @@ public class Previews : MonoBehaviour
         tutorialTitle.text = ("Preview");
         returnButton.SetActive(true);
         previewSelections.SetActive(true);
+        meleePreview.SetActive(true);
     }
     public void RangedPreview()
     {
