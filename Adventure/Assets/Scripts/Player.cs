@@ -7,7 +7,10 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     public GameObject meleeAttack;
+
+    //RangedAttack Properties
     public GameObject rangedAttack;
+
 
     public GameObject Bullet;
     public GameObject FirePoint;
@@ -263,6 +266,7 @@ public class Player : MonoBehaviour
 
             attacking = true;
             rangedAttackSkillcheck.SetActive(true);
+          
         }
     }
     //Function called when Ranged skillcheck is succesfully hit.
@@ -793,6 +797,7 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         new WaitForSeconds(0.1f);
         rangedAttackSkillcheck.SetActive(false);
+    
 
     }
 }

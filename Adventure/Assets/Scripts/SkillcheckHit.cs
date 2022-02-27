@@ -4,33 +4,24 @@ using UnityEngine;
 
 public class SkillcheckHit : MonoBehaviour
 {
+    public SkillcheckSpin successAreaCheck;
 
-    public SkillcheckSpin based;
     // Start is called before the first frame update
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Arrow"))
+        if (collision.gameObject.name == "Dial")
         {
-
-            SkillcheckSpin based = collision.GetComponent<SkillcheckSpin>();
-            collision.gameObject.GetComponentInParent<SkillcheckSpin>().onSuccessArea = true;
-
+            successAreaCheck.onSuccessArea = true;
         }
-        else
-        {
-
-        }
+       
     }
 
     public void OnTriggerExit2D(Collider2D collision)
-    {   if (collision.gameObject.CompareTag("Arrow"))
+    {   if (collision.gameObject.name == "Dial")
         {
 
-            based.gameObject.GetComponentInParent<SkillcheckSpin>().onSuccessArea = false;
+            successAreaCheck.onSuccessArea = false;
         }
-        else
-        {
-
-        }
+       
     }
 }

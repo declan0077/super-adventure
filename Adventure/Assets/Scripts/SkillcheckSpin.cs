@@ -8,7 +8,6 @@ public class SkillcheckSpin : MonoBehaviour
     public bool flipflop;
     public float speed = 10f;
     public Player playerScript;
-    public Enemy enemyScript;
     public GameObject blockSkillcheck;
  
     // Update is called once per frame

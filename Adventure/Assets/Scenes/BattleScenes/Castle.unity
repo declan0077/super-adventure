@@ -1704,7 +1704,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93e71282d985fac44a5a4942ca43b47e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  based: {fileID: 0}
+  successAreaCheck: {fileID: 0}
 --- !u!58 &186452181
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3622,7 +3622,6 @@ MonoBehaviour:
   flipflop: 0
   speed: 370
   playerScript: {fileID: 1000266912}
-  enemyScript: {fileID: 0}
   blockSkillcheck: {fileID: 260830862}
 --- !u!1 &343082329
 GameObject:
@@ -16111,7 +16110,6 @@ MonoBehaviour:
   flipflop: 0
   speed: 370
   playerScript: {fileID: 1000266912}
-  enemyScript: {fileID: 2119342742}
   blockSkillcheck: {fileID: 2057708962}
 --- !u!114 &1248495177
 MonoBehaviour:
@@ -17560,7 +17558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93e71282d985fac44a5a4942ca43b47e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  based: {fileID: 1248495176}
+  successAreaCheck: {fileID: 1248495176}
 --- !u!58 &1330464775
 CircleCollider2D:
   m_ObjectHideFlags: 0

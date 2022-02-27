@@ -6242,7 +6242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93e71282d985fac44a5a4942ca43b47e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  based: {fileID: 0}
+  successAreaCheck: {fileID: 0}
 --- !u!58 &186452181
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7977,7 +7977,6 @@ MonoBehaviour:
   flipflop: 0
   speed: 370
   playerScript: {fileID: 1000266912}
-  enemyScript: {fileID: 0}
   blockSkillcheck: {fileID: 260830862}
 --- !u!1 &343082329
 GameObject:
@@ -11435,7 +11434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93e71282d985fac44a5a4942ca43b47e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  based: {fileID: 1547784985}
+  successAreaCheck: {fileID: 1547784985}
 --- !u!58 &760485837
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -22720,7 +22719,6 @@ MonoBehaviour:
   flipflop: 0
   speed: 370
   playerScript: {fileID: 1000266912}
-  enemyScript: {fileID: 1721099248}
   blockSkillcheck: {fileID: 65904515}
 --- !u!114 &1547784986
 MonoBehaviour:
