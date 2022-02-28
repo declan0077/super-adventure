@@ -5,10 +5,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+using TMPro;
 public class MainMenu : MonoBehaviour
 {
     //UI GameObjects  (Activate and De-activate based on current UI Screen)
+   
     public GameObject playerName;
     public GameObject menuButtons;
     public GameObject playerGender;
@@ -21,6 +22,7 @@ public class MainMenu : MonoBehaviour
     public InputField userInput;
 
     //Strings
+    public TMP_Text playerPreviewName;
     public static string playersName;
     public string[] maleNames;
     public string[] femaleNames;
@@ -28,7 +30,10 @@ public class MainMenu : MonoBehaviour
     //Other Scripts
     public ChooseSex genderScript;
 
-
+    public void Update()
+    {
+        playerPreviewName.text = userInput.text;
+    }
 
     public void PlayGame()
     {

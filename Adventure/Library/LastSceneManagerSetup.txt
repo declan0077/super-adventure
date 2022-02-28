@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/BattleScenes/Beach.unity
+- path: Assets/Scenes/Miscellaneous/Town.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
