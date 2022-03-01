@@ -118,6 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0a60da3cdfaa084eb1d2513b5ae728b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyPosition: {x: 0, y: 0, z: 0}
   speed: 15
   rb: {fileID: 4260979258017263244}
 --- !u!58 &4896754574098884718

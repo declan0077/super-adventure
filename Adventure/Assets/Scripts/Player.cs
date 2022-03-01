@@ -262,7 +262,6 @@ public class Player : MonoBehaviour
         {
             playerChosenMove = true;
             Debug.Log("Player Chooses RangedAttack");
-            Animator.Play("ThrowHold");
 
             attacking = true;
             rangedAttackSkillcheck.SetActive(true);
@@ -273,8 +272,7 @@ public class Player : MonoBehaviour
     public void HitRangedAttack()
     {
         Instantiate(Bullet, FirePoint.transform.position, FirePoint.transform.rotation);
-        StartCoroutine(AttackAction());
-        StartCoroutine(AnimtionRestart());
+      
         StartCoroutine(RangeDelay());
        
     }
@@ -282,8 +280,7 @@ public class Player : MonoBehaviour
     public void MissRangedAttack()
     {
 
-        StartCoroutine(AttackAction());
-        StartCoroutine(AnimtionRestart());
+     
         StartCoroutine(RangeDelay());
     }
 
@@ -797,7 +794,12 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         new WaitForSeconds(0.1f);
         rangedAttackSkillcheck.SetActive(false);
-    
+        //Swaps turns after the Attack is done by the player
+        gameManagerScript.playerTurn = false;
+        gameManagerScript.enemyTurn = true;
+
+        //Changes bool so that the Enemy is able to choose a move for their turn
+        enemyScript.enemyChosenMove = false;
 
     }
 }
