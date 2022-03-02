@@ -25,6 +25,7 @@ public class ButtonHoverImage : MonoBehaviour, IPointerEnterHandler, IPointerExi
     }
        
 
+    //Pointer which detects which Asset the mouse is hovered over
     public void OnPointerEnter(PointerEventData eventData)
     {
         myButton.image.sprite = newSprite; 

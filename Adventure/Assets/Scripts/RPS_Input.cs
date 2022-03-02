@@ -1,3 +1,4 @@
+//script created by Dane Donaldson
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,17 +11,6 @@ public class RPS_Input : MonoBehaviour
     void Awake()
     {
         gameplayController = GetComponent<Gamba>();
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void GetChoice()

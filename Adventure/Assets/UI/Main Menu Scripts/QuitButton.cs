@@ -1,3 +1,4 @@
+//script created by Josh Stafford
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;

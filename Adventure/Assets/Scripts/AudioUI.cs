@@ -1,3 +1,5 @@
+//Script Created and Owned by Dane Donaldson
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +14,7 @@ public class AudioUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Random int used to select random audio from Array
         randSelection = Random.Range(0, 1);
     }
 

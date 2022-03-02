@@ -1,3 +1,4 @@
+//Script created by Dane Donaldson
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,6 +25,8 @@ public class PlayerTraits : MonoBehaviour
     public bool isArrogant = false;
     public bool isSelfish = false;
 
+    //GameObjects
+
     public GameObject isCarefulTickSymbol;
     public GameObject isAdaptiveTickSymbol;
     public GameObject isIntelligentTickSymbol;
@@ -37,7 +40,7 @@ public class PlayerTraits : MonoBehaviour
     public GameObject isArrogantTickSymbol;
     public GameObject isSelfishTickSymbol;
 
-
+    //UI Buttons
     public GameObject confirmButton;
 
 
