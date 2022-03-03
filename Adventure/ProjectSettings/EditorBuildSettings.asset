@@ -12,9 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Miscellaneous/Town.unity
     guid: bf61d39fa3a6c234a9fc44ba105fee59
   - enabled: 1
-    path: Assets/Scenes/BattleScenes/Tutorial.unity
-    guid: 8d1cbf121029e4c4283afba77fb00d08
-  - enabled: 1
     path: Assets/Scenes/BattleScenes/Forest.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1

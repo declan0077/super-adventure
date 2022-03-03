@@ -53,7 +53,6 @@
      <Compile Include="Assets\Scripts\HOL_Input.cs" />
      <Compile Include="Assets\Scripts\NormalHit.cs" />
      <Compile Include="Assets\Scripts\ButtonHoverImage.cs" />
-     <Compile Include="Assets\Scripts\Wallpaper.cs" />
      <Compile Include="Assets\Scripts\PlayerStats.cs" />
      <Compile Include="Assets\Scripts\SkillCheckLuck.cs" />
      <Compile Include="Assets\Scripts\TalkingScript5.cs" />

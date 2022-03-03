@@ -21,7 +21,7 @@ public class FightButton : MonoBehaviour
     {
         if(!tutorialComplete)
         {
-            SceneManager.LoadScene("Tutorial");
+            SceneManager.LoadScene("Forest");
             tutorialComplete = true;
         }
         else if (PlayerStats.Level <= 3 && tutorialComplete)
