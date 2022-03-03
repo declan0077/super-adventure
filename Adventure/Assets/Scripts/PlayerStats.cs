@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    static public int Gold = 10000;
+    static public int Gold = 0;
     static public int XP = 0;
     static public int Level = 1;
     static public int LevelupCost = 50;

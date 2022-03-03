@@ -24506,7 +24506,7 @@ MonoBehaviour:
   MonsterType: 2
   Animator: {fileID: 1721099249}
   enemyChosenMove: 0
-  Blood: {fileID: 19800000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
+  Blood: {fileID: 5080470567510273019, guid: 356e237a774b96048b41633be1c08f25, type: 3}
   Body: {fileID: 1778983957450016513}
   enemyChoice: 0
   ArmourBar: {fileID: 873781862}
@@ -24517,7 +24517,7 @@ MonoBehaviour:
   blockDefenseValue: {fileID: 1901889574}
   damagePopupTextScript: {fileID: 1514604981}
   playerDamageUI: {fileID: 1276922785}
-  blockSkillCheck: {fileID: 0}
+  blockSkillCheck: {fileID: 260830862}
   blockSkillScript: {fileID: 342649175}
   randomSound: 0
   weaponEffectScript: {fileID: 8846469824521568189}
