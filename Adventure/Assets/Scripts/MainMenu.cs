@@ -43,6 +43,7 @@ public class MainMenu : MonoBehaviour
 
     public void Quit()
     {
+        //Exits the game
         Application.Quit();
     }
 
