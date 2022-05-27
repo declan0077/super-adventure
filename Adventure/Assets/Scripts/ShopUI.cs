@@ -11,27 +11,31 @@ public class ShopUI : MonoBehaviour
     public GameObject ShieldShop;
     public GameObject SpellShop;
     public GameObject ShopBody;
+
  
 
-    //What to do when Shields pressed
+    //Show Armory
     public void Shield()
     {
+      
         ShieldShop.SetActive(true);
         SwordShop.SetActive(false);
         SpellShop.SetActive(false);
         ShopBody.SetActive(true);
     }
-    //What to do when Swords pressed
+    //Show Blacksmith
     public void Sword()
     {
+       
         ShieldShop.SetActive(false);
         SwordShop.SetActive(true);
         SpellShop.SetActive(false);
         ShopBody.SetActive(true);
     }
-    //What to do when magic pressed
+    //Show Enchanter
     public void Magic()
     {
+      
         ShieldShop.SetActive(false);
         SwordShop.SetActive(false);
         SpellShop.SetActive(true);

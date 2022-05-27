@@ -21948,6 +21948,7 @@ GameObject:
   - component: {fileID: 1353722008}
   - component: {fileID: 1353722010}
   - component: {fileID: 1353722007}
+  - component: {fileID: 1353722011}
   m_Layer: 5
   m_Name: Push
   m_TagString: Untagged
@@ -22095,6 +22096,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursor: {fileID: 2800000, guid: 0f45821c9378469498c0044ff9068ea2, type: 3}
+--- !u!95 &1353722011
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1353722005}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2dad492b46435564e899064054db0a93, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1366380308
 GameObject:
   m_ObjectHideFlags: 0
@@ -30109,6 +30129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b87c6994000495449b4379eb92b0093, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  statHolder: {fileID: 11400000, guid: 9b6f9155f5bad134ba67a5d6d257ab57, type: 2}
   MaxHealth: 20
   CurrentHealth: 0
   JumpPower: 0

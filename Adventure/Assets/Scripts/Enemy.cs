@@ -1,5 +1,6 @@
 //script created by Dane Donaldson and Declan Cullen
 
+//script Formatted by Dane Donaldson on 27-05-22
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,9 @@ using TMPro;
 using UnityEngine.SceneManagement;
 public class Enemy : MonoBehaviour
 {
+
+    public EnemyStatHolder statHolder;
+    
     //MaxHealth of the Player. Default starting number is 20
     public int MaxHealth = 0;
     public int CurrentHealth;
@@ -83,83 +87,34 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+               //Primary Stats
+                enemyDamageDone = statHolder.damage;
+                CurrentHealth = statHolder.health;
+                MaxHealth = statHolder.health;
 
-        switch (MonsterType)
-        {
-            case 1:
-                enemyDamageDone = Random.Range(1, 6);
-                MaxHealth = Random.Range(6, 12);
+                //Secondary Stats
+                MovementSpeed = statHolder.moveSpeed;
+                Gold = statHolder.goldGiven;
+                Xp = statHolder.xpGiven;
+                CurrentArmour = MaxArmour;
+                MaxArmour = statHolder.armor;
+
+                //UI
                 Healthbar.Setmaxhealth(MaxHealth);
                 Healthbar.UpdateText(CurrentHealth);
-                CurrentHealth = MaxHealth;
-                JumpPower = 5;
-                MovementSpeed = 4;
-                Blood.Stop();
-                Gold = Random.Range(40, 80);
-                Xp = Random.Range(50, 100);
                 ArmourBar.SetmaxArmour(MaxArmour);
                 ArmourBar.UpdateText(CurrentArmour);
-                CurrentArmour = MaxArmour;
 
-                break;
-            case 2:
-                enemyDamageDone = Random.Range(2, 10);
-                MaxHealth = Random.Range(12, 24);
-                Healthbar.Setmaxhealth(MaxHealth);
-                Healthbar.UpdateText(CurrentHealth);
-                CurrentHealth = MaxHealth;
-                JumpPower = 5;
-                MovementSpeed = 3;
-                Blood.Stop();
-                Gold = Random.Range(100, 200);
-                Xp = Random.Range(200, 300);
-                MaxArmour = 5;
-                ArmourBar.SetmaxArmour(MaxArmour);
-                ArmourBar.UpdateText(CurrentArmour);
-                CurrentArmour = MaxArmour;
-                break;
-            case 3:
-                enemyDamageDone = Random.Range(6, 14);
-                MaxHealth = Random.Range(24, 48);
-                Healthbar.Setmaxhealth(MaxHealth);
-                Healthbar.UpdateText(CurrentHealth);
-                CurrentHealth = MaxHealth;
-                JumpPower = 5;
-                MovementSpeed = 3;
-                Blood.Stop();
-                Gold = Random.Range(400, 600);  
-                Xp = Random.Range(500, 700);
-                MaxArmour = 10;
-                ArmourBar.SetmaxArmour(MaxArmour);
-                ArmourBar.UpdateText(CurrentArmour);
-                CurrentArmour = MaxArmour;
-                break;
-            case 4:
-                enemyDamageDone = Random.Range(10, 16);
-                MaxHealth = Random.Range(100, 100);
-                Healthbar.Setmaxhealth(MaxHealth);
-                Healthbar.UpdateText(CurrentHealth);
-                CurrentHealth = MaxHealth;
-                JumpPower = 5;
-                MovementSpeed = 4;
-                Blood.Stop();
-                Gold = Random.Range(1000, 6000);
-                Xp = Random.Range(6000, 6000);
-                MaxArmour = 10;
-                ArmourBar.SetmaxArmour(MaxArmour);
-                ArmourBar.UpdateText(CurrentArmour);
-                CurrentArmour = MaxArmour;
-                break;
-
-        }
-
+                //Bug Preventions
+                Blood.Stop(); 
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        blockDefenseValue.text = blockDefense.ToString();
+
+        UIUpdates();
 
         //PUSHED BOOL
         if (isPushed)
@@ -167,21 +122,6 @@ public class Enemy : MonoBehaviour
             Pushed();
         }
 
-        //Disables the block defense UI if not needed
-        if (blockDefense <= 0)
-        {
-            blockDefenseIcon.SetActive(false);
-            //Setting it back to 0 allows you to reactivate shield without having to work you way up from negative number
-            blockDefense = 0;
-        }
-
-        if (blockDefense >= 1)
-        {
-            blockDefenseIcon.SetActive(true);
-        }
-
-        ArmourBar.SetArmour(CurrentArmour);
-        ArmourBar.UpdateText(CurrentArmour);
         //Makes sure that the Enemy hasn't yet chosen anything, otherwise Functions will run once per frame instead of once per turn
         if (!enemyChosenMove && gameManagerScript.enemyTurn == true)
         {
@@ -196,16 +136,13 @@ public class Enemy : MonoBehaviour
             {
                 Block();
             }
-            else
-            {
-
-            }
-            if (enemyChoice == 2 && Alive == true)
+          
+            else if (enemyChoice == 2 && Alive == true)
             {
                 Move();
 
             }
-            if (enemyChoice == 3 && Alive == true)
+            else if (enemyChoice == 3 && Alive == true)
             {
                 Jump();
             }
@@ -232,228 +169,10 @@ public class Enemy : MonoBehaviour
     public void Attack()
     {
         enemyChosenMove = true;
-        // Attack Code Goes Here
         StartCoroutine(EnemyMeleeAttackAction());
-
-
-
         RaycastHit2D Hit = Physics2D.Raycast(Body.transform.position, -Body.transform.right, 1.5f);
 
-        //Damage conditions for Enemy to damage player
-        switch (MonsterType)
-        {
-            case 1:
-
-                int OverallDamage = Random.Range(1,6);
-
-                if (Hit.collider != null && Hit.collider.tag == "Player")
-                {
-
-                    //IF PLAYER HAS NO ARMOR AND NO BLOCK SHIELD + PLAYER HAS RED AMULET
-                    if (playerScript.CurrentArmour <= 0 && playerScript.blockDefense == 0 && playerScript.redSpellPurchased == true)
-                    {
-                        playerScript.CurrentHealth -= enemyDamageDone;
-                        CurrentHealth -= 1;
-                        if (PlayerStats.Male)
-                        {
-                            malePlayerHurt[Random.Range(0,malePlayerHurt.Length)].Play();
-                        }
-                        else
-                        {
-                            femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
-                        }
-                    }
-
-                    //IF PLAYER HAS NO ARMOR AND NO BLOCK SHIELD + PLAYER HAS RED AMULET
-                    else if (playerScript.CurrentArmour <= 0 && playerScript.blockDefense == 0 && playerScript.redSpellPurchased == false)
-                    {
-                        playerScript.CurrentHealth -= enemyDamageDone;
-                        if (PlayerStats.Male)
-                        {
-                            malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
-                        }
-                        else
-                        {
-                            femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
-                        }
-                    }
-                    //IF PLAYER HAS ARMOR + NO BLOCK DEFENSE + HAS RED AMULET
-                    else if (playerScript.CurrentArmour > 0 && playerScript.blockDefense  == 0 && playerScript.redSpellPurchased == true)
-                    {
-                        if (OverallDamage > playerScript.CurrentArmour)
-                        {
-                            overDamage = OverallDamage - playerScript.CurrentArmour;
-                            playerScript.CurrentHealth -= overDamage;
-                            CurrentHealth -= 1;
-                            if (PlayerStats.Male)
-                            {
-                                malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
-                            }
-                            else
-                            {
-                                femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
-                            }
-                        }
-                        else if (OverallDamage <= playerScript.CurrentArmour)
-                        {
-                            playerScript.CurrentArmour -= OverallDamage;
-                        }
-                    }
-                    //IF PLAYER HAS ARMOR + NO BLOCK DEFENSE + HAS NO RED AMULET
-                    else if (playerScript.CurrentArmour > 0 && playerScript.blockDefense == 0 && playerScript.redSpellPurchased == false)
-                    {
-                        if (OverallDamage > playerScript.CurrentArmour)
-                        {
-                            overDamage = OverallDamage - playerScript.CurrentArmour;
-                            playerScript.CurrentHealth -= overDamage;
-                            playerScript.CurrentArmour = 0;
-                            if (PlayerStats.Male)
-                            {
-                                malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
-                            }
-                            else
-                            {
-                                femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
-                            }
-
-                        }
-                        else if (OverallDamage <= playerScript.CurrentArmour)
-                        {
-                            playerScript.CurrentArmour -= OverallDamage;
-                        }
-                    }
-                    //IF PLAYER HAS NO ARMOR + HAS BLOCK DEFENSE + RED AMULET
-                    else if (playerScript.CurrentArmour == 0 && playerScript.blockDefense > 0 && playerScript.redSpellPurchased == true)
-                    {
-                        if (OverallDamage > playerScript.blockDefense)
-                        {
-                            overDamage = OverallDamage - playerScript.blockDefense;
-                            playerScript.CurrentHealth -= overDamage;
-                            playerScript.blockDefense = 0;
-                            CurrentHealth -= 1;
-                            if (PlayerStats.Male)
-                            {
-                                malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
-                            }
-                            else
-                            {
-                                femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
-                            }
-                        }
-                        else if (OverallDamage <= playerScript.blockDefense)
-                        {
-                            playerScript.blockDefense -= OverallDamage;
-                        }
-                    }
-                    else if (playerScript.CurrentArmour == 0 && playerScript.blockDefense > 0 && playerScript.redSpellPurchased == false)
-                    {
-                        if (OverallDamage > playerScript.blockDefense)
-                        {
-                            overDamage = OverallDamage - playerScript.blockDefense;
-                            playerScript.CurrentHealth -= overDamage;
-                            playerScript.blockDefense = 0;
-                            if (PlayerStats.Male)
-                            {
-                                malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
-                            }
-                            else
-                            {
-                                femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
-                            }
-                        }
-                        else if (OverallDamage <= playerScript.blockDefense)
-                        {
-                            playerScript.blockDefense -= OverallDamage;
-                        }
-                    }
-
-                    else if (playerScript.CurrentArmour > 0 && playerScript.blockDefense > 0 && playerScript.redSpellPurchased == true)
-                    {
-                        if (OverallDamage > playerScript.blockDefense)
-                        {
-                            overDamage = OverallDamage - playerScript.blockDefense;
-                            playerScript.blockDefense = 0;
-
-                            if (overDamage > playerScript.CurrentArmour)
-                            {
-                                overDamage -= playerScript.CurrentArmour;
-                                playerScript.CurrentArmour = 0;
-                                playerScript.CurrentHealth -= overDamage;
-                                CurrentHealth -= 1;
-                                if (PlayerStats.Male)
-                                {
-                                    malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
-                                }
-                                else
-                                {
-                                    femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
-                                }
-                            }
-                            else if (overDamage <= playerScript.CurrentArmour)
-                            {
-                                playerScript.CurrentArmour -= overDamage;
-                            }
-
-                        }else if(OverallDamage <= playerScript.blockDefense)
-                        {
-                            playerScript.blockDefense -= OverallDamage;
-                        }
-                    }
-                    else if (playerScript.CurrentArmour > 0 && playerScript.blockDefense > 0 && playerScript.redSpellPurchased == false)
-                    {
-                        if (OverallDamage > playerScript.blockDefense)
-                        {
-                            overDamage = OverallDamage - playerScript.blockDefense;
-                            playerScript.blockDefense = 0;
-
-                            if (overDamage > playerScript.CurrentArmour)
-                            {
-                                overDamage -= playerScript.CurrentArmour;
-                                playerScript.CurrentArmour = 0;
-                                if (PlayerStats.Male)
-                                {
-                                    malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
-                                }
-                                else
-                                {
-                                    femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
-                                }
-                            }
-                            else if (overDamage <= playerScript.CurrentArmour)
-                            {
-                                playerScript.CurrentArmour -= overDamage;
-                            }
-
-                        }
-                        else if (OverallDamage <= playerScript.blockDefense)
-                        {
-                            playerScript.blockDefense -= OverallDamage;
-                        }
-                    }
-                    damagePopupTextScript.fadingIn = true;
-                    damagePopupTextScript.damageDone.text = OverallDamage.ToString();
-                    Debug.Log("Hitplayer");
-                    playerScript.Hurt();
-                    StartCoroutine(AnimtionRestart());
-                    Animator.Play("GoblinAttack");
-                    weaponEffectScript.Emit = true;
-                    StartCoroutine(EnemyMeleeAttackAction());
-                }
-
-
-                //Checks if Player is close enough for Enemy to attack
-                else if (Hit.collider == null)
-                {
-
-                    Getcloser();
-                    playerScript.blockActive = false;
-                    StartCoroutine(AnimtionRestart());
-                }
-                break;
-            case 2:
-
-
-                OverallDamage = Random.Range(2,10);
+        int OverallDamage = Random.Range(1, 6);
 
                 if (Hit.collider != null && Hit.collider.tag == "Player")
                 {
@@ -642,10 +361,9 @@ public class Enemy : MonoBehaviour
                     }
                     damagePopupTextScript.fadingIn = true;
                     damagePopupTextScript.damageDone.text = OverallDamage.ToString();
-                    Debug.Log("Hitplayer");
                     playerScript.Hurt();
                     StartCoroutine(AnimtionRestart());
-                    Animator.Play("SkeletonAttack");
+                    Animator.Play(statHolder.attackAnimation.ToString());
                     weaponEffectScript.Emit = true;
                     StartCoroutine(EnemyMeleeAttackAction());
                 }
@@ -659,481 +377,15 @@ public class Enemy : MonoBehaviour
                     playerScript.blockActive = false;
                     StartCoroutine(AnimtionRestart());
                 }
-                break;
-            case 3:
-
-
-                 OverallDamage = Random.Range(6, 14);
-
-                if (Hit.collider != null && Hit.collider.tag == "Player")
-                {
-
-                    //IF PLAYER HAS NO ARMOR AND NO BLOCK SHIELD + PLAYER HAS RED AMULET
-                    if (playerScript.CurrentArmour <= 0 && playerScript.blockDefense == 0 && playerScript.redSpellPurchased == true)
-                    {
-                        playerScript.CurrentHealth -= enemyDamageDone;
-                        CurrentHealth -= 1;
-                        if (PlayerStats.Male)
-                        {
-                            malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
-                        }
-                        else
-                        {
-                            femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
-                        }
-                    }
-
-                    //IF PLAYER HAS NO ARMOR AND NO BLOCK SHIELD + PLAYER HAS RED AMULET
-                    else if (playerScript.CurrentArmour <= 0 && playerScript.blockDefense == 0 && playerScript.redSpellPurchased == false)
-                    {
-                        playerScript.CurrentHealth -= enemyDamageDone;
-                        if (PlayerStats.Male)
-                        {
-                            malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
-                        }
-                        else
-                        {
-                            femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
-                        }
-                    }
-                    //IF PLAYER HAS ARMOR + NO BLOCK DEFENSE + HAS RED AMULET
-                    else if (playerScript.CurrentArmour > 0 && playerScript.blockDefense == 0 && playerScript.redSpellPurchased == true)
-                    {
-                        if (OverallDamage > playerScript.CurrentArmour)
-                        {
-                            overDamage = OverallDamage - playerScript.CurrentArmour;
-                            playerScript.CurrentHealth -= overDamage;
-                            CurrentHealth -= 1;
-                            if (PlayerStats.Male)
-                            {
-                                malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
-                            }
-                            else
-                            {
-                                femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
-                            }
-                        }
-                        else if (OverallDamage <= playerScript.CurrentArmour)
-                        {
-                            playerScript.CurrentArmour -= OverallDamage;
-                        }
-                    }
-                    //IF PLAYER HAS ARMOR + NO BLOCK DEFENSE + HAS NO RED AMULET
-                    else if (playerScript.CurrentArmour > 0 && playerScript.blockDefense == 0 && playerScript.redSpellPurchased == false)
-                    {
-                        if (OverallDamage > playerScript.CurrentArmour)
-                        {
-                            overDamage = OverallDamage - playerScript.CurrentArmour;
-                            playerScript.CurrentHealth -= overDamage;
-                            playerScript.CurrentArmour = 0;
-                            if (PlayerStats.Male)
-                            {
-                                malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
-                            }
-                            else
-                            {
-                                femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
-                            }
-
-                        }
-                        else if (OverallDamage <= playerScript.blockDefense)
-                        {
-                            playerScript.CurrentArmour -= OverallDamage;
-                        }
-                    }
-                    //IF PLAYER HAS NO ARMOR + HAS BLOCK DEFENSE + RED AMULET
-                    else if (playerScript.CurrentArmour == 0 && playerScript.blockDefense > 0 && playerScript.redSpellPurchased == true)
-                    {
-                        if (OverallDamage > playerScript.blockDefense)
-                        {
-                            overDamage = OverallDamage - playerScript.blockDefense;
-                            playerScript.CurrentHealth -= overDamage;
-                            playerScript.blockDefense = 0;
-                            CurrentHealth -= 1;
-                            if (PlayerStats.Male)
-                            {
-                                malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
-                            }
-                            else
-                            {
-                                femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
-                            }
-                        }
-                        else if (OverallDamage <= playerScript.blockDefense)
-                        {
-                            playerScript.blockDefense -= OverallDamage;
-                        }
-                    }
-                    else if (playerScript.CurrentArmour == 0 && playerScript.blockDefense > 0 && playerScript.redSpellPurchased == false)
-                    {
-                        if (OverallDamage > playerScript.blockDefense)
-                        {
-                            overDamage = OverallDamage - playerScript.blockDefense;
-                            playerScript.CurrentHealth -= overDamage;
-                            playerScript.blockDefense = 0;
-                            if (PlayerStats.Male)
-                            {
-                                malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
-                            }
-                            else
-                            {
-                                femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
-                            }
-                        }
-                        else if (OverallDamage <= playerScript.blockDefense)
-                        {
-                            playerScript.blockDefense -= OverallDamage;
-                        }
-                    }
-
-                    else if (playerScript.CurrentArmour > 0 && playerScript.blockDefense > 0 && playerScript.redSpellPurchased == true)
-                    {
-                        if (OverallDamage > playerScript.blockDefense)
-                        {
-                            overDamage = OverallDamage - playerScript.blockDefense;
-                            playerScript.blockDefense = 0;
-
-                            if (overDamage > playerScript.CurrentArmour)
-                            {
-                                overDamage -= playerScript.CurrentArmour;
-                                playerScript.CurrentArmour = 0;
-                                playerScript.CurrentHealth -= overDamage;
-                                CurrentHealth -= 1;
-                                if (PlayerStats.Male)
-                                {
-                                    malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
-                                }
-                                else
-                                {
-                                    femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
-                                }
-                            }
-                            else if (overDamage <= playerScript.CurrentArmour)
-                            {
-                                playerScript.CurrentArmour -= overDamage;
-                            }
-
-                        }
-                        else if (OverallDamage <= playerScript.blockDefense)
-                        {
-                            playerScript.blockDefense -= OverallDamage;
-                        }
-                    }
-                    else if (playerScript.CurrentArmour > 0 && playerScript.blockDefense > 0 && playerScript.redSpellPurchased == false)
-                    {
-                        if (OverallDamage > playerScript.blockDefense)
-                        {
-                            overDamage = OverallDamage - playerScript.blockDefense;
-                            playerScript.blockDefense = 0;
-
-                            if (overDamage > playerScript.CurrentArmour)
-                            {
-                                overDamage -= playerScript.CurrentArmour;
-                                playerScript.CurrentArmour = 0;
-                                if (PlayerStats.Male)
-                                {
-                                    malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
-                                }
-                                else
-                                {
-                                    femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
-                                }
-                            }
-                            else if (overDamage <= playerScript.CurrentArmour)
-                            {
-                                playerScript.CurrentArmour -= overDamage;
-                            }
-
-                        }
-                        else if (OverallDamage <= playerScript.blockDefense)
-                        {
-                            playerScript.blockDefense -= OverallDamage;
-                        }
-                    }
-                    damagePopupTextScript.fadingIn = true;
-                    damagePopupTextScript.damageDone.text = OverallDamage.ToString();
-                    Debug.Log("Hitplayer");
-                    playerScript.Hurt();
-                    StartCoroutine(AnimtionRestart());
-                    Animator.Play("OrcAttack");
-                    weaponEffectScript.Emit = true;
-                    StartCoroutine(EnemyMeleeAttackAction());
-                }
-
-
-                //Checks if Player is close enough for Enemy to attack
-                else if (Hit.collider == null)
-                {
-
-                    Getcloser();
-                    playerScript.blockActive = false;
-                    StartCoroutine(AnimtionRestart());
-                }
-                break;
-            case 4:
-
-
-                OverallDamage = Random.Range(9, 20);
-
-                if (Hit.collider != null && Hit.collider.tag == "Player")
-                {
-
-                    //IF PLAYER HAS NO ARMOR AND NO BLOCK SHIELD + PLAYER HAS RED AMULET
-                    if (playerScript.CurrentArmour <= 0 && playerScript.blockDefense == 0 && playerScript.redSpellPurchased == true)
-                    {
-                        playerScript.CurrentHealth -= enemyDamageDone;
-                        CurrentHealth -= 1;
-                        if (PlayerStats.Male)
-                        {
-                            malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
-                        }
-                        else
-                        {
-                            femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
-                        }
-                    }
-
-                    //IF PLAYER HAS NO ARMOR AND NO BLOCK SHIELD + PLAYER HAS RED AMULET
-                    else if (playerScript.CurrentArmour <= 0 && playerScript.blockDefense == 0 && playerScript.redSpellPurchased == false)
-                    {
-                        playerScript.CurrentHealth -= enemyDamageDone;
-                        if (PlayerStats.Male)
-                        {
-                            malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
-                        }
-                        else
-                        {
-                            femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
-                        }
-                    }
-                    //IF PLAYER HAS ARMOR + NO BLOCK DEFENSE + HAS RED AMULET
-                    else if (playerScript.CurrentArmour > 0 && playerScript.blockDefense == 0 && playerScript.redSpellPurchased == true)
-                    {
-                        if (OverallDamage > playerScript.CurrentArmour)
-                        {
-                            overDamage = OverallDamage - playerScript.CurrentArmour;
-                            playerScript.CurrentHealth -= overDamage;
-                            playerScript.CurrentArmour = 0;
-                            CurrentHealth -= 1;
-                            if (PlayerStats.Male)
-                            {
-                                malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
-                            }
-                            else
-                            {
-                                femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
-                            }
-                        }
-                        else if (OverallDamage <= playerScript.CurrentArmour)
-                        {
-                            playerScript.CurrentArmour -= OverallDamage;
-                        }
-                    }
-                    //IF PLAYER HAS ARMOR + NO BLOCK DEFENSE + HAS NO RED AMULET
-                    else if (playerScript.CurrentArmour > 0 && playerScript.blockDefense == 0 && playerScript.redSpellPurchased == false)
-                    {
-                        if (OverallDamage > playerScript.CurrentArmour)
-                        {
-                            overDamage = OverallDamage - playerScript.CurrentArmour;
-                            playerScript.CurrentHealth -= overDamage;
-                            playerScript.CurrentArmour = 0;
-                            if (PlayerStats.Male)
-                            {
-                                malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
-                            }
-                            else
-                            {
-                                femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
-                            }
-
-                        }
-                        else if (OverallDamage <= playerScript.CurrentArmour)
-                        {
-                            playerScript.CurrentArmour -= OverallDamage;
-                        }
-                    }
-                    //IF PLAYER HAS NO ARMOR + HAS BLOCK DEFENSE + RED AMULET
-                    else if (playerScript.CurrentArmour == 0 && playerScript.blockDefense > 0 && playerScript.redSpellPurchased == true)
-                    {
-                        if (OverallDamage > playerScript.blockDefense)
-                        {
-                            overDamage = OverallDamage - playerScript.blockDefense;
-                            playerScript.CurrentHealth -= overDamage;
-                            playerScript.blockDefense = 0;
-                            CurrentHealth -= 1;
-                            if (PlayerStats.Male)
-                            {
-                                malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
-                            }
-                            else
-                            {
-                                femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
-                            }
-                        }
-                        else if (OverallDamage <= playerScript.blockDefense)
-                        {
-                            playerScript.blockDefense -= OverallDamage;
-                        }
-                    }
-                    else if (playerScript.CurrentArmour == 0 && playerScript.blockDefense > 0 && playerScript.redSpellPurchased == false)
-                    {
-                        if (OverallDamage > playerScript.blockDefense)
-                        {
-                            overDamage = OverallDamage - playerScript.blockDefense;
-                            playerScript.CurrentHealth -= overDamage;
-                            playerScript.blockDefense = 0;
-                            if (PlayerStats.Male)
-                            {
-                                malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
-                            }
-                            else
-                            {
-                                femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
-                            }
-                        }
-                        else if (OverallDamage <= playerScript.blockDefense)
-                        {
-                            playerScript.blockDefense -= OverallDamage;
-                        }
-                    }
-
-                    else if (playerScript.CurrentArmour > 0 && playerScript.blockDefense > 0 && playerScript.redSpellPurchased == true)
-                    {
-                        if (OverallDamage > playerScript.blockDefense)
-                        {
-                            overDamage = OverallDamage - playerScript.blockDefense;
-                            playerScript.blockDefense = 0;
-
-                            if (overDamage > playerScript.CurrentArmour)
-                            {
-                                overDamage -= playerScript.CurrentArmour;
-                                playerScript.CurrentArmour = 0;
-                                playerScript.CurrentHealth -= overDamage;
-                                CurrentHealth -= 1;
-                                if (PlayerStats.Male)
-                                {
-                                    malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
-                                }
-                                else
-                                {
-                                    femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
-                                }
-                            }
-                            else if (overDamage <= playerScript.CurrentArmour)
-                            {
-                                playerScript.CurrentArmour -= overDamage;
-                            }
-
-                        }
-                        else if (OverallDamage <= playerScript.blockDefense)
-                        {
-                            playerScript.blockDefense -= OverallDamage;
-                        }
-                    }
-                    else if (playerScript.CurrentArmour > 0 && playerScript.blockDefense > 0 && playerScript.redSpellPurchased == false)
-                    {
-                        if (OverallDamage > playerScript.blockDefense)
-                        {
-                            overDamage = OverallDamage - playerScript.blockDefense;
-                            playerScript.blockDefense = 0;
-
-                            if (overDamage > playerScript.CurrentArmour)
-                            {
-                                overDamage -= playerScript.CurrentArmour;
-                                playerScript.CurrentArmour = 0;
-                                if (PlayerStats.Male)
-                                if (PlayerStats.Male)
-                                {
-                                    malePlayerHurt[Random.Range(0, malePlayerHurt.Length)].Play();
-                                }
-                                else
-                                {
-                                    femalePlayerHurt[Random.Range(0, femalePlayerHurt.Length)].Play();
-                                }
-                            }
-                            else if (overDamage <= playerScript.CurrentArmour)
-                            {
-                                playerScript.CurrentArmour -= overDamage;
-                            }
-
-                        }
-                        else if (OverallDamage <= playerScript.blockDefense)
-                        {
-                            playerScript.blockDefense -= OverallDamage;
-                        }
-                    }
-                    damagePopupTextScript.fadingIn = true;
-                    damagePopupTextScript.damageDone.text = OverallDamage.ToString();
-                    Debug.Log("Hitplayer");
-                    playerScript.Hurt();
-                    StartCoroutine(AnimtionRestart());
-                    Animator.Play("BigEdAttack");
-                    weaponEffectScript.Emit = true;
-                    StartCoroutine(EnemyMeleeAttackAction());
-                }
-
-
-                //Checks if Player is close enough for Enemy to attack
-                else if (Hit.collider == null)
-                {
-
-                    Getcloser();
-                    playerScript.blockActive = false;
-                    StartCoroutine(AnimtionRestart());
-                }
-                break;
+                
         }
-
-    }
-
+    
     public void Block()
     {
-        switch (MonsterType)
-        {
-            case 1:
                 if (PlayerInrange == true)
                 {
                     enemyChosenMove = true;
-                    Animator.Play("GoblinBlock");
-                    //Block Code Goes Here
-
-                    Debug.Log("Enemy Chooses Block");
-                    blockDefense += 1;
-
-                    StartCoroutine(EnemyMeleeAttackAction());
-                    StartCoroutine(AnimtionRestart());
-                }
-                else
-                {
-                    Getcloser();
-                }
-                break;
-            case 2:
-                if (PlayerInrange == true)
-                {
-                    enemyChosenMove = true;
-                    Animator.Play("SkeletonBlock");
-                    //Block Code Goes Here
-
-                    Debug.Log("Enemy Chooses Block");
-                    blockDefense += 1;
-
-                    StartCoroutine(EnemyMeleeAttackAction());
-                    StartCoroutine(AnimtionRestart());
-                }
-                else
-                {
-                    Getcloser();
-                }
-                break;
-            case 3:
-                if (PlayerInrange == true)
-                {
-                    enemyChosenMove = true;
-                    Animator.Play("OrcBlock");
-                    //Block Code Goes Here
-
-                    Debug.Log("Enemy Chooses Block");
+                    Animator.Play(statHolder.blockAnimation.ToString());
                     blockDefense += 1;
                     StartCoroutine(EnemyMeleeAttackAction());
                     StartCoroutine(AnimtionRestart());
@@ -1142,26 +394,7 @@ public class Enemy : MonoBehaviour
                 {
                     Getcloser();
                 }
-                break;
-            case 4:
-                if (PlayerInrange == true)
-                {
-                    enemyChosenMove = true;
-                    Animator.Play("BigEdBlock");
-                    //Block Code Goes Here
-
-                    Debug.Log("Enemy Chooses Block");
-                    blockDefense += 2;
-                    StartCoroutine(EnemyMeleeAttackAction());
-                    StartCoroutine(AnimtionRestart());
-                }
-                else
-                {
-                    Getcloser();
-                }
-                break;
-        }
-
+              
     }
     public void Move()
     {
@@ -1717,5 +950,25 @@ public class Enemy : MonoBehaviour
                 PlayerStats.GoblinsKilled += 1;
                 break;
         }
+    }
+
+    public void UIUpdates()
+    {
+        blockDefenseValue.text = blockDefense.ToString();
+        //Disables the block defense UI if not needed
+        if (blockDefense <= 0)
+        {
+            blockDefenseIcon.SetActive(false);
+            //Setting it back to 0 allows you to reactivate shield without having to work you way up from negative number
+            blockDefense = 0;
+        }
+
+        if (blockDefense >= 1)
+        {
+            blockDefenseIcon.SetActive(true);
+        }
+
+        ArmourBar.SetArmour(CurrentArmour);
+        ArmourBar.UpdateText(CurrentArmour);
     }
 }
