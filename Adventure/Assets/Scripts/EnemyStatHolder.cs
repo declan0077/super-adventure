@@ -20,5 +20,11 @@ public class EnemyStatHolder : ScriptableObject
     //Animations
     public string attackAnimation;
     public string blockAnimation;
+    public string walkAnimation;
+    public string hurtAnimation;
+    public string deathAnimation;
+
+    //Audio
+    public AudioSource  [] vocalSounds;
 
 }

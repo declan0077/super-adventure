@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour
         Enemy enemy =  HitInfo.GetComponent<Enemy>();
             if(enemy != null)
            {
-            enemy.CurrentHealth -= 2;
+            enemy.currentHealth -= 2;
             enemy.Hurt();
             Destroy(this);
            }

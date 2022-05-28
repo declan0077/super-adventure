@@ -20,3 +20,9 @@ MonoBehaviour:
   goldGiven: 10
   attackAnimation: GoblinAttack
   blockAnimation: GoblinBlock
+  walkAnimation: GoblinWalk
+  hurtAnimation: GoblinHurt
+  deathAnimation: GoblinDead
+  vocalSounds:
+  - {fileID: 0}
+  - {fileID: 0}

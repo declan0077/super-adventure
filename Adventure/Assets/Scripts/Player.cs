@@ -363,14 +363,14 @@ public class Player : MonoBehaviour
         //IF ENEMY HAS NO ARMOR AND NO BLOCK SHIELD + PLAYER HAS GREEN AMULET
         if (enemyScript.CurrentArmour <= 0 && enemyScript.blockDefense <= 0 && greenSpellPurchased)
         {
-            enemyScript.CurrentHealth -= OverallDamage;
+            enemyScript.currentHealth -= OverallDamage;
             CurrentHealth += leech;
         }
 
         //IF ENEMY HAS NO ARMOR + NO BLOCK SHIELD + PLAYER HAS NO GREEN AMULET
         else if (enemyScript.CurrentArmour <= 0 && enemyScript.blockDefense <= 0 && !greenSpellPurchased)
         {
-            enemyScript.CurrentHealth -= OverallDamage;
+            enemyScript.currentHealth -= OverallDamage;
         }
         //IF ENEMY HAS ARMOR + NO BLOCK SHIELD + PLAYER HAS GREEN AMULET
         else if (enemyScript.CurrentArmour > 0 && enemyScript.blockDefense == 0 && greenSpellPurchased)
@@ -378,7 +378,7 @@ public class Player : MonoBehaviour
             if (OverallDamage > enemyScript.blockDefense)
             {
                 overDamage = OverallDamage - enemyScript.blockDefense;
-                enemyScript.CurrentHealth -= overDamage;
+                enemyScript.currentHealth -= overDamage;
                 enemyScript.CurrentArmour = 0;
                 CurrentHealth += leech;
             }
@@ -394,7 +394,7 @@ public class Player : MonoBehaviour
             {
                 overDamage = OverallDamage - enemyScript.CurrentArmour;
                 enemyScript.CurrentArmour = 0;
-                enemyScript.CurrentHealth -= overDamage;
+                enemyScript.currentHealth -= overDamage;
             }
             else if (OverallDamage < enemyScript.CurrentArmour)
             {
@@ -407,7 +407,7 @@ public class Player : MonoBehaviour
             if (OverallDamage > enemyScript.blockDefense)
             {
                 overDamage = OverallDamage - enemyScript.blockDefense;
-                enemyScript.CurrentHealth -= overDamage;
+                enemyScript.currentHealth -= overDamage;
                 enemyScript.blockDefense = 0;
                 CurrentHealth += leech;
             }
@@ -423,7 +423,7 @@ public class Player : MonoBehaviour
             {
                 overDamage = OverallDamage - enemyScript.blockDefense;
                 enemyScript.blockDefense = 0;
-                enemyScript.CurrentHealth -= overDamage;
+                enemyScript.currentHealth -= overDamage;
             }
             else if (OverallDamage < enemyScript.blockDefense)
             {
@@ -442,8 +442,8 @@ public class Player : MonoBehaviour
                 {
                     overDamage -= enemyScript.CurrentArmour;
                     enemyScript.CurrentArmour = 0;
-                    enemyScript.CurrentHealth -= overDamage;
-                    enemyScript.CurrentHealth += leech;
+                    enemyScript.currentHealth -= overDamage;
+                    enemyScript.currentHealth += leech;
                 }
                 else if (overDamage < enemyScript.CurrentArmour)
                 {
@@ -464,7 +464,7 @@ public class Player : MonoBehaviour
                 {
                     overDamage -= enemyScript.CurrentArmour;
                     enemyScript.CurrentArmour = 0;
-                    enemyScript.CurrentHealth -= overDamage;
+                    enemyScript.currentHealth -= overDamage;
 
                 }
                 else if (overDamage < enemyScript.CurrentArmour)
@@ -515,14 +515,14 @@ public class Player : MonoBehaviour
         //IF ENEMY HAS NO ARMOR AND NO BLOCK SHIELD + PLAYER HAS GREEN AMULET
         if (enemyScript.CurrentArmour <= 0 && enemyScript.blockDefense <= 0 && greenSpellPurchased)
         {
-            enemyScript.CurrentHealth -= OverallDamage;
+            enemyScript.currentHealth -= OverallDamage;
             CurrentHealth += leech;
         }
 
         //IF ENEMY HAS NO ARMOR + NO BLOCK SHIELD + PLAYER HAS NO GREEN AMULET
         else if (enemyScript.CurrentArmour <= 0 && enemyScript.blockDefense <= 0 && !greenSpellPurchased)
         {
-            enemyScript.CurrentHealth -= OverallDamage;
+            enemyScript.currentHealth -= OverallDamage;
         }
         //IF ENEMY HAS ARMOR + NO BLOCK SHIELD + PLAYER HAS GREEN AMULET
         else if (enemyScript.CurrentArmour > 0 && enemyScript.blockDefense == 0 && greenSpellPurchased)
@@ -530,7 +530,7 @@ public class Player : MonoBehaviour
             if (OverallDamage > enemyScript.blockDefense)
             {
                 overDamage = OverallDamage - enemyScript.blockDefense;
-                enemyScript.CurrentHealth -= overDamage;
+                enemyScript.currentHealth -= overDamage;
                 enemyScript.CurrentArmour = 0;
                 CurrentHealth += leech;
             }
@@ -546,7 +546,7 @@ public class Player : MonoBehaviour
             {
                 overDamage = OverallDamage - enemyScript.CurrentArmour;
                 enemyScript.CurrentArmour = 0;
-                enemyScript.CurrentHealth -= overDamage;
+                enemyScript.currentHealth -= overDamage;
             }
             else if (OverallDamage < enemyScript.CurrentArmour)
             {
@@ -559,7 +559,7 @@ public class Player : MonoBehaviour
             if (OverallDamage > enemyScript.blockDefense)
             {
                 overDamage = OverallDamage - enemyScript.blockDefense;
-                enemyScript.CurrentHealth -= overDamage;
+                enemyScript.currentHealth -= overDamage;
                 enemyScript.blockDefense = 0;
                 CurrentHealth += leech;
             }
@@ -575,7 +575,7 @@ public class Player : MonoBehaviour
             {
                 overDamage = OverallDamage - enemyScript.blockDefense;
                 enemyScript.blockDefense = 0;
-                enemyScript.CurrentHealth -= overDamage;
+                enemyScript.currentHealth -= overDamage;
             }
             else if (OverallDamage < enemyScript.blockDefense)
             {
@@ -594,7 +594,7 @@ public class Player : MonoBehaviour
                 {
                     overDamage -= enemyScript.CurrentArmour;
                     enemyScript.CurrentArmour = 0;
-                    enemyScript.CurrentHealth -= overDamage;
+                    enemyScript.currentHealth -= overDamage;
                     CurrentHealth += leech;
                 }
                 else if (overDamage < enemyScript.CurrentArmour)
@@ -620,7 +620,7 @@ public class Player : MonoBehaviour
                 {
                     overDamage -= enemyScript.CurrentArmour;
                     enemyScript.CurrentArmour = 0;
-                    enemyScript.CurrentHealth -= overDamage;
+                    enemyScript.currentHealth -= overDamage;
 
                 }
                 else if (overDamage < enemyScript.CurrentArmour)
