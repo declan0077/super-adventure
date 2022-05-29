@@ -23,71 +23,50 @@ public class Enemy : MonoBehaviour
     public Text blockDefenseValue;
     public TMP_Text playerDamageUI;
 
-
-    //Reference to the players healthbar
-    public Healtbar Healthbar;
-    public AudioSource[] enemySounds;
-    //Reference to GameManagerScript
+    //Script References
     public GameManager gameManagerScript;
-    //On Death Show the reward script
-    public GameObject RewardText;
-    //Enemy gold Drop
-   
-    private int Gold;
-    //Enemy Xp
-    
-    private int Xp;
-
-    //Refernce to the Player
-    public Player playerScript;
-    //Refernce to the type of Enemy
-    public int MonsterType;
-
-    //Gets Reference to the animator
-    public Animator Animator;
-    //Bool to see if the enemy has yet chosen their move (Used for move validation)
-    public bool enemyChosenMove = false;
-    public ParticleSystem Blood;
-    //Gets the center of the players body used for raycasting
-    public GameObject Body;
-    //Random int variable
-    public int enemyChoice;
-    public ArmourBar ArmourBar;
-    //Armour ammount
-    public int MaxArmour;
-    public int CurrentArmour;
-    bool Alive = true;
-
-    //Block Defense Value
-    public int blockDefense = 0;
-    public GameObject blockDefenseIcon;
-   
-
-    //Reference to text fade script
-    public textFade damagePopupTextScript;
-    //Player damage UI that appears on Enemy
-   
-    private bool PlayerInrange;
-
-    //Reference to block skillcheck
-    public GameObject blockSkillCheck;
-    public SkillcheckSpin blockSkillScript;
-
-    public int randomSound;
-
     public MeleeWeaponTrail weaponEffectScript;
+    public Healtbar healthBar;
+    public Player playerScript;
+    public textFade damagePopupTextScript;
+    public SkillcheckSpin blockSkillScript;
+    public ArmourBar ArmourBar;
 
+    //Audio
     public AudioSource[] malePlayerHurt;
     public AudioSource[] femalePlayerHurt;
+    public AudioSource[] enemySounds;
 
-    public int enemyDamageDone;
-    public int overDamage = 0;
+    //Bool Checks
 
+    //Bool to see if the enemy has yet chosen their move (Used for move validation)
+    public bool enemyChosenMove = false;
+    public bool Alive = true;
+    private bool playerInrange;
     public bool isPushed = false;
 
+    public Animator Animator;
 
-    //Turn UI to disable when round ends
+    //Integers
+    private int Gold;
+    private int Xp;
+    public int enemyChoice;
+    public int MaxArmour;
+    public int CurrentArmour;
+    public int blockDefense = 0;
+    public int MonsterType;
+    public int enemyDamageDone;
+    public int overDamage = 0;
+    public int randomSound;
+
+    //GameObjects
+    public GameObject RewardText;
+    public GameObject blockDefenseIcon;
+    public GameObject Body;
+    public GameObject blockSkillCheck;
     public GameObject whosTurn;
+
+     public ParticleSystem Blood;
 
 
 
@@ -107,8 +86,8 @@ public class Enemy : MonoBehaviour
         MaxArmour = statHolder.armor;
 
         //UI
-        Healthbar.Setmaxhealth(maxHealth);
-        Healthbar.UpdateText(currentHealth);
+        healthBar.Setmaxhealth(maxHealth);
+        healthBar.UpdateText(currentHealth);
         ArmourBar.SetmaxArmour(MaxArmour);
         ArmourBar.UpdateText(CurrentArmour);
 
@@ -129,11 +108,11 @@ public class Enemy : MonoBehaviour
         RaycastHit2D Inrange = Physics2D.Raycast(Body.transform.position, -Body.transform.right, 1.5f);
         if (Inrange.collider != null && Inrange.collider.tag == "Player")
         {
-            PlayerInrange = true;
+            playerInrange = true;
         }
         else if (Inrange.collider == null)
         {
-            PlayerInrange = false;
+            playerInrange = false;
         }
     }
     public void Deathaction()
@@ -355,7 +334,7 @@ public class Enemy : MonoBehaviour
 
     public void Block()
     {
-        if (PlayerInrange == true)
+        if (playerInrange == true)
         {
             enemyChosenMove = true;
             Animator.Play(statHolder.blockAnimation.ToString());
@@ -371,7 +350,7 @@ public class Enemy : MonoBehaviour
     }
     public void Move()
     {
-        if (PlayerInrange == true)
+        if (playerInrange == true)
         {
             Attack();
         }
@@ -468,7 +447,7 @@ public class Enemy : MonoBehaviour
             currentHealth = 0;
             //Prevents the Enemy from attacking once more after death
             enemyDamageDone = 0;
-            Healthbar.UpdateText(currentHealth);
+            healthBar.UpdateText(currentHealth);
             Alive = false;
             Blood.Play();
             Animator.Play(statHolder.deathAnimation.ToString());
@@ -606,8 +585,8 @@ public class Enemy : MonoBehaviour
 
         ArmourBar.SetArmour(CurrentArmour);
         ArmourBar.UpdateText(CurrentArmour);
-        Healthbar.Sethealth(currentHealth);
-        Healthbar.UpdateText(currentHealth);
+        healthBar.Sethealth(currentHealth);
+        healthBar.UpdateText(currentHealth);
         ArmourBar.UpdateText(CurrentArmour);
     }
 

@@ -59,7 +59,6 @@
     <Compile Include="Assets\Public Assets\MeleeWeaponTrail\Example\Scripts\MouseMove.cs" />
     <Compile Include="Assets\Scripts\ChooseSex.cs" />
     <Compile Include="Assets\Scripts\Skillcheck.cs" />
-    <Compile Include="Assets\Scripts\HOL_Input.cs" />
     <Compile Include="Assets\Scripts\NormalHit.cs" />
     <Compile Include="Assets\Scripts\ButtonHoverImage.cs" />
     <Compile Include="Assets\Scripts\PlayerStats.cs" />
@@ -80,6 +79,7 @@
     <Compile Include="Assets\Scripts\textFade.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\CriticalHit.cs" />
+    <Compile Include="Assets\Scripts\EnemyStatHolder.cs" />
     <Compile Include="Assets\Scripts\GenderScript.cs" />
     <Compile Include="Assets\Public Assets\MeleeWeaponTrail\Example\Scripts\SwooshTest.cs" />
     <Compile Include="Assets\Scripts\AttackSkillCheck.cs" />
@@ -88,7 +88,6 @@
     <Compile Include="Assets\Scripts\AudioUI.cs" />
     <Compile Include="Assets\Scripts\ShopBuyingScript.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
-    <Compile Include="Assets\Scripts\RPS_Input.cs" />
     <Compile Include="Assets\Scripts\ItemAboutDialogue.cs" />
     <Compile Include="Assets\Scripts\ShopUI.cs" />
     <Compile Include="Assets\Scripts\Bullet.cs" />
@@ -115,7 +114,7 @@
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\SkillcheckHit.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
-    <Compile Include="Assets\Scripts\EnemyStatHolder.cs" />
+    <Compile Include="Assets\Scripts\ShopItemHolder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
