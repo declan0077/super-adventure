@@ -13403,6 +13403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 644eac185e2381c4ba8c93d3f865d3d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  equippedGear: {fileID: 0}
   meleeAttack: {fileID: 651696159}
   rangedAttack: {fileID: 181861994}
   Bullet: {fileID: 200026528260796780, guid: c5caf00cc1d12a14eaf800999bde635d, type: 3}
@@ -30130,37 +30131,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statHolder: {fileID: 11400000, guid: 9b6f9155f5bad134ba67a5d6d257ab57, type: 2}
-  MaxHealth: 20
-  CurrentHealth: 0
-  JumpPower: 0
-  MovementSpeed: 0
-  Healthbar: {fileID: 215988615}
-  goblinSounds:
-  - {fileID: 42575587}
-  - {fileID: 610329443}
-  gameManagerScript: {fileID: 644581769}
-  RewardText: {fileID: 1170974479}
-  Rewardgold: {fileID: 1289390275}
-  RewardXp: {fileID: 2084646680}
-  playerScript: {fileID: 1000266912}
-  MonsterType: 1
-  Animator: {fileID: 3076012659349151251}
-  enemyChosenMove: 0
-  Blood: {fileID: 3076012659349151256}
-  Body: {fileID: 1292887039}
-  enemyChoice: 0
-  ArmourBar: {fileID: 873781862}
-  MaxArmour: 0
-  CurrentArmour: 0
-  blockDefense: 0
-  blockDefenseIcon: {fileID: 537186222}
+  maxHealth: 0
+  currentHealth: 0
+  movementSpeed: 0
+  rewardGold: {fileID: 0}
+  rewardExperience: {fileID: 0}
   blockDefenseValue: {fileID: 1901889574}
-  damagePopupTextScript: {fileID: 1514604981}
   playerDamageUI: {fileID: 1276922785}
-  blockSkillCheck: {fileID: 260830862}
-  blockSkillScript: {fileID: 342649175}
-  randomSound: 0
+  gameManagerScript: {fileID: 644581769}
   weaponEffectScript: {fileID: 270813319}
+  healthBar: {fileID: 215988615}
+  playerScript: {fileID: 1000266912}
+  damagePopupTextScript: {fileID: 1514604981}
+  blockSkillScript: {fileID: 342649175}
+  ArmourBar: {fileID: 873781862}
   malePlayerHurt:
   - {fileID: 147811966}
   - {fileID: 215089657}
@@ -30181,10 +30165,25 @@ MonoBehaviour:
   - {fileID: 1633683996}
   - {fileID: 484381327}
   - {fileID: 405643517}
+  enemySounds: []
+  enemyChosenMove: 0
+  Alive: 1
+  isPushed: 0
+  Animator: {fileID: 3076012659349151251}
+  enemyChoice: 0
+  MaxArmour: 0
+  CurrentArmour: 0
+  blockDefense: 0
+  MonsterType: 1
   enemyDamageDone: 0
   overDamage: 0
-  isPushed: 0
+  randomSound: 0
+  RewardText: {fileID: 1170974479}
+  blockDefenseIcon: {fileID: 537186222}
+  Body: {fileID: 1292887039}
+  blockSkillCheck: {fileID: 260830862}
   whosTurn: {fileID: 907511930}
+  Blood: {fileID: 3076012659349151256}
 --- !u!61 &3076012659349151253
 BoxCollider2D:
   m_ObjectHideFlags: 0

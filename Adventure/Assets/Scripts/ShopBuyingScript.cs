@@ -7,7 +7,7 @@ using TMPro;
 
 public class ShopBuyingScript : MonoBehaviour
 {
-    public ShopItemHolder shopItems;
+    public Weapon shopWeapons;
    
 
     public AudioSource purchaseSound;
@@ -18,19 +18,21 @@ public class ShopBuyingScript : MonoBehaviour
     private string itemName;
     public  TMP_Text itemDescription;
     private int itemPrice;
-    private Sprite itemImage;
+
+    public Image itemImage;
+
    
-  
-
-
 
     public void Start()
     {
-        itemPrice = shopItems.itemCost;
+        itemPrice = shopWeapons.itemCost;
         itemPriceText.text = itemPrice.ToString() + " gold";
-        itemDescription.text = shopItems.itemDescription;
+        itemDescription.text = shopWeapons.itemDescription;
+        itemImage.sprite = shopWeapons.itemImage;
+       
         
     }
+
     public void PurchaseItem()
     {
         if (PlayerStats.Gold >= itemPrice )

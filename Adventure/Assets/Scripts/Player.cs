@@ -7,6 +7,11 @@ using TMPro;
 using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
+    //Reference to ScriptableObject Holder
+    public Weapon equippedGear;
+
+
+
     public GameObject meleeAttack;
 
     //RangedAttack Properties
@@ -104,7 +109,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+       
         PlayerStats.ArmourAmount = CurrentArmour;
         CurrentArmour = MaxArmour;
         MaxHealth = MaxHealth + PlayerStats.Constitution;

@@ -17,7 +17,7 @@ public class MainMenu : MonoBehaviour
     public GameObject playerPreview;
     public GameObject traits;
 
-    public GameObject dancingGoblin;
+ 
 
     //UI Buttons + Input Fields
     public Button confirmPlayerName;
@@ -57,7 +57,7 @@ public class MainMenu : MonoBehaviour
         credits.SetActive(false);
         playerPreview.SetActive(false);
         traits.SetActive(false);
-        dancingGoblin.SetActive(true);
+      
     }
 
     public void ChooseName()
@@ -72,7 +72,7 @@ public class MainMenu : MonoBehaviour
         menuButtons.SetActive(false);
         credits.SetActive(false);
         playerPreview.SetActive(true);
-        dancingGoblin.SetActive(false);
+      
     }
 
     //Randomize Name Function
